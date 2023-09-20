@@ -1,9 +1,10 @@
 <template>
     <!-- all roles -->
-    <div>
-        <Navbar />
+    <Navbar />
+    <Sidebar />
+    <div class="ml-36">
         <!-- Showcase Header -->
-        <section class="bg-blue-900 text-white py-16">
+        <section :style="{'background-image':'url(https://t3.ftcdn.net/jpg/05/11/25/36/360_F_511253627_zuzpapnIVQueMx4eSL1ilAoH61OBgj0C.jpg)'}" class="bg-blue-900 text-white py-16">
             <div class="container mx-auto text-center">
                 <h1 class="text-3xl md:text-5xl lg:text-6xl font-extrabold mb-4 transition-all">
                     Welcome to Our Electronics and Computer Store
@@ -11,7 +12,7 @@
                 <p class="text-base md:text-lg lg:text-xl mb-8 transition-all">Discover the latest and greatest
                     electronic gadgets and computer accessories.
                 </p>
-                <a href="#"
+                <a href="#Product"
                     class="bg-white text-blue-900 hover:bg-blue-700 hover:text-white px-6 py-3 rounded-full text-lg font-semibold transition duration-300 ease-in-out">
                     Shop Now
                 </a>
@@ -29,7 +30,8 @@
                     <div class="swiper-wrapper">
                         <!-- Category Cards -->
                         <div v-for="category in categories" :key="category.id"
-                            class="swiper-slide bg-white shadow-md p-8 rounded-lg">
+                            class="swiper-slide bg-white shadow-md p-8 rounded-lg" 
+                            :style="{'background-image':'url(https://marketplace.canva.com/EAEthkBVLfQ/1/0/1600w/canva-blush-wave-desktop-wallpaper-drvq3zaYl2E.jpg)'}">
                             <img :src="category.image" alt="Category Image" class="w-16 h-16 mx-auto mb-4">
                             <h3 class="text-xl font-semibold">{{ category.name }}</h3>
                             <p class="text-gray-600">{{ category.description }}</p>
@@ -44,10 +46,12 @@
         </section>
 
         <!-- Featured Products -->
-        <section class="py-12 mt-3 mx-3">
+        <section class="py-12 mt-3 mx-3" id="Product">
             <div class="container mx-auto text-center">
-                <h2 class="text-3xl font-semibold mb-6">Featured Products</h2>
-                <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-8">
+                <div class="text-white py-4" :style="{'background-image':'url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTrvamrkx2A4PaFfWU63BzUGUrpVQzKIHyMGHZ_f-_sJxdq-hTK1x695uwEdu9TVv-7bw&usqp=CAU)'}" >
+                    <h2 class="text-3xl font-semibold">Featured Products</h2>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-8 mt-6">
                     <!-- Featured Product Cards -->
                     <div v-for="product in featuredProducts" :key="product.id"
                         class="bg-white shadow-md p-3 rounded-lg hover:scale-105 transition-all duration-500">
