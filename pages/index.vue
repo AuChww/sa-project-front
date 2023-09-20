@@ -1,4 +1,5 @@
 <template>
+    <!-- all roles -->
     <div>
         <Navbar />
         <!-- Showcase Header -->
