@@ -3,35 +3,25 @@
     <Navbar />
     <div>
 
-        <!-- Product Categories Carousel -->
-        <section class="bg-gray-100">
-            <div class="container mx-auto text-center">
-
-                <!-- Swiper Carousel Container -->
-                <div class="swiper-container" ref="categorySwiper" style="overflow-x: hidden;">
-                    <div class="swiper-wrapper">
-                        <!-- Category Cards -->
-                        <div v-for="category in categories" :key="category.id"
-                            class="swiper-slide bg-white shadow-md p-8 rounded-lg" 
-                            :style="{'background-image':'url(https://wallpapers.com/images/featured/1366x768-4lygqv03leitaipx.jpg)'}">
-                            <img :src="category.image" alt="Category Image" class="w-16 h-16 mx-auto mb-4">
-                            <h3 class="text-xl font-semibold">{{ category.name }}</h3>
-                            <p class="text-gray-600">{{ category.description }}</p>
-                        </div>
-                    </div>
-
-                    <!-- Add Pagination -->
-                    <div class="swiper-pagination hidden 2xl:block 2xl:py-3 " ref="categoryPagination"></div>
-                </div>
-            </div>
-        </section>
-
         <!-- RAM -->
-        <section class="py-12 mt-3 mx-3" id="RAM" :style="{'background-image':'url(https://i.pinimg.com/originals/fb/d9/e0/fbd9e0015089d44af6c70f47bb1c4ee1.jpg)'}">
+        <section class="py-2 mx-3" id="RAM" :style="{'background-image':'url(https://i.pinimg.com/originals/fb/d9/e0/fbd9e0015089d44af6c70f47bb1c4ee1.jpg)'}">
             <div class="container mx-auto text-center">
-                <div class="text-white py-4" :style="{'background-image':'url(https://a-static.besthdwallpaper.com/digital-painting-art-half-moon-snowy-and-colorful-star-landscape-wallpaper-800x600-94023_17.jpg)'}" >
-                    <h2 class="text-3xl font-semibold">RAM</h2>
+                
+                <div class="text-white py-12" :style="{'background-image':'url(https://a-static.besthdwallpaper.com/digital-painting-art-half-moon-snowy-and-colorful-star-landscape-wallpaper-800x600-94023_17.jpg)'}" >
+                    <h2 class="text-4xl font-semibold">Accessary</h2>
                 </div>
+
+                <div
+                    class="embed-responsive embed-responsive-21by9 relative w-full overflow-hidden"
+                    style="padding-top: 42.857143%">
+                    <iframe
+                        class="embed-responsive-item absolute bottom-0 left-0 right-0 top-0 h-full w-full"
+                        src="https://www.youtube.com/embed/vlDzYIIOYmM?enablejsapi=1&amp;origin=https%3A%2F%2Fmdbootstrap.com"
+                        allowfullscreen=""
+                        data-gtm-yt-inspected-2340190_699="true"
+                        id="240632615"></iframe>
+                </div>
+
                 <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-8 mt-6">
                     <!-- RAM Cards -->
                     <div v-for="product in featuredProducts" :key="product.id"
