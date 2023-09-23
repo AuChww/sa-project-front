@@ -2,6 +2,7 @@
     <!-- all roles -->
     <Navbar />
     <Sidebar />
+    <Cart />
     <div>
 
         <!-- Showcase Header -->
