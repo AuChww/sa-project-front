@@ -35,27 +35,12 @@
     <div class="mx-auto max-w-5xl justify-center px-6 md:flex md:space-x-6 xl:px-0">
       <div class="rounded-lg md:w-2/3">
 
-        <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-8 mt-6">
-            <!-- RAM Cards -->
-            <div v-for="product in featuredProducts" :key="product.id"
-                class="bg-white shadow-md p-3 rounded-lg hover:scale-105 transition-all duration-500">
-                <img :src="product.image" alt="Product Image" class="w-full h-100 object-cover mb-4">
-                <h3 class="text-xl font-semibold">{{ product.name }}</h3>
-                <p class="text-gray-600">{{ product.description }}</p>
-                <div class="mt-4 flex items-center justify-between">
-                    <span class="text-xl font-bold text-blue-900">{{ product.price }}</span>
-                    <button class="bg-blue-900 text-white px-4 py-2 rounded-full hover:bg-blue-700">Add to
-                        Cart</button>
-                </div>
-            </div>
-        </div>
-
-        <div class="justify-between mb-6 rounded-lg bg-white p-6 shadow-md sm:flex sm:justify-start">
-          <img src="https://images.unsplash.com/photo-1515955656352-a1fa3ffcd111?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80" alt="product-image" class="w-full rounded-lg sm:w-40" />
+        <div class="justify-between mb-6 rounded-lg bg-white p-6 shadow-md sm:flex sm:justify-start" v-for="product in Cart" :key="product.id">
+          <img :src="product.image" alt="product image" class="w-full rounded-lg sm:w-40" />
           <div class="sm:ml-4 sm:flex sm:w-full sm:justify-between">
             <div class="mt-5 sm:mt-0">
-              <h2 class="text-lg font-bold text-gray-900">Nike Air Max 2019</h2>
-              <p class="mt-1 text-xs text-gray-700">36EU - 4US</p>
+              <h2 class="text-lg font-bold text-gray-900">{{ product.name }}</h2>
+              <p class="mt-1 text-xs text-gray-700">{{ product.description }}</p>
             </div>
             <div class="mt-4 flex justify-between sm:space-y-6 sm:mt-0 sm:block sm:space-x-6">
               <div class="flex items-center border-gray-100">
@@ -63,8 +48,8 @@
                 <input class="h-8 w-8 border bg-white text-center text-xs outline-none" type="number" value="2" min="1" />
                 <span class="cursor-pointer rounded-r bg-gray-100 py-1 px-3 duration-100 hover:bg-blue-500 hover:text-blue-50"> + </span>
               </div>
-              <div class="flex items-center space-x-4">
-                <p class="text-sm">259.000 ₭</p>
+              <div class="flex items-center space-x-2">
+                <p class="text-xl">{{ product.price }}</p>
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="h-5 w-5 cursor-pointer duration-150 hover:text-red-500">
                   <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
                 </svg>
@@ -73,39 +58,17 @@
           </div>
         </div>
         
-        <div class="justify-between mb-6 rounded-lg bg-white p-6 shadow-md sm:flex sm:justify-start">
-          <img src="https://images.unsplash.com/photo-1587563871167-1ee9c731aefb?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1131&q=80" alt="product-image" class="w-full rounded-lg sm:w-40" />
-          <div class="sm:ml-4 sm:flex sm:w-full sm:justify-between">
-            <div class="mt-5 sm:mt-0">
-              <h2 class="text-lg font-bold text-gray-900">Nike Air Max 2019</h2>
-              <p class="mt-1 text-xs text-gray-700">36EU - 4US</p>
-            </div>
-            <div class="mt-4 flex justify-between im sm:space-y-6 sm:mt-0 sm:block sm:space-x-6">
-              <div class="flex items-center border-gray-100">
-                <span class="cursor-pointer rounded-l bg-gray-100 py-1 px-3.5 duration-100 hover:bg-blue-500 hover:text-blue-50"> - </span>
-                <input class="h-8 w-8 border bg-white text-center text-xs outline-none" type="number" value="2" min="1" />
-                <span class="cursor-pointer rounded-r bg-gray-100 py-1 px-3 duration-100 hover:bg-blue-500 hover:text-blue-50"> + </span>
-              </div>
-              <div class="flex items-center space-x-4">
-                <p class="text-sm">259.000 ₭</p>
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="h-5 w-5 cursor-pointer duration-150 hover:text-red-500">
-                  <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
-                </svg>
-              </div>
-            </div>
-          </div>
-        </div>
       </div>
 
       <!-- Sub total -->
       <div class="mt-6 h-full rounded-lg border bg-white p-6 shadow-md md:mt-0 md:w-1/3">
         <div class="mb-2 flex justify-between">
           <p class="text-gray-700">Subtotal</p>
-          <p class="text-gray-700">$129.99</p>
+          <p class="text-gray-700" v-for="product in Cart" :key="product.id">{{ calculateSum() }}</p>
         </div>
         <div class="flex justify-between">
           <p class="text-gray-700">Shipping</p>
-          <p class="text-gray-700">$4.99</p>
+          <p class="text-gray-700">$0.00</p>
         </div>
         <hr class="my-4" />
         <div class="flex justify-between">
@@ -122,3 +85,126 @@
     </div>
   </div>
 </template>
+
+<script>
+    import Navbar from '~/components/Navbar.vue'; // Import the Navbar component
+    import Swiper from 'swiper/bundle'; // Import Swiper from the installed package
+    import 'swiper/swiper-bundle.css'; // Import Swiper CSS
+
+    export default {
+        components: {
+            Navbar, // Register the Navbar component
+        },
+
+        methods: {
+          calculateSum() {
+            return this.Cart.price.reduce((acc, curr) => acc + curr, 0);
+          },
+        },
+
+        data() {
+            return {
+                brand: [
+                    {
+                        id: 1,
+                        name: 'Hyper X',
+                        description: 'Explore our latest computer Components.',
+                        image: 'https://cdn-icons-png.flaticon.com/512/4617/4617522.png',
+                    },
+                    {
+                        id: 2,
+                        name: 'Logitech',
+                        description: 'Find the perfect laptop for your needs.',
+                        image: 'https://cdn-icons-png.flaticon.com/512/2482/2482264.png',
+                    },
+                    {
+                        id: 3,
+                        name: 'Razor',
+                        description: 'Enhance your gadgets with our accessories.',
+                        image: 'https://cdn-icons-png.flaticon.com/512/2758/2758761.png',
+                    },
+                    {
+                        id: 4,
+                        name: 'Intel',
+                        description: 'Upgrade your software tools.',
+                        image: 'https://cdn-icons-png.flaticon.com/512/2606/2606514.png',
+                    },
+                    {
+                        id: 5,
+                        name: 'ASUS',
+                        description: 'Upgrade your software tools.',
+                        image: 'https://cdn-icons-png.flaticon.com/512/2606/2606514.png',
+                    },
+                    {
+                        id: 6,
+                        name: 'Nvidia',
+                        description: 'Upgrade your software tools.',
+                        image: 'https://cdn-icons-png.flaticon.com/512/2606/2606514.png',
+                    },
+                ],
+                categories: [
+                    {
+                        id: 1,
+                        name: 'Computer Components',
+                        description: 'Explore our latest computer Components.',
+                        image: 'https://cdn-icons-png.flaticon.com/512/4617/4617522.png',
+                    },
+                    {
+                        id: 2,
+                        name: 'Laptops',
+                        description: 'Find the perfect laptop for your needs.',
+                        image: 'https://cdn-icons-png.flaticon.com/512/2482/2482264.png',
+                    },
+                    {
+                        id: 3,
+                        name: 'Accessories',
+                        description: 'Enhance your gadgets with our accessories.',
+                        image: 'https://cdn-icons-png.flaticon.com/512/2758/2758761.png',
+                    },
+                    {
+                        id: 4,
+                        name: 'Software',
+                        description: 'Upgrade your software tools.',
+                        image: 'https://cdn-icons-png.flaticon.com/512/2606/2606514.png',
+                    },
+                ],
+                Cart: [
+                    // Featured product data goes here
+                    {
+                        id: 1,
+                        name: 'Intel Core I5 12600K',
+                        description: '10 (6P+4E) Cores 16 Threads Intel UHD Graphics 770 CPU Cooler Not Included PCIe 5.0 and 4.0',
+                        image: 'https://www.jib.co.th/img_master/product/original/2021102715152349469_1.png',
+                        price: "454 $",
+                    },
+                    {
+                        id: 2,
+                        name: 'Gigabyte Nvidia Geforce RTX 3060',
+                        description: 'Find the perfect laptop for your needs.',
+                        image: 'https://www.jib.co.th/img_master/product/original/2021061814352847269_1.jpg',
+                        price: "454 $",
+                    }
+                    
+                ],
+            };
+        },
+
+        mounted() {
+            this.$nextTick(() => {
+                const swiper = new Swiper(this.$refs.categorySwiper, {
+                    slidesPerView: 1,
+                    spaceBetween: 20,
+                    pagination: {
+                        el: this.$refs.categoryPagination,
+                        clickable: true,
+                    },
+                    autoplay: {
+                        delay: 3000,
+                      },
+                });
+
+            });
+        },
+    };
+    
+</script>
