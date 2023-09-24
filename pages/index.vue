@@ -2,7 +2,7 @@
     <!-- all roles -->
     <Navbar />
     <Sidebar />
-    <div class="ml-36">
+    <div>
         <!-- Showcase Header -->
         <section :style="{'background-image':'url(https://t3.ftcdn.net/jpg/05/11/25/36/360_F_511253627_zuzpapnIVQueMx4eSL1ilAoH61OBgj0C.jpg)'}" class="bg-blue-900 text-white py-16">
             <div class="container mx-auto text-center">
@@ -31,12 +31,11 @@
                         <!-- Category Cards -->
                         <div v-for="category in categories" :key="category.id"
                             class="swiper-slide bg-white shadow-md p-8 rounded-lg" 
-                            :style="{'background-image':'url(https://marketplace.canva.com/EAEthkBVLfQ/1/0/1600w/canva-blush-wave-desktop-wallpaper-drvq3zaYl2E.jpg)'}">
+                            :style="{'background-image':'url(https://wallpapers.com/images/featured/1366x768-4lygqv03leitaipx.jpg)'}">
                             <img :src="category.image" alt="Category Image" class="w-16 h-16 mx-auto mb-4">
                             <h3 class="text-xl font-semibold">{{ category.name }}</h3>
                             <p class="text-gray-600">{{ category.description }}</p>
                         </div>
-
                     </div>
 
                     <!-- Add Pagination -->
@@ -45,14 +44,124 @@
             </div>
         </section>
 
-        <!-- Featured Products -->
-        <section class="py-12 mt-3 mx-3" id="Product">
+        <!-- Feature Products -->
+        <section class="py-12 mt-3 mx-3" id="Feature Product" :style="{'background-image':'url(https://i.pinimg.com/originals/fb/d9/e0/fbd9e0015089d44af6c70f47bb1c4ee1.jpg)'}">
             <div class="container mx-auto text-center">
-                <div class="text-white py-4" :style="{'background-image':'url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTrvamrkx2A4PaFfWU63BzUGUrpVQzKIHyMGHZ_f-_sJxdq-hTK1x695uwEdu9TVv-7bw&usqp=CAU)'}" >
-                    <h2 class="text-3xl font-semibold">Featured Products</h2>
+                <div class="text-white py-4" :style="{'background-image':'url(https://t3.ftcdn.net/jpg/05/11/25/36/360_F_511253627_zuzpapnIVQueMx4eSL1ilAoH61OBgj0C.jpg)'}" >
+                    <h2 class="text-3xl font-semibold">Feature Product</h2>
                 </div>
                 <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-8 mt-6">
                     <!-- Featured Product Cards -->
+                    <div v-for="product in featuredProducts" :key="product.id"
+                        class="bg-white shadow-md p-3 rounded-lg hover:scale-105 transition-all duration-500">
+                        <img :src="product.image" alt="Product Image" class="w-full h-100 object-cover mb-4">
+                        <h3 class="text-xl font-semibold">{{ product.name }}</h3>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Best Seller -->
+        <section class="py-12 mt-3 mx-3" id="Best Seller" :style="{'background-image':'url(https://wallpapers.com/images/hd/red-fire-background-na0r6a991986yftd.jpg)'}">
+            <div class="container mx-auto text-center">
+                <div class="text-white py-4" :style="{'background-image':'url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRHe-JBaQuniqZd9yVjVlDuBROw6GIj9gLcKEVdy_sKCNOaC1h6Smr6HKA71igKhgeU7hM&usqp=CAU)'}" >
+                    <h2 class="text-3xl font-semibold">Best Seller</h2>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-8 mt-6">
+                    <!-- Best Seller Product Cards -->
+                    
+                    <div v-for="product in featuredProducts" :key="product.id"
+                        class="bg-white shadow-md p-3 rounded-lg hover:scale-105 transition-all duration-500">
+                        <img :src="product.image" alt="Product Image" class="w-full h-100 object-cover mb-4">
+                        <h3 class="text-xl font-semibold">{{ product.name }}</h3>
+                        <p class="text-gray-600">{{ product.description }}</p>
+                        <div class="mt-4 flex items-center justify-between">
+                            <span class="text-xl font-bold text-blue-900">{{ product.price }}</span>
+                            <button class="bg-blue-900 text-white px-4 py-2 rounded-full hover:bg-blue-700">Add to
+                                Cart</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CPU -->
+        <section class="py-12 mt-3 mx-3" id="CPU" :style="{'background-image':'url(https://i.pinimg.com/originals/fb/d9/e0/fbd9e0015089d44af6c70f47bb1c4ee1.jpg)'}">
+            <div class="container mx-auto text-center">
+                <div class="text-white py-4" :style="{'background-image':'url(https://a-static.besthdwallpaper.com/digital-painting-art-half-moon-snowy-and-colorful-star-landscape-wallpaper-800x600-94023_17.jpg)'}" >
+                    <h2 class="text-3xl font-semibold">CPU</h2>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-8 mt-6">
+                    <!-- CPU Cards -->
+                    <div v-for="product in featuredProducts" :key="product.id"
+                        class="bg-white shadow-md p-3 rounded-lg hover:scale-105 transition-all duration-500">
+                        <img :src="product.image" alt="Product Image" class="w-full h-100 object-cover mb-4">
+                        <h3 class="text-xl font-semibold">{{ product.name }}</h3>
+                        <p class="text-gray-600">{{ product.description }}</p>
+                        <div class="mt-4 flex items-center justify-between">
+                            <span class="text-xl font-bold text-blue-900">{{ product.price }}</span>
+                            <button class="bg-blue-900 text-white px-4 py-2 rounded-full hover:bg-blue-700">Add to
+                                Cart</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Main Board -->
+        <section class="py-12 mt-3 mx-3" id="Main Board" :style="{'background-image':'url(https://i.pinimg.com/originals/fb/d9/e0/fbd9e0015089d44af6c70f47bb1c4ee1.jpg)'}">
+            <div class="container mx-auto text-center">
+                <div class="text-white py-4" :style="{'background-image':'url(https://a-static.besthdwallpaper.com/digital-painting-art-half-moon-snowy-and-colorful-star-landscape-wallpaper-800x600-94023_17.jpg)'}" >
+                    <h2 class="text-3xl font-semibold">Main Board</h2>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-8 mt-6">
+                    <!-- Main Board Cards -->
+                    <div v-for="product in featuredProducts" :key="product.id"
+                        class="bg-white shadow-md p-3 rounded-lg hover:scale-105 transition-all duration-500">
+                        <img :src="product.image" alt="Product Image" class="w-full h-100 object-cover mb-4">
+                        <h3 class="text-xl font-semibold">{{ product.name }}</h3>
+                        <p class="text-gray-600">{{ product.description }}</p>
+                        <div class="mt-4 flex items-center justify-between">
+                            <span class="text-xl font-bold text-blue-900">{{ product.price }}</span>
+                            <button class="bg-blue-900 text-white px-4 py-2 rounded-full hover:bg-blue-700">Add to
+                                Cart</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- GPU -->
+        <section class="py-12 mt-3 mx-3" id="GPU" :style="{'background-image':'url(https://i.pinimg.com/originals/fb/d9/e0/fbd9e0015089d44af6c70f47bb1c4ee1.jpg)'}">
+            <div class="container mx-auto text-center">
+                <div class="text-white py-4" :style="{'background-image':'url(https://a-static.besthdwallpaper.com/digital-painting-art-half-moon-snowy-and-colorful-star-landscape-wallpaper-800x600-94023_17.jpg)'}" >
+                    <h2 class="text-3xl font-semibold">GPU</h2>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-8 mt-6">
+                    <!-- GPU Cards -->
+                    <div v-for="product in featuredProducts" :key="product.id"
+                        class="bg-white shadow-md p-3 rounded-lg hover:scale-105 transition-all duration-500">
+                        <img :src="product.image" alt="Product Image" class="w-full h-100 object-cover mb-4">
+                        <h3 class="text-xl font-semibold">{{ product.name }}</h3>
+                        <p class="text-gray-600">{{ product.description }}</p>
+                        <div class="mt-4 flex items-center justify-between">
+                            <span class="text-xl font-bold text-blue-900">{{ product.price }}</span>
+                            <button class="bg-blue-900 text-white px-4 py-2 rounded-full hover:bg-blue-700">Add to
+                                Cart</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- RAM -->
+        <section class="py-12 mt-3 mx-3" id="RAM" :style="{'background-image':'url(https://i.pinimg.com/originals/fb/d9/e0/fbd9e0015089d44af6c70f47bb1c4ee1.jpg)'}">
+            <div class="container mx-auto text-center">
+                <div class="text-white py-4" :style="{'background-image':'url(https://a-static.besthdwallpaper.com/digital-painting-art-half-moon-snowy-and-colorful-star-landscape-wallpaper-800x600-94023_17.jpg)'}" >
+                    <h2 class="text-3xl font-semibold">RAM</h2>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-8 mt-6">
+                    <!-- RAM Cards -->
                     <div v-for="product in featuredProducts" :key="product.id"
                         class="bg-white shadow-md p-3 rounded-lg hover:scale-105 transition-all duration-500">
                         <img :src="product.image" alt="Product Image" class="w-full h-100 object-cover mb-4">
@@ -82,6 +191,44 @@
 
         data() {
             return {
+                brand: [
+                    {
+                        id: 1,
+                        name: 'Hyper X',
+                        description: 'Explore our latest computer Components.',
+                        image: 'https://cdn-icons-png.flaticon.com/512/4617/4617522.png',
+                    },
+                    {
+                        id: 2,
+                        name: 'Logitech',
+                        description: 'Find the perfect laptop for your needs.',
+                        image: 'https://cdn-icons-png.flaticon.com/512/2482/2482264.png',
+                    },
+                    {
+                        id: 3,
+                        name: 'Razor',
+                        description: 'Enhance your gadgets with our accessories.',
+                        image: 'https://cdn-icons-png.flaticon.com/512/2758/2758761.png',
+                    },
+                    {
+                        id: 4,
+                        name: 'Intel',
+                        description: 'Upgrade your software tools.',
+                        image: 'https://cdn-icons-png.flaticon.com/512/2606/2606514.png',
+                    },
+                    {
+                        id: 5,
+                        name: 'ASUS',
+                        description: 'Upgrade your software tools.',
+                        image: 'https://cdn-icons-png.flaticon.com/512/2606/2606514.png',
+                    },
+                    {
+                        id: 6,
+                        name: 'Nvidia',
+                        description: 'Upgrade your software tools.',
+                        image: 'https://cdn-icons-png.flaticon.com/512/2606/2606514.png',
+                    },
+                ],
                 categories: [
                     {
                         id: 1,
@@ -139,21 +286,21 @@
                         price: "454 $",
                     },
                     {
-                        id: 2,
+                        id: 5,
                         name: 'Laptops',
                         description: 'Find the perfect laptop for your needs.',
                         image: 'https://cdn-icons-png.flaticon.com/512/2482/2482264.png',
                         price: "454 $",
                     },
                     {
-                        id: 3,
+                        id: 6,
                         name: 'Accessories',
                         description: 'Enhance your gadgets with our accessories.',
                         image: 'https://cdn-icons-png.flaticon.com/512/2758/2758761.png',
                         price: "454 $",
                     },
                     {
-                        id: 4,
+                        id: 7,
                         name: 'Software',
                         description: 'Upgrade your software tools.',
                         image: 'https://cdn-icons-png.flaticon.com/512/2606/2606514.png',
