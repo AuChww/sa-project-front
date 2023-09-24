@@ -2,7 +2,9 @@
     <!-- all roles -->
     <Navbar />
     <Sidebar />
+    <Cart />
     <div>
+
         <!-- Showcase Header -->
         <section :style="{'background-image':'url(https://t3.ftcdn.net/jpg/05/11/25/36/360_F_511253627_zuzpapnIVQueMx4eSL1ilAoH61OBgj0C.jpg)'}" class="bg-blue-900 text-white py-16">
             <div class="container mx-auto text-center">
@@ -45,32 +47,32 @@
         </section>
 
         <!-- Feature Products -->
-        <section class="py-12 mt-3 mx-3" id="Feature Product" :style="{'background-image':'url(https://i.pinimg.com/originals/fb/d9/e0/fbd9e0015089d44af6c70f47bb1c4ee1.jpg)'}">
+        <section class="py-12 mx-3" id="Feature Product" :style="{'background-image':'url(https://i.pinimg.com/originals/fb/d9/e0/fbd9e0015089d44af6c70f47bb1c4ee1.jpg)'}">
             <div class="container mx-auto text-center">
-                <div class="text-white py-4" :style="{'background-image':'url(https://t3.ftcdn.net/jpg/05/11/25/36/360_F_511253627_zuzpapnIVQueMx4eSL1ilAoH61OBgj0C.jpg)'}" >
+                <div class="text-white py-8" :style="{'background-image':'url(https://t3.ftcdn.net/jpg/05/11/25/36/360_F_511253627_zuzpapnIVQueMx4eSL1ilAoH61OBgj0C.jpg)'}" >
                     <h2 class="text-3xl font-semibold">Feature Product</h2>
                 </div>
                 <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-8 mt-6">
                     <!-- Featured Product Cards -->
-                    <div v-for="product in featuredProducts" :key="product.id"
+                    <div v-for="brands in brand" :key="brands.id"
                         class="bg-white shadow-md p-3 rounded-lg hover:scale-105 transition-all duration-500">
-                        <img :src="product.image" alt="Product Image" class="w-full h-100 object-cover mb-4">
-                        <h3 class="text-xl font-semibold">{{ product.name }}</h3>
+                        <img :src="brands.image" alt="Product Image" class="w-full h-100 object-cover mb-4">
+                        <h3 class="text-xl font-semibold">{{ brands.name }}</h3>
                     </div>
                 </div>
             </div>
         </section>
 
         <!-- Best Seller -->
-        <section class="py-12 mt-3 mx-3" id="Best Seller" :style="{'background-image':'url(https://wallpapers.com/images/hd/red-fire-background-na0r6a991986yftd.jpg)'}">
+        <section class="py-12 mx-3" id="Best Seller" :style="{'background-image':'url(https://wallpapers.com/images/hd/red-fire-background-na0r6a991986yftd.jpg)'}">
             <div class="container mx-auto text-center">
-                <div class="text-white py-4" :style="{'background-image':'url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRHe-JBaQuniqZd9yVjVlDuBROw6GIj9gLcKEVdy_sKCNOaC1h6Smr6HKA71igKhgeU7hM&usqp=CAU)'}" >
+                <div class="text-white py-8" :style="{'background-image':'url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRHe-JBaQuniqZd9yVjVlDuBROw6GIj9gLcKEVdy_sKCNOaC1h6Smr6HKA71igKhgeU7hM&usqp=CAU)'}" >
                     <h2 class="text-3xl font-semibold">Best Seller</h2>
                 </div>
                 <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-8 mt-6">
                     <!-- Best Seller Product Cards -->
                     
-                    <div v-for="product in featuredProducts" :key="product.id"
+                    <div v-for="product in BestSeller" :key="product.id"
                         class="bg-white shadow-md p-3 rounded-lg hover:scale-105 transition-all duration-500">
                         <img :src="product.image" alt="Product Image" class="w-full h-100 object-cover mb-4">
                         <h3 class="text-xl font-semibold">{{ product.name }}</h3>
@@ -86,14 +88,17 @@
         </section>
 
         <!-- CPU -->
-        <section class="py-12 mt-3 mx-3" id="CPU" :style="{'background-image':'url(https://i.pinimg.com/originals/fb/d9/e0/fbd9e0015089d44af6c70f47bb1c4ee1.jpg)'}">
+        <section class="py-12 mx-3" id="CPU" :style="{'background-image':'url(https://i.pinimg.com/originals/fb/d9/e0/fbd9e0015089d44af6c70f47bb1c4ee1.jpg)'}">
             <div class="container mx-auto text-center">
-                <div class="text-white py-4" :style="{'background-image':'url(https://a-static.besthdwallpaper.com/digital-painting-art-half-moon-snowy-and-colorful-star-landscape-wallpaper-800x600-94023_17.jpg)'}" >
-                    <h2 class="text-3xl font-semibold">CPU</h2>
-                </div>
+                <RouterLink to="/categories/cpu">
+                    <div class="text-white py-8" :style="{'background-image':'url(https://cdn.bhdw.net/im/color-image-of-circular-shapes-combined-from-colors-wallpaper-103050_w635.webp)'}" >
+                        <h2 class="text-4xl font-semibold hover:scale-150 transition-all duration-500">CPU</h2>
+                        <h4>more product >></h4>
+                    </div>
+                </RouterLink>
                 <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-8 mt-6">
                     <!-- CPU Cards -->
-                    <div v-for="product in featuredProducts" :key="product.id"
+                    <div v-for="product in CPU" :key="product.id"
                         class="bg-white shadow-md p-3 rounded-lg hover:scale-105 transition-all duration-500">
                         <img :src="product.image" alt="Product Image" class="w-full h-100 object-cover mb-4">
                         <h3 class="text-xl font-semibold">{{ product.name }}</h3>
@@ -109,14 +114,17 @@
         </section>
 
         <!-- Main Board -->
-        <section class="py-12 mt-3 mx-3" id="Main Board" :style="{'background-image':'url(https://i.pinimg.com/originals/fb/d9/e0/fbd9e0015089d44af6c70f47bb1c4ee1.jpg)'}">
+        <section class="py-12 mx-3" id="Main Board" :style="{'background-image':'url(https://i.pinimg.com/originals/fb/d9/e0/fbd9e0015089d44af6c70f47bb1c4ee1.jpg)'}">
             <div class="container mx-auto text-center">
-                <div class="text-white py-4" :style="{'background-image':'url(https://a-static.besthdwallpaper.com/digital-painting-art-half-moon-snowy-and-colorful-star-landscape-wallpaper-800x600-94023_17.jpg)'}" >
-                    <h2 class="text-3xl font-semibold">Main Board</h2>
-                </div>
+                <RouterLink to="/categories/mainboard">
+                    <div class="text-white py-8" :style="{'background-image':'url(https://cdn.bhdw.net/im/color-image-of-circular-shapes-combined-from-colors-wallpaper-103050_w635.webp)'}" >
+                        <h2 class="text-4xl font-semibold hover:scale-150 transition-all duration-500">Main Board</h2>
+                        <h4>more product >></h4>
+                    </div>
+                </RouterLink>
                 <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-8 mt-6">
                     <!-- Main Board Cards -->
-                    <div v-for="product in featuredProducts" :key="product.id"
+                    <div v-for="product in MainBoard" :key="product.id"
                         class="bg-white shadow-md p-3 rounded-lg hover:scale-105 transition-all duration-500">
                         <img :src="product.image" alt="Product Image" class="w-full h-100 object-cover mb-4">
                         <h3 class="text-xl font-semibold">{{ product.name }}</h3>
@@ -132,14 +140,17 @@
         </section>
 
         <!-- GPU -->
-        <section class="py-12 mt-3 mx-3" id="GPU" :style="{'background-image':'url(https://i.pinimg.com/originals/fb/d9/e0/fbd9e0015089d44af6c70f47bb1c4ee1.jpg)'}">
+        <section class="py-12 mx-3" id="GPU" :style="{'background-image':'url(https://i.pinimg.com/originals/fb/d9/e0/fbd9e0015089d44af6c70f47bb1c4ee1.jpg)'}">
             <div class="container mx-auto text-center">
-                <div class="text-white py-4" :style="{'background-image':'url(https://a-static.besthdwallpaper.com/digital-painting-art-half-moon-snowy-and-colorful-star-landscape-wallpaper-800x600-94023_17.jpg)'}" >
-                    <h2 class="text-3xl font-semibold">GPU</h2>
-                </div>
+                <RouterLink to="/categories/gpu">
+                    <div class="text-white py-8" :style="{'background-image':'url(https://cdn.bhdw.net/im/color-image-of-circular-shapes-combined-from-colors-wallpaper-103050_w635.webp)'}" >
+                        <h2 class="text-4xl font-semibold hover:scale-150 transition-all duration-500">GPU</h2>
+                        <h4>more product >></h4>
+                    </div>
+                </RouterLink>
                 <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-8 mt-6">
                     <!-- GPU Cards -->
-                    <div v-for="product in featuredProducts" :key="product.id"
+                    <div v-for="product in GPU" :key="product.id"
                         class="bg-white shadow-md p-3 rounded-lg hover:scale-105 transition-all duration-500">
                         <img :src="product.image" alt="Product Image" class="w-full h-100 object-cover mb-4">
                         <h3 class="text-xl font-semibold">{{ product.name }}</h3>
@@ -155,14 +166,95 @@
         </section>
 
         <!-- RAM -->
-        <section class="py-12 mt-3 mx-3" id="RAM" :style="{'background-image':'url(https://i.pinimg.com/originals/fb/d9/e0/fbd9e0015089d44af6c70f47bb1c4ee1.jpg)'}">
+        <section class="py-12 mx-3" id="RAM" :style="{'background-image':'url(https://i.pinimg.com/originals/fb/d9/e0/fbd9e0015089d44af6c70f47bb1c4ee1.jpg)'}">
             <div class="container mx-auto text-center">
-                <div class="text-white py-4" :style="{'background-image':'url(https://a-static.besthdwallpaper.com/digital-painting-art-half-moon-snowy-and-colorful-star-landscape-wallpaper-800x600-94023_17.jpg)'}" >
-                    <h2 class="text-3xl font-semibold">RAM</h2>
-                </div>
+                <RouterLink to="/categories/ram">
+                    <div class="text-white py-8" :style="{'background-image':'url(https://cdn.bhdw.net/im/color-image-of-circular-shapes-combined-from-colors-wallpaper-103050_w635.webp)'}" >
+                        <h2 class="text-4xl font-semibold hover:scale-150 transition-all duration-500">RAM</h2>
+                        <h4>more product >></h4>
+                    </div>
+                </RouterLink>
                 <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-8 mt-6">
                     <!-- RAM Cards -->
-                    <div v-for="product in featuredProducts" :key="product.id"
+                    <div v-for="product in RAM" :key="product.id"
+                        class="bg-white shadow-md p-3 rounded-lg hover:scale-105 transition-all duration-500">
+                        <img :src="product.image" alt="Product Image" class="w-full h-100 object-cover mb-4">
+                        <h3 class="text-xl font-semibold">{{ product.name }}</h3>
+                        <p class="text-gray-600">{{ product.description }}</p>
+                        <div class="mt-4 flex items-center justify-between">
+                            <span class="text-xl font-bold text-blue-900">{{ product.price }}</span>
+                            <button class="bg-blue-900 text-white px-4 py-2 rounded-full hover:bg-blue-700">Add to
+                                Cart</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Harddisk -->
+        <section class="py-12 mx-3" id="Harddisk" :style="{'background-image':'url(https://i.pinimg.com/originals/fb/d9/e0/fbd9e0015089d44af6c70f47bb1c4ee1.jpg)'}">
+            <div class="container mx-auto text-center">
+                <RouterLink to="/categories/harddisk">
+                    <div class="text-white py-8" :style="{'background-image':'url(https://cdn.bhdw.net/im/color-image-of-circular-shapes-combined-from-colors-wallpaper-103050_w635.webp)'}" >
+                        <h2 class="text-4xl font-semibold hover:scale-150 transition-all duration-500">Harddisk/SSD</h2>
+                        <h4>more product >></h4>
+                    </div>
+                </RouterLink>
+                <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-8 mt-6">
+                    <!-- Harddisk Cards -->
+                    <div v-for="product in Harddisk" :key="product.id"
+                        class="bg-white shadow-md p-3 rounded-lg hover:scale-105 transition-all duration-500">
+                        <img :src="product.image" alt="Product Image" class="w-full h-100 object-cover mb-4">
+                        <h3 class="text-xl font-semibold">{{ product.name }}</h3>
+                        <p class="text-gray-600">{{ product.description }}</p>
+                        <div class="mt-4 flex items-center justify-between">
+                            <span class="text-xl font-bold text-blue-900">{{ product.price }}</span>
+                            <button class="bg-blue-900 text-white px-4 py-2 rounded-full hover:bg-blue-700">Add to
+                                Cart</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Accessary -->
+        <section class="py-12 mx-3" id="Accessary" :style="{'background-image':'url(https://i.pinimg.com/originals/fb/d9/e0/fbd9e0015089d44af6c70f47bb1c4ee1.jpg)'}">
+            <div class="container mx-auto text-center">
+                <RouterLink to="/categories/accessary">
+                    <div class="text-white py-8" :style="{'background-image':'url(https://cdn.bhdw.net/im/color-image-of-circular-shapes-combined-from-colors-wallpaper-103050_w635.webp)'}" >
+                        <h2 class="text-4xl font-semibold hover:scale-150 transition-all duration-500">Accessary</h2>
+                        <h4>more product >></h4>
+                    </div>
+                </RouterLink>
+                <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-8 mt-6">
+                    <!-- Accessary Cards -->
+                    <div v-for="product in Accessary" :key="product.id"
+                        class="bg-white shadow-md p-3 rounded-lg hover:scale-105 transition-all duration-500">
+                        <img :src="product.image" alt="Product Image" class="w-full h-100 object-cover mb-4">
+                        <h3 class="text-xl font-semibold">{{ product.name }}</h3>
+                        <p class="text-gray-600">{{ product.description }}</p>
+                        <div class="mt-4 flex items-center justify-between">
+                            <span class="text-xl font-bold text-blue-900">{{ product.price }}</span>
+                            <button class="bg-blue-900 text-white px-4 py-2 rounded-full hover:bg-blue-700">Add to
+                                Cart</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Gaming Gear -->
+        <section class="py-12 mx-3" id="Gaming Gear" :style="{'background-image':'url(https://i.pinimg.com/originals/fb/d9/e0/fbd9e0015089d44af6c70f47bb1c4ee1.jpg)'}">
+            <div class="container mx-auto text-center">
+                <RouterLink to="/categories/gaming-gear">
+                    <div class="text-white py-8" :style="{'background-image':'url(https://cdn.bhdw.net/im/color-image-of-circular-shapes-combined-from-colors-wallpaper-103050_w635.webp)'}" >
+                        <h2 class="text-4xl font-semibold hover:scale-150 transition-all duration-500">Gaming Gear</h2>
+                        <h4>more product >></h4>
+                    </div>
+                </RouterLink>
+                <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-8 mt-6">
+                    <!-- Gaming Gear Cards -->
+                    <div v-for="product in GamingGear" :key="product.id"
                         class="bg-white shadow-md p-3 rounded-lg hover:scale-105 transition-all duration-500">
                         <img :src="product.image" alt="Product Image" class="w-full h-100 object-cover mb-4">
                         <h3 class="text-xl font-semibold">{{ product.name }}</h3>
@@ -196,67 +288,85 @@
                         id: 1,
                         name: 'Hyper X',
                         description: 'Explore our latest computer Components.',
-                        image: 'https://cdn-icons-png.flaticon.com/512/4617/4617522.png',
+                        image: '',
                     },
                     {
                         id: 2,
                         name: 'Logitech',
                         description: 'Find the perfect laptop for your needs.',
-                        image: 'https://cdn-icons-png.flaticon.com/512/2482/2482264.png',
+                        image: '',
                     },
                     {
                         id: 3,
                         name: 'Razor',
                         description: 'Enhance your gadgets with our accessories.',
-                        image: 'https://cdn-icons-png.flaticon.com/512/2758/2758761.png',
+                        image: '',
                     },
                     {
                         id: 4,
                         name: 'Intel',
                         description: 'Upgrade your software tools.',
-                        image: 'https://cdn-icons-png.flaticon.com/512/2606/2606514.png',
+                        image: '',
                     },
                     {
                         id: 5,
                         name: 'ASUS',
                         description: 'Upgrade your software tools.',
-                        image: 'https://cdn-icons-png.flaticon.com/512/2606/2606514.png',
+                        image: '',
                     },
                     {
                         id: 6,
                         name: 'Nvidia',
                         description: 'Upgrade your software tools.',
-                        image: 'https://cdn-icons-png.flaticon.com/512/2606/2606514.png',
+                        image: '',
                     },
                 ],
                 categories: [
                     {
                         id: 1,
-                        name: 'Computer Components',
+                        name: 'CPU',
                         description: 'Explore our latest computer Components.',
                         image: 'https://cdn-icons-png.flaticon.com/512/4617/4617522.png',
                     },
                     {
                         id: 2,
-                        name: 'Laptops',
+                        name: 'Main Board',
                         description: 'Find the perfect laptop for your needs.',
                         image: 'https://cdn-icons-png.flaticon.com/512/2482/2482264.png',
                     },
                     {
                         id: 3,
-                        name: 'Accessories',
+                        name: 'GPU',
                         description: 'Enhance your gadgets with our accessories.',
                         image: 'https://cdn-icons-png.flaticon.com/512/2758/2758761.png',
                     },
                     {
                         id: 4,
-                        name: 'Software',
+                        name: 'RAM',
                         description: 'Upgrade your software tools.',
                         image: 'https://cdn-icons-png.flaticon.com/512/2606/2606514.png',
                     },
+                    {
+                        id: 5,
+                        name: 'Harddisk/SSD',
+                        description: 'Enhance your gadgets with our accessories.',
+                        image: 'https://cdn-icons-png.flaticon.com/512/2758/2758761.png',
+                    },
+                    {
+                        id: 6,
+                        name: 'Accessories',
+                        description: 'Enhance your gadgets with our accessories.',
+                        image: 'https://cdn-icons-png.flaticon.com/512/2758/2758761.png',
+                    },
+                    {
+                        id: 7,
+                        name: 'Gaming Gear',
+                        description: 'Enhance your gadgets with our accessories.',
+                        image: 'https://cdn-icons-png.flaticon.com/512/2758/2758761.png',
+                    },
                 ],
-                featuredProducts: [
-                    // Featured product data goes here
+                BestSeller: [
+                    // Best Seller product data goes here
                     {
                         id: 1,
                         name: 'Intel Core I5 12600K',
@@ -307,6 +417,76 @@
                         price: "454 $",
                     },
                 ],
+                CPU: [
+                    // CPU product data goes here
+                    {
+                        id: 1,
+                        name: 'Intel Core I5 12600K',
+                        description: '10 (6P+4E) Cores 16 Threads Intel UHD Graphics 770 CPU Cooler Not Included PCIe 5.0 and 4.0',
+                        image: 'https://www.jib.co.th/img_master/product/original/2021102715152349469_1.png',
+                        price: "454 $",
+                    },
+                ],
+                MainBoard: [
+                    // mainboard product data goes here
+                    {
+                        id: 1,
+                        name: 'Intel Core I5 12600K',
+                        description: '10 (6P+4E) Cores 16 Threads Intel UHD Graphics 770 CPU Cooler Not Included PCIe 5.0 and 4.0',
+                        image: 'https://www.jib.co.th/img_master/product/original/2021102715152349469_1.png',
+                        price: "454 $",
+                    },
+                ],
+                GPU: [
+                    // GPU product data goes here
+                    {
+                        id: 1,
+                        name: 'Intel Core I5 12600K',
+                        description: '10 (6P+4E) Cores 16 Threads Intel UHD Graphics 770 CPU Cooler Not Included PCIe 5.0 and 4.0',
+                        image: 'https://www.jib.co.th/img_master/product/original/2021102715152349469_1.png',
+                        price: "454 $",
+                    },
+                ],
+                RAM: [
+                    // RAM product data goes here
+                    {
+                        id: 1,
+                        name: 'Intel Core I5 12600K',
+                        description: '10 (6P+4E) Cores 16 Threads Intel UHD Graphics 770 CPU Cooler Not Included PCIe 5.0 and 4.0',
+                        image: 'https://www.jib.co.th/img_master/product/original/2021102715152349469_1.png',
+                        price: "454 $",
+                    },
+                ],
+                Harddisk: [
+                    // Harddisk product data goes here
+                    {
+                        id: 1,
+                        name: 'Intel Core I5 12600K',
+                        description: '10 (6P+4E) Cores 16 Threads Intel UHD Graphics 770 CPU Cooler Not Included PCIe 5.0 and 4.0',
+                        image: 'https://www.jib.co.th/img_master/product/original/2021102715152349469_1.png',
+                        price: "454 $",
+                    },
+                ],
+                Accessary: [
+                    // Accessary product data goes here
+                    {
+                        id: 1,
+                        name: 'Intel Core I5 12600K',
+                        description: '10 (6P+4E) Cores 16 Threads Intel UHD Graphics 770 CPU Cooler Not Included PCIe 5.0 and 4.0',
+                        image: 'https://www.jib.co.th/img_master/product/original/2021102715152349469_1.png',
+                        price: "454 $",
+                    },
+                ],
+                GamingGear: [
+                    // Gaming Gear product data goes here
+                    {
+                        id: 1,
+                        name: 'Intel Core I5 12600K',
+                        description: '10 (6P+4E) Cores 16 Threads Intel UHD Graphics 770 CPU Cooler Not Included PCIe 5.0 and 4.0',
+                        image: 'https://www.jib.co.th/img_master/product/original/2021102715152349469_1.png',
+                        price: "454 $",
+                    },
+                ],
             };
         },
 
@@ -320,7 +500,7 @@
                         clickable: true,
                     },
                     autoplay: {
-                        delay: 5000,
+                        delay: 3000,
                       },
                 });
 
