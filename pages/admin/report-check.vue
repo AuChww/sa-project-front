@@ -13,10 +13,8 @@
                             <tr>
                                 <th scope="col" class="py-3.5 px-4 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-400">
                                     <div class="flex items-center gap-x-3">
-                                        <input type="checkbox" class="text-blue-500 border-gray-300 rounded dark:bg-gray-900 dark:ring-offset-gray-900 dark:border-gray-700">
                                         <button class="flex items-center gap-x-2">
-                                            <span>Invoice</span>
-
+                                            <span>Order</span>
                                             <svg class="h-3" viewBox="0 0 10 11" fill="none" xmlns="http://www.w3.org/2000/svg">
                                                 <path d="M2.13347 0.0999756H2.98516L5.01902 4.79058H3.86226L3.45549 3.79907H1.63772L1.24366 4.79058H0.0996094L2.13347 0.0999756ZM2.54025 1.46012L1.96822 2.92196H3.11227L2.54025 1.46012Z" fill="currentColor" stroke="currentColor" stroke-width="0.1" />
                                                 <path d="M0.722656 9.60832L3.09974 6.78633H0.811638V5.87109H4.35819V6.78633L2.01925 9.60832H4.43446V10.5617H0.722656V9.60832Z" fill="currentColor" stroke="currentColor" stroke-width="0.1" />
@@ -27,7 +25,7 @@
                                 </th>
 
                                 <th scope="col" class="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-400">
-                                        
+                                    Product
                                 </th>
 
                                 <th scope="col" class="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-400">
@@ -39,7 +37,7 @@
                                 </th>
 
                                 <th scope="col" class="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-400">
-                                    Purchase Info
+                                    Report Reason
                                 </th>
 
                                 <th scope="col" class="relative py-3.5 px-4">
@@ -49,16 +47,26 @@
                         </thead>
                         <tbody v-for="report in CustomerReport" :key="report.id" class="bg-white divide-y divide-gray-200 dark:divide-gray-700 dark:bg-gray-900">
                             <tr>
-                                <td class="px-4 py-4 text-sm font-medium text-gray-700 dark:text-gray-200 whitespace-nowrap">
-                                    <div class="inline-flex items-center gap-x-3">
-                                        <input type="checkbox" class="text-blue-500 border-gray-300 rounded dark:bg-gray-900 dark:ring-offset-gray-900 dark:border-gray-700">
-
-                                        <span>{{ report.id }}</span>
-                                    </div>
-                                </td>
-                                <td class="px-4 py-4 text-sm text-gray-500 dark:text-gray-300 whitespace-nowrap">Jan 6, 2022</td>
+                                <td class="px-4 py-4 text-sm text-gray-500 dark:text-gray-300 whitespace-nowrap">{{ report.id }}</td>
+                                <div class="py-5 whitespace-nowrap">
+                                    <button @click="toggleInfo" class="rounded-md mb-2 mt-2 px-2 py-1 text-sm font-medium text-gray-800 dark:text-white border-indigo-500 bg-gray-500">Show Information</button>
+                                    <transition name="swipe-in" mode="out-in">
+                                        <div v-if="showInfo">
+                                            <tbody v-for="order in Order" :key="order.id" class="px-4 py-4 text-sm text-gray-700 dark:text-gray-200 ">
+                                                <div class="border-indigo-500 bg-white rounded-md">
+                                                    <div class="inline-flex items-center gap-x-3">
+                                                        <div class="ml-4 text-sm text-gray-500 font-medium">{{ order.id }}</div>
+                                                        <img :src="order.image" alt="Product Image" class="px-2 mt-2 w-full h-20 object-cover mb-2">
+                                                        <td class="font-medium text-sm text-gray-500 dark:text-gray-800 whitespace-nowrap">{{ order.price }}</td>
+                                                    </div>
+                                                    <div class="font-medium mb-2 py-1 px-2 text-sm text-gray-800 dark:text-gray-500 whitespace-nowrap">{{ order.name }}</div>
+                                                </div>
+                                            </tbody>
+                                        </div>
+                                    </transition>
+                                </div>
+                                
                                 <td class="px-4 py-4 text-sm font-medium text-gray-700 whitespace-nowrap">
-
                                     <div v-if="report.status == 'waiting'">
                                         <div class="inline-flex items-center px-3 py-1 text-yellow-500 rounded-full gap-x-2 bg-red-100/60 dark:bg-gray-800">
                                             <svg xmlns="http://www.w3.org/2000/svg" width="50" height="10">
@@ -72,7 +80,41 @@
                                                     <animate attributeName="opacity" dur="1s" begin="0.2s" values="0;1;0" repeatCount="indefinite" />
                                                 </circle>
                                             </svg>
-                                            <h2 class="text-sm font-normal">Waiting for Respond...</h2>
+                                            <h2 class="text-sm font-normal">Waiting for Your Respond...</h2>
+                                        </div>
+                                    </div>
+                                    
+                                    <div v-if="report.status == 'audit waiting'">
+                                        <div class="inline-flex items-center px-3 py-1 text-white rounded-full gap-x-2 bg-red-100/60 dark:bg-gray-800">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="50" height="10">
+                                                <circle cx="10" cy="5" r="4" fill="white">
+                                                    <animate attributeName="opacity" dur="1s" values="0;1;0" repeatCount="indefinite" />
+                                                </circle>
+                                                <circle cx="25" cy="5" r="4" fill="white">
+                                                    <animate attributeName="opacity" dur="1s" begin="0.1s" values="0;1;0" repeatCount="indefinite" />
+                                                </circle>
+                                                <circle cx="40" cy="5" r="4" fill="white">
+                                                    <animate attributeName="opacity" dur="1s" begin="0.2s" values="0;1;0" repeatCount="indefinite" />
+                                                </circle>
+                                            </svg>
+                                            <h2 class="text-sm font-normal">Waiting for Audit Respond...</h2>
+                                        </div>
+                                    </div>
+
+                                    <div v-if="report.status == 'delivery waiting'">
+                                        <div class="inline-flex items-center px-3 py-1 text-white rounded-full gap-x-2 bg-red-100/60 dark:bg-gray-800">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="50" height="10">
+                                                <circle cx="10" cy="5" r="4" fill="white">
+                                                    <animate attributeName="opacity" dur="1s" values="0;1;0" repeatCount="indefinite" />
+                                                </circle>
+                                                <circle cx="25" cy="5" r="4" fill="white">
+                                                    <animate attributeName="opacity" dur="1s" begin="0.1s" values="0;1;0" repeatCount="indefinite" />
+                                                </circle>
+                                                <circle cx="40" cy="5" r="4" fill="white">
+                                                    <animate attributeName="opacity" dur="1s" begin="0.2s" values="0;1;0" repeatCount="indefinite" />
+                                                </circle>
+                                            </svg>
+                                            <h2 class="text-sm font-normal">Waiting for Delivery Respond...</h2>
                                         </div>
                                     </div>
 
@@ -137,15 +179,20 @@
                                 <td class="px-4 py-4 text-sm whitespace-nowrap">
 
                                
-                                    <div class="flex items-center gap-x-10">
-
+                                    <div class="flex items-center gap-x-">
+                                        <!-- send to delivery -->
                                         <button type="button"
                                             class="border border-indigo-500 bg-indigo-500 text-white rounded-md px-4 py-2 m-2 transition duration-500 ease select-none hover:bg-indigo-600 focus:outline-none focus:shadow-outline">
-                                            Send to Audit
+                                            Resend
+                                        </button>
+                                        <!-- send to audit -->
+                                        <button type="button"
+                                            class="border border-indigo-500 bg-indigo-500 text-white rounded-md px-4 py-2 m-2 transition duration-500 ease select-none hover:bg-indigo-600 focus:outline-none focus:shadow-outline">
+                                            Refund
                                         </button>
                                         <button type="button"
                                             class="border-red-500 bg-red-500 text-white rounded-md px-4 py-2 m-2 transition duration-500 ease select-none hover:bg-red-600 focus:outline-none focus:shadow-outline">
-                                            Cancel
+                                            Reject
                                         </button>
                                     </div>
                                 </td>
@@ -197,10 +244,11 @@
 export default {
     data() {
       return {
+        showInfo: false ,
         CustomerReport: [
         {
             id: 1,
-            order_id: 1,
+            order: 1,
             name: 'Chanawut',
             email: 'chanawut@example.com',
             status: 'waiting',
@@ -227,7 +275,7 @@ export default {
         },
         {
             id: 4,
-            order_id: 4,
+            order_id: 4 ,
             name: 'Earth',
             email: 'earth@example.com',
             status: 'complete refund',
@@ -236,7 +284,7 @@ export default {
         },
         {
             id: 5,
-            order_id: 4,
+            order_id: 5,
             name: 'Earth',
             email: 'earth@example.com',
             status: 'refunding',
@@ -245,15 +293,75 @@ export default {
         },
         {
             id: 6,
-            order_id: 4,
+            order_id: 6,
             name: 'Earth',
             email: 'earth@example.com',
             status: 'complete send',
             reason: '',
             image: '',
         },
+        {
+            id: 7,
+            order_id: 7,
+            name: 'Earth',
+            email: 'earth@example.com',
+            status: 'audit waiting',
+            reason: '',
+            image: '',
+        },
+        {
+            id: 8,
+            order_id: 8,
+            name: 'Earth',
+            email: 'earth@example.com',
+            status: 'delivery waiting',
+            reason: '',
+            image: '',
+        },
+        {
+            id: 9,
+            order_id: 9,
+            name: 'Earth',
+            email: 'earth@example.com',
+            status: 'complete send',
+            reason: '',
+            image: '',
+        },
+        ],
+        Order: [
+        {
+            id: 1,
+            name: 'Intel Core I5 12600K',
+            description: '10 (6P+4E) Cores 16 Threads Intel UHD Graphics 770 CPU Cooler Not Included PCIe 5.0 and 4.0',
+            image: 'https://www.jib.co.th/img_master/product/original/2021102715152349469_1.png',
+            price: "454 $",
+        },
+        {
+            id: 2,
+            name: 'MSI MPG B550 Gaming Carbon WiFi',
+            description: '10 (6P+4E) Cores 16 Threads Intel UHD Graphics 770 CPU Cooler Not Included PCIe 5.0 and 4.0',
+            image: 'https://www.ascenti.co.th/wp-content/uploads/2020/07/msi-MPG-B550-GAMING-CARBON-WIFI-2.jpg',
+            price: "454 $",
+        },
+        
         ]
       };
     },
+    methods: {
+      toggleInfo() {
+        this.showInfo = !this.showInfo;
+      }
+    }
 }
 </script>
+
+<style scoped>
+.swipe-in-enter-active, .swipe-in-leave-active {
+  transition: transform 0.5s ease-in-out;
+}
+
+.swipe-in-enter, .swipe-in-leave-to {
+  transform: translateY(-20%);
+}
+
+</style>

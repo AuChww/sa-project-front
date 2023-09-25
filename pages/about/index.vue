@@ -1,13 +1,21 @@
 <template>
     <div>
-    <Navbar />
+      <button @click="toggleInfo">Show Information</button>
+      <div v-if="showInfo">This is the hidden information.</div>
     </div>
 </template>
-
-<script setup>
-
+  
+<script>
+  export default {
+    data() {
+      return {
+        showInfo: false
+      };
+    },
+    methods: {
+      toggleInfo() {
+        this.showInfo = !this.showInfo;
+      }
+    }
+  };
 </script>
-
-<style lang="scss" scoped>
-
-</style>
