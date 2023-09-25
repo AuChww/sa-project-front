@@ -1,7 +1,7 @@
 <template>
     <Navbar />
     <h1 class="text-center text-3xl mt-8 mb-4">
-        REFUND
+        DELIVERY
     </h1>
     <section class="container px-4 mx-auto">
     <div class="flex flex-col">
