@@ -1,7 +1,7 @@
 <template>
     <Navbar />
-    <h1 class="text-center text-3xl">
-        REFUNDATION
+    <h1 class="text-center text-3xl mt-8 mb-4">
+        REPORT
     </h1>
     <section class="container px-4 mx-auto">
     <div class="flex flex-col">
@@ -47,35 +47,93 @@
                                 </th>
                             </tr>
                         </thead>
-                        <tbody class="bg-white divide-y divide-gray-200 dark:divide-gray-700 dark:bg-gray-900">
+                        <tbody v-for="report in CustomerReport" :key="report.id" class="bg-white divide-y divide-gray-200 dark:divide-gray-700 dark:bg-gray-900">
                             <tr>
                                 <td class="px-4 py-4 text-sm font-medium text-gray-700 dark:text-gray-200 whitespace-nowrap">
                                     <div class="inline-flex items-center gap-x-3">
                                         <input type="checkbox" class="text-blue-500 border-gray-300 rounded dark:bg-gray-900 dark:ring-offset-gray-900 dark:border-gray-700">
 
-                                        <span>#3066</span>
+                                        <span>{{ report.id }}</span>
                                     </div>
                                 </td>
                                 <td class="px-4 py-4 text-sm text-gray-500 dark:text-gray-300 whitespace-nowrap">Jan 6, 2022</td>
                                 <td class="px-4 py-4 text-sm font-medium text-gray-700 whitespace-nowrap">
-                                    <div class="inline-flex items-center px-3 py-1 rounded-full gap-x-2 text-emerald-500 bg-emerald-100/60 dark:bg-gray-800">
-                                        <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                            <path d="M10 3L4.5 8.5L2 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                                        </svg>
 
-                                        <h2 class="text-sm font-normal">Paid</h2>
+                                    <div v-if="report.status == 'waiting'">
+                                        <div class="inline-flex items-center px-3 py-1 text-yellow-500 rounded-full gap-x-2 bg-red-100/60 dark:bg-gray-800">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="50" height="10">
+                                                <circle cx="10" cy="5" r="4" fill="yellow">
+                                                    <animate attributeName="opacity" dur="1s" values="0;1;0" repeatCount="indefinite" />
+                                                </circle>
+                                                <circle cx="25" cy="5" r="4" fill="yellow">
+                                                    <animate attributeName="opacity" dur="1s" begin="0.1s" values="0;1;0" repeatCount="indefinite" />
+                                                </circle>
+                                                <circle cx="40" cy="5" r="4" fill="yellow">
+                                                    <animate attributeName="opacity" dur="1s" begin="0.2s" values="0;1;0" repeatCount="indefinite" />
+                                                </circle>
+                                            </svg>
+                                            <h2 class="text-sm font-normal">Waiting for Respond...</h2>
+                                        </div>
                                     </div>
+
+                                    <div v-if="report.status == 'sending'">
+                                        <div class="inline-flex items-center px-3 py-1 rounded-full gap-x-2 text-emerald-500 bg-emerald-100/60 dark:bg-gray-800">
+                                            <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M10 3L4.5 8.5L2 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                            </svg>
+                                            <h2 class="text-sm font-normal">In the Sending Process</h2>
+                                        </div>
+                                    </div>
+
+                                    <div v-if="report.status == 'refunding'">
+                                        <div class="inline-flex items-center px-3 py-1 rounded-full gap-x-2 text-emerald-500 bg-emerald-100/60 dark:bg-gray-800">
+                                            <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M10 3L4.5 8.5L2 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                            </svg>
+                                            <h2 class="text-sm font-normal">In the Refunding Process</h2>
+                                        </div>
+                                    </div>
+
+                                    <div v-if="report.status == 'complete refund'">
+                                        <div class="inline-flex items-center px-3 py-1 text-gray-500 rounded-full gap-x-2 bg-gray-100/60 dark:bg-gray-800">
+                                            <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M10 3L4.5 8.5L2 6" stroke="#667085" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                            </svg>
+
+                                            <h2 class="text-sm font-normal">Complete Refund</h2>
+                                        </div>
+                                    </div>
+
+                                    <div v-if="report.status == 'complete send'">
+                                        <div class="inline-flex items-center px-3 py-1 text-gray-500 rounded-full gap-x-2 bg-gray-100/60 dark:bg-gray-800">
+                                            <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M10 3L4.5 8.5L2 6" stroke="#667085" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                            </svg>
+
+                                            <h2 class="text-sm font-normal">Complete New Delivery</h2>
+                                        </div>
+                                    </div>
+
+                                    <div v-if="report.status == 'rejected'">
+                                        <div class="inline-flex items-center px-3 py-1 rounded-full gap-x-2 text-red-500 bg-emerald-100/60 dark:bg-gray-800">
+                                            <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M10 3L4.5 8.5L2 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                            </svg>
+                                            <h2 class="text-sm font-normal">Rejected</h2>
+                                        </div>
+                                    </div>
+
                                 </td>
                                 <td class="px-4 py-4 text-sm text-gray-500 dark:text-gray-300 whitespace-nowrap">
                                     <div class="flex items-center gap-x-2">
-                                        <img class="object-cover w-8 h-8 rounded-full" src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=880&q=80" alt="">
+                                        <img class="object-cover w-8 h-8 rounded-full" src="" alt="">
                                         <div>
-                                            <h2 class="text-sm font-medium text-gray-800 dark:text-white ">Arthur Melo</h2>
-                                            <p class="text-xs font-normal text-gray-600 dark:text-gray-400">authurmelo@example.com</p>
+                                            <h2 class="text-sm font-medium text-gray-800 dark:text-white ">{{ report.name }}</h2>
+                                            <p class="text-xs font-normal text-gray-600 dark:text-gray-400">{{ report.email }}</p>
                                         </div>
                                     </div>
                                 </td>
-                                <td class="px-4 py-4 text-sm text-gray-500 dark:text-gray-300 whitespace-nowrap">Goods info</td>
+                                <td class="px-4 py-4 text-sm text-gray-500 dark:text-gray-300 whitespace-nowrap">{{ report.reason }}</td>
                                 <td class="px-4 py-4 text-sm whitespace-nowrap">
 
                                
@@ -93,192 +151,7 @@
                                 </td>
                             </tr>
 
-                            <tr>
-                                <td class="px-4 py-4 text-sm font-medium text-gray-700 dark:text-gray-200 whitespace-nowrap">
-                                    <div class="inline-flex items-center gap-x-3">
-                                        <input type="checkbox" class="text-blue-500 border-gray-300 rounded dark:bg-gray-900 dark:ring-offset-gray-900 dark:border-gray-700">
-
-                                        <span>#3065</span>
-                                    </div>
-                                </td>
-                                <td class="px-4 py-4 text-sm text-gray-500 dark:text-gray-300 whitespace-nowrap">Jan 5, 2022</td>
-                                <td class="px-4 py-4 text-sm font-medium text-gray-700 whitespace-nowrap">
-                                    <div class="inline-flex items-center px-3 py-1 text-yellow-500 rounded-full gap-x-2 bg-red-100/60 dark:bg-gray-800">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="50" height="10">
-                                            <circle cx="10" cy="5" r="4" fill="yellow">
-                                                <animate attributeName="opacity" dur="1s" values="0;1;0" repeatCount="indefinite" />
-                                            </circle>
-                                            <circle cx="25" cy="5" r="4" fill="yellow">
-                                                <animate attributeName="opacity" dur="1s" begin="0.1s" values="0;1;0" repeatCount="indefinite" />
-                                            </circle>
-                                            <circle cx="40" cy="5" r="4" fill="yellow">
-                                                <animate attributeName="opacity" dur="1s" begin="0.2s" values="0;1;0" repeatCount="indefinite" />
-                                            </circle>
-                                        </svg>
-
-
-                                        <h2 class="text-sm font-normal">Pending...</h2>
-                                    </div>
-                                </td>
-                                <td class="px-4 py-4 text-sm text-gray-500 dark:text-gray-300 whitespace-nowrap">
-                                    <div class="flex items-center gap-x-2">
-                                        <img class="object-cover w-8 h-8 rounded-full" src="https://images.unsplash.com/photo-1531590878845-12627191e687?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=764&q=80" alt="">
-                                        <div>
-                                            <h2 class="text-sm font-medium text-gray-800 dark:text-white ">Andi Lane</h2>
-                                            <p class="text-xs font-normal text-gray-600 dark:text-gray-400">andi@example.com</p>
-                                        </div>
-                                    </div>
-                                </td>
-                                <td class="px-4 py-4 text-sm text-gray-500 dark:text-gray-300 whitespace-nowrap">Goods Info</td>
-                                <td class="px-4 py-4 text-sm whitespace-nowrap">
-
-
-
-                                    <div class="flex items-center gap-x-10">
-
-                                        <button type="button"
-                                            class="border border-indigo-500 bg-indigo-500 text-white rounded-md px-4 py-2 m-2 transition duration-500 ease select-none hover:bg-indigo-600 focus:outline-none focus:shadow-outline">
-                                            Send to Audit
-                                        </button>
-                                        <button type="button"
-                                            class="border-red-500 bg-red-500 text-white rounded-md px-4 py-2 m-2 transition duration-500 ease select-none hover:bg-red-600 focus:outline-none focus:shadow-outline">
-                                            Cancel
-                                        </button>
-                                    </div>
-                                </td>
-                            </tr>
-
-                            <tr>
-                                <td class="px-4 py-4 text-sm font-medium text-gray-700 dark:text-gray-200 whitespace-nowrap">
-                                    <div class="inline-flex items-center gap-x-3">
-                                        <input type="checkbox" class="text-blue-500 border-gray-300 rounded dark:bg-gray-900 dark:ring-offset-gray-900 dark:border-gray-700">
-
-                                        <span>#3064</span>
-                                    </div>
-                                </td>
-                                <td class="px-4 py-4 text-sm text-gray-500 dark:text-gray-300 whitespace-nowrap">Jan 5, 2022</td>
-                                <td class="px-4 py-4 text-sm font-medium text-gray-700 whitespace-nowrap">
-                                    <div class="inline-flex items-center px-3 py-1 rounded-full gap-x-2 text-emerald-500 bg-emerald-100/60 dark:bg-gray-800">
-                                        <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                            <path d="M10 3L4.5 8.5L2 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                                        </svg>
-
-                                        <h2 class="text-sm font-normal">Paid</h2>
-                                    </div>
-                                </td>
-                                <td class="px-4 py-4 text-sm text-gray-500 dark:text-gray-300 whitespace-nowrap">
-                                    <div class="flex items-center gap-x-2">
-                                        <img class="object-cover w-8 h-8 rounded-full" src="https://images.unsplash.com/photo-1580489944761-15a19d654956?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=761&q=80" alt="">
-                                        <div>
-                                            <h2 class="text-sm font-medium text-gray-800 dark:text-white ">Kate Morrison</h2>
-                                            <p class="text-xs font-normal text-gray-600 dark:text-gray-400">kate@example.com</p>
-                                        </div>
-                                    </div>
-                                </td>
-                                <td class="px-4 py-4 text-sm text-gray-500 dark:text-gray-300 whitespace-nowrap">Goods info</td>
-                                <td class="px-4 py-4 text-sm whitespace-nowrap">
-                                    
-                                    <div class="flex items-center gap-x-10">
-
-                                        <button type="button"
-                                            class="border border-indigo-500 bg-indigo-500 text-white rounded-md px-4 py-2 m-2 transition duration-500 ease select-none hover:bg-indigo-600 focus:outline-none focus:shadow-outline">
-                                            Send to Audit
-                                        </button>
-                                        <button type="button"
-                                            class="border-red-500 bg-red-500 text-white rounded-md px-4 py-2 m-2 transition duration-500 ease select-none hover:bg-red-600 focus:outline-none focus:shadow-outline">
-                                            Cancel
-                                        </button>
-                                    </div>
-                                </td>
-                            </tr>
-
-                            <tr>
-                                <td class="px-4 py-4 text-sm font-medium text-gray-700 dark:text-gray-200 whitespace-nowrap">
-                                    <div class="inline-flex items-center gap-x-3">
-                                        <input type="checkbox" class="text-blue-500 border-gray-300 rounded dark:bg-gray-900 dark:ring-offset-gray-900 dark:border-gray-700">
-
-                                        <span>#3063</span>
-                                    </div>
-                                </td>
-                                <td class="px-4 py-4 text-sm text-gray-500 dark:text-gray-300 whitespace-nowrap">Jan 4, 2022</td>
-                                <td class="px-4 py-4 text-sm font-medium text-gray-700 whitespace-nowrap">
-                                    <div class="inline-flex items-center px-3 py-1 rounded-full gap-x-2 text-emerald-500 bg-emerald-100/60 dark:bg-gray-800">
-                                        <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                            <path d="M10 3L4.5 8.5L2 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                                        </svg>
-
-                                        <h2 class="text-sm font-normal">Paid</h2>
-                                    </div>
-                                </td>
-                                <td class="px-4 py-4 text-sm text-gray-500 dark:text-gray-300 whitespace-nowrap">
-                                    <div class="flex items-center gap-x-2">
-                                        <img class="object-cover w-8 h-8 rounded-full" src="https://images.unsplash.com/photo-1506863530036-1efeddceb993?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1344&q=80" alt="">
-                                        <div>
-                                            <h2 class="text-sm font-medium text-gray-800 dark:text-white ">Candice Wu</h2>
-                                            <p class="text-xs font-normal text-gray-600 dark:text-gray-400">candice@example.com</p>
-                                        </div>
-                                    </div>
-                                </td>
-                                <td class="px-4 py-4 text-sm text-gray-500 dark:text-gray-300 whitespace-nowrap">Goods Info</td>
-                                <td class="px-4 py-4 text-sm whitespace-nowrap">
-                                    
-                                    <div class="flex items-center gap-x-10">
-
-                                        <button type="button"
-                                            class="border border-indigo-500 bg-indigo-500 text-white rounded-md px-4 py-2 m-2 transition duration-500 ease select-none hover:bg-indigo-600 focus:outline-none focus:shadow-outline">
-                                            Send to Audit
-                                        </button>
-                                        <button type="button"
-                                            class="border-red-500 bg-red-500 text-white rounded-md px-4 py-2 m-2 transition duration-500 ease select-none hover:bg-red-600 focus:outline-none focus:shadow-outline">
-                                            Cancel
-                                        </button>
-                                    </div>
-                                </td>
-                            </tr>
-
-                            <tr>
-                                <td class="px-4 py-4 text-sm font-medium text-gray-700 dark:text-gray-200 whitespace-nowrap">
-                                    <div class="inline-flex items-center gap-x-3">
-                                        <input type="checkbox" class="text-blue-500 border-gray-300 rounded dark:bg-gray-900 dark:ring-offset-gray-900 dark:border-gray-700">
-
-                                        <span>#3062</span>
-                                    </div>
-                                </td>
-                                <td class="px-4 py-4 text-sm text-gray-500 dark:text-gray-300 whitespace-nowrap">Jan 4, 2022</td>
-                                <td class="px-4 py-4 text-sm font-medium text-gray-700 whitespace-nowrap">
-                                    <div class="inline-flex items-center px-3 py-1 text-gray-500 rounded-full gap-x-2 bg-gray-100/60 dark:bg-gray-800">
-                                        <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                            <path d="M10 3L4.5 8.5L2 6" stroke="#667085" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                                        </svg>
-
-                                        <h2 class="text-sm font-normal">Complete Refund</h2>
-                                    </div>
-                                </td>
-                                <td class="px-4 py-4 text-sm text-gray-500 dark:text-gray-300 whitespace-nowrap">
-                                    <div class="flex items-center gap-x-2">
-                                        <img class="object-cover w-8 h-8 rounded-full" src="https://images.unsplash.com/photo-1528892952291-009c663ce843?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=644&q=80" alt="">
-                                        <div>
-                                            <h2 class="text-sm font-medium text-gray-800 dark:text-white ">Orlando Diggs</h2>
-                                            <p class="text-xs font-normal text-gray-600 dark:text-gray-400">orlando@example.com</p>
-                                        </div>
-                                    </div>
-                                </td>
-                                <td class="px-4 py-4 text-sm text-gray-500 dark:text-gray-300 whitespace-nowrap">Goods Info</td>
-                                <td class="px-4 py-4 text-sm whitespace-nowrap">
-                                   
-                                    <div class="flex items-center gap-x-10">
-
-                                        <button type="button"
-                                            class="border border-indigo-500 bg-indigo-500 text-white rounded-md px-4 py-2 m-2 transition duration-500 ease select-none hover:bg-indigo-600 focus:outline-none focus:shadow-outline">
-                                            Send to Audit
-                                        </button>
-                                        <button type="button"
-                                            class="border-red-500 bg-red-500 text-white rounded-md px-4 py-2 m-2 transition duration-500 ease select-none hover:bg-red-600 focus:outline-none focus:shadow-outline">
-                                            Cancel
-                                        </button>
-                                    </div>
-                                </td>
-                            </tr>
+                            
                         </tbody>
                     </table>
                 </div>
@@ -319,3 +192,68 @@
     </div>
 </section>
 </template>
+
+<script>
+export default {
+    data() {
+      return {
+        CustomerReport: [
+        {
+            id: 1,
+            order_id: 1,
+            name: 'Chanawut',
+            email: 'chanawut@example.com',
+            status: 'waiting',
+            reason: 'My glass broke',
+            image: '',
+        },
+        {
+            id: 2,
+            order_id: 2,
+            name: 'Chayapol',
+            email: 'chayapol@example.com',
+            status: 'sending',
+            reason: 'The product is not complete.',
+            image: '',
+        },
+        {
+            id: 3,
+            order_id: 3,
+            name: 'Mana',
+            email: 'mana@example.com',
+            status: 'rejected',
+            reason: 'The product is not beautiful.',
+            image: '',
+        },
+        {
+            id: 4,
+            order_id: 4,
+            name: 'Earth',
+            email: 'earth@example.com',
+            status: 'complete refund',
+            reason: '',
+            image: '',
+        },
+        {
+            id: 5,
+            order_id: 4,
+            name: 'Earth',
+            email: 'earth@example.com',
+            status: 'refunding',
+            reason: '',
+            image: '',
+        },
+        {
+            id: 6,
+            order_id: 4,
+            name: 'Earth',
+            email: 'earth@example.com',
+            status: 'complete send',
+            reason: '',
+            image: '',
+        },
+        ]
+      };
+    },
+}
+</script>

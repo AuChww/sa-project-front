@@ -62,7 +62,7 @@
             <button @click="saveBillAsPNG" class="bold-text">Save as PNG</button>
           </div>
         </form>
-        
+
     </div>
 </template>
 
@@ -123,6 +123,7 @@ export default {
     return {
       currentDate: new Date().toLocaleDateString(),
       amount: 100.00,
+      
     };
   },
   methods: {
