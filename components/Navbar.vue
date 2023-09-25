@@ -16,13 +16,14 @@
           <!-- admin -->
           <router-link to="/admin/create-staff" class="text-white rounded-lg hover:bg-green-100 dark:hover:bg-blue-500 group">Create Staff (ad)</router-link>
           <router-link to="/product/product-add" class="text-white rounded-lg  hover:bg-green-100 dark:hover:bg-blue-500 group mx-8">Product Add (ad)</router-link>
+          <router-link to="/admin/report-check" class="text-white rounded-lg  hover:bg-green-100 dark:hover:bg-blue-500 group mx-8">Report Check (ad)</router-link>
 
           <!-- delivery -->
           <router-link to="/product/product-check" class="text-white rounded-lg hover:bg-green-100 dark:hover:bg-blue-500 group mx-8">Check Product (d)</router-link>
 
           <!-- audit -->
           <router-link to="/order" class="text-white rounded-lg hover:bg-green-100 dark:hover:bg-blue-500 group mx-8">Order Check (a)</router-link>
-          <router-link to="/order/refund" class="text-white rounded-lg hover:bg-green-100 dark:hover:bg-blue-500 group mx-8">Refund Check (a)</router-link>
+          <router-link to="/order/refund-check" class="text-white rounded-lg hover:bg-green-100 dark:hover:bg-blue-500 group mx-8">Refund Check (a)</router-link>
 
           <!-- customer -->
           <router-link to="/order/order-status" class="text-white rounded-lg hover:bg-green-100 dark:hover:bg-blue-500 group mx-8">

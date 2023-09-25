@@ -64,7 +64,7 @@
       <div class="mt-6 h-full rounded-lg border bg-white p-6 shadow-md md:mt-0 md:w-1/3">
         <div class="mb-2 flex justify-between">
           <p class="text-gray-700">Subtotal</p>
-          <p class="text-gray-700" v-for="product in Cart" :key="product.id">{{ calculateSum() }}</p>
+          <p class="text-gray-700" v-for="product in Cart" :key="product.id">{{ product.price }}</p>
         </div>
         <div class="flex justify-between">
           <p class="text-gray-700">Shipping</p>
@@ -94,12 +94,6 @@
     export default {
         components: {
             Navbar, // Register the Navbar component
-        },
-
-        methods: {
-          calculateSum() {
-            return this.Cart.price.reduce((acc, curr) => acc + curr, 0);
-          },
         },
 
         data() {

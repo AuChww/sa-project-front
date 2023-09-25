@@ -1,7 +1,7 @@
 <template>
     <Navbar />
     <div class="container">
-        <form>
+        <form class="mt-5 grid gap-6 text-lg font-medium">
           <label>Name</label>
           <input 
             type="text" 
@@ -23,7 +23,19 @@
             cols="30" rows="5"
             placeholder="Message">
           </textarea>
-          
+
+          <div v-for="reasons in reason" :key="reasons.id" class="relative">
+              <input class="peer hidden" id="radio_1" type="radio" name="radio" checked />
+              <span class="peer-checked:border-gray-700 absolute right-4 top-1/2 box-content block h-3 w-3 -translate-y-1/2 rounded-full border-8 border-gray-300 bg-white"></span>
+              <label class="peer-checked:border-2 peer-checked:border-gray-700 peer-checked:bg-gray-50 flex cursor-pointer select-none rounded-lg border border-gray-300 p-4" for="radio_1">
+              <img class="w-14 object-contain" src="" alt="" />
+              <div class="ml-5">
+                  <span class="mt-2 font-semibold">{{ reasons.name }}</span>
+                  <p class="text-slate-500 text-sm leading-6">{{ reasons.description }}</p>
+              </div>
+              </label>
+          </div>
+
           <input type="submit" value="Send">
         </form>
     </div>
@@ -78,7 +90,21 @@ export default {
     return {
       name: '',
       email: '',
-      message: ''
+      message: '',
+      reason: [
+      {
+          id: 1,
+          name: 'asda',
+          description: 'Explore our latest computer Components.',
+          image: '',
+      },
+      {
+          id: 2,
+          name: 'asd',
+          description: 'Explore our latest computer Components.',
+          image: '',
+      },
+      ]
     }
   },
   methods: {
