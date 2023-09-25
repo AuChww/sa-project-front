@@ -1,6 +1,6 @@
 <template>
     <Navbar />
-    <h1 class="text-center mt-4 mb-2 text-3xl">
+    <h1 class="text-center text-3xl">
         REFUNDATION
     </h1>
     <section class="container px-4 mx-auto">
