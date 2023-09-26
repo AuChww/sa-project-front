@@ -111,16 +111,6 @@
                                         </div>
                                     </div>
 
-                                    <div v-if="report.status == 'complete send'">
-                                        <div class="inline-flex items-center px-3 py-1 text-gray-500 rounded-full gap-x-2 bg-gray-100/60 dark:bg-gray-800">
-                                            <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                <path d="M10 3L4.5 8.5L2 6" stroke="#667085" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                                            </svg>
-
-                                            <h2 class="text-sm font-normal">Complete New Delivery</h2>
-                                        </div>
-                                    </div>
-
                                     <div v-if="report.status == 'rejected'">
                                         <div class="inline-flex items-center px-3 py-1 rounded-full gap-x-2 text-red-500 bg-emerald-100/60 dark:bg-gray-800">
                                             <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -146,17 +136,16 @@
                                
                                     <div class="flex items-center gap-x-">
                                         
-                                        <!-- waiting -->
                                         <div v-if="report.status == 'audit waiting'">
                                             <button type="button"
-                                                class="border border-indigo-500 bg-indigo-500 text-white rounded-md px-4 py-2 m-2 transition duration-500 ease select-none hover:bg-emerald-700 focus:outline-none focus:shadow-outline">
+                                                class="border border-emerald-500 bg-emerald-500 text-white rounded-md px-4 py-2 m-2 transition duration-500 ease select-none hover:bg-emerald-700 focus:outline-none focus:shadow-outline">
                                                 Accept
                                             </button>
                                         </div>
                                         
                                         <div v-if="report.status == 'refunding'">
                                             <button type="button"
-                                                class="border border-emerald-500 bg-emerald-500 text-white rounded-md px-4 py-2 m-2 transition duration-500 ease select-none hover:bg-emerald-700 focus:outline-none focus:shadow-outline">
+                                                class="border border-indigo-500 bg-indigo-500 text-white rounded-md px-4 py-2 m-2 transition duration-500 ease select-none hover:bg-indigo-800 focus:outline-none focus:shadow-outline">
                                                 Confirm
                                             </button>
                                             <RouterLink to="/report">

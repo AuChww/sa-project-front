@@ -1,7 +1,7 @@
 <template>
     <Navbar />
     <h1 class="text-center text-3xl mt-8 mb-4">
-        DELIVERY
+        PRODUCT CHECK
     </h1>
     <section class="container px-4 mx-auto">
     <div class="flex flex-col">
@@ -67,7 +67,7 @@
                                 </div>
                                 
                                 <td class="px-4 py-4 text-sm font-medium text-gray-700 whitespace-nowrap">
-                                    <div v-if="report.status == 'waiting'">
+                                    <div v-if="report.status == 'delivery waiting'">
                                         <div class="inline-flex items-center px-3 py-1 text-yellow-500 rounded-full gap-x-2 bg-red-100/60 dark:bg-gray-800">
                                             <svg xmlns="http://www.w3.org/2000/svg" width="50" height="10">
                                                 <circle cx="10" cy="5" r="4" fill="yellow">
@@ -82,67 +82,22 @@
                                             </svg>
                                             <h2 class="text-sm font-normal">Waiting for Your Respond...</h2>
                                         </div>
-                                    </div>
-                                    
-                                    <div v-if="report.status == 'audit waiting'">
-                                        <div class="inline-flex items-center px-3 py-1 text-white rounded-full gap-x-2 bg-red-100/60 dark:bg-gray-800">
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="50" height="10">
-                                                <circle cx="10" cy="5" r="4" fill="white">
-                                                    <animate attributeName="opacity" dur="1s" values="0;1;0" repeatCount="indefinite" />
-                                                </circle>
-                                                <circle cx="25" cy="5" r="4" fill="white">
-                                                    <animate attributeName="opacity" dur="1s" begin="0.1s" values="0;1;0" repeatCount="indefinite" />
-                                                </circle>
-                                                <circle cx="40" cy="5" r="4" fill="white">
-                                                    <animate attributeName="opacity" dur="1s" begin="0.2s" values="0;1;0" repeatCount="indefinite" />
-                                                </circle>
-                                            </svg>
-                                            <h2 class="text-sm font-normal">Waiting for Audit Respond...</h2>
-                                        </div>
-                                    </div>
-
-                                    <div v-if="report.status == 'delivery waiting'">
-                                        <div class="inline-flex items-center px-3 py-1 text-white rounded-full gap-x-2 bg-red-100/60 dark:bg-gray-800">
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="50" height="10">
-                                                <circle cx="10" cy="5" r="4" fill="white">
-                                                    <animate attributeName="opacity" dur="1s" values="0;1;0" repeatCount="indefinite" />
-                                                </circle>
-                                                <circle cx="25" cy="5" r="4" fill="white">
-                                                    <animate attributeName="opacity" dur="1s" begin="0.1s" values="0;1;0" repeatCount="indefinite" />
-                                                </circle>
-                                                <circle cx="40" cy="5" r="4" fill="white">
-                                                    <animate attributeName="opacity" dur="1s" begin="0.2s" values="0;1;0" repeatCount="indefinite" />
-                                                </circle>
-                                            </svg>
-                                            <h2 class="text-sm font-normal">Waiting for Delivery Respond...</h2>
-                                        </div>
-                                    </div>
+                                    </div>           
 
                                     <div v-if="report.status == 'sending'">
-                                        <div class="inline-flex items-center px-3 py-1 rounded-full gap-x-2 text-emerald-500 bg-emerald-100/60 dark:bg-gray-800">
-                                            <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                <path d="M10 3L4.5 8.5L2 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                        <div class="inline-flex items-center px-3 py-1 text-white rounded-full gap-x-2 bg-red-100/60 dark:bg-gray-800">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="50" height="10">
+                                                <circle cx="10" cy="5" r="4" fill="white">
+                                                    <animate attributeName="opacity" dur="1s" values="0;1;0" repeatCount="indefinite" />
+                                                </circle>
+                                                <circle cx="25" cy="5" r="4" fill="white">
+                                                    <animate attributeName="opacity" dur="1s" begin="0.1s" values="0;1;0" repeatCount="indefinite" />
+                                                </circle>
+                                                <circle cx="40" cy="5" r="4" fill="white">
+                                                    <animate attributeName="opacity" dur="1s" begin="0.2s" values="0;1;0" repeatCount="indefinite" />
+                                                </circle>
                                             </svg>
-                                            <h2 class="text-sm font-normal">In the Sending Process</h2>
-                                        </div>
-                                    </div>
-
-                                    <div v-if="report.status == 'refunding'">
-                                        <div class="inline-flex items-center px-3 py-1 rounded-full gap-x-2 text-emerald-500 bg-emerald-100/60 dark:bg-gray-800">
-                                            <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                <path d="M10 3L4.5 8.5L2 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                                            </svg>
-                                            <h2 class="text-sm font-normal">In the Refunding Process</h2>
-                                        </div>
-                                    </div>
-
-                                    <div v-if="report.status == 'complete refund'">
-                                        <div class="inline-flex items-center px-3 py-1 text-gray-500 rounded-full gap-x-2 bg-gray-100/60 dark:bg-gray-800">
-                                            <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                <path d="M10 3L4.5 8.5L2 6" stroke="#667085" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                                            </svg>
-
-                                            <h2 class="text-sm font-normal">Complete Refund</h2>
+                                            <h2 class="text-sm font-normal">In the Sending Process...</h2>
                                         </div>
                                     </div>
 
@@ -180,20 +135,33 @@
 
                                
                                     <div class="flex items-center gap-x-">
-                                        <!-- send to delivery -->
-                                        <button type="button"
-                                            class="border border-indigo-500 bg-indigo-500 text-white rounded-md px-4 py-2 m-2 transition duration-500 ease select-none hover:bg-indigo-600 focus:outline-none focus:shadow-outline">
-                                            Resend
-                                        </button>
-                                        <!-- send to audit -->
-                                        <button type="button"
-                                            class="border border-indigo-500 bg-indigo-500 text-white rounded-md px-4 py-2 m-2 transition duration-500 ease select-none hover:bg-indigo-600 focus:outline-none focus:shadow-outline">
-                                            Refund
-                                        </button>
-                                        <button type="button"
-                                            class="border-red-500 bg-red-500 text-white rounded-md px-4 py-2 m-2 transition duration-500 ease select-none hover:bg-red-600 focus:outline-none focus:shadow-outline">
-                                            Reject
-                                        </button>
+                                        
+                                        <!-- waiting -->
+                                        <div v-if="report.status == 'delivery waiting'">
+                                            <button type="button"
+                                                class="border border-emerald-500 bg-emerald-500 text-white rounded-md px-4 py-2 m-2 transition duration-500 ease select-none hover:bg-emerald-700 focus:outline-none focus:shadow-outline">
+                                                Accept
+                                            </button>
+                                        </div>
+                                        
+                                        <div v-if="report.status == 'sending'">
+                                            <button type="button"
+                                                class="border border-indigo-500 bg-indigo-500 text-white rounded-md px-4 py-2 m-2 transition duration-500 ease select-none hover:bg-indigo-800 focus:outline-none focus:shadow-outline">
+                                                Confirm
+                                            </button>
+                                            <RouterLink to="/report">
+                                                <button type="button"
+                                                    class="border-red-500 bg-red-500 text-white rounded-md px-4 py-2 m-2 transition duration-500 ease select-none hover:bg-red-700 focus:outline-none focus:shadow-outline">
+                                                    Report
+                                                </button>
+                                            </RouterLink>
+                                        </div>
+
+                                        <div v-if="report.status == 'complete send'">
+                                            <div class="border border-gray-700 bg-gray-900 text-gray-500 rounded-md px-4 py-2 m-2 transition duration-500 ease select-none focus:outline-none focus:shadow-outline">
+                                                Done
+                                            </div>
+                                        </div>
                                     </div>
                                 </td>
                             </tr>
@@ -247,15 +215,6 @@ export default {
         showInfo: false ,
         CustomerReport: [
         {
-            id: 1,
-            order: 1,
-            name: 'Chanawut',
-            email: 'chanawut@example.com',
-            status: 'waiting',
-            reason: 'My glass broke',
-            image: '',
-        },
-        {
             id: 2,
             order_id: 2,
             name: 'Chayapol',
@@ -265,47 +224,11 @@ export default {
             image: '',
         },
         {
-            id: 3,
-            order_id: 3,
-            name: 'Mana',
-            email: 'mana@example.com',
-            status: 'rejected',
-            reason: 'The product is not beautiful.',
-            image: '',
-        },
-        {
-            id: 4,
-            order_id: 4 ,
-            name: 'Earth',
-            email: 'earth@example.com',
-            status: 'complete refund',
-            reason: '',
-            image: '',
-        },
-        {
-            id: 5,
-            order_id: 5,
-            name: 'Earth',
-            email: 'earth@example.com',
-            status: 'refunding',
-            reason: '',
-            image: '',
-        },
-        {
             id: 6,
             order_id: 6,
             name: 'Earth',
             email: 'earth@example.com',
             status: 'complete send',
-            reason: '',
-            image: '',
-        },
-        {
-            id: 7,
-            order_id: 7,
-            name: 'Earth',
-            email: 'earth@example.com',
-            status: 'audit waiting',
             reason: '',
             image: '',
         },

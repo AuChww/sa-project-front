@@ -178,8 +178,8 @@
                                 <td class="px-4 py-4 text-sm text-gray-500 dark:text-gray-300 whitespace-nowrap">{{ report.reason }}</td>
                                 <td class="px-4 py-4 text-sm whitespace-nowrap">
 
-                               
-                                    <div class="flex items-center gap-x-">
+                                <div v-if="report.status == 'waiting'">
+                                    <div class="flex items-center gap-x">
                                         <!-- send to delivery -->
                                         <button type="button"
                                             class="border border-indigo-500 bg-indigo-500 text-white rounded-md px-4 py-2 m-2 transition duration-500 ease select-none hover:bg-indigo-600 focus:outline-none focus:shadow-outline">
@@ -191,10 +191,33 @@
                                             Refund
                                         </button>
                                         <button type="button"
-                                            class="border-red-500 bg-red-500 text-white rounded-md px-4 py-2 m-2 transition duration-500 ease select-none hover:bg-red-600 focus:outline-none focus:shadow-outline">
+                                            class="border border-red-500 bg-red-500 text-white rounded-md px-4 py-2 m-2 transition duration-500 ease select-none hover:bg-red-600 focus:outline-none focus:shadow-outline">
                                             Reject
                                         </button>
                                     </div>
+                                </div>
+
+                                <div v-if="report.status == 'audit waiting' || report.status == 'delivery waiting'">
+                                    <div class="flex items-center gap-x">
+                                        <button type="button"
+                                            class="border-red-500 bg-red-500 text-white rounded-md px-4 py-2 m-2 transition duration-500 ease select-none hover:bg-red-600 focus:outline-none focus:shadow-outline">
+                                            Cancel
+                                        </button>
+                                    </div>
+                                </div>
+
+                                <div v-if="report.status == 'complete refund' || report.status == 'complete send'">
+                                    <div class="flex items-center w-16 border border-gray-700 bg-gray-900 text-gray-500 rounded-md px-4 py-2 m-2 transition duration-500 ease select-none focus:outline-none focus:shadow-outline">
+                                        Done
+                                    </div>
+                                </div>
+
+                                <div v-if="report.status == 'refunding' || report.status == 'sending'">
+                                    <div class="flex items-center w-36 border border-gray-700 bg-gray-900 text-gray-500 rounded-md px-4 py-2 m-2 transition duration-500 ease select-none focus:outline-none focus:shadow-outline">
+                                        In the Processing
+                                    </div>
+                                </div>
+
                                 </td>
                             </tr>
 
