@@ -8,7 +8,7 @@
         <p>Amount: ${{ amount }}</p>
     </div>
 
-    <form class="mt-5 grid gap-6">
+    <form class="mt-5 w-50 mx-auto grid gap-6">
         <div class="relative">
             <input class="peer hidden" id="radio_1" type="radio" name="radio" checked />
             <span class="peer-checked:border-gray-700 absolute right-4 top-1/2 box-content block h-3 w-3 -translate-y-1/2 rounded-full border-8 border-gray-300 bg-white"></span>
@@ -62,7 +62,7 @@
             <button @click="saveBillAsPNG" class="bold-text">Save as PNG</button>
           </div>
         </form>
-        
+
     </div>
 </template>
 
@@ -115,14 +115,14 @@ input[type=submit]:hover {
 </style>
 
 <script>
-import html2canvas from 'html2canvas';
-import { saveAs } from 'file-saver';
+
 
 export default {
   data() {
     return {
       currentDate: new Date().toLocaleDateString(),
       amount: 100.00,
+      
     };
   },
   methods: {
