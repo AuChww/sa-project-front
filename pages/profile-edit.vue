@@ -42,7 +42,7 @@
 
                                 <button for="upload" type="button"  >
                                     <label for="upload"
-                                        class="bg-gray-500 hover:bg-gray-700 text-white py-1 px-2 rounded cursor-pointer">
+                                        class="bg-gray-500 hover:bg-gray-400 text-white py-1 px-2 rounded cursor-pointer">
                                         Upload Picture
                                     </label>
                                     <input type="file" id="upload" class="hidden">
@@ -147,7 +147,7 @@
 
             
             <router-link to="profile"
-                class="rounded relative inline-flex group items-center justify-center px-3.5 py-2 m-1 cursor-pointer border-b-4 border-l-2 active:border-purple-600 active:shadow-none shadow-lg bg-gradient-to-tr from-blue-600 to-blue-500 border-blue-700 text-white">Cancel
+                class="rounded relative inline-flex group items-center justify-center px-2 py-1 m-1 cursor-pointer text-white bg-gray-500 text-grey hover:bg-gray-400">Cancel
                 
             </router-link>
             <button type="submit"
