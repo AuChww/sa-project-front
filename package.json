@@ -11,16 +11,24 @@
   },
   "devDependencies": {
     "@nuxt/devtools": "latest",
+    "@pinia-plugin-persistedstate/nuxt": "^1.1.2",
     "autoprefixer": "^10.4.15",
     "nuxt": "^3.7.3",
     "postcss": "^8.4.29",
     "tailwindcss": "^3.3.3"
   },
   "dependencies": {
+    "@pinia/nuxt": "^0.4.11",
+    "@vueuse/nuxt": "^10.4.1",
+    "amqplib": "^0.10.3",
+    "core-js": "^3.32.2",
     "emailjs-com": "^3.2.0",
     "file-saver": "^2.0.5",
     "html2canvas": "^1.4.1",
+    "pinia": "^2.1.6",
+    "pinia-plugin-persistedstate": "^3.2.0",
     "swiper": "^10.2.0",
-    "tailwind": "^4.0.0"
+    "tailwind": "^4.0.0",
+    "uuid": "^9.0.1"
   }
 }
