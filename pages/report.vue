@@ -94,14 +94,14 @@ export default {
       reason: [
       {
           id: 1,
-          name: 'asda',
-          description: 'Explore our latest computer Components.',
+          name: 'Product issue',
+          description: 'If you have a problem with your product please select this option',
           image: '',
       },
       {
           id: 2,
-          name: 'asd',
-          description: 'Explore our latest computer Components.',
+          name: 'Refund',
+          description: 'If you have a problem with your Refund',
           image: '',
       },
       ]
