@@ -11,15 +11,88 @@
                     <h2 class="text-4xl font-semibold">CPU</h2>
                 </div>
 
-                <div
-                    class="embed-responsive embed-responsive-21by9 relative w-full overflow-hidden"
-                    style="padding-top: 42.857143%">
-                    <iframe
-                        class="embed-responsive-item absolute bottom-0 left-0 right-0 top-0 h-full w-full"
-                        src="https://www.youtube.com/embed/vlDzYIIOYmM?enablejsapi=1&amp;origin=https%3A%2F%2Fmdbootstrap.com"
-                        allowfullscreen=""
-                        data-gtm-yt-inspected-2340190_699="true"
-                        id="240632615"></iframe>
+                <div id="carouselExampleCaptions" class="relative" data-te-carousel-init data-te-ride="carousel">
+                    <!--Carousel indicators-->
+                    <div class="absolute bottom-0 left-0 right-0 z-[2] mx-[15%] mb-4 flex list-none justify-center p-0"
+                        data-te-carousel-indicators>
+                        <button type="button" data-te-target="#carouselExampleCaptions" data-te-slide-to="0"
+                            data-te-carousel-active
+                            class="mx-[3px] box-content h-[3px] w-[30px] flex-initial cursor-pointer border-0 border-y-[10px] border-solid border-transparent bg-white bg-clip-padding p-0 -indent-[999px] opacity-50 transition-opacity duration-[600ms] ease-[cubic-bezier(0.25,0.1,0.25,1.0)] motion-reduce:transition-none"
+                            aria-current="true" aria-label="Slide 1"></button>
+                        <button type="button" data-te-target="#carouselExampleCaptions" data-te-slide-to="1"
+                            class="mx-[3px] box-content h-[3px] w-[30px] flex-initial cursor-pointer border-0 border-y-[10px] border-solid border-transparent bg-white bg-clip-padding p-0 -indent-[999px] opacity-50 transition-opacity duration-[600ms] ease-[cubic-bezier(0.25,0.1,0.25,1.0)] motion-reduce:transition-none"
+                            aria-label="Slide 2"></button>
+                        <button type="button" data-te-target="#carouselExampleCaptions" data-te-slide-to="2"
+                            class="mx-[3px] box-content h-[3px] w-[30px] flex-initial cursor-pointer border-0 border-y-[10px] border-solid border-transparent bg-white bg-clip-padding p-0 -indent-[999px] opacity-50 transition-opacity duration-[600ms] ease-[cubic-bezier(0.25,0.1,0.25,1.0)] motion-reduce:transition-none"
+                            aria-label="Slide 3"></button>
+                    </div>
+
+                    <!--Carousel items-->
+                    <div class="relative w-full overflow-hidden after:clear-both after:block after:content-['']">
+                        <!--First item-->
+                        <div class="relative float-left -mr-[100%] w-full transition-transform duration-[600ms] ease-in-out motion-reduce:transition-none"
+                            data-te-carousel-active data-te-carousel-item style="backface-visibility: hidden">
+                            <img src="https://tecdn.b-cdn.net/img/Photos/Slides/img%20(15).jpg" class="block w-full"
+                                alt="..." />
+                            <div class="absolute inset-x-[15%] bottom-5 hidden py-5 text-center text-white md:block">
+                                <h5 class="text-xl">First slide label</h5>
+                                <p>
+                                    Some representative placeholder content for the first slide.
+                                </p>
+                            </div>
+                        </div>
+                        <!--Second item-->
+                        <div class="relative float-left -mr-[100%] hidden w-full transition-transform duration-[600ms] ease-in-out motion-reduce:transition-none"
+                            data-te-carousel-item style="backface-visibility: hidden">
+                            <img src="https://tecdn.b-cdn.net/img/Photos/Slides/img%20(22).jpg" class="block w-full"
+                                alt="..." />
+                            <div class="absolute inset-x-[15%] bottom-5 hidden py-5 text-center text-white md:block">
+                                <h5 class="text-xl">Second slide label</h5>
+                                <p>
+                                    Some representative placeholder content for the second slide.
+                                </p>
+                            </div>
+                        </div>
+                        <!--Third item-->
+                        <div class="relative float-left -mr-[100%] hidden w-full transition-transform duration-[600ms] ease-in-out motion-reduce:transition-none"
+                            data-te-carousel-item style="backface-visibility: hidden">
+                            <img src="https://tecdn.b-cdn.net/img/Photos/Slides/img%20(23).jpg" class="block w-full"
+                                alt="..." />
+                            <div class="absolute inset-x-[15%] bottom-5 hidden py-5 text-center text-white md:block">
+                                <h5 class="text-xl">Third slide label</h5>
+                                <p>
+                                    Some representative placeholder content for the third slide.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!--Carousel controls - prev item-->
+                    <button
+                        class="absolute bottom-0 left-0 top-0 z-[1] flex w-[15%] items-center justify-center border-0 bg-none p-0 text-center text-white opacity-50 transition-opacity duration-150 ease-[cubic-bezier(0.25,0.1,0.25,1.0)] hover:text-white hover:no-underline hover:opacity-90 hover:outline-none focus:text-white focus:no-underline focus:opacity-90 focus:outline-none motion-reduce:transition-none"
+                        type="button" data-te-target="#carouselExampleCaptions" data-te-slide="prev">
+                        <span class="inline-block h-8 w-8">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                                stroke="currentColor" class="h-6 w-6">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
+                            </svg>
+                        </span>
+                        <span
+                            class="!absolute !-m-px !h-px !w-px !overflow-hidden !whitespace-nowrap !border-0 !p-0 ![clip:rect(0,0,0,0)]">Previous</span>
+                    </button>
+                    <!--Carousel controls - next item-->
+                    <button
+                        class="absolute bottom-0 right-0 top-0 z-[1] flex w-[15%] items-center justify-center border-0 bg-none p-0 text-center text-white opacity-50 transition-opacity duration-150 ease-[cubic-bezier(0.25,0.1,0.25,1.0)] hover:text-white hover:no-underline hover:opacity-90 hover:outline-none focus:text-white focus:no-underline focus:opacity-90 focus:outline-none motion-reduce:transition-none"
+                        type="button" data-te-target="#carouselExampleCaptions" data-te-slide="next">
+                        <span class="inline-block h-8 w-8">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                                stroke="currentColor" class="h-6 w-6">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
+                            </svg>
+                        </span>
+                        <span
+                            class="!absolute !-m-px !h-px !w-px !overflow-hidden !whitespace-nowrap !border-0 !p-0 ![clip:rect(0,0,0,0)]">Next</span>
+                    </button>
                 </div>
 
                 <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-8 mt-6">
@@ -126,46 +199,60 @@
                         image: 'https://www.jib.co.th/img_master/product/original/2021102715152349469_1.png',
                         price: "454 $",
                     },
+
                     {
                         id: 2,
-                        name: 'Gigabyte Nvidia Geforce RTX 3060',
-                        description: 'Find the perfect laptop for your needs.',
-                        image: 'https://www.jib.co.th/img_master/product/original/2021061814352847269_1.jpg',
+                        name: 'Intel Core i9-11900K',
+                        description: '10 (6P+4E) Cores 16 Threads Intel UHD Graphics 770 CPU Cooler Not Included PCIe 5.0 and 4.0',
+                        image: 'https://media-cdn.bnn.in.th/237836/BX8070811900K-1-square_medium.jpg',
                         price: "454 $",
                     },
+
                     {
                         id: 3,
-                        name: 'Accessories',
-                        description: 'Enhance your gadgets with our accessories.',
-                        image: 'https://cdn-icons-png.flaticon.com/512/2758/2758761.png',
+                        name: 'AMD Ryzen 9 5950X',
+                        description: '10 (6P+4E) Cores 16 Threads Intel UHD Graphics 770 CPU Cooler Not Included PCIe 5.0 and 4.0',
+                        image: 'https://img.advice.co.th/images_nas/pic_product4/A0133528/A0133528OK_BIG_1.jpg',
                         price: "454 $",
                     },
+
                     {
                         id: 4,
-                        name: 'Software',
-                        description: 'Upgrade your software tools.',
-                        image: 'https://cdn-icons-png.flaticon.com/512/2606/2606514.png',
+                        name: 'AMD Ryzen 7 5800X',
+                        description: '10 (6P+4E) Cores 16 Threads Intel UHD Graphics 770 CPU Cooler Not Included PCIe 5.0 and 4.0',
+                        image: 'https://img.advice.co.th/images_nas/pic_product4/A0133526/A0133526OK_BIG_1.jpg',
                         price: "454 $",
                     },
+
                     {
                         id: 5,
-                        name: 'Laptops',
-                        description: 'Find the perfect laptop for your needs.',
-                        image: 'https://cdn-icons-png.flaticon.com/512/2482/2482264.png',
+                        name: 'Intel Core i7-11700K',
+                        description: '10 (6P+4E) Cores 16 Threads Intel UHD Graphics 770 CPU Cooler Not Included PCIe 5.0 and 4.0',
+                        image: 'https://media-cdn.bnn.in.th/108082/Intel-CPU-Core-i7-11700K-3.6-GHz-8C-16T-LGA1200-1-square_medium.jpg',
                         price: "454 $",
                     },
+
                     {
                         id: 6,
-                        name: 'Accessories',
-                        description: 'Enhance your gadgets with our accessories.',
-                        image: 'https://cdn-icons-png.flaticon.com/512/2758/2758761.png',
+                        name: 'AMD Ryzen 5 5600x',
+                        description: '10 (6P+4E) Cores 16 Threads Intel UHD Graphics 770 CPU Cooler Not Included PCIe 5.0 and 4.0',
+                        image: 'https://media-cdn.bnn.in.th/52091/AMD-CPU-Ryzen-5-5600X-3.7GHz-6C-12T-AM4-gen5-1.jpg',
                         price: "454 $",
                     },
+
                     {
                         id: 7,
-                        name: 'Software',
-                        description: 'Upgrade your software tools.',
-                        image: 'https://cdn-icons-png.flaticon.com/512/2606/2606514.png',
+                        name: 'AMD Ryzen 9 5900X',
+                        description: '10 (6P+4E) Cores 16 Threads Intel UHD Graphics 770 CPU Cooler Not Included PCIe 5.0 and 4.0',
+                        image: 'https://www.jib.co.th/img_master/product/original/2020110315571243473_1.jpg',
+                        price: "454 $",
+                    },
+
+                    {
+                        id: 8,
+                        name: 'Intel Core i9-10900K',
+                        description: '10 (6P+4E) Cores 16 Threads Intel UHD Graphics 770 CPU Cooler Not Included PCIe 5.0 and 4.0',
+                        image: 'https://www.jib.co.th/img_master/product/original/2020051316293839042_1.jpg',
                         price: "454 $",
                     },
                 ],
