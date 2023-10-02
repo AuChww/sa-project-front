@@ -100,7 +100,9 @@
                     <!-- CPU Cards -->
                     <div v-for="product in CPU" :key="product.id"
                         class="bg-white shadow-md p-3 rounded-lg hover:scale-105 transition-all duration-500">
-                        <img :src="product.image" alt="Product Image" class="w-full h-100 object-cover mb-4">
+                        <RouterLink to="/product/">
+                            <img :src="product.image" alt="Product Image" class="w-full h-100 object-cover mb-4">
+                        </RouterLink>
                         <h3 class="text-xl font-semibold">{{ product.name }}</h3>
                         <p class="text-gray-600">{{ product.description }}</p>
                         <div class="mt-4 flex items-center justify-between">
@@ -126,7 +128,9 @@
                     <!-- Main Board Cards -->
                     <div v-for="product in MainBoard" :key="product.id"
                         class="bg-white shadow-md p-3 rounded-lg hover:scale-105 transition-all duration-500">
-                        <img :src="product.image" alt="Product Image" class="w-full h-100 object-cover mb-4">
+                        <RouterLink to="/product/">
+                            <img :src="product.image" alt="Product Image" class="w-full h-100 object-cover mb-4">
+                        </RouterLink>
                         <h3 class="text-xl font-semibold">{{ product.name }}</h3>
                         <p class="text-gray-600">{{ product.description }}</p>
                         <div class="mt-4 flex items-center justify-between">
@@ -152,7 +156,9 @@
                     <!-- GPU Cards -->
                     <div v-for="product in GPU" :key="product.id"
                         class="bg-white shadow-md p-3 rounded-lg hover:scale-105 transition-all duration-500">
-                        <img :src="product.image" alt="Product Image" class="w-full h-100 object-cover mb-4">
+                        <RouterLink to="/product/">
+                            <img :src="product.image" alt="Product Image" class="w-full h-100 object-cover mb-4">
+                        </RouterLink>
                         <h3 class="text-xl font-semibold">{{ product.name }}</h3>
                         <p class="text-gray-600">{{ product.description }}</p>
                         <div class="mt-4 flex items-center justify-between">
@@ -178,7 +184,9 @@
                     <!-- RAM Cards -->
                     <div v-for="product in RAM" :key="product.id"
                         class="bg-white shadow-md p-3 rounded-lg hover:scale-105 transition-all duration-500">
-                        <img :src="product.image" alt="Product Image" class="w-full h-100 object-cover mb-4">
+                        <RouterLink to="/product/">
+                            <img :src="product.image" alt="Product Image" class="w-full h-100 object-cover mb-4">
+                        </RouterLink>
                         <h3 class="text-xl font-semibold">{{ product.name }}</h3>
                         <p class="text-gray-600">{{ product.description }}</p>
                         <div class="mt-4 flex items-center justify-between">
@@ -204,7 +212,9 @@
                     <!-- Harddisk Cards -->
                     <div v-for="product in Harddisk" :key="product.id"
                         class="bg-white shadow-md p-3 rounded-lg hover:scale-105 transition-all duration-500">
-                        <img :src="product.image" alt="Product Image" class="w-full h-100 object-cover mb-4">
+                        <RouterLink to="/product/">
+                            <img :src="product.image" alt="Product Image" class="w-full h-100 object-cover mb-4">
+                        </RouterLink>
                         <h3 class="text-xl font-semibold">{{ product.name }}</h3>
                         <p class="text-gray-600">{{ product.description }}</p>
                         <div class="mt-4 flex items-center justify-between">
@@ -230,7 +240,9 @@
                     <!-- Accessary Cards -->
                     <div v-for="product in Accessary" :key="product.id"
                         class="bg-white shadow-md p-3 rounded-lg hover:scale-105 transition-all duration-500">
-                        <img :src="product.image" alt="Product Image" class="w-full h-100 object-cover mb-4">
+                        <RouterLink to="/product/">
+                            <img :src="product.image" alt="Product Image" class="w-full h-100 object-cover mb-4">
+                        </RouterLink>
                         <h3 class="text-xl font-semibold">{{ product.name }}</h3>
                         <p class="text-gray-600">{{ product.description }}</p>
                         <div class="mt-4 flex items-center justify-between">
@@ -256,7 +268,9 @@
                     <!-- Gaming Gear Cards -->
                     <div v-for="product in GamingGear" :key="product.id"
                         class="bg-white shadow-md p-3 rounded-lg hover:scale-105 transition-all duration-500">
-                        <img :src="product.image" alt="Product Image" class="w-full h-100 object-cover mb-4">
+                        <RouterLink to="/product/">
+                            <img :src="product.image" alt="Product Image" class="w-full h-100 object-cover mb-4">
+                        </RouterLink>
                         <h3 class="text-xl font-semibold">{{ product.name }}</h3>
                         <p class="text-gray-600">{{ product.description }}</p>
                         <div class="mt-4 flex items-center justify-between">
