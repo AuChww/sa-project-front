@@ -69,8 +69,8 @@ async function onSubmit() {
                 method: 'POST'
             })
             if (user.value !== null) {
-                auth.setUser(user.value.name, user.value.email)
-                await navigateTo('/dashboard')
+                auth.setUser(user.value.name, user.value.email, user.value.role, user.value.username, user.value.address)
+                await navigateTo('/profile')
             } else {
                 auth.clear()
                 errorMessage.value = "Please try again."

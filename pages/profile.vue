@@ -13,8 +13,17 @@
                 src='https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=400&fit=max&ixid=eyJhcHBfaWQiOjE0NTg5fQ'
                 alt='Woman looking front'>
         </div>
-        <div class="text-center mt-2">
-            <h2 class="font-semibold">AuAu 5678</h2>
+        <div class="text-center mt-4">
+            <h2 class="font-semibold">{{ auth.user.role }}</h2>
+            <h2 class="font-semibold">{{ auth.user.username }}</h2>
+            <h2 class="font-semibold">{{ auth.user.name }}</h2>
+            <h2 class="font-semibold">{{ auth.user.address }}</h2>
+            <button v-if="!auth.isLogin" class="mt-5 inline-block px-4 py-2 bg-blue-600 hover:bg-blue-400 rounded-md text-white " @click="navigateTo('/login')">
+                Login
+            </button>
+            <button v-if="auth.isLogin" class="mt-5 inline-block px-4 py-2 bg-blue-600 hover:bg-blue-400 rounded-md text-white " @click="onLogout()">
+                Logout
+            </button>
 
         </div>
         <ul class="py-4 mt-2 text-gray-700 flex items-center justify-around">
@@ -64,3 +73,19 @@
 
     </div>
 </template>
+
+<script setup lang="ts">
+import { useAuthStore } from "~/stores/useAuthStore";
+
+const auth = useAuthStore()
+
+async function onLogout() {
+  const { data: response, error } = await useMyFetch<any>('auth/logout', {
+    method: 'POST'
+  })
+  if (response.value !== null) {
+    auth.clear()
+    await navigateTo('/login')
+  }
+}
+</script>
