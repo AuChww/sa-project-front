@@ -1,6 +1,15 @@
 <template>
     <Navbar />
     <!-- customer , audit , admin-->
+
+    <section :style="{'background-image':'url(https://t3.ftcdn.net/jpg/05/11/25/36/360_F_511253627_zuzpapnIVQueMx4eSL1ilAoH61OBgj0C.jpg)'}" class="bg-blue-900 text-white py-16">
+        <div class="container mx-auto text-center">
+            <h1 class="text-3xl md:text-5xl lg:text-6xl font-extrabold mb-4 transition-all">
+                ORDER CHECK
+            </h1>
+        </div>
+    </section>
+
     <div id="bill">
         <!-- Your bill content goes here -->
         <h1>Bill</h1>
@@ -80,7 +89,6 @@
   margin:auto;
   text-align: center;
   border-radius: 5px;
-  background-color: #f2f2f2;
   padding: 20px;
   width: 50%;
 }

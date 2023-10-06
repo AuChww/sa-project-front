@@ -1,9 +1,14 @@
 <template>
     <Navbar />
-    <h1 class="text-center text-3xl mt-8 mb-4">
-        PRODUCT CHECK
-    </h1>
-    <section class="container px-4 mx-auto">
+    <section :style="{'background-image':'url(https://t3.ftcdn.net/jpg/05/11/25/36/360_F_511253627_zuzpapnIVQueMx4eSL1ilAoH61OBgj0C.jpg)'}" class="bg-blue-900 text-white py-16">
+        <div class="container mx-auto text-center">
+            <h1 class="text-3xl md:text-5xl lg:text-6xl font-extrabold mb-4 transition-all">
+                PRODUCTS CHECK
+            </h1>
+        </div>
+    </section>
+    
+    <section class="container mt-4 px-4 mx-auto">
     <div class="flex flex-col">
         <div class="-mx-4 -my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
             <div class="inline-block min-w-full py-2 align-middle md:px-6 lg:px-8">

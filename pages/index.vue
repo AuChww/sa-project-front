@@ -14,7 +14,7 @@
                 <p class="text-base md:text-lg lg:text-xl mb-8 transition-all">Discover the latest and greatest
                     electronic gadgets and computer accessories.
                 </p>
-                <a href="#Product"
+                <a href="#Feature Product"
                     class="bg-white text-blue-900 hover:bg-blue-700 hover:text-white px-6 py-3 rounded-full text-lg font-semibold transition duration-300 ease-in-out">
                     Shop Now
                 </a>

@@ -40,31 +40,21 @@
     </div>
     </div>
 
-    <div class="sm:mx-auto mt-4">
-        <img :src="image" />
+    <div class="mt-4 text-center">
+        <div class="mx-auto items-center">
+            <img :src="image" />
+        </div>
 
         <form @submit.prevent="submitForm" enctype="multipart/form-data">
-            <div>
-                <label for="image">Upload Image:</label>
+            <div class="mx-20 bg-gray-50 w-80 border border-gray-300 text-gray-900 text-xl rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                 <input type="file" id="image" ref="imageInput" accept="image/*" />
             </div>
             <!-- Add other form fields if needed -->
             <div>
-                <button type="submit">Submit</button>
+                <button type="submit" class="mt-2 w-40 rounded-md bg-blue-500 px-6 py-3 font-medium text-white">Submit</button>
             </div>
         </form>
-        
-        <div class="flex font-medium mx-auto mt-8 mb-4">
-            <h1>Confirm Payment</h1>
-        </div>
-        <div class="inline-flex mx-auto items-center justify space-x-2">
-            <RouterLink to="/order/order-status">
-                <button class="w-60 rounded-md bg-blue-500 px-6 py-3 font-medium text-white">Yes</button>
-            </RouterLink>
-            <RouterLink to="/customer/shipping">
-                <button class="w-60 rounded-md bg-red-500 px-6 py-3 font-medium text-white">Back</button>
-            </RouterLink>
-        </div>
+
     </div>
 
 </template>

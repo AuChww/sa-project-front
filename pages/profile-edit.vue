@@ -2,12 +2,12 @@
 <template>
     <Navbar />
     <div class="mx-96 my-24 bg-gray-200 shadow-xl rounded-3xl p-8">
-        <h2 class="mx-72 font-semibold text-xl">
+        <h2 class="mx-auto font-semibold text-xl">
             Edit Profile
         </h2>
 
         <form>
-            <div class="space-y-12">
+            <div class="mx-auto my-12">
                 <div class="border-b border-gray-900/10 pb-12">
 
                     <div class="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
