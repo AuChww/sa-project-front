@@ -14,6 +14,8 @@ export default defineNuxtConfig({
   },
   modules: [
     '@pinia/nuxt','@vueuse/nuxt','@pinia/nuxt','@pinia-plugin-persistedstate/nuxt',
+    
   ],
   devtools: { enabled: true }
 })
+

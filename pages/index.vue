@@ -1,12 +1,15 @@
+
 <template>
     <!-- all roles -->
     <Navbar />
     <Sidebar />
     <Cart />
     <div>
+        
 
         <!-- Showcase Header -->
         <section :style="{'background-image':'url(https://t3.ftcdn.net/jpg/05/11/25/36/360_F_511253627_zuzpapnIVQueMx4eSL1ilAoH61OBgj0C.jpg)'}" class="bg-blue-900 text-white py-16">
+            
             <div class="container mx-auto text-center">
                 <h1 class="text-3xl md:text-5xl lg:text-6xl font-extrabold mb-4 transition-all">
                     Welcome to Our Electronics and Computer Store
@@ -15,14 +18,27 @@
                     electronic gadgets and computer accessories.
                 </p>
                 <a href="#Feature Product"
-                    class="bg-white text-blue-900 hover:bg-blue-700 hover:text-white px-6 py-3 rounded-full text-lg font-semibold transition duration-300 ease-in-out">
+                    class="bg-white text-blue-900 hover:animate-bounce hover:bg-blue-700 hover:text-white px-6 py-3 rounded-full text-lg font-semibold transition duration-300 ease-in-out">
                     Shop Now
                 </a>
+                <ul class="circles">
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                </ul>
             </div>
         </section>
-
+        
         <!-- Product Categories Carousel -->
-        <section class="bg-gray-100 py-16">
+        <section class="bg-gray-100 py-16 ">
             <div class="container mx-auto text-center">
                 <h2 class="text-3xl font-semibold mb-4">Explore Our Categories</h2>
                 <p class="text-gray-600 text-base mb-8 transition-all">Swipe left-right through the cataegory.</p>
@@ -916,6 +932,25 @@
     
 </script>
 
-<style scoped>
-    /* Tailwind CSS classes and custom styling */
+<style>
+  
+
+  .background-animate {
+    z-index: -10;
+    background-size: 400%;
+
+    -webkit-animation: AnimationName 3s ease infinite;
+    -moz-animation: AnimationName 3s ease infinite;
+    animation: AnimationName 3s ease infinite;
+  }
+
+  @keyframes AnimationName {
+    0%,
+    100% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+  }
 </style>

@@ -3,7 +3,7 @@
     <Navbar />
     <section :style="{'background-image':'url(https://t3.ftcdn.net/jpg/05/11/25/36/360_F_511253627_zuzpapnIVQueMx4eSL1ilAoH61OBgj0C.jpg)'}" class="bg-blue-900 text-white py-16">
         <div class="container mx-auto text-center">
-            <h1 class="text-3xl md:text-5xl lg:text-6xl font-extrabold mb-4 transition-all">
+            <h1 class="text-3xl md:text-5xl lg:text-6xl font-extrabold mb-4 transition-all animate-pulse">
                 ADD PRODUCT
             </h1>
         </div>

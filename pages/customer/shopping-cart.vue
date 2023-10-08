@@ -5,7 +5,7 @@
       <div class="relative">
       <ul class="relative flex w-full items-center justify-between space-x-2 sm:space-x-8">
           
-          <li class="flex items-center space-x-3 text-left sm:space-x-4">
+          <li class="flex items-center space-x-3 text-left sm:space-x-4 animate-bounce">
               <a class="flex h-6 w-6 items-center justify-center rounded-full bg-gray-600 text-xs font-semibold text-white ring ring-gray-600 ring-offset-2">1</a>
           <span class="font-semibold text-gray-900">Shop</span>
           </li>

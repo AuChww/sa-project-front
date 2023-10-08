@@ -17,69 +17,221 @@
         <p>Amount: ${{ amount }}</p>
     </div>
 
-    <form class="mt-5 w-50 mx-auto grid gap-6">
-        <div class="relative">
-            <input class="peer hidden" id="radio_1" type="radio" name="radio" checked />
-            <span class="peer-checked:border-gray-700 absolute right-4 top-1/2 box-content block h-3 w-3 -translate-y-1/2 rounded-full border-8 border-gray-300 bg-white"></span>
-            <label class="peer-checked:border-2 peer-checked:border-gray-700 peer-checked:bg-gray-50 flex cursor-pointer select-none rounded-lg border border-gray-300 p-4" for="radio_1">
-            <img class="w-14 object-contain" src="" alt="" />
-            <div class="ml-5">
-                <span class="mt-2 font-semibold">Fedex Delivery</span>
-                <p class="text-slate-500 text-sm leading-6">Delivery: 2-4 Days</p>
-            </div>
-            </label>
-        </div>
-        <div class="relative">
-            <input class="peer hidden" id="radio_2" type="radio" name="radio" checked />
-            <span class="peer-checked:border-gray-700 absolute right-4 top-1/2 box-content block h-3 w-3 -translate-y-1/2 rounded-full border-8 border-gray-300 bg-white"></span>
-            <label class="peer-checked:border-2 peer-checked:border-gray-700 peer-checked:bg-gray-50 flex cursor-pointer select-none rounded-lg border border-gray-300 p-4" for="radio_2">
-            <img class="w-14 object-contain" src="" alt="" />
-            <div class="ml-5">
-                <span class="mt-2 font-semibold">Fedex Delivery</span>
-                <p class="text-slate-500 text-sm leading-6">Delivery: 2-4 Days</p>
-            </div>
-            </label>
-        </div>
-      </form>
+    <section class="container mt-4 px-4 mx-auto">
+      <div class="flex flex-col">
+          <div class="-mx-4 -my- overflow-x-auto sm:-mx-6 lg:-mx-8">
+              <div class="inline-block min-w-full py-2 align-middle md:px-6 lg:px-8">
+                  <div class="overflow-hidden border border-gray-200 dark:border-gray-700 md:rounded-lg">
+                      <table class="min-w-full divide-y divide-gray-200 dark:divide-gray-700">
+                          <thead class="bg-gray-50 dark:bg-gray-800">
+                              <tr>
+                                  <th scope="col" class="py-3.5 px-4 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-400">
+                                      <div class="flex items-center gap-x-3">
+                                          <button class="flex items-center gap-x-2">
+                                              <span>Order</span>
+                                              <svg class="h-3" viewBox="0 0 10 11" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                  <path d="M2.13347 0.0999756H2.98516L5.01902 4.79058H3.86226L3.45549 3.79907H1.63772L1.24366 4.79058H0.0996094L2.13347 0.0999756ZM2.54025 1.46012L1.96822 2.92196H3.11227L2.54025 1.46012Z" fill="currentColor" stroke="currentColor" stroke-width="0.1" />
+                                                  <path d="M0.722656 9.60832L3.09974 6.78633H0.811638V5.87109H4.35819V6.78633L2.01925 9.60832H4.43446V10.5617H0.722656V9.60832Z" fill="currentColor" stroke="currentColor" stroke-width="0.1" />
+                                                  <path d="M8.45558 7.25664V7.40664H8.60558H9.66065C9.72481 7.40664 9.74667 7.42274 9.75141 7.42691C9.75148 7.42808 9.75146 7.42993 9.75116 7.43262C9.75001 7.44265 9.74458 7.46304 9.72525 7.49314C9.72522 7.4932 9.72518 7.49326 9.72514 7.49332L7.86959 10.3529L7.86924 10.3534C7.83227 10.4109 7.79863 10.418 7.78568 10.418C7.77272 10.418 7.73908 10.4109 7.70211 10.3534L7.70177 10.3529L5.84621 7.49332C5.84617 7.49325 5.84612 7.49318 5.84608 7.49311C5.82677 7.46302 5.82135 7.44264 5.8202 7.43262C5.81989 7.42993 5.81987 7.42808 5.81994 7.42691C5.82469 7.42274 5.84655 7.40664 5.91071 7.40664H6.96578H7.11578V7.25664V0.633865C7.11578 0.42434 7.29014 0.249976 7.49967 0.249976H8.07169C8.28121 0.249976 8.45558 0.42434 8.45558 0.633865V7.25664Z" fill="currentColor" stroke="currentColor" stroke-width="0.3" />
+                                              </svg>
+                                          </button>
+                                      </div>
+                                  </th>
 
-    <div id="bill">
-        <!-- Your bill content goes here -->
-        <form>
-          <label>Name</label>
-          <input 
-            type="text" 
-            v-model="name"
-            name="name"
-            placeholder="Your Name"
-          >
-          <label>Email</label>
-          <input 
-            type="email" 
-            v-model="email"
-            name="email"
-            placeholder="Your Email"
-            >
-          <label>Message</label>
-          <textarea 
-            name="message"
-            v-model="message"
-            cols="30" rows="5"
-            placeholder="Message">
-          </textarea>
+                                  <th scope="col" class="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-400">
+                                      Product
+                                  </th>
 
-          <div class="bg-blue-500 w-20 h-15">
-            <button @click="saveBillAsPNG" class="bold-text">Save as PNG</button>
+                                  <th scope="col" class="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-400">
+                                      Status
+                                  </th>
+
+                                  <th scope="col" class="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-400">
+                                      Customer
+                                  </th>
+
+                                  <th scope="col" class="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-400">
+                                      Purchased
+                                  </th>
+
+                                  <th scope="col" class="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-400">
+                                      Ordered
+                                  </th>
+
+                                  <th scope="col" class="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-400">
+                                      Amount
+                                  </th>
+
+                                  <th scope="col" class="relative py-3.5 px-4">
+                                      <span class="sr-only">Actions</span>
+                                  </th>
+                              </tr>
+                          </thead>
+                          
+                          <tbody v-for="order in Order" :key="order.id" class="bg-white divide-y divide-gray-200 dark:divide-gray-700 dark:bg-gray-900">
+                              <tr>
+                                  <td class="px-4 py-4 text-sm text-gray-500 dark:text-gray-300 whitespace-nowrap">{{ order.id }}</td>
+                                  <div class="py-5 whitespace-nowrap">
+                                      <button @click="toggleInfo" class="rounded-md mb-2 mt-2 px-2 py-1 text-sm font-medium text-gray-800 dark:text-white border-indigo-500 bg-gray-500">Show Information</button>
+                                      <transition name="swipe-in" mode="out-in">
+                                          <div v-if="showInfo">
+                                              <tbody v-for="product in Product" :key="product.id" class="px-4 py-4 text-sm text-gray-700 dark:text-gray-200 ">
+                                                  <div class="border-indigo-500 bg-white rounded-md">
+                                                      <div class="inline-flex items-center gap-x-3">
+                                                          <div class="ml-4 text-sm text-gray-500 font-medium">{{ product.id }}</div>
+                                                          <img :src="product.image" alt="Product Image" class="px-2 mt-2 w-full h-20 object-cover mb-2">
+                                                          <td class="font-medium text-sm text-gray-500 dark:text-gray-800 whitespace-nowrap">{{ product.price }}</td>
+                                                      </div>
+                                                      <div class="font-medium mb-2 py-1 px-2 text-sm text-gray-800 dark:text-gray-500 whitespace-nowrap">{{ product.name }}</div>
+                                                  </div>
+                                              </tbody>
+                                          </div>
+                                      </transition>
+                                  </div>
+                                  
+                                  <td class="px-4 py-4 text-sm font-medium text-gray-700 whitespace-nowrap">
+                                      <div v-if="order.status == 'waiting'">
+                                          <div class="inline-flex items-center px-3 py-1 text-yellow-500 rounded-full gap-x-2 bg-red-100/60 dark:bg-gray-800">
+                                              <svg xmlns="http://www.w3.org/2000/svg" width="50" height="10">
+                                                  <circle cx="10" cy="5" r="4" fill="yellow">
+                                                      <animate attributeName="opacity" dur="1s" values="0;1;0" repeatCount="indefinite" />
+                                                  </circle>
+                                                  <circle cx="25" cy="5" r="4" fill="yellow">
+                                                      <animate attributeName="opacity" dur="1s" begin="0.1s" values="0;1;0" repeatCount="indefinite" />
+                                                  </circle>
+                                                  <circle cx="40" cy="5" r="4" fill="yellow">
+                                                      <animate attributeName="opacity" dur="1s" begin="0.2s" values="0;1;0" repeatCount="indefinite" />
+                                                  </circle>
+                                              </svg>
+                                              <h2 class="text-sm font-normal">Waiting for Your Respond...</h2>
+                                          </div>
+                                      </div>
+
+                                      <div v-if="order.status == 'complete ordered'">
+                                          <div class="inline-flex items-center px-3 py-1 text-gray-500 rounded-full gap-x-2 bg-gray-100/60 dark:bg-gray-800">
+                                              <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                  <path d="M10 3L4.5 8.5L2 6" stroke="#667085" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                              </svg>
+
+                                              <h2 class="text-sm font-normal">Complete Ordered</h2>
+                                          </div>
+                                      </div>
+
+                                      <div v-if="order.status == 'rejected'">
+                                          <div class="inline-flex items-center px-3 py-1 rounded-full gap-x-2 text-red-500 bg-emerald-100/60 dark:bg-gray-800">
+                                              <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                  <path d="M10 3L4.5 8.5L2 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                              </svg>
+                                              <h2 class="text-sm font-normal">Rejected</h2>
+                                          </div>
+                                      </div>
+
+                                  </td>
+                                  
+                                  <td class="px-4 py-4 text-sm text-gray-500 dark:text-gray-300 whitespace-nowrap">
+                                      <div class="flex items-center gap-x-2">
+                                          <img class="object-cover w-8 h-8 rounded-full" src="" alt="">
+                                          <div>
+                                              <h2 class="text-sm font-medium text-gray-800 dark:text-white ">{{ order.name }}</h2>
+                                              <p class="text-xs font-normal text-gray-600 dark:text-gray-400">{{ order.email }}</p>
+                                          </div>
+                                      </div>
+                                  </td>
+                                  <td class="px-4 py-4 text-sm text-gray-500 dark:text-gray-300 whitespace-nowrap">{{ order.purchased }}</td>
+                                  <td class="px-4 py-4 text-sm text-gray-500 dark:text-gray-300 whitespace-nowrap">{{ order.ordered }}</td>
+                                  <td class="px-4 py-4 text-sm text-gray-500 dark:text-gray-300 whitespace-nowrap">$ {{ order.amount }}</td>
+                                  <td class="px-4 py-4 text-sm whitespace-nowrap">
+
+                                    <div v-if="order.status == 'waiting'">
+                                        <div class="flex items-center gap-x">
+                                            
+                                          <div id="bill">
+                                            <form>
+                                              <label class="text-white">Name : 
+                                                <input :key="order.name" type="text" v-model="order.name" name="name" placeholder="name" class="text-black">
+                                              </label>
+
+                                              <label class="text-white">Email : 
+                                                <input :key="order.email" type="email" v-model="order.email" name="email" placeholder="email@example.com" class="text-black">
+                                              </label>
+
+                                              <label class="text-white">Purchased : 
+                                                <input :key="order.name" type="text" v-model="order.purchased" name="purchased" placeholder="dd/mm/yy 00:00" class="text-black">
+                                              </label>
+
+                                              <label class="text-white">Amount : 
+                                                <input :key="order.amount" type="text" v-model="order.amount" name="amount" placeholder="$" class="text-black">
+                                              </label>
+
+                                              <label class="text-white">Ordered : {{currentDate}}
+                                              </label>
+                                              
+                                              <button @click="saveBillAsPNG" type="button"
+                                                  class="border border-indigo-500 bg-indigo-500 text-white rounded-md px-4 py-2 m-2 transition duration-500 ease select-none hover:bg-indigo-600 focus:outline-none focus:shadow-outline">
+                                                  Create Bill
+                                              </button>
+                                            </form>
+                                          </div>
+                                            
+                                            <button type="button"
+                                                class="border border-red-500 bg-red-500 text-white rounded-md px-4 py-2 m-2 transition duration-500 ease select-none hover:bg-red-600 focus:outline-none focus:shadow-outline">
+                                                Reject
+                                            </button>
+                                        </div>
+                                    </div>
+                                  </td>
+                                  
+                              </tr>
+                            
+
+                              
+                          </tbody>
+                      </table>
+                  </div>
+              </div>
           </div>
-        </form>
+      </div>
 
-    </div>
+      <div class="flex items-center justify-between mt-6">
+          <a href="#" class="flex items-center px-5 py-2 text-sm text-gray-700 capitalize transition-colors duration-200 bg-white border rounded-md gap-x-2 hover:bg-gray-100 dark:bg-gray-900 dark:text-gray-200 dark:border-gray-700 dark:hover:bg-gray-800">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 rtl:-scale-x-100">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M6.75 15.75L3 12m0 0l3.75-3.75M3 12h18" />
+              </svg>
+
+              <span>
+                  previous
+              </span>
+          </a>
+
+          <div class="items-center hidden md:flex gap-x-3">
+              <a href="#" class="px-2 py-1 text-sm text-blue-500 rounded-md dark:bg-gray-800 bg-blue-100/60">1</a>
+              <a href="#" class="px-2 py-1 text-sm text-gray-500 rounded-md dark:hover:bg-gray-800 dark:text-gray-300 hover:bg-gray-100">2</a>
+              <a href="#" class="px-2 py-1 text-sm text-gray-500 rounded-md dark:hover:bg-gray-800 dark:text-gray-300 hover:bg-gray-100">3</a>
+              <a href="#" class="px-2 py-1 text-sm text-gray-500 rounded-md dark:hover:bg-gray-800 dark:text-gray-300 hover:bg-gray-100">...</a>
+              <a href="#" class="px-2 py-1 text-sm text-gray-500 rounded-md dark:hover:bg-gray-800 dark:text-gray-300 hover:bg-gray-100">12</a>
+              <a href="#" class="px-2 py-1 text-sm text-gray-500 rounded-md dark:hover:bg-gray-800 dark:text-gray-300 hover:bg-gray-100">13</a>
+              <a href="#" class="px-2 py-1 text-sm text-gray-500 rounded-md dark:hover:bg-gray-800 dark:text-gray-300 hover:bg-gray-100">14</a>
+          </div>
+
+          <a href="#" class="flex items-center px-5 py-2 text-sm text-gray-700 capitalize transition-colors duration-200 bg-white border rounded-md gap-x-2 hover:bg-gray-100 dark:bg-gray-900 dark:text-gray-200 dark:border-gray-700 dark:hover:bg-gray-800">
+              <span>
+                  Next
+              </span>
+
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 rtl:-scale-x-100">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3" />
+              </svg>
+          </a>
+      </div>
+  </section>
+
 </template>
 
 <style scoped>
 /* Add your CSS styling for the bill here */
 #bill {
-  border: 1px solid #ccc;
-  padding: 20px;
+  border: 2px solid #ccc;
+  padding: 40px;
 }
 
 * {box-sizing: border-box;}
@@ -90,7 +242,7 @@
   text-align: center;
   border-radius: 5px;
   padding: 20px;
-  width: 50%;
+  
 }
 
 label {
@@ -98,19 +250,20 @@ label {
 }
 
 input[type=text], [type=email], textarea {
-  width: 100%;
-  padding: 12px;
-  border: 1px solid #ccc;
+  float: right;
+  width: 70%;
+  padding: 4px;
+  border: 1px solid #000000;
   border-radius: 4px;
   box-sizing: border-box;
   margin-top: 6px;
-  margin-bottom: 16px;
+  margin-bottom: 6px;
   resize: vertical;
 }
 
 input[type=submit] {
   background-color: #4CAF50;
-  color: white;
+  color: rgb(0, 0, 0);
   padding: 12px 20px;
   border: none;
   border-radius: 4px;
@@ -130,7 +283,71 @@ export default {
     return {
       currentDate: new Date().toLocaleDateString(),
       amount: 100.00,
-      
+      showInfo: false ,
+        Order: [
+        {
+            id: 1,
+            order: 1,
+            name: 'Chanawut',
+            email: 'chanawut@example.com',
+            status: 'waiting',
+            purchased: '04/09/23 20:03',
+            ordered: '-',
+            image: '',
+            amount: 900,
+        },
+        {
+            id: 2,
+            order_id: 2,
+            name: 'Chayapol',
+            email: 'chayapol@example.com',
+            status: 'complete ordered',
+            purchased: '07/09/23 12:31',
+            ordered: '-',
+            image: '',
+            amount: 900,
+        },
+        {
+            id: 3,
+            order_id: 3,
+            name: 'Mana',
+            email: 'mana@example.com',
+            status: 'rejected',
+            purchased: '08/09/23 08:09',
+            ordered: '-',
+            image: '',
+            amount: 900,
+        },
+        {
+            id: 4,
+            order_id: 4 ,
+            name: 'Earth',
+            email: 'earth@example.com',
+            status: 'complete ordered',
+            purchased: '08/09/23 22:03',
+            ordered: '-',
+            image: '',
+            amount: 900,
+        },
+        
+        ],
+        Product: [
+        {
+            id: 1,
+            name: 'Intel Core I5 12600K',
+            description: '10 (6P+4E) Cores 16 Threads Intel UHD Graphics 770 CPU Cooler Not Included PCIe 5.0 and 4.0',
+            image: 'https://www.jib.co.th/img_master/product/original/2021102715152349469_1.png',
+            price: "454 $",
+        },
+        {
+            id: 2,
+            name: 'MSI MPG B550 Gaming Carbon WiFi',
+            description: '10 (6P+4E) Cores 16 Threads Intel UHD Graphics 770 CPU Cooler Not Included PCIe 5.0 and 4.0',
+            image: 'https://www.ascenti.co.th/wp-content/uploads/2020/07/msi-MPG-B550-GAMING-CARBON-WIFI-2.jpg',
+            price: "454 $",
+        },
+        
+        ]
     };
   },
   methods: {
@@ -143,6 +360,9 @@ export default {
         saveAs(blob, 'bill.png');
       });
     },
+    toggleInfo() {
+      this.showInfo = !this.showInfo;
+    }
   },
 };
 </script>
