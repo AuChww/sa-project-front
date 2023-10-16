@@ -12,9 +12,8 @@
                 <div>
                     <label for="email" class="block text-sm font-medium leading-6 text-gray-900">Email</label>
                     <div class="mt-2">
-                        <input id="email" v-model="formData.email" name="email" type="email"
-                            autocomplete="email" required
-                            class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+                        <input id="email" v-model="formData.email" name="email" type="email" autocomplete="email"
+                            class="block w-full rounded-md border-0 p-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
                     </div>
                 </div>
 
@@ -27,10 +26,12 @@
                     </div>
                     <div class="mt-2">
                         <input id="password" v-model="formData.password" name="password" type="password"
-                            autocomplete="current-password" required
-                            class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+                            autocomplete="current-password"
+                            class="block w-full rounded-md border-0 p-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
                     </div>
                 </div>
+
+                <div class="text-red-600" v-if="errorMessage">{{ errorMessage }}</div>
 
                 <div>
                     <button type="submit"
@@ -39,25 +40,29 @@
                 </div>
             </form>
 
+
             <p class="mt-10 text-center text-sm text-gray-500">
                 Don't have an account?
-                <router-link to="/login/register" class="font-semibold leading-6 text-indigo-600 hover:text-indigo-500">Sign
+                <router-link to="/register" class="font-semibold leading-6 text-indigo-600 hover:text-indigo-500">Sign
                     up</router-link>
+                or
+                <router-link to="/" class="font-semibold leading-6 text-indigo-600 hover:text-indigo-500">Back</router-link>
             </p>
 
-        </div>  
+        </div>
     </div>
 </template>
   
 <script setup lang="ts">
+
 import { useAuthStore } from "~/stores/useAuthStore"
 
 const auth = await useAuthStore()
-const errorMessage = ref < string | undefined > ("")
+const errorMessage = ref<string | undefined>("")
 const formData = reactive({ email: "", password: "" })
 
 async function onSubmit() {
-    const { data: response, error } = await useMyFetch < any > ('auth/login', {
+    const { data: response, error } = await useMyFetch<any>('auth/login', {
         method: 'POST',
         body: formData
     })
@@ -65,7 +70,7 @@ async function onSubmit() {
         const { access_token, token_type } = response.value
         if (access_token !== "") {
             auth.setNewToken(access_token)
-            const { data: user, error } = await useMyFetch < any > ('auth/me', {
+            const { data: user, error } = await useMyFetch<any>('auth/me', {
                 method: 'POST'
             })
             if (user.value !== null) {
@@ -75,11 +80,9 @@ async function onSubmit() {
                 auth.clear()
                 errorMessage.value = "Please try again."
             }
-
         }
     } else {
         errorMessage.value = error.value?.data.message
     }
 }
 </script>
-  
