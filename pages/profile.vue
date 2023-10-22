@@ -31,12 +31,6 @@
             <h2 class="font-semibold">{{ auth.user.username }}</h2>
             <h2 class="font-semibold">{{ auth.user.name }}</h2>
             <h2 class="font-semibold">{{ auth.user.address }}</h2>
-            <button v-if="!auth.isLogin" class="mt-5 inline-block px-4 py-2 bg-blue-600 hover:bg-blue-400 rounded-md text-white " @click="navigateTo('/login')">
-                Login
-            </button>
-            <button v-if="auth.isLogin" class="mt-5 inline-block px-4 py-2 bg-blue-600 hover:bg-blue-400 rounded-md text-white " @click="onLogout()">
-                Logout
-            </button>
 
         </div>
         <ul class="py-4 mt-2 text-gray-700 flex items-center justify-around">
@@ -92,6 +86,9 @@ import { useAuthStore } from "~/stores/useAuthStore";
 
 const auth = useAuthStore()
 
+definePageMeta({
+    middleware: 'authenticated' //Auth checker
+})
 async function onLogout() {
   const { data: response, error } = await useMyFetch<any>('auth/logout', {
     method: 'POST'
@@ -101,4 +98,5 @@ async function onLogout() {
     await navigateTo('/login')
   }
 }
+
 </script>

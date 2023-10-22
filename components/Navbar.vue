@@ -1,16 +1,15 @@
 <template>
     <nav class="dark:bg-blue-800 p-4 sticky top-0 z-50">
       <div class="container mx-auto flex justify-between items-center">
-        <div class=" flex ">
-          <div class="relative mx-auto h-10 w-10 animate-bounce">
-            <div class="mx-auto h-8 w-8 animate-pulse rounded-full bg-white"></div>
-            <span class="absolute flex h-5 w-5 animate-spin">
-              <span class="h-4 w-4 rounded-full bg-green-400"> </span>
-            </span>
-            
-          </div>
+        <div class="flex items-center"> <!-- Move the logo to the left -->
+        <div class="relative mx-auto h-10 w-10 animate-bounce">
+          <div class="mx-auto h-8 w-8 animate-pulse rounded-full bg-white"></div>
+          <span class="absolute flex h-5 w-5 animate-spin">
+            <span class="h-4 w-4 rounded-full bg-green-400"></span>
+          </span>
         </div>
         <router-link to="/" class="text-white text-2xl font-semibold hover:scale-125 transition-all duration-500">Wait4Stats</router-link>
+      </div>
         <!-- Hamburger Menu Icon -->
         <div class="lg:hidden">
           <button @click="toggleMobileMenu" class="text-white">
@@ -23,21 +22,21 @@
 
         <div class="hidden lg:flex space-x-4">
           <!-- admin -->
-          <router-link to="/admin/create-staff" class="text-white rounded-lg hover:animate-bounce hover:bg-green-100 dark:hover:bg-blue-500 group">Create Staff (ad)</router-link>
-          <router-link to="/product/product-add" class="text-white rounded-lg hover:animate-bounce hover:bg-green-100 dark:hover:bg-blue-500 group mx-8">Product Add (ad)</router-link>
-          <router-link to="/admin/report-check" class="text-white rounded-lg hover:animate-bounce hover:bg-green-100 dark:hover:bg-blue-500 group mx-8">Report Check (ad)</router-link>
+          <router-link to="/admin/create-staff" v-if="auth.checkRole('Admin')" class="p-1.5 text-white rounded-lg hover:animate-bounce hover:bg-green-100 dark:hover:bg-blue-500 group">Create Staff (ad)</router-link>
+          <router-link to="/product/product-add" v-if="auth.checkRole('Admin')" class="p-1.5 text-white rounded-lg hover:animate-bounce hover:bg-green-100 dark:hover:bg-blue-500 group mx-8">Product Add (ad)</router-link>
+          <router-link to="/admin/report-check" v-if="auth.checkRole('Admin')" class="p-1.5 text-white rounded-lg hover:animate-bounce hover:bg-green-100 dark:hover:bg-blue-500 group mx-8">Report Check (ad)</router-link>
 
           <!-- delivery -->
-          <router-link to="/product/product-check" class="text-white rounded-lg hover:animate-bounce hover:bg-green-100 dark:hover:bg-blue-500 group mx-8">Check Product (d)</router-link>
+          <router-link to="/product/product-check" v-if="auth.checkRole('Delivery')" class="p-1.5 text-white rounded-lg hover:animate-bounce hover:bg-green-100 dark:hover:bg-blue-500 group mx-8">Check Product (d)</router-link>
 
           <!-- audit -->
-          <router-link to="/order/" class="text-white rounded-lg hover:animate-bounce hover:bg-green-100 dark:hover:bg-blue-500 group mx-8">Order Check (a)</router-link>
-          <router-link to="/order/refund-check" class="text-white rounded-lg hover:animate-bounce hover:bg-green-100 dark:hover:bg-blue-500 group mx-8">Refund Check (a)</router-link>
+          <router-link to="/order/" v-if="auth.checkRole('Accounting')" class="p-1.5 text-white rounded-lg hover:animate-bounce hover:bg-green-100 dark:hover:bg-blue-500 group mx-8">Order Check (a)</router-link>
+          <router-link to="/order/refund-check" v-if="auth.checkRole('Accounting')" class="p-1.5 text-white rounded-lg hover:animate-bounce hover:bg-green-100 dark:hover:bg-blue-500 group mx-8">Refund Check (a)</router-link>
 
           <!-- customer -->
           <div class="inline-flex hover:animate-bounce items-center gap-x-2">
-            <router-link to="/order/order-status" class="inline-flex text-white rounded-lg  hover:bg-green-100 dark:hover:bg-blue-500 group">
-              My Order (c)
+            <router-link to="/order/order-status" v-if="auth.checkRole('Customer')" class="p-1.5 inline-flex text-white rounded-lg  hover:bg-green-100 dark:hover:bg-blue-500 group">
+              My Order 
               <svg class="w-5 h-5 text-gray-500 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 18 20">
                 <path d="M17 5.923A1 1 0 0 0 16 5h-3V4a4 4 0 1 0-8 0v1H2a1 1 0 0 0-1 .923L.086 17.846A2 2 0 0 0 2.08 20h13.84a2 2 0 0 0 1.994-2.153L17 5.923ZM7 9a1 1 0 0 1-2 0V7h2v2Zm0-5a2 2 0 1 1 4 0v1H7V4Zm6 5a1 1 0 1 1-2 0V7h2v2Z"/>
               </svg>
@@ -45,8 +44,8 @@
           </div>
 
           <div class="inline-flex hover:animate-bounce items-center gap-x-2">
-            <router-link to="/customer/shopping-cart" class="inline-flex text-white rounded-lg hover:bg-green-100 dark:hover:bg-blue-500 group">
-              My Cart (c)
+            <router-link to="/customer/shopping-cart" v-if="auth.checkRole('Customer')" class="p-1.5 inline-flex text-white rounded-lg hover:bg-green-100 dark:hover:bg-blue-500 group">
+              My Cart 
               <svg class="flex-shrink-0 w-5 h-5 group-hover:text-gray-900 dark:text-gray-400 dark:group-hover:text-white" fill="currentColor">
                 <path d="M15 12a1 1 0 0 0 .962-.726l2-7A1 1 0 0 0 17 3H3.77L3.175.745A1 1 0 0 0 2.208 0H1a1 1 0 0 0 0 2h.438l.6 2.255v.019l2 7 .746 2.986A3 3 0 1 0 9 17a2.966 2.966 0 0 0-.184-1h2.368c-.118.32-.18.659-.184 1a3 3 0 1 0 3-3H6.78l-.5-2H15Z"/>
               </svg>
@@ -55,7 +54,7 @@
           </div>
 
           <!-- all -->
-          <div class="inline-flex items-center">
+          <div v-if="auth.isLogin" class="inline-flex items-center">
             <div class="relative inline-block text-left">
               <div>
                 <button @click="toggleNotify" type="button" class="p-1.5 inline-flex text-white rounded-lg hover:bg-green-100 dark:hover:bg-blue-500 group" id="menu-button" aria-expanded="true" aria-haspopup="true">
@@ -93,7 +92,7 @@
             </div>
           </div>
           
-          <div class="inline-flex items-center gap-x-2">
+          <div v-if="auth.isLogin" class="inline-flex items-center gap-x-2">
             <router-link to="/profile" class="p-1.5 inline-flex text-white rounded-lg hover:bg-green-100 dark:hover:bg-blue-500 group">
               Profile
               <svg class="w-5 h-5 mx-1 text-gray-500 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 18">

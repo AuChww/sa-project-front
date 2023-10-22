@@ -7,7 +7,10 @@ export const useAuthStore = defineStore('auth', {
     }
   },
   getters: {
-    isLogin: (state) => state.token !== ""
+    isLogin: (state) => state.token !== "",
+    checkRole: (state) => (roleToCheck) => {
+      return state.user.role === roleToCheck;
+    },
   },
   actions: {
     setNewToken(token: string) {
