@@ -91,54 +91,64 @@
 </template>
 
 <script setup lang="ts">
-import { ref, reactive } from 'vue';
-
+import { ref } from 'vue'
 const formData = reactive({
-    name: '',
-    category: 'CPU',
-    price: 0,
-    quantity: 0,
-    description: '',
-});
+  email: '',
+  name: '',
+  username: '',
+  address: '',
+  password: '',
+  password_confirmation: ''
+})
 
 const formErrors = ref({
-    errors: null,
-});
+  errors: null
+})
 
-const submitForm = async () => {
-    // Reset form errors
-    formErrors.value.errors = null;
+async function onSubmit() {
+  // Reset form errors
+  formErrors.value.errors = null
 
-    // Create a new FormData object for the form data
-    const form = new FormData();
-    form.append('name', formData.name);
-    form.append('category', formData.category);
-    form.append('price', formData.price);
-    form.append('quantity', formData.quantity);
-    form.append('description', formData.description);
+  // Validate email
+  if (!formData.email || !formData.email.trim()) {
+    formErrors.value.errors = 'Email is required'
+    return
+  }
 
-    try {
-        const { data: response, error } = await useMyFetch<any>('products', {
-            method: 'POST',
-            body: form,
-        });
+  // Validate username
+  if (!formData.username || !formData.username.trim()) {
+    formErrors.value.errors = 'Username is required'
+    return
+  }
 
-        if (response !== null) {
-            await navigateTo(`/`);
-        } else if (error) {
-            console.error(error);
-            formErrors.value.errors = error.message;
-        }
+  // Validate password
+  if (!formData.password || formData.password.length < 6) {
+    formErrors.value.errors = 'Password must be at least 6 characters long'
+    return
+  }
 
-        // Reset the form after submission
-        formData.name = '';
-        formData.category = 'CPU';
-        formData.price = 0;
-        formData.quantity = 0;
-        formData.description = '';
-    } catch (error) {
-        console.error(error);
-        formErrors.value.errors = error.message;
+  // Validate password confirmation
+  if (formData.password !== formData.password_confirmation) {
+    formErrors.value.errors = 'Password and password confirmation do not match'
+    return
+  }
+
+  // Other validations as needed
+
+  const { data: response, error } = await useMyFetch<any>(
+    'register',
+    {
+      method: 'POST',
+      body: formData
     }
-};
+  )
+
+  if (response.value !== null) {
+    await navigateTo(`/login`)
+  } else {
+    console.log(error)
+    const { message } = error.value!.data
+    formErrors.value.errors = message
+  }
+}
 </script>

@@ -79,39 +79,39 @@ const formErrors = ref({
 });
 
 const submitForm = async () => {
+    // Reset form errors
+    formErrors.value.errors = null;
+
     // Create a new FormData object for the form data
     const form = new FormData();
     form.append('name', formData.name);
     form.append('category', formData.category);
     form.append('price', formData.price);
-    form.append('quantity', formData.quantity); // Updated to "quantity"
+    form.append('quantity', formData.quantity);
     form.append('description', formData.description);
 
     try {
-        // Send the form data to the server using fetch or your preferred HTTP library
-        const response = await fetch('http://localhost/api/products', {
+        const { data: response, error } = await useMyFetch<any>('products', {
             method: 'POST',
             body: form,
         });
 
-        if (response.ok) {
-            // The request was successful, you can handle the success case here
+        if (response !== null) {
             await navigateTo(`/`);
-        } else {
-            // Handle errors (e.g., display error messages)
-            const errorData = await response.json();
-            formErrors.errors = errorData.message;
+        } else if (error) {
+            console.error(error);
+            formErrors.value.errors = error.message;
         }
 
         // Reset the form after submission
         formData.name = '';
         formData.category = 'CPU';
         formData.price = 0;
-        formData.quantity = 0; // Updated to "quantity"
+        formData.quantity = 0;
         formData.description = '';
     } catch (error) {
         console.error(error);
-        formErrors.errors = error.message;
+        formErrors.value.errors = error.message;
     }
 };
 </script>

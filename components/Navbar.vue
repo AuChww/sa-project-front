@@ -46,10 +46,7 @@
           <div class="inline-flex hover:animate-bounce items-center gap-x-2">
             <router-link to="/customer/shopping-cart" v-if="auth.checkRole('Customer')" class="p-1.5 inline-flex text-white rounded-lg hover:bg-green-100 dark:hover:bg-blue-500 group">
               My Cart 
-              <svg class="flex-shrink-0 w-5 h-5 group-hover:text-gray-900 dark:text-gray-400 dark:group-hover:text-white" fill="currentColor">
-                <path d="M15 12a1 1 0 0 0 .962-.726l2-7A1 1 0 0 0 17 3H3.77L3.175.745A1 1 0 0 0 2.208 0H1a1 1 0 0 0 0 2h.438l.6 2.255v.019l2 7 .746 2.986A3 3 0 1 0 9 17a2.966 2.966 0 0 0-.184-1h2.368c-.118.32-.18.659-.184 1a3 3 0 1 0 3-3H6.78l-.5-2H15Z"/>
-              </svg>
-              <span class="inline-flex items-center justify-center w-3 h-3 p-3 text-sm font-medium text-blue-300 bg-red-100 rounded-full dark:bg-blue-300 dark:text-blue-800">0</span>
+              <span class="inline-flex items-center justify-center w-3 h-3 p-3 text-sm font-medium text-blue-300 bg-red-100 rounded-full dark:bg-blue-300 dark:text-blue-800">{{ cartCount }}</span>
             </router-link>
           </div>
 
@@ -152,10 +149,7 @@
 
           <div class="inline-flex hover:animate-bounce items-center gap-x-2">
             <router-link to="/customer/shopping-cart" class="inline-flex text-white rounded-lg hover:bg-green-100 dark:hover:bg-blue-500 group">
-              My Cart (c)
-              <svg class="flex-shrink-0 w-5 h-5 group-hover:text-gray-900 dark:text-gray-400 dark:group-hover:text-white" fill="currentColor">
-                <path d="M15 12a1 1 0 0 0 .962-.726l2-7A1 1 0 0 0 17 3H3.77L3.175.745A1 1 0 0 0 2.208 0H1a1 1 0 0 0 0 2h.438l.6 2.255v.019l2 7 .746 2.986A3 3 0 1 0 9 17a2.966 2.966 0 0 0-.184-1h2.368c-.118.32-.18.659-.184 1a3 3 0 1 0 3-3H6.78l-.5-2H15Z"/>
-              </svg>
+              My Cart
               <span class="inline-flex items-center justify-center w-3 h-3 p-3 text-sm font-medium text-blue-300 bg-red-100 rounded-full dark:bg-blue-300 dark:text-blue-800">0</span>
             </router-link>
           </div>
@@ -222,37 +216,53 @@
 </template>
 
 <script lang="ts">
-  import Dropdown from './Notify.vue';
-  import { useAuthStore } from "~/stores/useAuthStore";
+import Dropdown from './Notify.vue';
+import { useAuthStore } from "~/stores/useAuthStore";
+import { computed } from 'vue';
+import { useCartStore } from '~/stores/useCartStore';
 
-  export default {
-    data() {
-      return {
-        isMobileMenuOpen: false,
-        notifyOpen: false,
-        auth: useAuthStore(), // Initialize auth property
-      };
+export default {
+  data() {
+    return {
+      isMobileMenuOpen: false,
+      notifyOpen: false,
+      auth: useAuthStore(), // Initialize auth property
+    };
+  },
+  name: 'Navbar',
+  methods: {
+    toggleMobileMenu() {
+      this.isMobileMenuOpen = !this.isMobileMenuOpen;
     },
-    name: 'Navbar',
-    methods: {
-      toggleMobileMenu() {
-        this.isMobileMenuOpen = !this.isMobileMenuOpen;
-      },
-      toggleNotify() {
-        this.notifyOpen = !this.notifyOpen;
-      },
-      async onLogout() {
-        const { data: response, error } = await useMyFetch<any>('auth/logout', {
-          method: 'POST',
-        });
+    toggleNotify() {
+      this.notifyOpen = !this.notifyOpen;
+    },
+    async onLogout() {
+      const { data: response, error } = await useMyFetch<any>('auth/logout', {
+        method: 'POST',
+      });
 
-        if (response.value !== null) {
-          this.auth.clear(); // Access auth via this
-          await navigateTo('/');
-        }
-      },
+      if (response.value !== null) {
+        this.auth.clear(); // Access auth via this
+        await navigateTo('/');
+      }
     },
-  };
+  },
+  setup() {
+    const auth = useAuthStore();
+    const cartStore = useCartStore();
+
+    const cartCount = computed(() => {
+      // Calculate the total number of items in the cart
+      return cartStore.cart.reduce((total, product) => total + product.quantity, 0);
+    });
+
+    return {
+      auth,
+      cartCount,
+    };
+  },
+};
 </script>
 
 
