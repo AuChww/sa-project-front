@@ -89,14 +89,14 @@ const submitForm = async () => {
 
     try {
         // Send the form data to the server using fetch or your preferred HTTP library
-        const response = await fetch('products', {
+        const response = await fetch('http://localhost/api/products', {
             method: 'POST',
             body: form,
         });
 
         if (response.ok) {
             // The request was successful, you can handle the success case here
-            await navigateTo(`/login`);
+            await navigateTo(`/`);
         } else {
             // Handle errors (e.g., display error messages)
             const errorData = await response.json();
