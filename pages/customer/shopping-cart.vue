@@ -51,7 +51,7 @@
           <div class="sm:ml-4 sm:flex sm:w-full sm:justify-between">
             <div class="mt-5 sm:mt-0">
               <h2 class="text-lg font-bold text-gray-900">{{ product.name }}</h2>
-              <p class="mt-1 text-xs text-gray-700">{{ product.description }}</p>
+              <p class="mt-1 text-xs text-gray-700 line-clamp-2">{{ product.description }}</p>
             </div>
             <div class="mt-4 flex justify-between sm:space-y-6 sm:mt-0 sm:block sm:space-x-6">
               <div class="flex items-center border-gray-100">
