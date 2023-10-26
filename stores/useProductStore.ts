@@ -4,6 +4,7 @@ import { defineStore } from 'pinia';
 interface Product {
   id: number;
   name: string;
+  image: string;
   description: string;
   price: number;
   brand: string;
@@ -36,6 +37,7 @@ export const useProductStore = defineStore('product', {
         this.products = data.map((item: any) => ({
           id: item.id,
           name: item.name,
+          image: item.image,
           description: item.description, // Map new properties
           price: item.price, // Map new properties
           brand: item.brand, // Map new properties
