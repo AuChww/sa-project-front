@@ -55,7 +55,7 @@
           </div>
 
           <!-- all -->
-          <div class="inline-flex items-center">
+          <div v-if="auth.isLogin" class="inline-flex items-center">
             <div class="relative inline-block text-left">
               <div>
                 <button @click="toggleNotify" type="button" class="p-1.5 inline-flex text-white rounded-lg hover:bg-green-100 dark:hover:bg-blue-500 group" id="menu-button" aria-expanded="true" aria-haspopup="true">
@@ -93,7 +93,7 @@
             </div>
           </div>
           
-          <div class="inline-flex items-center gap-x-2">
+          <div v-if="auth.isLogin" class="inline-flex items-center gap-x-2">
             <router-link to="/profile" class="p-1.5 inline-flex text-white rounded-lg hover:bg-green-100 dark:hover:bg-blue-500 group">
               Profile
               <svg class="w-5 h-5 mx-1 text-gray-500 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 18">
@@ -104,13 +104,13 @@
 
           <div class="inline-flex items-center">
             <button v-if="!auth.isLogin" class="p-1.5 inline-flex text-white rounded-lg hover:bg-green-100 dark:hover:bg-blue-500 group8" @click="navigateTo('/register')">
-                Register
+                Sign Up
             </button>
           </div>
 
           <div class="inline-flex items-center">
             <button v-if="!auth.isLogin" class="p-1.5 inline-flex text-white rounded-lg hover:bg-green-100 dark:hover:bg-blue-500 group8" @click="navigateTo('/login')">
-                Login
+                Log In
             </button>
           </div>
           

@@ -68,7 +68,7 @@
                 <div class="text-white py-8" :style="{'background-image':'url(https://t3.ftcdn.net/jpg/05/11/25/36/360_F_511253627_zuzpapnIVQueMx4eSL1ilAoH61OBgj0C.jpg)'}" >
                     <h2 class="text-3xl font-semibold">Feature Product</h2>
                 </div>
-                <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-8 mt-6">
+                <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-8 mt-6">
                     <!-- Featured Product Cards -->
                     <div v-for="brands in brand" :key="brands.id"
                         class="bg-white shadow-md p-3 rounded-lg hover:scale-105 transition-all duration-500">
