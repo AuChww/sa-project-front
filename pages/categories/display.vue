@@ -8,7 +8,7 @@
             <div class="container mx-auto text-center">
                 
                 <div class="text-white py-12" :style="{'background-image':'url(https://e0.pxfuel.com/wallpapers/458/781/desktop-wallpaper-colourful-colorful-background-for-colored.jpg)'}" >
-                    <h2 class="text-4xl font-semibold">Accessary</h2>
+                    <h2 class="text-4xl font-semibold">Display</h2>
                 </div>
 
                 <div id="carouselExampleCaptions" class="relative" data-te-carousel-init data-te-ride="carousel">

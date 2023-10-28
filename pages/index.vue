@@ -87,26 +87,7 @@
         <section class="py-12 mx-3" id="Best Seller"
             :style="{ 'background-image': 'url(https://wallpapers.com/images/hd/red-fire-background-na0r6a991986yftd.jpg)' }">
             <div>
-                <!-- Product List -->
-                <div class="px-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 text-left">
-                    <div v-for="product in filteredProducts" :key="product.id"
-                        class="bg-white shadow-md p-3 rounded-lg hover:scale-105 transition-all duration-500 relative h-full flex flex-col">
-                        <img :src="product.image" alt="Product Image" class="w-full h-100 object-cover mb-4">
-                        <h3 class="text-xl font-semibold">{{ product.name }}</h3>
-                        <p class="text-gray-600 flex-grow overflow-hidden line-clamp-2">{{ product.description }}</p>
 
-                        <div class="flex justify-between mt-2">
-                            <!-- Price on the left-bottom -->
-                            <div class="text-xl font-bold text-blue-900 ">$ {{ product.price }}</div>
-
-                            <!-- Add to Cart on the right-bottom -->
-                            <button class="bg-blue-900 text-white px-4 py-2 rounded-full hover:bg-blue-700"
-                                @click="addToCart(product)">
-                                Add to Cart
-                            </button>
-                        </div>
-                    </div>
-                </div>
             </div>
         </section>
 
@@ -121,19 +102,27 @@
                         <h4>more product >></h4>
                     </div>
                 </RouterLink>
-                <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-8 mt-6">
-                    <!-- CPU Cards -->
-                    <div v-for="product in CPU" :key="product.id"
-                        class="bg-white shadow-md p-3 rounded-lg hover:scale-105 transition-all duration-500">
-                        <RouterLink to="/product/">
+                <div>
+                    <!-- CPU Product List -->
+                    <div class="p-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 text-left">
+                        <div v-for="product in filteredCpuProducts" :key="product.id"
+                            class="bg-white shadow-md p-3 rounded-lg hover:scale-105 transition-all duration-500 relative h-full flex flex-col">
                             <img :src="product.image" alt="Product Image" class="w-full h-100 object-cover mb-4">
-                        </RouterLink>
-                        <h3 class="text-xl font-semibold">{{ product.name }}</h3>
-                        <p class="text-gray-600">{{ product.description }}</p>
-                        <div class="mt-4 flex items-center justify-between">
-                            <span class="text-xl font-bold text-blue-900">{{ product.price }}</span>
-                            <button class="bg-blue-900 text-white px-4 py-2 rounded-full hover:bg-blue-700">Add to
-                                Cart</button>
+                            <h3 class="text-xl font-semibold">{{ product.name }}</h3>
+                            <p class="text-gray-600 flex-grow overflow-hidden line-clamp-2">{{ product.description }}</p>
+
+                            <div class="flex justify-between mt-2">
+                                <!-- Price on the left-bottom -->
+                                <div class="text-xl font-bold text-blue-900 ">$ {{ product.price }}</div>
+
+                                <div v-if="isLoggedIn">
+                                    <!-- Add to Cart on the right-bottom -->
+                                    <button class="bg-blue-900 text-white px-4 py-2 rounded-full hover:bg-blue-700"
+                                        @click="addToCart(product)">
+                                        Add to Cart
+                                    </button>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -141,7 +130,7 @@
         </section>
 
         <!-- Main Board -->
-        <section class="py-12 mx-3" id="Main Board"
+        <section class="py-12 mx-3" id="MainBoard"
             :style="{ 'background-image': 'url(https://i.pinimg.com/originals/fb/d9/e0/fbd9e0015089d44af6c70f47bb1c4ee1.jpg)' }">
             <div class="container mx-auto text-center">
                 <RouterLink to="/categories/mainboard">
@@ -151,19 +140,27 @@
                         <h4>more product >></h4>
                     </div>
                 </RouterLink>
-                <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-8 mt-6">
-                    <!-- Main Board Cards -->
-                    <div v-for="product in MainBoard" :key="product.id"
-                        class="bg-white shadow-md p-3 rounded-lg hover:scale-105 transition-all duration-500">
-                        <RouterLink to="/product/">
+                <div>
+                    <!-- Mainboad Product List -->
+                    <div class="p-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 text-left">
+                        <div v-for="product in filteredMainboardProducts" :key="product.id"
+                            class="bg-white shadow-md p-3 rounded-lg hover:scale-105 transition-all duration-500 relative h-full flex flex-col">
                             <img :src="product.image" alt="Product Image" class="w-full h-100 object-cover mb-4">
-                        </RouterLink>
-                        <h3 class="text-xl font-semibold">{{ product.name }}</h3>
-                        <p class="text-gray-600">{{ product.description }}</p>
-                        <div class="mt-4 flex items-center justify-between">
-                            <span class="text-xl font-bold text-blue-900">{{ product.price }}</span>
-                            <button class="bg-blue-900 text-white px-4 py-2 rounded-full hover:bg-blue-700">Add to
-                                Cart</button>
+                            <h3 class="text-xl font-semibold">{{ product.name }}</h3>
+                            <p class="text-gray-600 flex-grow overflow-hidden line-clamp-2">{{ product.description }}</p>
+
+                            <div class="flex justify-between mt-2">
+                                <!-- Price on the left-bottom -->
+                                <div class="text-xl font-bold text-blue-900 ">$ {{ product.price }}</div>
+
+                                <div v-if="isLoggedIn">
+                                    <!-- Add to Cart on the right-bottom -->
+                                    <button class="bg-blue-900 text-white px-4 py-2 rounded-full hover:bg-blue-700"
+                                        @click="addToCart(product)">
+                                        Add to Cart
+                                    </button>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -181,19 +178,27 @@
                         <h4>more product >></h4>
                     </div>
                 </RouterLink>
-                <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-8 mt-6">
-                    <!-- GPU Cards -->
-                    <div v-for="product in GPU" :key="product.id"
-                        class="bg-white shadow-md p-3 rounded-lg hover:scale-105 transition-all duration-500">
-                        <RouterLink to="/product/">
+                <div>
+                    <!-- GPU Product List -->
+                    <div class="p-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 text-left">
+                        <div v-for="product in filteredGpuProducts" :key="product.id"
+                            class="bg-white shadow-md p-3 rounded-lg hover:scale-105 transition-all duration-500 relative h-full flex flex-col">
                             <img :src="product.image" alt="Product Image" class="w-full h-100 object-cover mb-4">
-                        </RouterLink>
-                        <h3 class="text-xl font-semibold">{{ product.name }}</h3>
-                        <p class="text-gray-600">{{ product.description }}</p>
-                        <div class="mt-4 flex items-center justify-between">
-                            <span class="text-xl font-bold text-blue-900">{{ product.price }}</span>
-                            <button class="bg-blue-900 text-white px-4 py-2 rounded-full hover:bg-blue-700">Add to
-                                Cart</button>
+                            <h3 class="text-xl font-semibold">{{ product.name }}</h3>
+                            <p class="text-gray-600 flex-grow overflow-hidden line-clamp-2">{{ product.description }}</p>
+
+                            <div class="flex justify-between mt-2">
+                                <!-- Price on the left-bottom -->
+                                <div class="text-xl font-bold text-blue-900 ">$ {{ product.price }}</div>
+
+                                <div v-if="isLoggedIn">
+                                    <!-- Add to Cart on the right-bottom -->
+                                    <button class="bg-blue-900 text-white px-4 py-2 rounded-full hover:bg-blue-700"
+                                        @click="addToCart(product)">
+                                        Add to Cart
+                                    </button>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -211,19 +216,27 @@
                         <h4>more product >></h4>
                     </div>
                 </RouterLink>
-                <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-8 mt-6">
-                    <!-- RAM Cards -->
-                    <div v-for="product in RAM" :key="product.id"
-                        class="bg-white shadow-md p-3 rounded-lg hover:scale-105 transition-all duration-500">
-                        <RouterLink to="/product/">
+                <div>
+                    <!-- Ram Product List -->
+                    <div class="p-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 text-left">
+                        <div v-for="product in filteredRamProducts" :key="product.id"
+                            class="bg-white shadow-md p-3 rounded-lg hover:scale-105 transition-all duration-500 relative h-full flex flex-col">
                             <img :src="product.image" alt="Product Image" class="w-full h-100 object-cover mb-4">
-                        </RouterLink>
-                        <h3 class="text-xl font-semibold">{{ product.name }}</h3>
-                        <p class="text-gray-600">{{ product.description }}</p>
-                        <div class="mt-4 flex items-center justify-between">
-                            <span class="text-xl font-bold text-blue-900">{{ product.price }}</span>
-                            <button class="bg-blue-900 text-white px-4 py-2 rounded-full hover:bg-blue-700">Add to
-                                Cart</button>
+                            <h3 class="text-xl font-semibold">{{ product.name }}</h3>
+                            <p class="text-gray-600 flex-grow overflow-hidden line-clamp-2">{{ product.description }}</p>
+
+                            <div class="flex justify-between mt-2">
+                                <!-- Price on the left-bottom -->
+                                <div class="text-xl font-bold text-blue-900 ">$ {{ product.price }}</div>
+
+                                <div v-if="isLoggedIn">
+                                    <!-- Add to Cart on the right-bottom -->
+                                    <button class="bg-blue-900 text-white px-4 py-2 rounded-full hover:bg-blue-700"
+                                        @click="addToCart(product)">
+                                        Add to Cart
+                                    </button>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -241,49 +254,65 @@
                         <h4>more product >></h4>
                     </div>
                 </RouterLink>
-                <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-8 mt-6">
-                    <!-- Harddisk Cards -->
-                    <div v-for="product in Harddisk" :key="product.id"
-                        class="bg-white shadow-md p-3 rounded-lg hover:scale-105 transition-all duration-500">
-                        <RouterLink to="/product/">
+                <div>
+                    <!-- Harddisk Product List -->
+                    <div class="p-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 text-left">
+                        <div v-for="product in filteredHarddiskProducts" :key="product.id"
+                            class="bg-white shadow-md p-3 rounded-lg hover:scale-105 transition-all duration-500 relative h-full flex flex-col">
                             <img :src="product.image" alt="Product Image" class="w-full h-100 object-cover mb-4">
-                        </RouterLink>
-                        <h3 class="text-xl font-semibold">{{ product.name }}</h3>
-                        <p class="text-gray-600">{{ product.description }}</p>
-                        <div class="mt-4 flex items-center justify-between">
-                            <span class="text-xl font-bold text-blue-900">{{ product.price }}</span>
-                            <button class="bg-blue-900 text-white px-4 py-2 rounded-full hover:bg-blue-700">Add to
-                                Cart</button>
+                            <h3 class="text-xl font-semibold">{{ product.name }}</h3>
+                            <p class="text-gray-600 flex-grow overflow-hidden line-clamp-2">{{ product.description }}</p>
+
+                            <div class="flex justify-between mt-2">
+                                <!-- Price on the left-bottom -->
+                                <div class="text-xl font-bold text-blue-900 ">$ {{ product.price }}</div>
+
+                                <div v-if="isLoggedIn">
+                                    <!-- Add to Cart on the right-bottom -->
+                                    <button class="bg-blue-900 text-white px-4 py-2 rounded-full hover:bg-blue-700"
+                                        @click="addToCart(product)">
+                                        Add to Cart
+                                    </button>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Accessary -->
-        <section class="py-12 mx-3" id="Accessary"
+        <!-- Display -->
+        <section class="py-12 mx-3" id="Display"
             :style="{ 'background-image': 'url(https://i.pinimg.com/originals/fb/d9/e0/fbd9e0015089d44af6c70f47bb1c4ee1.jpg)' }">
             <div class="container mx-auto text-center">
-                <RouterLink to="/categories/accessary">
+                <RouterLink to="/categories/display">
                     <div class="text-white py-8"
                         :style="{ 'background-image': 'url(https://cdn.bhdw.net/im/color-image-of-circular-shapes-combined-from-colors-wallpaper-103050_w635.webp)' }">
-                        <h2 class="text-4xl font-semibold hover:scale-150 transition-all duration-500">Accessary</h2>
+                        <h2 class="text-4xl font-semibold hover:scale-150 transition-all duration-500">Display</h2>
                         <h4>more product >></h4>
                     </div>
                 </RouterLink>
-                <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-8 mt-6">
-                    <!-- Accessary Cards -->
-                    <div v-for="product in Accessary" :key="product.id"
-                        class="bg-white shadow-md p-3 rounded-lg hover:scale-105 transition-all duration-500">
-                        <RouterLink to="/product/">
+                <div>
+                    <!-- Display Product List -->
+                    <div class="p-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 text-left">
+                        <div v-for="product in filteredDisplayProducts" :key="product.id"
+                            class="bg-white shadow-md p-3 rounded-lg hover:scale-105 transition-all duration-500 relative h-full flex flex-col">
                             <img :src="product.image" alt="Product Image" class="w-full h-100 object-cover mb-4">
-                        </RouterLink>
-                        <h3 class="text-xl font-semibold">{{ product.name }}</h3>
-                        <p class="text-gray-600">{{ product.description }}</p>
-                        <div class="mt-4 flex items-center justify-between">
-                            <span class="text-xl font-bold text-blue-900">{{ product.price }}</span>
-                            <button class="bg-blue-900 text-white px-4 py-2 rounded-full hover:bg-blue-700">Add to
-                                Cart</button>
+                            <h3 class="text-xl font-semibold">{{ product.name }}</h3>
+                            <p class="text-gray-600 flex-grow overflow-hidden line-clamp-2">{{ product.description }}</p>
+
+                            <div class="flex justify-between mt-2">
+                                <!-- Price on the left-bottom -->
+                                <div class="text-xl font-bold text-blue-900 ">$ {{ product.price }}</div>
+
+                                <div v-if="isLoggedIn">
+                                    <!-- Add to Cart on the right-bottom -->
+                                    <button class="bg-blue-900 text-white px-4 py-2 rounded-full hover:bg-blue-700"
+                                        @click="addToCart(product)">
+                                        Add to Cart
+                                    </button>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -301,19 +330,27 @@
                         <h4>more product >></h4>
                     </div>
                 </RouterLink>
-                <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-8 mt-6">
-                    <!-- Gaming Gear Cards -->
-                    <div v-for="product in GamingGear" :key="product.id"
-                        class="bg-white shadow-md p-3 rounded-lg hover:scale-105 transition-all duration-500">
-                        <RouterLink to="/product/">
+                <div>
+                    <!-- Gaming Gear Product List -->
+                    <div class="p-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 text-left">
+                        <div v-for="product in filteredGearProducts" :key="product.id"
+                            class="bg-white shadow-md p-3 rounded-lg hover:scale-105 transition-all duration-500 relative h-full flex flex-col">
                             <img :src="product.image" alt="Product Image" class="w-full h-100 object-cover mb-4">
-                        </RouterLink>
-                        <h3 class="text-xl font-semibold">{{ product.name }}</h3>
-                        <p class="text-gray-600">{{ product.description }}</p>
-                        <div class="mt-4 flex items-center justify-between">
-                            <span class="text-xl font-bold text-blue-900">{{ product.price }}</span>
-                            <button class="bg-blue-900 text-white px-4 py-2 rounded-full hover:bg-blue-700">Add to
-                                Cart</button>
+                            <h3 class="text-xl font-semibold">{{ product.name }}</h3>
+                            <p class="text-gray-600 flex-grow overflow-hidden line-clamp-2">{{ product.description }}</p>
+
+                            <div class="flex justify-between mt-2">
+                                <!-- Price on the left-bottom -->
+                                <div class="text-xl font-bold text-blue-900 ">$ {{ product.price }}</div>
+
+                                <div v-if="isLoggedIn">
+                                    <!-- Add to Cart on the right-bottom -->
+                                    <button class="bg-blue-900 text-white px-4 py-2 rounded-full hover:bg-blue-700"
+                                        @click="addToCart(product)">
+                                        Add to Cart
+                                    </button>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -325,6 +362,7 @@
 <script lang="ts">
 import { ref, onMounted, computed } from 'vue';
 import { useProductStore } from '~/stores/useProductStore';
+import { useAuthStore } from '~/stores/useAuthStore';
 import { useCartStore } from '~/stores/useCartStore';
 
 export default {
@@ -356,6 +394,48 @@ export default {
             });
         });
 
+        const filteredCpuProducts = computed(() => {
+            return products.value.filter((product) => {
+                return product.category === 'CPU';
+            });
+        });
+
+        const filteredMainboardProducts = computed(() => {
+            return products.value.filter((product) => {
+                return product.category === 'Mainboard';
+            });
+        });
+
+        const filteredGpuProducts = computed(() => {
+            return products.value.filter((product) => {
+                return product.category === 'GPU';
+            });
+        });
+
+        const filteredRamProducts = computed(() => {
+            return products.value.filter((product) => {
+                return product.category === 'RAM';
+            });
+        });
+
+        const filteredHarddiskProducts = computed(() => {
+            return products.value.filter((product) => {
+                return product.category === 'Harddisk';
+            });
+        });
+
+        const filteredDisplayProducts = computed(() => {
+            return products.value.filter((product) => {
+                return product.category === 'Display';
+            });
+        });
+
+        const filteredGearProducts = computed(() => {
+            return products.value.filter((product) => {
+                return product.category === 'Gameing-Gear';
+            });
+        });
+
         const addToCart = (product) => {
             // Log a message when the addToCart function is called
             console.log('Adding product to the cart:', product);
@@ -372,6 +452,14 @@ export default {
         return {
             searchQuery,
             filteredProducts,
+            filteredCpuProducts,
+            filteredMainboardProducts,
+            filteredGpuProducts,
+            filteredRamProducts,
+            filteredHarddiskProducts,
+            filteredDisplayProducts,
+            filteredGearProducts,
+
             addToCart,
         };
     },
