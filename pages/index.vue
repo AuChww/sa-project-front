@@ -115,7 +115,7 @@
                                 <!-- Price on the left-bottom -->
                                 <div class="text-xl font-bold text-blue-900 ">$ {{ product.price }}</div>
 
-                                <div v-if="isLoggedIn">
+                                <div v-if="auth.isLogin">
                                     <!-- Add to Cart on the right-bottom -->
                                     <button class="bg-blue-900 text-white px-4 py-2 rounded-full hover:bg-blue-700"
                                         @click="addToCart(product)">
@@ -153,7 +153,7 @@
                                 <!-- Price on the left-bottom -->
                                 <div class="text-xl font-bold text-blue-900 ">$ {{ product.price }}</div>
 
-                                <div v-if="isLoggedIn">
+                                <div v-if="auth.isLogin">
                                     <!-- Add to Cart on the right-bottom -->
                                     <button class="bg-blue-900 text-white px-4 py-2 rounded-full hover:bg-blue-700"
                                         @click="addToCart(product)">
@@ -191,7 +191,7 @@
                                 <!-- Price on the left-bottom -->
                                 <div class="text-xl font-bold text-blue-900 ">$ {{ product.price }}</div>
 
-                                <div v-if="isLoggedIn">
+                                <div v-if="auth.isLogin">
                                     <!-- Add to Cart on the right-bottom -->
                                     <button class="bg-blue-900 text-white px-4 py-2 rounded-full hover:bg-blue-700"
                                         @click="addToCart(product)">
@@ -229,7 +229,7 @@
                                 <!-- Price on the left-bottom -->
                                 <div class="text-xl font-bold text-blue-900 ">$ {{ product.price }}</div>
 
-                                <div v-if="isLoggedIn">
+                                <div v-if="auth.isLogin">
                                     <!-- Add to Cart on the right-bottom -->
                                     <button class="bg-blue-900 text-white px-4 py-2 rounded-full hover:bg-blue-700"
                                         @click="addToCart(product)">
@@ -267,7 +267,7 @@
                                 <!-- Price on the left-bottom -->
                                 <div class="text-xl font-bold text-blue-900 ">$ {{ product.price }}</div>
 
-                                <div v-if="isLoggedIn">
+                                <div v-if="auth.isLogin">
                                     <!-- Add to Cart on the right-bottom -->
                                     <button class="bg-blue-900 text-white px-4 py-2 rounded-full hover:bg-blue-700"
                                         @click="addToCart(product)">
@@ -305,7 +305,7 @@
                                 <!-- Price on the left-bottom -->
                                 <div class="text-xl font-bold text-blue-900 ">$ {{ product.price }}</div>
 
-                                <div v-if="isLoggedIn">
+                                <div v-if="auth.isLogin">
                                     <!-- Add to Cart on the right-bottom -->
                                     <button class="bg-blue-900 text-white px-4 py-2 rounded-full hover:bg-blue-700"
                                         @click="addToCart(product)">
@@ -343,7 +343,7 @@
                                 <!-- Price on the left-bottom -->
                                 <div class="text-xl font-bold text-blue-900 ">$ {{ product.price }}</div>
 
-                                <div v-if="isLoggedIn">
+                                <div v-if="auth.isLogin">
                                     <!-- Add to Cart on the right-bottom -->
                                     <button class="bg-blue-900 text-white px-4 py-2 rounded-full hover:bg-blue-700"
                                         @click="addToCart(product)">
@@ -372,6 +372,7 @@ export default {
 
     setup() {
         // Vue 3 Composition API setup
+        const auth = useAuthStore();
         const productStore = useProductStore();
         const cartStore = useCartStore(); // Use the Cart store
         const products = ref([]);
@@ -459,6 +460,7 @@ export default {
             filteredHarddiskProducts,
             filteredDisplayProducts,
             filteredGearProducts,
+            auth,
 
             addToCart,
         };
