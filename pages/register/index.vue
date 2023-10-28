@@ -88,7 +88,7 @@
 
       </form>
 
-      <p class="mt-10 text-center text-sm text-white">
+      <p class="mt-8 mb-32 text-center text-sm text-white">
         Already had an account?
         <router-link to="/login" class="font-semibold leading-6 text-blue-200 hover:text-blue-100">Sign
           in</router-link>

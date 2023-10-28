@@ -195,12 +195,15 @@
 
                                 </td>
                                 <td class="px-4 py-4 text-sm text-gray-500 dark:text-gray-300 whitespace-nowrap">
-                                    <div class="flex items-center gap-x-2">
+                                    <button @click="toggleCustomer" class="flex items-center gap-x-2">
                                         <img class="object-cover w-8 h-8 rounded-full" src="" alt="">
                                         <div>
                                             <h2 class="text-sm font-medium text-gray-800 dark:text-white ">{{ report.name }}</h2>
                                             <p class="text-xs font-normal text-gray-600 dark:text-gray-400">{{ report.email }}</p>
                                         </div>
+                                    </button>
+                                    <div v-if="customerOpen" >
+                                        <RouterLink to="/profile" class="text-gray-500 block py-2 text-sm">Check Payment</RouterLink>
                                     </div>
                                 </td>
                                 <td class="px-4 py-4 text-sm text-gray-500 dark:text-gray-300 whitespace-nowrap">{{ report.reason }}</td>
@@ -296,6 +299,7 @@ export default {
     data() {
       return {
         showInfo: false ,
+        customerOpen: false,
         CustomerReport: [
         {
             id: 1,
@@ -399,7 +403,10 @@ export default {
       };
     },
     methods: {
-      toggleInfo() {
+    toggleCustomer() {
+      this.customerOpen = !this.customerOpen;
+    },
+    toggleInfo() {
         this.showInfo = !this.showInfo;
       }
     }

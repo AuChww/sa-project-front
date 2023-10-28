@@ -228,7 +228,6 @@
 </template>
 
 <script lang="ts">
-import Dropdown from './Notify.vue';
 import { useAuthStore } from "~/stores/useAuthStore";
 import { computed } from 'vue';
 import { useCartStore } from '~/stores/useCartStore';

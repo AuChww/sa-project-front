@@ -51,7 +51,7 @@
             </form>
 
 
-            <p class="mt-10 text-center text-sm text-white">
+            <p class="mt-10 mb-48 text-center text-sm text-white">
                 Don't have an account?
                 <router-link to="/register" class="font-semibold leading-6 text-blue-200 hover:text-blue-100">Sign
                     up</router-link>
