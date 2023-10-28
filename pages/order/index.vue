@@ -10,13 +10,6 @@
         </div>
     </section>
 
-    <div id="bill">
-        <!-- Your bill content goes here -->
-        <h1>Bill</h1>
-        <p>Date: {{ currentDate }}</p>
-        <p>Amount: ${{ amount }}</p>
-    </div>
-
     <section class="container mt-4 px-4 mx-auto">
       <div class="flex flex-col">
           <div class="-mx-4 -my- overflow-x-auto sm:-mx-6 lg:-mx-8">
@@ -40,6 +33,10 @@
 
                                   <th scope="col" class="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-400">
                                       Product
+                                  </th>
+
+                                  <th scope="col" class="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-400">
+                                      Payment
                                   </th>
 
                                   <th scope="col" class="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-400">
@@ -70,26 +67,38 @@
                           
                           <tbody v-for="order in Order" :key="order.id" class="bg-white divide-y divide-gray-200 dark:divide-gray-700 dark:bg-gray-900">
                               <tr>
-                                  <td class="px-4 py-4 text-sm text-gray-500 dark:text-gray-300 whitespace-nowrap">{{ order.id }}</td>
-                                  <div class="py-5 whitespace-nowrap">
-                                      <button @click="toggleInfo" class="rounded-md mb-2 mt-2 px-2 py-1 text-sm font-medium text-gray-800 dark:text-white border-indigo-500 bg-gray-500">Show Information</button>
-                                      <transition name="swipe-in" mode="out-in">
-                                          <div v-if="showInfo">
-                                              <tbody v-for="product in Product" :key="product.id" class="px-4 py-4 text-sm text-gray-700 dark:text-gray-200 ">
-                                                  <div class="border-indigo-500 bg-white rounded-md">
-                                                      <div class="inline-flex items-center gap-x-3">
-                                                          <div class="ml-4 text-sm text-gray-500 font-medium">{{ product.id }}</div>
-                                                          <img :src="product.image" alt="Product Image" class="px-2 mt-2 w-full h-20 object-cover mb-2">
-                                                          <td class="font-medium text-sm text-gray-500 dark:text-gray-800 whitespace-nowrap">{{ product.price }}</td>
-                                                      </div>
-                                                      <div class="font-medium mb-2 py-1 px-2 text-sm text-gray-800 dark:text-gray-500 whitespace-nowrap">{{ product.name }}</div>
-                                                  </div>
-                                              </tbody>
-                                          </div>
-                                      </transition>
-                                  </div>
+                                  <td class="px-4 py-4 text-sm text-gray-500 dark:text-gray-300 whitespace-nowrap">{{ order_id }}</td>
+                                    <td>
+                                        <div class="py-5 whitespace-nowrap">
+                                            <button @click="toggleInfo" class="rounded-md mb-2 mt-2 px-2 py-1 text-sm font-medium text-gray-800 dark:text-white border-indigo-500 bg-gray-500">Show Information</button>
+                                            <transition name="swipe-in" mode="out-in">
+                                                <div v-if="showInfo">
+                                                    <tbody v-for="product in Product" :key="product.id" class="px-4 py-4 text-sm text-gray-700 dark:text-gray-200 ">
+                                                        <div class="border-indigo-500 bg-white rounded-md">
+                                                            <div class="inline-flex items-center gap-x-3">
+                                                                <div class="ml-4 text-sm text-gray-500 font-medium">{{ product.id }}</div>
+                                                                <img :src="product.image" alt="Product Image" class="px-2 mt-2 w-full h-20 object-cover mb-2">
+                                                                <td class="font-medium text-sm text-gray-500 dark:text-gray-800 whitespace-nowrap">{{ product.price }}</td>
+                                                            </div>
+                                                            <div class="font-medium mb-2 py-1 px-2 text-sm text-gray-800 dark:text-gray-500 whitespace-nowrap">{{ product.name }}</div>
+                                                        </div>
+                                                    </tbody>
+                                                </div>
+                                            </transition>
+                                        </div>
+                                    </td>
+
+                                    <td>
+                                        <div class="py-5 whitespace-nowrap">
+                                            <tbody v-for="payment in Payment" :key="payment.id" class="px-4 py-4 text-sm text-gray-700 dark:text-gray-200 ">
+                                                    <div class="inline-flex items-center gap-x-3">
+                                                        <img :src="payment.image" alt="Payment Image" class="px-2 mt-2 w-full h-20 object-cover mb-2">
+                                                    </div>
+                                            </tbody>
+                                        </div>
+                                    </td>
                                   
-                                  <td class="px-4 py-4 text-sm font-medium text-gray-700 whitespace-nowrap">
+                                    <td class="px-4 py-4 text-sm font-medium text-gray-700 whitespace-nowrap">
                                       <div v-if="order.status == 'waiting'">
                                           <div class="inline-flex items-center px-3 py-1 text-yellow-500 rounded-full gap-x-2 bg-red-100/60 dark:bg-gray-800">
                                               <svg xmlns="http://www.w3.org/2000/svg" width="50" height="10">
@@ -125,8 +134,7 @@
                                               <h2 class="text-sm font-normal">Rejected</h2>
                                           </div>
                                       </div>
-
-                                  </td>
+                                    </td>
                                   
                                   <td class="px-4 py-4 text-sm text-gray-500 dark:text-gray-300 whitespace-nowrap">
                                       <div class="flex items-center gap-x-2">
@@ -141,32 +149,11 @@
                                   <td class="px-4 py-4 text-sm text-gray-500 dark:text-gray-300 whitespace-nowrap">{{ order.ordered }}</td>
                                   <td class="px-4 py-4 text-sm text-gray-500 dark:text-gray-300 whitespace-nowrap">$ {{ order.amount }}</td>
                                   <td class="px-4 py-4 text-sm whitespace-nowrap">
-
                                     <div v-if="order.status == 'waiting'">
                                         <div class="flex items-center gap-x">
-                                            
-                                          <div id="bill">
+                                          <div id="">
                                             <form>
-                                              <label class="text-white">Name : 
-                                                <input :key="order.name" type="text" v-model="order.name" name="name" placeholder="name" class="text-black">
-                                              </label>
-
-                                              <label class="text-white">Email : 
-                                                <input :key="order.email" type="email" v-model="order.email" name="email" placeholder="email@example.com" class="text-black">
-                                              </label>
-
-                                              <label class="text-white">Purchased : 
-                                                <input :key="order.name" type="text" v-model="order.purchased" name="purchased" placeholder="dd/mm/yy 00:00" class="text-black">
-                                              </label>
-
-                                              <label class="text-white">Amount : 
-                                                <input :key="order.amount" type="text" v-model="order.amount" name="amount" placeholder="$" class="text-black">
-                                              </label>
-
-                                              <label class="text-white">Ordered : {{currentDate}}
-                                              </label>
-                                              
-                                              <button @click="saveBillAsPNG" type="button"
+                                              <button @click="" type="button"
                                                   class="border border-indigo-500 bg-indigo-500 text-white rounded-md px-4 py-2 m-2 transition duration-500 ease select-none hover:bg-indigo-600 focus:outline-none focus:shadow-outline">
                                                   Create Bill
                                               </button>
@@ -181,7 +168,7 @@
                                     </div>
                                   </td>
                                   
-                              </tr>
+                                </tr>
                             
 
                               
@@ -227,63 +214,21 @@
 
 </template>
 
-<style scoped>
-/* Add your CSS styling for the bill here */
-#bill {
-  border: 2px solid #ccc;
-  padding: 40px;
-}
-
-* {box-sizing: border-box;}
-
-.container {
-  display: block;
-  margin:auto;
-  text-align: center;
-  border-radius: 5px;
-  padding: 20px;
-  
-}
-
-label {
-  float: left;
-}
-
-input[type=text], [type=email], textarea {
-  float: right;
-  width: 70%;
-  padding: 4px;
-  border: 1px solid #000000;
-  border-radius: 4px;
-  box-sizing: border-box;
-  margin-top: 6px;
-  margin-bottom: 6px;
-  resize: vertical;
-}
-
-input[type=submit] {
-  background-color: #4CAF50;
-  color: rgb(0, 0, 0);
-  padding: 12px 20px;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-}
-
-input[type=submit]:hover {
-  background-color: #45a049;
-}
-</style>
 
 <script>
-
-
 export default {
   data() {
     return {
       currentDate: new Date().toLocaleDateString(),
       amount: 100.00,
       showInfo: false ,
+        Payment: [
+        {
+            id: 1,
+            order: 1,
+            image: "/assets/images/slip.jpg",
+        },
+        ],
         Order: [
         {
             id: 1,
