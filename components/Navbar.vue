@@ -2,12 +2,12 @@
     <nav class="dark:bg-blue-800 p-4 sticky top-0 z-50">
       <div class="container mx-auto flex justify-between items-center">
         <div class="flex items-center"> <!-- Move the logo to the left -->
-        <div class="relative mx-auto h-10 w-10 animate-bounce">
-          <div class="mx-auto h-8 w-8 animate-pulse rounded-full bg-white"></div>
-          <span class="absolute flex h-5 w-5 animate-spin">
-            <span class="h-4 w-4 rounded-full bg-green-400"></span>
-          </span>
-        </div>
+          <div class="relative mx-auto h-10 w-10 animate-bounce">
+            <div class="mx-auto h-8 w-8 animate-pulse rounded-full bg-white"></div>
+            <span class="absolute flex h-5 w-5 animate-spin">
+              <span class="h-4 w-4 rounded-full bg-green-400"></span>
+            </span>
+          </div>
         <router-link to="/" class="text-white text-2xl font-semibold hover:scale-125 transition-all duration-500">Wait4Stats</router-link>
       </div>
         <!-- Hamburger Menu Icon -->
