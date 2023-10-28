@@ -123,18 +123,18 @@
                 </RouterLink>
                 <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-8 mt-6">
                     <!-- CPU Cards -->
-                    <div v-for="product in CPU" :key="product.id"
+                    <div v-for="product in filteredProducts" :key="product.id" v-if="auth.checkCategory('CPU')"
                         class="bg-white shadow-md p-3 rounded-lg hover:scale-105 transition-all duration-500">
-                        <RouterLink to="/product/">
-                            <img :src="product.image" alt="Product Image" class="w-full h-100 object-cover mb-4">
-                        </RouterLink>
-                        <h3 class="text-xl font-semibold">{{ product.name }}</h3>
-                        <p class="text-gray-600">{{ product.description }}</p>
-                        <div class="mt-4 flex items-center justify-between">
-                            <span class="text-xl font-bold text-blue-900">{{ product.price }}</span>
-                            <button class="bg-blue-900 text-white px-4 py-2 rounded-full hover:bg-blue-700">Add to
-                                Cart</button>
-                        </div>
+                            <RouterLink to="/product/">
+                                <img :src="product.image" alt="Product Image" class="w-full h-100 object-cover mb-4">
+                            </RouterLink>
+                            <h3 class="text-xl font-semibold">{{ product.name }}</h3>
+                            <p class="text-gray-600">{{ product.description }}</p>
+                            <div class="mt-4 flex items-center justify-between">
+                                <span class="text-xl font-bold text-blue-900">{{ product.price }}</span>
+                                <button class="bg-blue-900 text-white px-4 py-2 rounded-full hover:bg-blue-700">Add to
+                                    Cart</button>
+                            </div>
                     </div>
                 </div>
             </div>
@@ -328,6 +328,38 @@ import { useProductStore } from '~/stores/useProductStore';
 import { useCartStore } from '~/stores/useCartStore';
 
 export default {
+    data(){
+        return {
+            auth: useProductStore(),
+            brand: [
+            {
+                id: 1,
+                name: 'Intel',
+                image: 'https://www.jib.co.th/img_master/product/original/2021102715152349469_1.png',
+            },
+            {
+                id: 2,
+                name: 'Razor',
+                image: 'https://www.jib.co.th/img_master/product/original/2021102715152349469_1.png',
+            },
+            {
+                id: 3,
+                name: 'Logitech',
+                image: 'https://www.jib.co.th/img_master/product/original/2021102715152349469_1.png',
+            },
+            {
+                id: 4,
+                name: 'Asus',
+                image: 'https://www.jib.co.th/img_master/product/original/2021102715152349469_1.png',
+            },
+            {
+                id: 5,
+                name: 'Nvidia',
+                image: 'https://www.jib.co.th/img_master/product/original/2021102715152349469_1.png',
+            },
+            ]
+        }
+    },
     components: {
         Navbar: () => import('~/components/Navbar.vue'), // Import the Navbar component
     },
@@ -355,6 +387,7 @@ export default {
                 return product.name.toLowerCase().includes(searchQuery.value.toLowerCase());
             });
         });
+
 
         const addToCart = (product) => {
             // Log a message when the addToCart function is called

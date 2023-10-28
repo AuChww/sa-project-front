@@ -21,6 +21,9 @@ export const useProductStore = defineStore('product', {
     getProductById: (state) => (productId: number) => {
       return state.products.find((product) => product.id === productId);
     },
+    checkCategory: (state) => (categoryToCheck) => {
+      return state.products.category === categoryToCheck;
+    },
     // Add other getters as needed
   },
   actions: {
