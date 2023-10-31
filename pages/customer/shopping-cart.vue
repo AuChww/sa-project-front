@@ -18,17 +18,7 @@
           <li class="flex items-center space-x-3 text-left sm:space-x-4">
             <a
               class="flex h-6 w-6 items-center justify-center rounded-full bg-gray-400 text-xs font-semibold text-white">2</a>
-            <span class="font-semibold text-gray-900">Shipping</span>
-          </li>
-
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-gray-400" fill="none" viewBox="0 0 24 24"
-            stroke="currentColor" stroke-width="2">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
-          </svg>
-          <li class="flex items-center space-x-3 text-left sm:space-x-4">
-            <a
-              class="flex h-6 w-6 items-center justify-center rounded-full bg-gray-400 text-xs font-semibold text-white">3</a>
-            <span class="font-semibold text-gray-500">Payment</span>
+            <span class="font-semibold text-gray-900">Payment</span>
           </li>
         </ul>
       </div>
@@ -96,9 +86,11 @@
             <p class="text-sm text-gray-700">including VAT</p>
           </div>
         </div>
-        <RouterLink to="/customer/shipping">
-          <button class="mt-6 w-full rounded-md bg-blue-500 py-1.5 font-medium text-blue-50 hover:bg-blue-600">Check
-            out</button>
+        <RouterLink to="/customer/payment">
+          <button class="mt-6 w-full rounded-md py-1.5 font-medium text-blue-50 hover:bg-blue-600"
+            :class="{ 'bg-blue-500': !isCartEmpty, 'bg-gray-300 hover:bg-gray-300': isCartEmpty }" :disabled="isCartEmpty">
+            Check out
+          </button>
         </RouterLink>
       </div>
     </div>
@@ -110,6 +102,8 @@ import { ref } from 'vue';
 import { useCartStore } from '~/stores/useCartStore';
 
 const cartStore = useCartStore(); // Use the Cart store
+
+const isCartEmpty = computed(() => Cart.length === 0);
 
 const Cart = cartStore.cart;
 

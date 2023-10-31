@@ -3,7 +3,7 @@ export const useAuthStore = defineStore('auth', {
   state: () => {
     return { 
       token: "",
-      user: { name: "", email: "" , role: "", username: "", address: ""}
+      user: { name: "", email: "" , role: "", username: "", address: "", id:""}
     }
   },
   getters: {
@@ -16,12 +16,13 @@ export const useAuthStore = defineStore('auth', {
     setNewToken(token: string) {
       this.token = token
     },
-    setUser(name: string, email: string, role: string, username: string, address: string) {
+    setUser(name: string, email: string, role: string, username: string, address: string, id:string) {
       this.user.name = name
       this.user.email = email
       this.user.role = role
       this.user.username = username
       this.user.address = address
+      this.user.id = id
     },
     clear() {
       this.token = ''
@@ -30,6 +31,7 @@ export const useAuthStore = defineStore('auth', {
       this.user.role = ''
       this.user.username = ''
       this.user.address = ''
+      this.user.id = ''
     },
   },
   persist: true
