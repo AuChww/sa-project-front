@@ -6,7 +6,7 @@
         via-blue-500
         to-purple-500
         background-animate">
-        <div class="mx-auto relative my-4 flex mx-32 h-full flex-col overflow-hidden rounded-2xl bg-white text-gray-600 shadow-lg ring-1 ring-gray-200">
+        <div class="mx-auto relative my-4 flex px-80 h-full flex-col overflow-hidden rounded-2xl bg-white text-gray-600 shadow-lg ring-1 ring-gray-200">
         <div class="mt-12 sm:mx-auto sm:w-full sm:max-w-sm">
             <div class="relative mx-auto h-10 w-10 animate-bounce">
                 <div class="mx-auto h-12 w-12 rounded-full bg-blue-500"></div>

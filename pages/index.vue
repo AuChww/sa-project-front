@@ -76,8 +76,7 @@
                     <!-- Featured Product Cards -->
                     <div v-for="brands in brand" :key="brands.id"
                         class="bg-white shadow-md p-3 rounded-lg hover:scale-105 transition-all duration-500">
-                        <img :src="brands.image" alt="Product Image" class="w-full h-100 object-cover mb-4">
-                        <h3 class="text-xl font-semibold">{{ brands.name }}</h3>
+                        <img :src="brands.image" alt="Product Image" class="mx-auto h-24 object-cover ">
                     </div>
                 </div>
             </div>
@@ -373,27 +372,42 @@ export default {
             {
                 id: 1,
                 name: 'Intel',
-                image: 'https://www.jib.co.th/img_master/product/original/2021102715152349469_1.png',
+                image: 'https://miro.medium.com/v2/resize:fit:2400/1*tGK9XdcRZLZNo3u2ep17HA.jpeg',
             },
             {
                 id: 2,
                 name: 'Razor',
-                image: 'https://www.jib.co.th/img_master/product/original/2021102715152349469_1.png',
+                image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSmNm61CdK5DzSjyqvAVxMTUaOojutf07U0PA&usqp=CAU',
             },
             {
                 id: 3,
                 name: 'Logitech',
-                image: 'https://www.jib.co.th/img_master/product/original/2021102715152349469_1.png',
+                image: 'https://1000logos.net/wp-content/uploads/2020/05/Logitech-Logo.png',
             },
             {
                 id: 4,
                 name: 'Asus',
-                image: 'https://www.jib.co.th/img_master/product/original/2021102715152349469_1.png',
+                image: 'https://dlcdnimgs.asus.com/websites/global/Sno/79183.jpg',
             },
             {
                 id: 5,
                 name: 'Nvidia',
-                image: 'https://www.jib.co.th/img_master/product/original/2021102715152349469_1.png',
+                image: 'https://s3-symbol-logo.tradingview.com/nvidia--600.png',
+            },
+            {
+                id: 6,
+                name: 'MSI',
+                image: 'https://assets.entrepreneur.com/content/1x1/300/20190628132046-2019-msi-dragon-spirit-logo-digital-v-4c-b.jpeg?format=pjeg&auto=webp',
+            },
+            {
+                id: 7,
+                name: 'Gigabyte',
+                image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ6l-UYmlE7XlVZXRN4WwXtOaX7mi6iNxauE-s_QyR1sLEbIl-NAKRYzU-wYRnW3zCfra4&usqp=CAU',
+            },
+            {
+                id: 8,
+                name: 'AMD',
+                image: 'https://www.profesionalreview.com/wp-content/uploads/2012/09/amd_logo.jpg',
             },
             ]
         }
