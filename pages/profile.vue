@@ -74,7 +74,7 @@
             </div>
 
         </div>
-        <div style="border" class="px-4 sm:max-w-sm md:max-w-sm lg:max-w-sm xl:max-w-sm sm:mx-auto md:mx-auto lg:mx-auto xl:mx-auto mt-4 bg-white shadow-xl rounded-lg text-gray-900">
+        <div style="height: 600px; border" class="px-4 sm:max-w-sm md:max-w-sm lg:max-w-sm xl:max-w-sm sm:mx-auto md:mx-auto lg:mx-auto xl:mx-auto mt-4 bg-white shadow-xl rounded-lg text-gray-900">
             <div class="mt-4">
                 <div class="px-20 text-2xl mb-4 text-gray-700 font-semibold">
                     Payment History

@@ -10,15 +10,10 @@
     </section>
     
     <section class="container mt-4 px-4 mx-auto">
-        <div class="container mx-auto text-center mt-12 lg:rounded-2xl border-r-4 border-gray-800" :style="{'background-image':'url(https://getwallpapers.com/wallpaper/full/5/1/e/791806-neon-desktop-backgrounds-2560x1600-for-android-40.jpg)'}">
-            <h1 class="text-3xl text-white md:text-5xl py-4 lg:text-3xl font-extrabold mb-4 transition-all">
-                NEW INCOMING ORDER
-            </h1>
-        </div>
     <div class="flex flex-col">
         <div class="-mx-4 -my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
             <div class="inline-block min-w-full py-2 align-middle md:px-6 lg:px-8">
-                <div class="overflow-hidden border border-gray-200 dark:border-gray-700 md:rounded-lg">
+                <div class="max-h-96 overflow-y-auto overflow-hidden border border-gray-200 dark:border-gray-700 md:rounded-lg">
                     <table class="min-w-full divide-y divide-gray-200 dark:divide-gray-700">
                         <thead class="bg-gray-50 dark:bg-gray-800">
                             <tr>
@@ -188,15 +183,10 @@
 </section>
 
 <section class="container mt-4 px-4 mx-auto">
-        <div class="container mx-auto text-center mt-12 lg:rounded-2xl border-r-4 border-gray-800" :style="{'background-image':'url(https://e0.pxfuel.com/wallpapers/972/954/desktop-wallpaper-blue-purple-hexagon-light-shades-reflection-abstraction-abstract.jpg)'}">
-            <h1 class="text-3xl text-white md:text-5xl py-4 lg:text-3xl font-extrabold mb-4 transition-all">
-                COMPLETED
-            </h1>
-        </div>
     <div class="flex flex-col">
         <div class="-mx-4 -my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
             <div class="inline-block min-w-full py-2 align-middle md:px-6 lg:px-8">
-                <div class="overflow-hidden border border-gray-200 dark:border-gray-700 md:rounded-lg">
+                <div class="max-h-96 overflow-y-auto overflow-hidden border border-gray-200 dark:border-gray-700 md:rounded-lg">
                     <table class="min-w-full divide-y divide-gray-200 dark:divide-gray-700">
                         <thead class="bg-gray-50 dark:bg-gray-800">
                             <tr>
