@@ -18,8 +18,8 @@ export const useProductStore = defineStore('product', {
     products: [] as Product[],
   }),
   getters: {
-    getProductById: (state) => (productId: number) => {
-      return state.products.find((product) => product.id === productId);
+    getProductById: (state) => (product_id: number) => {
+      return state.products.find((product) => product.id === product_id);
     },
     checkCategory: (state) => (categoryToCheck) => {
       return state.products.category === categoryToCheck;

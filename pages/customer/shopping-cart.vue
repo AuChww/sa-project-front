@@ -35,7 +35,7 @@
           <p>Your cart is empty.</p>
         </div>
 
-        <div v-else v-for="product in Cart" :key="product.productId"
+        <div v-else v-for="product in Cart" :key="product.product_id"
           class="justify-between mb-6 rounded-lg bg-white p-6 shadow-md sm:flex sm:justify-start">
           <img :src="product.image" alt="product image" class="w-full rounded-lg sm:w-40" />
           <div class="sm:ml-4 sm:flex sm:w-full sm:justify-between">
@@ -58,7 +58,7 @@
                 <p class="text-xl">{{ product.price }}</p>
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                   stroke="currentColor" class="h-5 w-5 cursor-pointer duration-150 hover:text-red-500"
-                  @click="removeFromCart(product.productId)">
+                  @click="removeFromCart(product.product_id)">
                   <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
                 </svg>
               </div>
@@ -111,19 +111,19 @@ const Cart = cartStore.cart;
 const decrementQuantity = (product) => {
   if (product.quantity > 1) {
     product.quantity--;
-    cartStore.updateCartItemQuantity(product.productId, product.quantity);
+    cartStore.updateCartItemQuantity(product.product_id, product.quantity);
   }
 };
 
 // Function to increment the quantity of a product in the cart
 const incrementQuantity = (product) => {
   product.quantity++;
-  cartStore.updateCartItemQuantity(product.productId, product.quantity);
+  cartStore.updateCartItemQuantity(product.product_id, product.quantity);
 };
 
 // Function to remove a product from the cart
-const removeFromCart = (productId) => {
-  cartStore.removeFromCart(productId);
+const removeFromCart = (product_id) => {
+  cartStore.removeFromCart(product_id);
 };
 
 // Function to calculate the subtotal

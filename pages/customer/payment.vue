@@ -43,7 +43,7 @@
                     class="justify-between mb-6 rounded-lg bg-white p-6 shadow-md sm:flex sm:justify-start">
                     <p>Your cart is empty.</p>
                 </div>
-                <div v-else v-for="product in Cart" :key="product.productId"
+                <div v-else v-for="product in Cart" :key="product.product_id"
                     class="justify-between mb-6 rounded-lg bg-white p-6 shadow-md sm:flex sm:justify-start">
                     <!-- Display Cart Product Information -->
                     <img :src="product.image" alt="product image" class="w-full rounded-lg sm:w-40" />
