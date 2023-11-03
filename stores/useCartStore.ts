@@ -3,7 +3,7 @@ import { useProductStore } from '@/stores/useProductStore';
 
 // Define the CartItem interface with the necessary properties
 interface CartItem {
-  productId: number;
+  product_id: number;
   name: string; // Add product name
   description: string; // Add product description
   price: number; // Add product price
@@ -31,7 +31,7 @@ export const useCartStore = defineStore('cart', {
   
         if (productDetails) {
           // Check if the product is already in the cart by checking its id
-          const existingProduct = this.cart.find((item) => item.productId === product.id);
+          const existingProduct = this.cart.find((item) => item.product_id === product.id);
   
           if (existingProduct) {
             // If the product is already in the cart, you can update the quantity
@@ -39,7 +39,7 @@ export const useCartStore = defineStore('cart', {
           } else {
             // If it's not in the cart, add it as a new cart item
             this.cart.push({
-              productId: product.id,
+              product_id: product.id,
               name: productDetails.name,
               description: productDetails.description,
               price: productDetails.price,
@@ -50,9 +50,9 @@ export const useCartStore = defineStore('cart', {
     },
     
     // Remove a product from the cart
-    removeFromCart(productId: number) {
+    removeFromCart(product_id: number) {
       // Find the index of the item to remove
-      const itemIndex = this.cart.findIndex((item) => item.productId === productId);
+      const itemIndex = this.cart.findIndex((item) => item.product_id === product_id);
 
       if (itemIndex !== -1) {
         // Remove the item from the cart
@@ -60,8 +60,8 @@ export const useCartStore = defineStore('cart', {
       }
     },
     // Update the quantity of a product in the cart
-    updateCartItemQuantity(productId: number, quantity: number) {
-      const existingItem = this.cart.find((item) => item.productId === productId);
+    updateCartItemQuantity(product_id: number, quantity: number) {
+      const existingItem = this.cart.find((item) => item.product_id === product_id);
 
       if (existingItem) {
         existingItem.quantity = quantity;
