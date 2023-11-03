@@ -80,7 +80,26 @@
         <section class="py-12 mx-3" id="Best Seller"
             :style="{ 'background-image': 'url(https://wallpapers.com/images/hd/red-fire-background-na0r6a991986yftd.jpg)' }">
             <div>
-
+                <div class="container mx-auto text-center text-white py-8"
+                    :style="{ 'background-image': 'url(https://cdn.bhdw.net/im/color-image-of-circular-shapes-combined-from-colors-wallpaper-103050_w635.webp)' }">
+                    <h2 class="text-4xl font-semibold hover:scale-150 transition-all duration-500">Best Seller</h2>
+                    <h4>more product >></h4>
+                </div>
+                <div class="mx-4 grid grid-cols-4 md:grid-cols-5 lg:grid-cols-7 gap-8 mt-6">
+                    <div v-for="product in filteredProducts.slice(0,7)" :key="product.id"
+                        class="bg-white shadow-md p-3 rounded-lg hover:scale-105 transition-all duration-500">
+                        <img :src="`http://localhost:80/storage/${product.image}`" alt="Product Image"
+                            class="w-full h-100 object-cover mb-4">
+                        <h3 class="text-xl font-semibold">{{ product.name }}</h3>
+                        <div class="mt-4 flex items-center justify-between">
+                            <span class="text-xl font-bold text-blue-900">$ {{ product.price }}</span>
+                        </div>
+                        <button class="bg-blue-900 text-white px-4 py-2 rounded-full hover:bg-blue-700"
+                            @click="addToCart(product)">
+                            Add to Cart
+                        </button>
+                    </div>
+                </div>
             </div>
         </section>
 
@@ -98,9 +117,8 @@
                 <div>
                     <!-- CPU Product List -->
                     <div>
-                        <h1>Product List</h1>
-                        <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-8 mt-6">
-                            <div v-for="product in filteredCpuProducts" :key="product.id"
+                        <div class="mx-4 grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-8 mt-6">
+                            <div v-for="product in filteredCpuProducts.slice(0, 5)" :key="product.id"
                                 class="bg-white shadow-md p-3 rounded-lg hover:scale-105 transition-all duration-500">
                                 <img :src="`http://localhost:80/storage/${product.image}`" alt="Product Image"
                                     class="w-full h-100 object-cover mb-4">
@@ -133,8 +151,8 @@
                 </RouterLink>
                 <div>
                     <!-- Mainboad Product List -->
-                    <div class="p-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 text-left">
-                        <div v-for="product in filteredMainboardProducts" :key="product.id"
+                    <div class="mx-4 grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-8 mt-6">
+                        <div v-for="product in filteredMainboardProducts.slice(0, 5)" :key="product.id"
                             class="bg-white shadow-md p-3 rounded-lg hover:scale-105 transition-all duration-500 relative h-full flex flex-col">
                             <img :src="`http://localhost:80/storage/${product.image}`" alt="Product Image" class="w-full h-100 object-cover mb-4">
                             <h3 class="text-xl font-semibold">{{ product.name }}</h3>
@@ -171,8 +189,8 @@
                 </RouterLink>
                 <div>
                     <!-- GPU Product List -->
-                    <div class="p-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 text-left">
-                        <div v-for="product in filteredGpuProducts" :key="product.id"
+                    <div class="mx-4 grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-8 mt-6">
+                        <div v-for="product in filteredGpuProducts.slice(0, 5)" :key="product.id"
                             class="bg-white shadow-md p-3 rounded-lg hover:scale-105 transition-all duration-500 relative h-full flex flex-col">
                             <img :src="`http://localhost:80/storage/${product.image}`" alt="Product Image" class="w-full h-100 object-cover mb-4">
                             <h3 class="text-xl font-semibold">{{ product.name }}</h3>
@@ -209,8 +227,8 @@
                 </RouterLink>
                 <div>
                     <!-- Ram Product List -->
-                    <div class="p-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 text-left">
-                        <div v-for="product in filteredRamProducts" :key="product.id"
+                    <div class="mx-4 grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-8 mt-6">
+                        <div v-for="product in filteredRamProducts.slice(0, 5)" :key="product.id"
                             class="bg-white shadow-md p-3 rounded-lg hover:scale-105 transition-all duration-500 relative h-full flex flex-col">
                             <img :src="`http://localhost:80/storage/${product.image}`" alt="Product Image" class="w-full h-100 object-cover mb-4">
                             <h3 class="text-xl font-semibold">{{ product.name }}</h3>
@@ -247,8 +265,8 @@
                 </RouterLink>
                 <div>
                     <!-- Harddisk Product List -->
-                    <div class="p-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 text-left">
-                        <div v-for="product in filteredHarddiskProducts" :key="product.id"
+                    <div class="mx-4 grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-8 mt-6">
+                        <div v-for="product in filteredHarddiskProducts.slice(0, 5)" :key="product.id"
                             class="bg-white shadow-md p-3 rounded-lg hover:scale-105 transition-all duration-500 relative h-full flex flex-col">
                             <img :src="`http://localhost:80/storage/${product.image}`" alt="Product Image" class="w-full h-100 object-cover mb-4">
                             <h3 class="text-xl font-semibold">{{ product.name }}</h3>
@@ -285,8 +303,8 @@
                 </RouterLink>
                 <div>
                     <!-- Display Product List -->
-                    <div class="p-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 text-left">
-                        <div v-for="product in filteredDisplayProducts" :key="product.id"
+                    <div class="mx-4 grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-8 mt-6">
+                        <div v-for="product in filteredDisplayProducts.slice(0, 5)" :key="product.id"
                             class="bg-white shadow-md p-3 rounded-lg hover:scale-105 transition-all duration-500 relative h-full flex flex-col">
                             <img :src="`http://localhost:80/storage/${product.image}`" alt="Product Image" class="w-full h-100 object-cover mb-4">
                             <h3 class="text-xl font-semibold">{{ product.name }}</h3>
@@ -323,8 +341,8 @@
                 </RouterLink>
                 <div>
                     <!-- Gaming Gear Product List -->
-                    <div class="p-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 text-left">
-                        <div v-for="product in filteredGearProducts" :key="product.id"
+                    <div class="mx-4 grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-8 mt-6">
+                        <div v-for="product in filteredGearProducts.slice(0, 5)" :key="product.id"
                             class="bg-white shadow-md p-3 rounded-lg hover:scale-105 transition-all duration-500 relative h-full flex flex-col">
                             <img :src="`http://localhost:80/storage/${product.image}`" alt="Product Image" class="w-full h-100 object-cover mb-4">
                             <h3 class="text-xl font-semibold">{{ product.name }}</h3>
@@ -401,7 +419,22 @@ export default {
                     name: 'AMD',
                     image: 'https://www.profesionalreview.com/wp-content/uploads/2012/09/amd_logo.jpg',
                 },
-            ]
+                {
+                    id: 9,
+                    name: 'Steel Series',
+                    image: 'https://upload.wikimedia.org/wikipedia/en/7/7f/Steelseries-logo.png',
+                },
+                {
+                    id: 10,
+                    name: 'Corsair',
+                    image: 'https://www.extremeit.com/wp-content/uploads/2020/02/Corsair-logo-H.png',
+                },
+                {
+                    id: 11,
+                    name: 'LG',
+                    image: 'https://dasintergroup.com/daswp/wp-content/uploads/2019/11/Size-Insert-product-Picture-product-2.jpg',
+                },
+            ],
         }
     },
     components: {
