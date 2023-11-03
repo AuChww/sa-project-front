@@ -11,19 +11,20 @@
 
     <section>
         <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-8 mt-6 px-10">
-        <div v-for="order in Order" :key="order.id" class="mx-auto relative my-4 flex w-80 h-full flex-col overflow-hidden rounded-2xl bg-white text-gray-600 shadow-lg ring-1 ring-gray-200">
+            <div v-for="order in orders" :key="order.id" class="mx-auto relative my-4 flex w-80 h-full flex-col overflow-hidden rounded-2xl bg-white text-gray-600 shadow-lg ring-1 ring-gray-200">
         <div class="border-b p-6">
-            <h4 class=" text-base font-semibold">Order #0{{ order.id }}</h4>
+            <h4 class=" text-base font-semibold">Order #{{ order.id }}</h4>
             <p class=" text-sm font-light">
                 <i class="inline-block font-black not-italic text-green-600" aria-hidden="true"></i>Status : {{ order.status }}
             </p>
             
         </div>
+        
         <div class="flex-auto p-6">
             <div class="relative flex flex-col justify-center">
             <div class="absolute left-4 h-full border-r-2"></div>
             <div class="relative mb-6">
-                <div v-if="order.status == 'purchased'">
+                <div v-if="order.status == 'Pending'">
                     <span class="absolute inline-flex h-6 w-6 items-center justify-center rounded-full bg-blue-500 p-4 text-center text-base font-semibold text-white shadow">
                         <span class="absolute flex h-5 w-5 animate-spin">
                             <span class="h-3 w-3 rounded-full bg-white"></span>
@@ -165,102 +166,37 @@ input[type=submit]:hover {
 }
 </style>
 
-<script>
+<script setup lang="ts">
+import { useOrderStore } from '~/stores/useOrderStore';
 
+const orderStore = useOrderStore();
 
-export default {
-  data() {
-    return {
-      currentDate: new Date().toLocaleDateString(),
-      amount: 100.00,
-      showInfo: false ,
-        Order: [
-        {
-            id: 1,
-            order: 1,
-            name: 'Chanawut',
-            email: 'chanawut@example.com',
-            status: 'ordered',
-            purchased: '04/09/23 20:03',
-            ordered: '-',
-            image: '',
-            amount: 900,
-        },
-        {
-            id: 2,
-            order_id: 2,
-            name: 'Chayapol',
-            email: 'chayapol@example.com',
-            status: 'sending',
-            purchased: '07/09/23 12:31',
-            ordered: '-',
-            image: '',
-            amount: 900,
-        },
-        {
-            id: 3,
-            order_id: 3,
-            name: 'Mana',
-            email: 'mana@example.com',
-            status: 'checking',
-            purchased: '08/09/23 08:09',
-            ordered: '-',
-            image: '',
-            amount: 900,
-        },
-        {
-            id: 4,
-            order_id: 4 ,
-            name: 'Earth',
-            email: 'earth@example.com',
-            status: 'complete send',
-            purchased: '08/09/23 22:03',
-            ordered: '-',
-            image: '',
-            amount: 900,
-        },
-        {
-            id: 5,
-            order_id: 4 ,
-            name: 'Earth',
-            email: 'earth@example.com',
-            status: 'checking',
-            purchased: '08/09/23 22:03',
-            ordered: '-',
-            image: '',
-            amount: 900,
-        },
-        {
-            id: 6,
-            order_id: 4 ,
-            name: 'Earth',
-            email: 'earth@example.com',
-            status: 'sending',
-            purchased: '08/09/23 22:03',
-            ordered: '-',
-            image: '',
-            amount: 900,
-        },
-        
-        ],
-        Product: [
-        {
-            id: 1,
-            name: 'Intel Core I5 12600K',
-            description: '10 (6P+4E) Cores 16 Threads Intel UHD Graphics 770 CPU Cooler Not Included PCIe 5.0 and 4.0',
-            image: 'https://www.jib.co.th/img_master/product/original/2021102715152349469_1.png',
-            price: "454 $",
-        },
-        {
-            id: 2,
-            name: 'MSI MPG B550 Gaming Carbon WiFi',
-            description: '10 (6P+4E) Cores 16 Threads Intel UHD Graphics 770 CPU Cooler Not Included PCIe 5.0 and 4.0',
-            image: 'https://www.ascenti.co.th/wp-content/uploads/2020/07/msi-MPG-B550-GAMING-CARBON-WIFI-2.jpg',
-            price: "454 $",
-        },
-        
-        ]
-    };
-  },
+const orders = ref<Order[]>([]); // Initialize as an empty array
+
+const fetchOrders = async () => {
+    try {
+        await orderStore.fetchOrders();
+        orders.value = orderStore.allOrders.orders; // Update the orders ref with the 'orders' property
+    } catch (error) {
+        console.error('Failed to fetch orders', error);
+    }
+};
+
+onMounted(() => {
+    fetchOrders();
+});
+
+// Define the Order type here to match the structure of your order data
+type Order = {
+    id: number;
+    user_id: number;
+    user_name: string;
+    address: string;
+    total_price: string;
+    payment_receipt: string;
+    shipment_method: string;
+    status: string;
+    created_at: string;
+    updated_at: string;
 };
 </script>
