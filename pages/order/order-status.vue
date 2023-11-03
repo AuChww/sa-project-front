@@ -19,35 +19,34 @@
             </p>
             
         </div>
-        
-        <div class="flex-auto p-6">
+        <div class="flex-auto p-5">
             <div class="relative flex flex-col justify-center">
-            <div class="absolute left-4 h-full border-r-2"></div>
+                <div class="absolute left-4 h-full mt-0 border-r-4"></div>
+                <div class="relative mb-6">
+                    <div v-if="order.status == 'Pending'">
+                        <span class="absolute inline-flex h-6 w-6 items-center justify-center rounded-full bg-blue-500 p-4 text-center text-base font-semibold text-white shadow">
+                            <span class="absolute flex h-5 w-5 animate-spin">
+                                <span class="h-3 w-3 rounded-full bg-white"></span>
+                            </span>
+                        </span>
+                    </div>
+                    <div v-if="order.status == 'Preparing' || order.status == 'Packing' || order.status == 'Delivering' || order.status == 'Complete'">
+                        <span class="absolute inline-flex h-6 w-6 items-center justify-center rounded-full p-4 text-center bg-emerald-200 text-base font-semibold text-white">1</span>
+                    </div>
+                    <div class="ml-12 w-auto pt-1">
+                    <h6 class="text-sm font-semibold text-blue-900">Ordered</h6>
+                    <p class="mt-1 text-xs text-gray-500"></p>
+                    </div>
+                </div>
             <div class="relative mb-6">
-                <div v-if="order.status == 'Pending'">
+                <div v-if="order.status == 'Preparing'">
                     <span class="absolute inline-flex h-6 w-6 items-center justify-center rounded-full bg-blue-500 p-4 text-center text-base font-semibold text-white shadow">
                         <span class="absolute flex h-5 w-5 animate-spin">
                             <span class="h-3 w-3 rounded-full bg-white"></span>
                         </span>
                     </span>
                 </div>
-                <div v-if="order.status == 'complete send' || order.status == 'sending' || order.status == 'checking' || order.status == 'ordered'">
-                    <span class="absolute inline-flex h-6 w-6 items-center justify-center rounded-full p-4 text-center bg-emerald-200 text-base font-semibold text-white">1</span>
-                </div>
-                <div class="ml-12 w-auto pt-1">
-                <h6 class="text-sm font-semibold text-blue-900">Ordered</h6>
-                <p class="mt-1 text-xs text-gray-500"></p>
-                </div>
-            </div>
-            <div class="relative mb-6">
-                <div v-if="order.status == 'ordered'">
-                    <span class="absolute inline-flex h-6 w-6 items-center justify-center rounded-full bg-blue-500 p-4 text-center text-base font-semibold text-white shadow">
-                        <span class="absolute flex h-5 w-5 animate-spin">
-                            <span class="h-3 w-3 rounded-full bg-white"></span>
-                        </span>
-                    </span>
-                </div>
-                <div v-if="order.status == 'complete send' || order.status == 'sending' || order.status == 'checking'">
+                <div v-if="order.status == 'Packing' || order.status == 'Delivering' || order.status == 'Complete'">
                     <span class="absolute inline-flex h-6 w-6 items-center justify-center rounded-full p-4 text-center bg-emerald-200 text-base font-semibold text-white">2</span>
                 </div>
                 <div class="ml-12 w-auto pt-1">
@@ -56,14 +55,14 @@
                 </div>
             </div>
             <div class="relative mb-6">
-                <div v-if="order.status == 'checking'">
+                <div v-if="order.status == 'Packing'">
                     <span class="absolute inline-flex h-6 w-6 items-center justify-center rounded-full bg-blue-500 p-4 text-center text-base font-semibold text-white shadow">
                         <span class="absolute flex h-5 w-5 animate-spin">
                             <span class="h-3 w-3 rounded-full bg-white"></span>
                         </span>
                     </span>
                 </div>
-                <div v-if="order.status == 'complete send' || order.status == 'sending'">
+                <div v-if="order.status == 'Delivering' || order.status == 'Complete'">
                     <span class="absolute inline-flex h-6 w-6 items-center justify-center rounded-full p-4 text-center bg-emerald-200 text-base font-semibold text-white">3</span>
                 </div>
                 <div class="ml-12 w-auto pt-1">
@@ -72,14 +71,14 @@
                 </div>
             </div>
             <div class="relative mb-6">
-                <div v-if="order.status == 'sending'">
+                <div v-if="order.status == 'Delivering'">
                     <span class="absolute inline-flex h-6 w-6 items-center justify-center rounded-full bg-blue-500 p-4 text-center text-base font-semibold text-white shadow">
                         <span class="absolute flex h-5 w-5 animate-spin">
                             <span class="h-3 w-3 rounded-full bg-white"></span>
                         </span>
                     </span>
                 </div>
-                <div v-if="order.status == 'complete send'">
+                <div v-if="order.status == 'Complete'">
                     <span class="absolute inline-flex h-6 w-6 items-center justify-center rounded-full p-4 text-center bg-emerald-200 text-base font-semibold text-white">4</span>
                 </div>
                 <div class="ml-12 w-auto pt-1">
@@ -88,7 +87,7 @@
                 </div>
             </div>
             <div class="relative mb-6">
-                <div v-if="order.status == 'complete send'">
+                <div v-if="order.status == 'Complete'">
                     <span class="absolute animate-bounce inline-flex h-6 w-6 items-center justify-center rounded-full p-4 text-center bg-emerald-200 text-base font-semibold text-white">5</span>
                 </div>
                 <div class="ml-12 w-auto pt-1">
@@ -111,6 +110,23 @@
             </p>
 
             </div>
+            <div class="mt-4 mx-auto items-center">
+                <div v-if="order.status == 'Pending' || order.status == 'Preparing' || order.status == 'Packing'">
+                    <button class="w-full z-4 items-center py-4 border-2 bg-white border-red-400 lg:rounded-2xl text-red-400 hover:text-white hover:border-white hover:bg-red-500">
+                        <div class="">
+                            Cancel
+                        </div>
+                    </button>
+                </div>
+                <div v-if="order.status == 'Delivering'">
+                    <button class="w-full z-4 items-center py-4 border-2 bg-white border-emerald-400 lg:rounded-2xl text-emerald-400 hover:text-white hover:border-white hover:bg-emerald-400">
+                        <div class="">
+                            Complete
+                        </div>
+                    </button>
+                </div>
+            </div>
+            
         </div>
         </div>
     </div>
