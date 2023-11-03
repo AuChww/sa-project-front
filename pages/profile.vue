@@ -30,11 +30,15 @@
                     src='https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=400&fit=max&ixid=eyJhcHBfaWQiOjE0NTg5fQ'
                     alt='Woman looking front'>
             </div>
-            <div class="text-center mt-4">
-                <h2 class="font-semibold">{{ auth.user.role }}</h2>
-                <h2 class="font-semibold">{{ auth.user.username }}</h2>
-                <h2 class="font-semibold">{{ auth.user.name }}</h2>
-                <h2 class="font-semibold">{{ auth.user.address }}</h2>
+            <div class="text-center">
+                <div class="font-semibold text-3xl">{{ auth.user.name }}</div>
+                <div class="font-semibold text-sm text-gray-600">{{ auth.user.username }}</div>
+
+                <div class="font-semibold mt-4 text-m">{{ auth.user.role }}</div>
+                <div class="font-semibold text-m">{{ auth.user.role }}</div>
+                <div class="font-semibold text-m">{{ auth.user.role }}</div>
+
+                <div class="font-semibold mt-4 text-m">{{ auth.user.address }}</div>
 
             </div>
             <ul class="py-4 mt-2 text-gray-700 flex items-center justify-around">

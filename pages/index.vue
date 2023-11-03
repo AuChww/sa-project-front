@@ -40,26 +40,20 @@
         </section>
 
         <!-- Product Categories Carousel -->
-        <section class="bg-gray-100 py-16 ">
-            <div class="container mx-auto text-center">
-                <h2 class="text-3xl font-semibold mb-4">Explore Our Categories</h2>
-                <p class="text-gray-600 text-base mb-8 transition-all">Swipe left-right through the cataegory.</p>
-
-                <!-- Swiper Carousel Container -->
-                <div class="swiper-container" ref="categorySwiper" style="overflow-x: hidden;">
-                    <div class="swiper-wrapper">
-                        <!-- Category Cards -->
-                        <div v-for="category in categories" :key="category.id"
-                            class="swiper-slide bg-white shadow-md p-8 rounded-lg"
-                            :style="{ 'background-image': 'url(https://wallpapers.com/images/featured/1366x768-4lygqv03leitaipx.jpg)' }">
-                            <img :src="category.image" alt="Category Image" class="w-16 h-16 mx-auto mb-4">
-                            <h3 class="text-xl font-semibold">{{ category.name }}</h3>
-                            <p class="text-gray-600">{{ category.description }}</p>
-                        </div>
-                    </div>
-
-                    <!-- Add Pagination -->
-                    <div class="swiper-pagination hidden 2xl:block 2xl:py-3 " ref="categoryPagination"></div>
+        <section class="py-12 mt-4 mx-4" id="Feature Video">
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
+                <!-- Featured Product Cards -->
+                <div class="w-full">
+                    <iframe src="https://www.youtube.com/embed/8KKE-7BzB_M" class="w-full h-full" frameborder="0" allowfullscreen></iframe>
+                </div>
+                <div class="w-full">
+                    <iframe src="https://www.youtube.com/embed/VryFK-_Ns1Q" class="w-full h-full" frameborder="0" allowfullscreen></iframe>
+                </div>
+                <div class="w-full">
+                    <iframe src="https://www.youtube.com/embed/gNSgp3d6EgQ" class="w-full h-full" frameborder="0" allowfullscreen></iframe>
+                </div>
+                <div class="w-full">
+                    <iframe src="https://www.youtube.com/embed/CTiRNnSg0jA" class="w-full h-full" frameborder="0" allowfullscreen></iframe>
                 </div>
             </div>
         </section>
@@ -365,50 +359,50 @@ import { useAuthStore } from '~/stores/useAuthStore';
 import { useCartStore } from '~/stores/useCartStore';
 
 export default {
-    data(){
+    data() {
         return {
             auth: useProductStore(),
             brand: [
-            {
-                id: 1,
-                name: 'Intel',
-                image: 'https://miro.medium.com/v2/resize:fit:2400/1*tGK9XdcRZLZNo3u2ep17HA.jpeg',
-            },
-            {
-                id: 2,
-                name: 'Razor',
-                image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSmNm61CdK5DzSjyqvAVxMTUaOojutf07U0PA&usqp=CAU',
-            },
-            {
-                id: 3,
-                name: 'Logitech',
-                image: 'https://1000logos.net/wp-content/uploads/2020/05/Logitech-Logo.png',
-            },
-            {
-                id: 4,
-                name: 'Asus',
-                image: 'https://dlcdnimgs.asus.com/websites/global/Sno/79183.jpg',
-            },
-            {
-                id: 5,
-                name: 'Nvidia',
-                image: 'https://s3-symbol-logo.tradingview.com/nvidia--600.png',
-            },
-            {
-                id: 6,
-                name: 'MSI',
-                image: 'https://assets.entrepreneur.com/content/1x1/300/20190628132046-2019-msi-dragon-spirit-logo-digital-v-4c-b.jpeg?format=pjeg&auto=webp',
-            },
-            {
-                id: 7,
-                name: 'Gigabyte',
-                image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ6l-UYmlE7XlVZXRN4WwXtOaX7mi6iNxauE-s_QyR1sLEbIl-NAKRYzU-wYRnW3zCfra4&usqp=CAU',
-            },
-            {
-                id: 8,
-                name: 'AMD',
-                image: 'https://www.profesionalreview.com/wp-content/uploads/2012/09/amd_logo.jpg',
-            },
+                {
+                    id: 1,
+                    name: 'Intel',
+                    image: 'https://miro.medium.com/v2/resize:fit:2400/1*tGK9XdcRZLZNo3u2ep17HA.jpeg',
+                },
+                {
+                    id: 2,
+                    name: 'Razor',
+                    image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSmNm61CdK5DzSjyqvAVxMTUaOojutf07U0PA&usqp=CAU',
+                },
+                {
+                    id: 3,
+                    name: 'Logitech',
+                    image: 'https://1000logos.net/wp-content/uploads/2020/05/Logitech-Logo.png',
+                },
+                {
+                    id: 4,
+                    name: 'Asus',
+                    image: 'https://dlcdnimgs.asus.com/websites/global/Sno/79183.jpg',
+                },
+                {
+                    id: 5,
+                    name: 'Nvidia',
+                    image: 'https://s3-symbol-logo.tradingview.com/nvidia--600.png',
+                },
+                {
+                    id: 6,
+                    name: 'MSI',
+                    image: 'https://assets.entrepreneur.com/content/1x1/300/20190628132046-2019-msi-dragon-spirit-logo-digital-v-4c-b.jpeg?format=pjeg&auto=webp',
+                },
+                {
+                    id: 7,
+                    name: 'Gigabyte',
+                    image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ6l-UYmlE7XlVZXRN4WwXtOaX7mi6iNxauE-s_QyR1sLEbIl-NAKRYzU-wYRnW3zCfra4&usqp=CAU',
+                },
+                {
+                    id: 8,
+                    name: 'AMD',
+                    image: 'https://www.profesionalreview.com/wp-content/uploads/2012/09/amd_logo.jpg',
+                },
             ]
         }
     },
