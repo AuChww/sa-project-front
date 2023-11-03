@@ -47,6 +47,30 @@
                         class="bg-gray-50 border border-gray-300 text-gray-900 text-xl rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                         placeholder="" required>
                 </div>
+                <div>
+                    <label for="image" class="block mb-2 text-xl font-medium text-gray-900 dark:text-black">
+                        Image
+                    </label>
+                    <div class="flex items-center">
+                        <label class="cursor-pointer flex items-center">
+                            <span
+                                class="px-2 py-1 text-gray-600 dark:text-gray-300 bg-gray-200 dark:bg-gray-800 rounded-md">
+                                Choose File
+                            </span>
+                            <input type="file" id="image" class="hidden" @change="handleImageUpload" accept="image/*" />
+                        </label>
+                        <div v-if="formData.image" class="ml-4">
+                            <img :src="imagePreview" alt="Image Preview" class="w-24 h-24 object-contain" />
+                        </div>
+                    </div>
+                </div>
+
+                <div>
+                    <label for="brand" class="block mb-2 text-xl font-medium text-gray-900 dark:text-black">Brand</label>
+                    <input v-model="formData.brand" type="text" id="brand"
+                        class="bg-gray-50 border border-gray-300 text-gray-900 text-xl rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                        placeholder="Brand" required>
+                </div>
             </div>
             <div class="mx-12 mb-6">
                 <label for="description"
@@ -73,11 +97,29 @@ const formData = reactive({
     price: 0,
     quantity: 0,
     description: '',
+    brand: '',
+    image: null,
 });
 
 const formErrors = ref({
     errors: null,
 });
+
+const imagePreview = ref(null);
+
+const handleImageUpload = (event) => {
+    const file = event.target.files[0];
+    formData.image = file;
+
+    // Display a small image preview
+    if (file) {
+        const reader = new FileReader();
+        reader.onload = (e) => {
+            imagePreview.value = e.target.result;
+        };
+        reader.readAsDataURL(file);
+    }
+};
 
 const submitForm = async () => {
     // Reset form errors
@@ -90,6 +132,11 @@ const submitForm = async () => {
     form.append('price', formData.price);
     form.append('quantity', formData.quantity);
     form.append('description', formData.description);
+    form.append('brand', formData.brand);
+
+    if (formData.image) {
+        form.append('image', formData.image);
+    }
 
     try {
         const { data: response, error } = await useMyFetch<any>('products', {
@@ -110,6 +157,7 @@ const submitForm = async () => {
         formData.price = 0;
         formData.quantity = 0;
         formData.description = '';
+        formData.brand = '';
     } catch (error) {
         console.error(error);
         formErrors.value.errors = error.message;

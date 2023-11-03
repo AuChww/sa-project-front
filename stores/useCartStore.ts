@@ -4,6 +4,7 @@ import { useProductStore } from '@/stores/useProductStore';
 // Define the CartItem interface with the necessary properties
 interface CartItem {
   product_id: number;
+  image: string;
   name: string; // Add product name
   description: string; // Add product description
   price: number; // Add product price
@@ -40,6 +41,7 @@ export const useCartStore = defineStore('cart', {
             // If it's not in the cart, add it as a new cart item
             this.cart.push({
               product_id: product.id,
+              image: productDetails.image,
               name: productDetails.name,
               description: productDetails.description,
               price: productDetails.price,

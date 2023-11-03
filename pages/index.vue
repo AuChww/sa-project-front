@@ -97,19 +97,17 @@
                 </RouterLink>
                 <div>
                     <!-- CPU Product List -->
-                    <div class="p-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 text-left">
-                        <div v-for="product in filteredCpuProducts" :key="product.id"
-                            class="bg-white shadow-md p-3 rounded-lg hover:scale-105 transition-all duration-500 relative h-full flex flex-col">
-                            <img :src="product.image" alt="Product Image" class="w-full h-100 object-cover mb-4">
-                            <h3 class="text-xl font-semibold">{{ product.name }}</h3>
-                            <p class="text-gray-600 flex-grow overflow-hidden line-clamp-2">{{ product.description }}</p>
-
-                            <div class="flex justify-between mt-2">
-                                <!-- Price on the left-bottom -->
-                                <div class="text-xl font-bold text-blue-900 ">$ {{ product.price }}</div>
-
-                                <div v-if="auth.isLogin">
-                                    <!-- Add to Cart on the right-bottom -->
+                    <div>
+                        <h1>Product List</h1>
+                        <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-8 mt-6">
+                            <div v-for="product in filteredCpuProducts" :key="product.id"
+                                class="bg-white shadow-md p-3 rounded-lg hover:scale-105 transition-all duration-500">
+                                <img :src="`http://localhost:80/storage/${product.image}`" alt="Product Image"
+                                    class="w-full h-100 object-cover mb-4">
+                                <h3 class="text-xl font-semibold">{{ product.name }}</h3>
+                                <p class="text-gray-600">{{ product.description }}</p>
+                                <div class="mt-4 flex items-center justify-between">
+                                    <span class="text-xl font-bold text-blue-900">$ {{ product.price }}</span>
                                     <button class="bg-blue-900 text-white px-4 py-2 rounded-full hover:bg-blue-700"
                                         @click="addToCart(product)">
                                         Add to Cart
@@ -138,7 +136,7 @@
                     <div class="p-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 text-left">
                         <div v-for="product in filteredMainboardProducts" :key="product.id"
                             class="bg-white shadow-md p-3 rounded-lg hover:scale-105 transition-all duration-500 relative h-full flex flex-col">
-                            <img :src="product.image" alt="Product Image" class="w-full h-100 object-cover mb-4">
+                            <img :src="`http://localhost:80/storage/${product.image}`" alt="Product Image" class="w-full h-100 object-cover mb-4">
                             <h3 class="text-xl font-semibold">{{ product.name }}</h3>
                             <p class="text-gray-600 flex-grow overflow-hidden line-clamp-2">{{ product.description }}</p>
 
@@ -176,7 +174,7 @@
                     <div class="p-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 text-left">
                         <div v-for="product in filteredGpuProducts" :key="product.id"
                             class="bg-white shadow-md p-3 rounded-lg hover:scale-105 transition-all duration-500 relative h-full flex flex-col">
-                            <img :src="product.image" alt="Product Image" class="w-full h-100 object-cover mb-4">
+                            <img :src="`http://localhost:80/storage/${product.image}`" alt="Product Image" class="w-full h-100 object-cover mb-4">
                             <h3 class="text-xl font-semibold">{{ product.name }}</h3>
                             <p class="text-gray-600 flex-grow overflow-hidden line-clamp-2">{{ product.description }}</p>
 
@@ -214,7 +212,7 @@
                     <div class="p-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 text-left">
                         <div v-for="product in filteredRamProducts" :key="product.id"
                             class="bg-white shadow-md p-3 rounded-lg hover:scale-105 transition-all duration-500 relative h-full flex flex-col">
-                            <img :src="product.image" alt="Product Image" class="w-full h-100 object-cover mb-4">
+                            <img :src="`http://localhost:80/storage/${product.image}`" alt="Product Image" class="w-full h-100 object-cover mb-4">
                             <h3 class="text-xl font-semibold">{{ product.name }}</h3>
                             <p class="text-gray-600 flex-grow overflow-hidden line-clamp-2">{{ product.description }}</p>
 
@@ -252,7 +250,7 @@
                     <div class="p-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 text-left">
                         <div v-for="product in filteredHarddiskProducts" :key="product.id"
                             class="bg-white shadow-md p-3 rounded-lg hover:scale-105 transition-all duration-500 relative h-full flex flex-col">
-                            <img :src="product.image" alt="Product Image" class="w-full h-100 object-cover mb-4">
+                            <img :src="`http://localhost:80/storage/${product.image}`" alt="Product Image" class="w-full h-100 object-cover mb-4">
                             <h3 class="text-xl font-semibold">{{ product.name }}</h3>
                             <p class="text-gray-600 flex-grow overflow-hidden line-clamp-2">{{ product.description }}</p>
 
@@ -290,7 +288,7 @@
                     <div class="p-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 text-left">
                         <div v-for="product in filteredDisplayProducts" :key="product.id"
                             class="bg-white shadow-md p-3 rounded-lg hover:scale-105 transition-all duration-500 relative h-full flex flex-col">
-                            <img :src="product.image" alt="Product Image" class="w-full h-100 object-cover mb-4">
+                            <img :src="`http://localhost:80/storage/${product.image}`" alt="Product Image" class="w-full h-100 object-cover mb-4">
                             <h3 class="text-xl font-semibold">{{ product.name }}</h3>
                             <p class="text-gray-600 flex-grow overflow-hidden line-clamp-2">{{ product.description }}</p>
 
@@ -328,7 +326,7 @@
                     <div class="p-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 text-left">
                         <div v-for="product in filteredGearProducts" :key="product.id"
                             class="bg-white shadow-md p-3 rounded-lg hover:scale-105 transition-all duration-500 relative h-full flex flex-col">
-                            <img :src="product.image" alt="Product Image" class="w-full h-100 object-cover mb-4">
+                            <img :src="`http://localhost:80/storage/${product.image}`" alt="Product Image" class="w-full h-100 object-cover mb-4">
                             <h3 class="text-xl font-semibold">{{ product.name }}</h3>
                             <p class="text-gray-600 flex-grow overflow-hidden line-clamp-2">{{ product.description }}</p>
 
