@@ -6,21 +6,22 @@
         via-blue-500
         to-purple-500
         background-animate">
-        <div class="sm:mx-auto sm:w-full sm:max-w-sm">
+        <div class="mx-auto relative my-4 flex mx-32 h-full flex-col overflow-hidden rounded-2xl bg-white text-gray-600 shadow-lg ring-1 ring-gray-200">
+        <div class="mt-12 sm:mx-auto sm:w-full sm:max-w-sm">
             <div class="relative mx-auto h-10 w-10 animate-bounce">
-                <div class="mx-auto h-12 w-12 rounded-full bg-white"></div>
+                <div class="mx-auto h-12 w-12 rounded-full bg-blue-500"></div>
                 <span class="absolute flex h-7 w-7 animate-spin">
                     <span class="h-6 w-6 rounded-full bg-green-400"></span>
                 </span>
             </div>
-            <h2 class="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-white">Sign in to your account
+            <h2 class="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-gray-700">Sign in to your account
             </h2>
         </div>
 
         <div class="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
             <form class="space-y-6" @submit.prevent="onSubmit()">
                 <div>
-                    <label for="email" class="block text-sm font-medium leading-6 text-white">Email</label>
+                    <label for="email" class="block text-sm font-medium leading-6 text-black">Email</label>
                     <div class="mt-2">
                         <input id="email" v-model="formData.email" name="email" type="email" autocomplete="email"
                             class="block w-full rounded-md border-0 p-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
@@ -29,9 +30,9 @@
 
                 <div>
                     <div class="flex items-center justify-between">
-                        <label for="password" class="block text-sm font-medium leading-6 text-white">Password</label>
+                        <label for="password" class="block text-sm font-medium leading-6 text-black">Password</label>
                         <div class="text-sm">
-                            <a href="#" class="font-semibold text-blue-200 hover:text-blue-100">Forgot password?</a>
+                            <a href="#" class="font-semibold text-blue-500 hover:text-blue-400">Forgot password?</a>
                         </div>
                     </div>
                     <div class="mt-2">
@@ -45,20 +46,21 @@
 
                 <div>
                     <button type="submit"
-                        class="flex w-full justify-center rounded-md bg-blue-400 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-blue-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Sign
+                        class="flex w-full justify-center rounded-md bg-blue-500 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-blue-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Sign
                         in</button>
                 </div>
             </form>
 
 
-            <p class="mt-10 mb-48 text-center text-sm text-white">
+            <p class="mt-10 mb-28 text-center text-sm text-black">
                 Don't have an account?
-                <router-link to="/register" class="font-semibold leading-6 text-blue-200 hover:text-blue-100">Sign
+                <router-link to="/register" class="font-semibold leading-6 text-blue-500 hover:text-blue-100">Sign
                     up</router-link>
                 or
-                <router-link to="/" class="font-semibold leading-6 text-blue-200 hover:text-blue-100">Back</router-link>
+                <router-link to="/" class="font-semibold leading-6 text-blue-500 hover:text-blue-100">Back</router-link>
             </p>
 
+        </div>
         </div>
     </div>
 </template>

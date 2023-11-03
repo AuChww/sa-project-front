@@ -12,7 +12,7 @@
     <section class="container mt-4 px-4 mx-auto">
         <div class="container mx-auto text-center mt-12 lg:rounded-2xl border-r-4 border-gray-800" :style="{'background-image':'url(https://getwallpapers.com/wallpaper/full/5/1/e/791806-neon-desktop-backgrounds-2560x1600-for-android-40.jpg)'}">
             <h1 class="text-3xl text-white md:text-5xl py-4 lg:text-3xl font-extrabold mb-4 transition-all">
-                NEW ORDER
+                NEW INCOMING ORDER
             </h1>
         </div>
     <div class="flex flex-col">
@@ -256,39 +256,6 @@
                                 </div>
                                 
                                 <td class="px-4 py-4 text-sm font-medium text-gray-700 whitespace-nowrap">
-                                    <div v-if="report.status == 'delivery waiting'">
-                                        <div class="inline-flex items-center px-3 py-1 text-yellow-500 rounded-full gap-x-2 bg-red-100/60 dark:bg-gray-800">
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="50" height="10">
-                                                <circle cx="10" cy="5" r="4" fill="yellow">
-                                                    <animate attributeName="opacity" dur="1s" values="0;1;0" repeatCount="indefinite" />
-                                                </circle>
-                                                <circle cx="25" cy="5" r="4" fill="yellow">
-                                                    <animate attributeName="opacity" dur="1s" begin="0.1s" values="0;1;0" repeatCount="indefinite" />
-                                                </circle>
-                                                <circle cx="40" cy="5" r="4" fill="yellow">
-                                                    <animate attributeName="opacity" dur="1s" begin="0.2s" values="0;1;0" repeatCount="indefinite" />
-                                                </circle>
-                                            </svg>
-                                            <h2 class="text-sm font-normal">Waiting for Your Respond...</h2>
-                                        </div>
-                                    </div>           
-
-                                    <div v-if="report.status == 'sending'">
-                                        <div class="inline-flex items-center px-3 py-1 text-white rounded-full gap-x-2 bg-red-100/60 dark:bg-gray-800">
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="50" height="10">
-                                                <circle cx="10" cy="5" r="4" fill="white">
-                                                    <animate attributeName="opacity" dur="1s" values="0;1;0" repeatCount="indefinite" />
-                                                </circle>
-                                                <circle cx="25" cy="5" r="4" fill="white">
-                                                    <animate attributeName="opacity" dur="1s" begin="0.1s" values="0;1;0" repeatCount="indefinite" />
-                                                </circle>
-                                                <circle cx="40" cy="5" r="4" fill="white">
-                                                    <animate attributeName="opacity" dur="1s" begin="0.2s" values="0;1;0" repeatCount="indefinite" />
-                                                </circle>
-                                            </svg>
-                                            <h2 class="text-sm font-normal">In the Sending Process...</h2>
-                                        </div>
-                                    </div>
 
                                     <div v-if="report.status == 'complete send'">
                                         <div class="inline-flex items-center px-3 py-1 text-gray-500 rounded-full gap-x-2 bg-gray-100/60 dark:bg-gray-800">
@@ -297,15 +264,6 @@
                                             </svg>
 
                                             <h2 class="text-sm font-normal">Complete New Delivery</h2>
-                                        </div>
-                                    </div>
-
-                                    <div v-if="report.status == 'rejected'">
-                                        <div class="inline-flex items-center px-3 py-1 rounded-full gap-x-2 text-red-500 bg-emerald-100/60 dark:bg-gray-800">
-                                            <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                <path d="M10 3L4.5 8.5L2 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                                            </svg>
-                                            <h2 class="text-sm font-normal">Rejected</h2>
                                         </div>
                                     </div>
 

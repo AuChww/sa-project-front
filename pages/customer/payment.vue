@@ -192,7 +192,7 @@ const placeOrder = async () => {
     console.log('Data being sent:', orderData);
 
     try {
-        const response = await useMyFetch<{ order_id: number }>('orders', {
+        const response = await useMyFetch<{ order_id: number }>('place-order', {
             method: 'POST',
             body: JSON.stringify(orderData),
             headers: {

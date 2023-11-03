@@ -92,17 +92,8 @@ import { useAuthStore } from "~/stores/useAuthStore";
 const auth = useAuthStore()
 
 definePageMeta({
-    middleware: 'authenticated' //Auth checker
+    middleware: 'authenticated'
 })
-async function onLogout() {
-  const { data: response, error } = await useMyFetch<any>('auth/logout', {
-    method: 'POST'
-  })
-  if (response.value !== null) {
-    auth.clear()
-    await navigateTo('/login')
-  }
-}
 
 </script>
 
