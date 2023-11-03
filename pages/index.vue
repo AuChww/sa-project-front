@@ -136,7 +136,7 @@
                     <div class="p-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 text-left">
                         <div v-for="product in filteredMainboardProducts" :key="product.id"
                             class="bg-white shadow-md p-3 rounded-lg hover:scale-105 transition-all duration-500 relative h-full flex flex-col">
-                            <img :src="product.image" alt="Product Image" class="w-full h-100 object-cover mb-4">
+                            <img :src="`http://localhost:80/storage/${product.image}`" alt="Product Image" class="w-full h-100 object-cover mb-4">
                             <h3 class="text-xl font-semibold">{{ product.name }}</h3>
                             <p class="text-gray-600 flex-grow overflow-hidden line-clamp-2">{{ product.description }}</p>
 
@@ -174,7 +174,7 @@
                     <div class="p-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 text-left">
                         <div v-for="product in filteredGpuProducts" :key="product.id"
                             class="bg-white shadow-md p-3 rounded-lg hover:scale-105 transition-all duration-500 relative h-full flex flex-col">
-                            <img :src="product.image" alt="Product Image" class="w-full h-100 object-cover mb-4">
+                            <img :src="`http://localhost:80/storage/${product.image}`" alt="Product Image" class="w-full h-100 object-cover mb-4">
                             <h3 class="text-xl font-semibold">{{ product.name }}</h3>
                             <p class="text-gray-600 flex-grow overflow-hidden line-clamp-2">{{ product.description }}</p>
 
@@ -212,7 +212,7 @@
                     <div class="p-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 text-left">
                         <div v-for="product in filteredRamProducts" :key="product.id"
                             class="bg-white shadow-md p-3 rounded-lg hover:scale-105 transition-all duration-500 relative h-full flex flex-col">
-                            <img :src="product.image" alt="Product Image" class="w-full h-100 object-cover mb-4">
+                            <img :src="`http://localhost:80/storage/${product.image}`" alt="Product Image" class="w-full h-100 object-cover mb-4">
                             <h3 class="text-xl font-semibold">{{ product.name }}</h3>
                             <p class="text-gray-600 flex-grow overflow-hidden line-clamp-2">{{ product.description }}</p>
 
@@ -250,7 +250,7 @@
                     <div class="p-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 text-left">
                         <div v-for="product in filteredHarddiskProducts" :key="product.id"
                             class="bg-white shadow-md p-3 rounded-lg hover:scale-105 transition-all duration-500 relative h-full flex flex-col">
-                            <img :src="product.image" alt="Product Image" class="w-full h-100 object-cover mb-4">
+                            <img :src="`http://localhost:80/storage/${product.image}`" alt="Product Image" class="w-full h-100 object-cover mb-4">
                             <h3 class="text-xl font-semibold">{{ product.name }}</h3>
                             <p class="text-gray-600 flex-grow overflow-hidden line-clamp-2">{{ product.description }}</p>
 
@@ -288,7 +288,7 @@
                     <div class="p-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 text-left">
                         <div v-for="product in filteredDisplayProducts" :key="product.id"
                             class="bg-white shadow-md p-3 rounded-lg hover:scale-105 transition-all duration-500 relative h-full flex flex-col">
-                            <img :src="product.image" alt="Product Image" class="w-full h-100 object-cover mb-4">
+                            <img :src="`http://localhost:80/storage/${product.image}`" alt="Product Image" class="w-full h-100 object-cover mb-4">
                             <h3 class="text-xl font-semibold">{{ product.name }}</h3>
                             <p class="text-gray-600 flex-grow overflow-hidden line-clamp-2">{{ product.description }}</p>
 
@@ -326,7 +326,7 @@
                     <div class="p-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 text-left">
                         <div v-for="product in filteredGearProducts" :key="product.id"
                             class="bg-white shadow-md p-3 rounded-lg hover:scale-105 transition-all duration-500 relative h-full flex flex-col">
-                            <img :src="product.image" alt="Product Image" class="w-full h-100 object-cover mb-4">
+                            <img :src="`http://localhost:80/storage/${product.image}`" alt="Product Image" class="w-full h-100 object-cover mb-4">
                             <h3 class="text-xl font-semibold">{{ product.name }}</h3>
                             <p class="text-gray-600 flex-grow overflow-hidden line-clamp-2">{{ product.description }}</p>
 
@@ -357,7 +357,6 @@ import { useAuthStore } from '~/stores/useAuthStore';
 import { useCartStore } from '~/stores/useCartStore';
 
 export default {
-    data() {
     data() {
         return {
             auth: useProductStore(),
