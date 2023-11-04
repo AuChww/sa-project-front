@@ -1,7 +1,7 @@
 <template>
     <div>
         <h1>Image Test</h1>
-        <img :src="imageData" alt="Test Image" />
+        <img :src="localhost/imageData" alt="Test Image" />
     </div>
 </template>
     

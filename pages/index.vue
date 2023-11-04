@@ -127,7 +127,7 @@
                                 <div class="text-white h-full shadow-md p-3 rounded-lg hover:scale-105 transition-all duration-500"
                                     :style="{ 'background-image': 'url(https://4kwallpapers.com/images/walls/thumbs_3t/9784.jpg)', 'backgroundPosition': 'center 40%', 'backgroundSize': '280%' }">
                                     <h2
-                                        class="lg:text-4xl md:text-3xl py-24 text-4xl font-semibold hover:scale-110 transition-all duration-500">
+                                        class="lg:text-4xl md:text-3xl mt-0 mb-24 text-4xl font-semibold hover:scale-110 transition-all duration-500">
                                         CPU</h2>
                                 </div>
                             </RouterLink>
@@ -171,7 +171,7 @@
                                 <div class="text-white h-full shadow-md p-3 rounded-lg hover:scale-105 transition-all duration-500"
                                     :style="{ 'background-image': 'url(https://www.ansys.com/content/dam/amp/2023/april/blog-article-requests/how-to-plan-and-conduct-highly-accelerated-life-testing/og-how-to-halt-blog.jpg?wid=1200)', 'backgroundPosition': 'center', 'backgroundSize': '280%' }">
                                     <h2
-                                        class="lg:text-4xl md:text-3xl py-24 text-4xl font-semibold hover:scale-110 transition-all duration-500">
+                                        class="lg:text-4xl md:text-3xl mt-0 mb-24 text-4xl font-semibold hover:scale-110 transition-all duration-500">
                                         Main Board</h2>
                                 </div>
                             </RouterLink>
@@ -213,9 +213,9 @@
                         <div class="lg:h-72 md:h-96 mx-8 grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-8 mt-2">
                             <RouterLink to="/categories/gpu">
                                 <div class="text-white h-full shadow-md p-3 rounded-lg hover:scale-105 transition-all duration-500"
-                                    :style="{ 'background-image': 'url(https://www.shutterstock.com/image-photo/graphics-card-row-fans-cyanotic-260nw-1978289216.jpg)', 'backgroundPosition': 'top right 10%', 'backgroundSize': '280%' }">
+                                    :style="{ 'background-image': 'url(https://www.shutterstock.com/image-photo/graphics-card-row-fans-cyanotic-260nw-1978289216.jpg)', 'backgroundPosition': 'top right 20%', 'backgroundSize': '290%' }">
                                     <h2
-                                        class="lg:text-4xl md:text-3xl py-24 text-4xl font-semibold hover:scale-110 transition-all duration-500">
+                                        class="lg:text-4xl md:text-3xl mt-0 mb-24 text-4xl font-semibold hover:scale-110 transition-all duration-500">
                                         GPU</h2>
                                 </div>
                             </RouterLink>
@@ -257,9 +257,9 @@
                         <div class="lg:h-72 md:h-96 mx-8 grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-8 mt-2">
                             <RouterLink to="/categories/ram">
                                 <div class="text-white h-full shadow-md p-3 rounded-lg hover:scale-105 transition-all duration-500"
-                                    :style="{ 'background-image': 'url(https://img.freepik.com/premium-photo/computer-memory-ram-motherboard-background-close-up-system-main-memory-random-access-memory-onboard-computer-detail-computer-components-ddr3-ddr4-ddr5_150455-6497.jpg)', 'backgroundPosition': 'center right 40%', 'backgroundSize': '270%' }">
+                                    :style="{ 'background-image': 'url(https://img.freepik.com/premium-photo/computer-memory-ram-motherboard-background-close-up-system-main-memory-random-access-memory-onboard-computer-detail-computer-components-ddr3-ddr4-ddr5_150455-6497.jpg)', 'backgroundPosition': 'center left 30%', 'backgroundSize': '300%' }">
                                     <h2
-                                        class="lg:text-4xl md:text-3xl py-24 text-4xl font-semibold hover:scale-110 transition-all duration-500">
+                                        class="lg:text-4xl md:text-3xl mt-0 mb-24 text-4xl font-semibold hover:scale-110 transition-all duration-500">
                                         RAM</h2>
                                 </div>
                             </RouterLink>
@@ -303,7 +303,7 @@
                                 <div class="text-white h-full shadow-md p-3 rounded-lg hover:scale-105 transition-all duration-500"
                                     :style="{ 'background-image': 'url(https://media.istockphoto.com/id/1297963606/photo/computer-hard-disk-drives-hdd-ssd-on-circuit-board-motherboard-background-close-up-with-red.jpg?s=612x612&w=0&k=20&c=FDu0fVrhGKDKTWW__Kucv8fK9yB_L8V6VtsFjsfXeq8=)', 'backgroundPosition': 'top right 30%', 'backgroundSize': '220%' }">
                                     <h2
-                                        class="lg:text-4xl md:text-3xl py-24 text-4xl font-semibold hover:scale-110 transition-all duration-500">
+                                        class="lg:text-4xl md:text-3xl mt-0 mb-24 text-4xl font-semibold hover:scale-110 transition-all duration-500">
                                         HardDisk</h2>
                                 </div>
                             </RouterLink>
@@ -347,7 +347,7 @@
                                 <div class="text-white h-full shadow-md p-3 rounded-lg hover:scale-105 transition-all duration-500"
                                     :style="{ 'background-image': 'url(https://www.techspot.com/articles-info/2638/images/2023-03-06-image.jpg)', 'backgroundPosition': 'top', 'backgroundSize': '290%' }">
                                     <h2
-                                        class="lg:text-4xl md:text-3xl py-24 text-4xl font-semibold hover:scale-110 transition-all duration-500">
+                                        class="lg:text-4xl md:text-3xl mt-0 mb-24 text-4xl font-semibold hover:scale-110 transition-all duration-500">
                                         Display</h2>
                                 </div>
                             </RouterLink>
@@ -391,7 +391,7 @@
                                 <div class="text-white h-full shadow-md p-3 rounded-lg hover:scale-105 transition-all duration-500"
                                     :style="{ 'background-image': 'url(https://img.freepik.com/premium-photo/top-view-gaming-gear_160097-851.jpg)', 'backgroundPosition': 'bottom right 40%', 'backgroundSize': '260%' }">
                                     <h2
-                                        class="lg:text-4xl md:text-3xl py-24 font-semibold hover:scale-110 transition-all duration-500">
+                                        class="lg:text-4xl md:text-3xl mt-0 mb-24 font-semibold hover:scale-110 transition-all duration-500">
                                         Gaming Gear</h2>
                                 </div>
                             </RouterLink>

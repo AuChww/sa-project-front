@@ -70,9 +70,13 @@
                     <label
                         class="peer-checked:border-2 peer-checked:border-gray-700 peer-checked:bg-gray-50 flex cursor-pointer select-none rounded-lg border border-gray-300 p-4"
                         for="radio_1">
-                        <img class="w-14 object-contain" src="" alt="" />
+                        <div class="w-24 object-contain rounded-md" :style="{ 'background-image': 'url(https://stocklittle.com/wp-content/uploads/2017/09/KERRY-express-logo.jpg)', 'backgroundPosition': 'center', 'backgroundSize': '105%'}">
+                            </div>
                         <div class="ml-5">
-                            <span class="mt-2 font-semibold">Kerry Express</span>
+                            <div class="inline-flex">
+                                <span class="font-semibold">Kerry Express</span>
+                                <div class="ml-2 text-slate-500 text-sm leading-6">฿35</div>
+                            </div>
                             <p class="text-slate-500 text-sm leading-6">Delivery: 1-3 Days</p>
                         </div>
                     </label>
@@ -85,9 +89,13 @@
                     <label
                         class="peer-checked:border-2 peer-checked:border-gray-700 peer-checked:bg-gray-50 flex cursor-pointer select-none rounded-lg border border-gray-300 p-4"
                         for="radio_2">
-                        <img class="w-14 object-contain" src="" alt="" />
+                        <div class="w-24 object-contain rounded-md" :style="{ 'background-image': 'url(https://s3.amazonaws.com/beamstart/2021/Jun/01/960w_73b0b2b9128e942adc9a8314f9d880c4.jpeg)', 'backgroundPosition': 'center 55%', 'backgroundSize': '120%'}">
+                            </div>
                         <div class="ml-5">
-                            <span class="mt-2 font-semibold">Flash Delivery</span>
+                            <div class="inline-flex">
+                                <span class="font-semibold">Flash Delivery</span>
+                                <div class="ml-2 text-slate-500 text-sm leading-6">฿20</div>
+                            </div>
                             <p class="text-slate-500 text-sm leading-6">Delivery: 3-7 Days</p>
                         </div>
                     </label>
@@ -106,24 +114,24 @@
                 <div class="mt-6 border-t border-b py-2">
                     <div class="flex items-center justify-between">
                         <p class="text-sm font-medium text-gray-900">Subtotal</p>
-                        <p class="font-semibold text-gray-900">${{ subtotal.toFixed(2) }}</p>
+                        <p class="font-semibold text-gray-900">฿{{ subtotal.toFixed(2) }}</p>
                     </div>
                     <div class="flex items-center justify-between">
                         <p class="text-sm font-medium text-gray-900">Shipping</p>
-                        <p class="font-semibold text-gray-900">${{ shippingCost.toFixed(2) }}</p>
+                        <p class="font-semibold text-gray-900">฿{{ shippingCost.toFixed(2) }}</p>
                     </div>
                     <div class="flex items-center justify-between">
                         <p class="text-sm font-medium text-gray-900">Additional Charges</p>
-                        <p class="font-semibold text-gray-900">${{ additionalCharges.toFixed(2) }}</p>
+                        <p class="font-semibold text-gray-900">฿{{ additionalCharges.toFixed(2) }}</p>
                     </div>
                 </div>
                 <div class="mt-6 flex items-center justify-between">
                     <p class="text-sm font-medium text-gray-900">Payment Amount</p>
-                    <p class="font-semibold text-gray-900">${{ paymentAmount.toFixed(2) }}</p>
+                    <p class="font-semibold text-gray-900">฿{{ paymentAmount.toFixed(2) }}</p>
                 </div>
                 <div class="mt-6 flex items-center justify-between">
                     <p class="text-sm font-medium text-gray-900">Total</p>
-                    <p class="font-semibold text-gray-900">${{ total.toFixed(2) }}</p>
+                    <p class="font-semibold text-gray-900">฿{{ total.toFixed(2) }}</p>
                 </div>
             </div>
             <!-- Place Order Button -->
@@ -165,7 +173,7 @@ const subtotal = computed(() => {
 });
 
 const shippingCost = computed(() => {
-    return selectedShipmentMethod.value === 'fast' ? 10.0 : 5.0;
+    return selectedShipmentMethod.value === 'fast' ? 20.0 : 35.0;
 });
 
 const additionalCharges = computed(() => {

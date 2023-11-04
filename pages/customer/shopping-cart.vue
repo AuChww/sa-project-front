@@ -76,7 +76,7 @@
         </div>
         <div class="flex justify-between">
           <p class="text-gray-700">Shipping</p>
-          <p class="text-gray-700">$0.00</p>
+          <p class="text-gray-700">฿0.00</p>
         </div>
         <hr class="my-4" />
         <div class="flex justify-between">
