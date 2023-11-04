@@ -44,16 +44,20 @@
             <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
                 <!-- Featured Product Cards -->
                 <div class="w-full">
-                    <iframe src="https://www.youtube.com/embed/8KKE-7BzB_M" class="w-full h-full" frameborder="0" allowfullscreen></iframe>
+                    <iframe src="https://www.youtube.com/embed/8KKE-7BzB_M" class="w-full h-full" frameborder="0"
+                        allowfullscreen></iframe>
                 </div>
                 <div class="w-full">
-                    <iframe src="https://www.youtube.com/embed/VryFK-_Ns1Q" class="w-full h-full" frameborder="0" allowfullscreen></iframe>
+                    <iframe src="https://www.youtube.com/embed/VryFK-_Ns1Q" class="w-full h-full" frameborder="0"
+                        allowfullscreen></iframe>
                 </div>
                 <div class="w-full">
-                    <iframe src="https://www.youtube.com/embed/gNSgp3d6EgQ" class="w-full h-full" frameborder="0" allowfullscreen></iframe>
+                    <iframe src="https://www.youtube.com/embed/gNSgp3d6EgQ" class="w-full h-full" frameborder="0"
+                        allowfullscreen></iframe>
                 </div>
                 <div class="w-full">
-                    <iframe src="https://www.youtube.com/embed/CTiRNnSg0jA" class="w-full h-full" frameborder="0" allowfullscreen></iframe>
+                    <iframe src="https://www.youtube.com/embed/CTiRNnSg0jA" class="w-full h-full" frameborder="0"
+                        allowfullscreen></iframe>
                 </div>
             </div>
         </section>
@@ -81,12 +85,11 @@
             :style="{ 'background-image': 'url(https://wallpapers.com/images/hd/red-fire-background-na0r6a991986yftd.jpg)' }">
             <div>
                 <div class="container mx-auto text-center text-white py-8"
-                    :style="{ 'background-image': 'url(https://cdn.bhdw.net/im/color-image-of-circular-shapes-combined-from-colors-wallpaper-103050_w635.webp)' }">
-                    <h2 class="text-4xl font-semibold hover:scale-150 transition-all duration-500">Best Seller</h2>
-                    <h4>more product >></h4>
+                    :style="{ 'background-image': 'url(https://www.enjpg.com/img/2020/fire-23.jpg)', 'backgroundPosition': 'center 80%' }">
+                    <h2 class="text-4xl font-semibold transition-all duration-500">Best Seller</h2>
                 </div>
                 <div class="mx-4 grid grid-cols-4 md:grid-cols-5 lg:grid-cols-7 gap-8 mt-6">
-                    <div v-for="product in filteredProducts.slice(0,7)" :key="product.id"
+                    <div v-for="product in filteredProducts.slice(0, 7)" :key="product.id"
                         class="bg-white shadow-md p-3 rounded-lg hover:scale-105 transition-all duration-500">
                         <img :src="`http://localhost:80/storage/${product.image}`" alt="Product Image"
                             class="w-full h-100 object-cover mb-4">
@@ -104,31 +107,33 @@
         </section>
 
         <!-- CPU -->
-        <section class="py-12 mx-3" id="CPU"
+        <section class="py-8 mx-3" id="CPU"
             :style="{ 'background-image': 'url(https://i.pinimg.com/originals/fb/d9/e0/fbd9e0015089d44af6c70f47bb1c4ee1.jpg)' }">
-            <div class="container mx-auto text-center">
-                <RouterLink to="/categories/cpu">
-                    <div class="text-white py-8"
-                        :style="{ 'background-image': 'url(https://cdn.bhdw.net/im/color-image-of-circular-shapes-combined-from-colors-wallpaper-103050_w635.webp)' }">
-                        <h2 class="text-4xl font-semibold hover:scale-150 transition-all duration-500">CPU</h2>
-                        <h4>more product >></h4>
-                    </div>
-                </RouterLink>
+            <div class="container mx-auto text-center mb-4">
+                <div class="text-white py-4 mt-4 bg-gray-900 mx-8 rounded-lg"></div>
                 <div>
                     <!-- CPU Product List -->
                     <div>
-                        <div class="mx-4 grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-8 mt-6">
+                        <div class="h-72 mx-8 grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-8 mt-2">
+                            <RouterLink to="/categories/cpu">
+                                <div class="text-white h-full shadow-md p-3 rounded-lg hover:scale-105 transition-all duration-500"
+                                    :style="{ 'background-image': 'url(https://4kwallpapers.com/images/walls/thumbs_3t/9784.jpg)','backgroundPosition': 'center 40%' ,'backgroundSize': '240%' }">
+                                    <h2 class="text-4xl font-semibold hover:scale-110 transition-all duration-500">CPU</h2>
+                                </div>
+                            </RouterLink>
                             <div v-for="product in filteredCpuProducts.slice(0, 5)" :key="product.id"
                                 class="bg-white shadow-md p-3 rounded-lg hover:scale-105 transition-all duration-500">
                                 <img :src="`http://localhost:80/storage/${product.image}`" alt="Product Image"
                                     class="w-full h-100 object-cover mb-4">
                                 <h3 class="text-xl font-semibold">{{ product.name }}</h3>
-                                <p class="text-gray-600">{{ product.description }}</p>
-                                <div class="mt-4 flex items-center justify-between">
-                                    <span class="text-xl font-bold text-blue-900">$ {{ product.price }}</span>
-                                    <button class="bg-blue-900 text-white px-4 py-2 rounded-full hover:bg-blue-700"
+                                <div class=" flex items-center justify-between">
+                                    <span class="text-lg font-bold text-blue-900">฿ {{ product.price }}</span>
+                                    <button class="inline-flex bg-blue-800 text-white px-4 py-2 rounded-full hover:bg-blue-700"
                                         @click="addToCart(product)">
-                                        Add to Cart
+                                        Add 
+                                        <svg class="ml-1 flex-shrink-0 w-5 h-5 text-white transition duration-75 dark:text-gray-200 dark:group-hover:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 18 21">
+                                            <path d="M15 12a1 1 0 0 0 .962-.726l2-7A1 1 0 0 0 17 3H3.77L3.175.745A1 1 0 0 0 2.208 0H1a1 1 0 0 0 0 2h.438l.6 2.255v.019l2 7 .746 2.986A3 3 0 1 0 9 17a2.966 2.966 0 0 0-.184-1h2.368c-.118.32-.18.659-.184 1a3 3 0 1 0 3-3H6.78l-.5-2H15Z"/>
+                                        </svg>
                                     </button>
                                 </div>
                             </div>
@@ -139,34 +144,33 @@
         </section>
 
         <!-- Main Board -->
-        <section class="py-12 mx-3" id="MainBoard"
+        <section class="py-8 mx-3" id="MainBoard"
             :style="{ 'background-image': 'url(https://i.pinimg.com/originals/fb/d9/e0/fbd9e0015089d44af6c70f47bb1c4ee1.jpg)' }">
-            <div class="container mx-auto text-center">
-                <RouterLink to="/categories/mainboard">
-                    <div class="text-white py-8"
-                        :style="{ 'background-image': 'url(https://cdn.bhdw.net/im/color-image-of-circular-shapes-combined-from-colors-wallpaper-103050_w635.webp)' }">
-                        <h2 class="text-4xl font-semibold hover:scale-150 transition-all duration-500">Main Board</h2>
-                        <h4>more product >></h4>
-                    </div>
-                </RouterLink>
+            <div class="container mx-auto text-center mb-4">
+                <div class="text-white py-4 bg-gray-900 mx-8 rounded-lg"></div>
                 <div>
-                    <!-- Mainboad Product List -->
-                    <div class="mx-4 grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-8 mt-6">
-                        <div v-for="product in filteredMainboardProducts.slice(0, 5)" :key="product.id"
-                            class="bg-white shadow-md p-3 rounded-lg hover:scale-105 transition-all duration-500 relative h-full flex flex-col">
-                            <img :src="`http://localhost:80/storage/${product.image}`" alt="Product Image" class="w-full h-100 object-cover mb-4">
-                            <h3 class="text-xl font-semibold">{{ product.name }}</h3>
-                            <p class="text-gray-600 flex-grow overflow-hidden line-clamp-2">{{ product.description }}</p>
-
-                            <div class="flex justify-between mt-2">
-                                <!-- Price on the left-bottom -->
-                                <div class="text-xl font-bold text-blue-900 ">$ {{ product.price }}</div>
-
-                                <div v-if="auth.isLogin">
-                                    <!-- Add to Cart on the right-bottom -->
-                                    <button class="bg-blue-900 text-white px-4 py-2 rounded-full hover:bg-blue-700"
+                    <!-- Main Board Product List -->
+                    <div>
+                        <div class="h-72 mx-8 grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-8 mt-2">
+                            <RouterLink to="/categories/mainboard">
+                                <div class="text-white h-full shadow-md p-3 rounded-lg hover:scale-105 transition-all duration-500"
+                                    :style="{ 'background-image': 'url(https://www.ansys.com/content/dam/amp/2023/april/blog-article-requests/how-to-plan-and-conduct-highly-accelerated-life-testing/og-how-to-halt-blog.jpg?wid=1200)','backgroundPosition': 'center' ,'backgroundSize': '280%' }">
+                                    <h2 class="text-4xl font-semibold hover:scale-110 transition-all duration-500">Main Board</h2>
+                                </div>
+                            </RouterLink>
+                            <div v-for="product in filteredMainboardProducts.slice(0, 5)" :key="product.id"
+                                class="bg-white shadow-md p-3 rounded-lg hover:scale-105 transition-all duration-500">
+                                <img :src="`http://localhost:80/storage/${product.image}`" alt="Product Image"
+                                    class="w-full h-100 object-cover mb-4">
+                                <h3 class="text-xl font-semibold">{{ product.name }}</h3>
+                                <div class="mt-4 flex items-center justify-between">
+                                    <span class="text-lg font-bold text-blue-900">฿ {{ product.price }}</span>
+                                    <button class="inline-flex bg-blue-800 text-white px-4 py-2 rounded-full hover:bg-blue-700"
                                         @click="addToCart(product)">
-                                        Add to Cart
+                                        Add 
+                                        <svg class="ml-1 flex-shrink-0 w-5 h-5 text-white transition duration-75 dark:text-gray-200 dark:group-hover:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 18 21">
+                                            <path d="M15 12a1 1 0 0 0 .962-.726l2-7A1 1 0 0 0 17 3H3.77L3.175.745A1 1 0 0 0 2.208 0H1a1 1 0 0 0 0 2h.438l.6 2.255v.019l2 7 .746 2.986A3 3 0 1 0 9 17a2.966 2.966 0 0 0-.184-1h2.368c-.118.32-.18.659-.184 1a3 3 0 1 0 3-3H6.78l-.5-2H15Z"/>
+                                        </svg>
                                     </button>
                                 </div>
                             </div>
@@ -177,34 +181,33 @@
         </section>
 
         <!-- GPU -->
-        <section class="py-12 mx-3" id="GPU"
+        <section class="py-8 mx-3" id="GPU"
             :style="{ 'background-image': 'url(https://i.pinimg.com/originals/fb/d9/e0/fbd9e0015089d44af6c70f47bb1c4ee1.jpg)' }">
-            <div class="container mx-auto text-center">
-                <RouterLink to="/categories/gpu">
-                    <div class="text-white py-8"
-                        :style="{ 'background-image': 'url(https://cdn.bhdw.net/im/color-image-of-circular-shapes-combined-from-colors-wallpaper-103050_w635.webp)' }">
-                        <h2 class="text-4xl font-semibold hover:scale-150 transition-all duration-500">GPU</h2>
-                        <h4>more product >></h4>
-                    </div>
-                </RouterLink>
+            <div class="container mx-auto text-center mb-4">
+                <div class="text-white py-4 bg-gray-900 mx-8 rounded-lg"></div>
                 <div>
                     <!-- GPU Product List -->
-                    <div class="mx-4 grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-8 mt-6">
-                        <div v-for="product in filteredGpuProducts.slice(0, 5)" :key="product.id"
-                            class="bg-white shadow-md p-3 rounded-lg hover:scale-105 transition-all duration-500 relative h-full flex flex-col">
-                            <img :src="`http://localhost:80/storage/${product.image}`" alt="Product Image" class="w-full h-100 object-cover mb-4">
-                            <h3 class="text-xl font-semibold">{{ product.name }}</h3>
-                            <p class="text-gray-600 flex-grow overflow-hidden line-clamp-2">{{ product.description }}</p>
-
-                            <div class="flex justify-between mt-2">
-                                <!-- Price on the left-bottom -->
-                                <div class="text-xl font-bold text-blue-900 ">$ {{ product.price }}</div>
-
-                                <div v-if="auth.isLogin">
-                                    <!-- Add to Cart on the right-bottom -->
-                                    <button class="bg-blue-900 text-white px-4 py-2 rounded-full hover:bg-blue-700"
+                    <div>
+                        <div class="h-72 mx-8 grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-8 mt-2">
+                            <RouterLink to="/categories/gpu">
+                                <div class="text-white h-full shadow-md p-3 rounded-lg hover:scale-105 transition-all duration-500"
+                                    :style="{ 'background-image': 'url(https://www.shutterstock.com/image-photo/graphics-card-row-fans-cyanotic-260nw-1978289216.jpg)','backgroundPosition': 'top right 10%' ,'backgroundSize': '280%' }">
+                                    <h2 class="text-4xl font-semibold hover:scale-110 transition-all duration-500">GPU</h2>
+                                </div>
+                            </RouterLink>
+                            <div v-for="product in filteredGpuProducts.slice(0, 5)" :key="product.id"
+                                class="bg-white shadow-md p-3 rounded-lg hover:scale-105 transition-all duration-500">
+                                <img :src="`http://localhost:80/storage/${product.image}`" alt="Product Image"
+                                    class="w-full h-100 object-cover mb-4">
+                                <h3 class="text-xl font-semibold">{{ product.name }}</h3>
+                                <div class="mt-4 flex items-center justify-between">
+                                    <span class="text-lg font-bold text-blue-900">฿ {{ product.price }}</span>
+                                    <button class="inline-flex bg-blue-800 text-white px-4 py-2 rounded-full hover:bg-blue-700"
                                         @click="addToCart(product)">
-                                        Add to Cart
+                                        Add 
+                                        <svg class="ml-1 flex-shrink-0 w-5 h-5 text-white transition duration-75 dark:text-gray-200 dark:group-hover:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 18 21">
+                                            <path d="M15 12a1 1 0 0 0 .962-.726l2-7A1 1 0 0 0 17 3H3.77L3.175.745A1 1 0 0 0 2.208 0H1a1 1 0 0 0 0 2h.438l.6 2.255v.019l2 7 .746 2.986A3 3 0 1 0 9 17a2.966 2.966 0 0 0-.184-1h2.368c-.118.32-.18.659-.184 1a3 3 0 1 0 3-3H6.78l-.5-2H15Z"/>
+                                        </svg>
                                     </button>
                                 </div>
                             </div>
@@ -215,34 +218,33 @@
         </section>
 
         <!-- RAM -->
-        <section class="py-12 mx-3" id="RAM"
+        <section class="py-8 mx-3" id="RAM"
             :style="{ 'background-image': 'url(https://i.pinimg.com/originals/fb/d9/e0/fbd9e0015089d44af6c70f47bb1c4ee1.jpg)' }">
-            <div class="container mx-auto text-center">
-                <RouterLink to="/categories/ram">
-                    <div class="text-white py-8"
-                        :style="{ 'background-image': 'url(https://cdn.bhdw.net/im/color-image-of-circular-shapes-combined-from-colors-wallpaper-103050_w635.webp)' }">
-                        <h2 class="text-4xl font-semibold hover:scale-150 transition-all duration-500">RAM</h2>
-                        <h4>more product >></h4>
-                    </div>
-                </RouterLink>
+            <div class="container mx-auto text-center mb-4">
+                <div class="text-white py-4 bg-gray-900 mx-8 rounded-lg"></div>
                 <div>
-                    <!-- Ram Product List -->
-                    <div class="mx-4 grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-8 mt-6">
-                        <div v-for="product in filteredRamProducts.slice(0, 5)" :key="product.id"
-                            class="bg-white shadow-md p-3 rounded-lg hover:scale-105 transition-all duration-500 relative h-full flex flex-col">
-                            <img :src="`http://localhost:80/storage/${product.image}`" alt="Product Image" class="w-full h-100 object-cover mb-4">
-                            <h3 class="text-xl font-semibold">{{ product.name }}</h3>
-                            <p class="text-gray-600 flex-grow overflow-hidden line-clamp-2">{{ product.description }}</p>
-
-                            <div class="flex justify-between mt-2">
-                                <!-- Price on the left-bottom -->
-                                <div class="text-xl font-bold text-blue-900 ">$ {{ product.price }}</div>
-
-                                <div v-if="auth.isLogin">
-                                    <!-- Add to Cart on the right-bottom -->
-                                    <button class="bg-blue-900 text-white px-4 py-2 rounded-full hover:bg-blue-700"
+                    <!-- RAM Product List -->
+                    <div>
+                        <div class="h-72 mx-8 grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-8 mt-2">
+                            <RouterLink to="/categories/ram">
+                                <div class="text-white h-full shadow-md p-3 rounded-lg hover:scale-105 transition-all duration-500"
+                                    :style="{ 'background-image': 'url(https://img.freepik.com/premium-photo/computer-memory-ram-motherboard-background-close-up-system-main-memory-random-access-memory-onboard-computer-detail-computer-components-ddr3-ddr4-ddr5_150455-6497.jpg)','backgroundPosition': 'center right 40%' ,'backgroundSize': '270%' }">
+                                    <h2 class="text-4xl font-semibold hover:scale-110 transition-all duration-500">RAM</h2>
+                                </div>
+                            </RouterLink>
+                            <div v-for="product in filteredRamProducts.slice(0, 5)" :key="product.id"
+                                class="bg-white shadow-md p-3 rounded-lg hover:scale-105 transition-all duration-500">
+                                <img :src="`http://localhost:80/storage/${product.image}`" alt="Product Image"
+                                    class="w-full h-100 object-cover mb-4">
+                                <h3 class="text-xl font-semibold">{{ product.name }}</h3>
+                                <div class="mt-4 flex items-center justify-between">
+                                    <span class="text-lg font-bold text-blue-900">฿ {{ product.price }}</span>
+                                    <button class="inline-flex bg-blue-800 text-white px-4 py-2 rounded-full hover:bg-blue-700"
                                         @click="addToCart(product)">
-                                        Add to Cart
+                                        Add 
+                                        <svg class="ml-1 flex-shrink-0 w-5 h-5 text-white transition duration-75 dark:text-gray-200 dark:group-hover:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 18 21">
+                                            <path d="M15 12a1 1 0 0 0 .962-.726l2-7A1 1 0 0 0 17 3H3.77L3.175.745A1 1 0 0 0 2.208 0H1a1 1 0 0 0 0 2h.438l.6 2.255v.019l2 7 .746 2.986A3 3 0 1 0 9 17a2.966 2.966 0 0 0-.184-1h2.368c-.118.32-.18.659-.184 1a3 3 0 1 0 3-3H6.78l-.5-2H15Z"/>
+                                        </svg>
                                     </button>
                                 </div>
                             </div>
@@ -253,34 +255,33 @@
         </section>
 
         <!-- Harddisk -->
-        <section class="py-12 mx-3" id="Harddisk"
+        <section class="py-8 mx-3" id="Harddisk"
             :style="{ 'background-image': 'url(https://i.pinimg.com/originals/fb/d9/e0/fbd9e0015089d44af6c70f47bb1c4ee1.jpg)' }">
-            <div class="container mx-auto text-center">
-                <RouterLink to="/categories/harddisk">
-                    <div class="text-white py-8"
-                        :style="{ 'background-image': 'url(https://cdn.bhdw.net/im/color-image-of-circular-shapes-combined-from-colors-wallpaper-103050_w635.webp)' }">
-                        <h2 class="text-4xl font-semibold hover:scale-150 transition-all duration-500">Harddisk/SSD</h2>
-                        <h4>more product >></h4>
-                    </div>
-                </RouterLink>
+            <div class="container mx-auto text-center mb-4">
+                <div class="text-white py-4 bg-gray-900 mx-8 rounded-lg"></div>
                 <div>
                     <!-- Harddisk Product List -->
-                    <div class="mx-4 grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-8 mt-6">
-                        <div v-for="product in filteredHarddiskProducts.slice(0, 5)" :key="product.id"
-                            class="bg-white shadow-md p-3 rounded-lg hover:scale-105 transition-all duration-500 relative h-full flex flex-col">
-                            <img :src="`http://localhost:80/storage/${product.image}`" alt="Product Image" class="w-full h-100 object-cover mb-4">
-                            <h3 class="text-xl font-semibold">{{ product.name }}</h3>
-                            <p class="text-gray-600 flex-grow overflow-hidden line-clamp-2">{{ product.description }}</p>
-
-                            <div class="flex justify-between mt-2">
-                                <!-- Price on the left-bottom -->
-                                <div class="text-xl font-bold text-blue-900 ">$ {{ product.price }}</div>
-
-                                <div v-if="auth.isLogin">
-                                    <!-- Add to Cart on the right-bottom -->
-                                    <button class="bg-blue-900 text-white px-4 py-2 rounded-full hover:bg-blue-700"
+                    <div>
+                        <div class="h-72 mx-8 grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-8 mt-2">
+                            <RouterLink to="/categories/harddisk">
+                                <div class="text-white h-full shadow-md p-3 rounded-lg hover:scale-105 transition-all duration-500"
+                                    :style="{ 'background-image': 'url(https://media.istockphoto.com/id/1297963606/photo/computer-hard-disk-drives-hdd-ssd-on-circuit-board-motherboard-background-close-up-with-red.jpg?s=612x612&w=0&k=20&c=FDu0fVrhGKDKTWW__Kucv8fK9yB_L8V6VtsFjsfXeq8=)','backgroundPosition': 'top right 30%' ,'backgroundSize': '220%' }">
+                                    <h2 class="text-4xl font-semibold hover:scale-110 transition-all duration-500">HardDisk</h2>
+                                </div>
+                            </RouterLink>
+                            <div v-for="product in filteredHarddiskProducts.slice(0, 5)" :key="product.id"
+                                class="bg-white shadow-md p-3 rounded-lg hover:scale-105 transition-all duration-500">
+                                <img :src="`http://localhost:80/storage/${product.image}`" alt="Product Image"
+                                    class="w-full h-100 object-cover mb-4">
+                                <h3 class="text-xl font-semibold">{{ product.name }}</h3>
+                                <div class="mt-4 flex items-center justify-between">
+                                    <span class="text-lg font-bold text-blue-900">฿ {{ product.price }}</span>
+                                    <button class="inline-flex bg-blue-800 text-white px-4 py-2 rounded-full hover:bg-blue-700"
                                         @click="addToCart(product)">
-                                        Add to Cart
+                                        Add 
+                                        <svg class="ml-1 flex-shrink-0 w-5 h-5 text-white transition duration-75 dark:text-gray-200 dark:group-hover:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 18 21">
+                                            <path d="M15 12a1 1 0 0 0 .962-.726l2-7A1 1 0 0 0 17 3H3.77L3.175.745A1 1 0 0 0 2.208 0H1a1 1 0 0 0 0 2h.438l.6 2.255v.019l2 7 .746 2.986A3 3 0 1 0 9 17a2.966 2.966 0 0 0-.184-1h2.368c-.118.32-.18.659-.184 1a3 3 0 1 0 3-3H6.78l-.5-2H15Z"/>
+                                        </svg>
                                     </button>
                                 </div>
                             </div>
@@ -291,34 +292,33 @@
         </section>
 
         <!-- Display -->
-        <section class="py-12 mx-3" id="Display"
+        <section class="py-8 mx-3" id="Display"
             :style="{ 'background-image': 'url(https://i.pinimg.com/originals/fb/d9/e0/fbd9e0015089d44af6c70f47bb1c4ee1.jpg)' }">
-            <div class="container mx-auto text-center">
-                <RouterLink to="/categories/display">
-                    <div class="text-white py-8"
-                        :style="{ 'background-image': 'url(https://cdn.bhdw.net/im/color-image-of-circular-shapes-combined-from-colors-wallpaper-103050_w635.webp)' }">
-                        <h2 class="text-4xl font-semibold hover:scale-150 transition-all duration-500">Display</h2>
-                        <h4>more product >></h4>
-                    </div>
-                </RouterLink>
+            <div class="container mx-auto text-center mb-4">
+                <div class="text-white py-4 bg-gray-900 mx-8 rounded-lg"></div>
                 <div>
                     <!-- Display Product List -->
-                    <div class="mx-4 grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-8 mt-6">
-                        <div v-for="product in filteredDisplayProducts.slice(0, 5)" :key="product.id"
-                            class="bg-white shadow-md p-3 rounded-lg hover:scale-105 transition-all duration-500 relative h-full flex flex-col">
-                            <img :src="`http://localhost:80/storage/${product.image}`" alt="Product Image" class="w-full h-100 object-cover mb-4">
-                            <h3 class="text-xl font-semibold">{{ product.name }}</h3>
-                            <p class="text-gray-600 flex-grow overflow-hidden line-clamp-2">{{ product.description }}</p>
-
-                            <div class="flex justify-between mt-2">
-                                <!-- Price on the left-bottom -->
-                                <div class="text-xl font-bold text-blue-900 ">$ {{ product.price }}</div>
-
-                                <div v-if="auth.isLogin">
-                                    <!-- Add to Cart on the right-bottom -->
-                                    <button class="bg-blue-900 text-white px-4 py-2 rounded-full hover:bg-blue-700"
+                    <div>
+                        <div class="h-72 mx-8 grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-8 mt-2">
+                            <RouterLink to="/categories/display">
+                                <div class="text-white h-full shadow-md p-3 rounded-lg hover:scale-105 transition-all duration-500"
+                                    :style="{ 'background-image': 'url(https://www.techspot.com/articles-info/2638/images/2023-03-06-image.jpg)','backgroundPosition': 'top' ,'backgroundSize': '290%' }">
+                                    <h2 class="text-4xl font-semibold hover:scale-110 transition-all duration-500">Display</h2>
+                                </div>
+                            </RouterLink>
+                            <div v-for="product in filteredDisplayProducts.slice(0, 5)" :key="product.id"
+                                class="bg-white shadow-md p-3 rounded-lg hover:scale-105 transition-all duration-500">
+                                <img :src="`http://localhost:80/storage/${product.image}`" alt="Product Image"
+                                    class="w-full h-100 object-cover mb-4">
+                                <h3 class="text-xl font-semibold">{{ product.name }}</h3>
+                                <div class="mt-4 flex items-center justify-between">
+                                    <span class="text-lg font-bold text-blue-900">฿ {{ product.price }}</span>
+                                    <button class="inline-flex bg-blue-800 text-white px-4 py-2 rounded-full hover:bg-blue-700"
                                         @click="addToCart(product)">
-                                        Add to Cart
+                                        Add 
+                                        <svg class="ml-1 flex-shrink-0 w-5 h-5 text-white transition duration-75 dark:text-gray-200 dark:group-hover:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 18 21">
+                                            <path d="M15 12a1 1 0 0 0 .962-.726l2-7A1 1 0 0 0 17 3H3.77L3.175.745A1 1 0 0 0 2.208 0H1a1 1 0 0 0 0 2h.438l.6 2.255v.019l2 7 .746 2.986A3 3 0 1 0 9 17a2.966 2.966 0 0 0-.184-1h2.368c-.118.32-.18.659-.184 1a3 3 0 1 0 3-3H6.78l-.5-2H15Z"/>
+                                        </svg>
                                     </button>
                                 </div>
                             </div>
@@ -329,34 +329,33 @@
         </section>
 
         <!-- Gaming Gear -->
-        <section class="py-12 mx-3" id="Gaming Gear"
+        <section class="py-8 mx-3" id="GamingGear"
             :style="{ 'background-image': 'url(https://i.pinimg.com/originals/fb/d9/e0/fbd9e0015089d44af6c70f47bb1c4ee1.jpg)' }">
-            <div class="container mx-auto text-center">
-                <RouterLink to="/categories/gaming-gear">
-                    <div class="text-white py-8"
-                        :style="{ 'background-image': 'url(https://cdn.bhdw.net/im/color-image-of-circular-shapes-combined-from-colors-wallpaper-103050_w635.webp)' }">
-                        <h2 class="text-4xl font-semibold hover:scale-150 transition-all duration-500">Gaming Gear</h2>
-                        <h4>more product >></h4>
-                    </div>
-                </RouterLink>
+            <div class="container mx-auto text-center mb-4">
+                <div class="text-white py-4 bg-gray-900 mx-8 rounded-lg"></div>
                 <div>
                     <!-- Gaming Gear Product List -->
-                    <div class="mx-4 grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-8 mt-6">
-                        <div v-for="product in filteredGearProducts.slice(0, 5)" :key="product.id"
-                            class="bg-white shadow-md p-3 rounded-lg hover:scale-105 transition-all duration-500 relative h-full flex flex-col">
-                            <img :src="`http://localhost:80/storage/${product.image}`" alt="Product Image" class="w-full h-100 object-cover mb-4">
-                            <h3 class="text-xl font-semibold">{{ product.name }}</h3>
-                            <p class="text-gray-600 flex-grow overflow-hidden line-clamp-2">{{ product.description }}</p>
-
-                            <div class="flex justify-between mt-2">
-                                <!-- Price on the left-bottom -->
-                                <div class="text-xl font-bold text-blue-900 ">$ {{ product.price }}</div>
-
-                                <div v-if="auth.isLogin">
-                                    <!-- Add to Cart on the right-bottom -->
-                                    <button class="bg-blue-900 text-white px-4 py-2 rounded-full hover:bg-blue-700"
+                    <div>
+                        <div class="h-72 mx-8 grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-8 mt-2">
+                            <RouterLink to="/categories/gaming-gear">
+                                <div class="text-white h-full shadow-md p-3 rounded-lg hover:scale-105 transition-all duration-500"
+                                    :style="{ 'background-image': 'url(https://img.freepik.com/premium-photo/top-view-gaming-gear_160097-851.jpg)','backgroundPosition': 'bottom right 40%' ,'backgroundSize': '240%' }">
+                                    <h2 class="text-4xl font-semibold hover:scale-110 transition-all duration-500">Gaming Gear</h2>
+                                </div>
+                            </RouterLink>
+                            <div v-for="product in filteredGearProducts.slice(0, 5)" :key="product.id"
+                                class="bg-white shadow-md p-3 rounded-lg hover:scale-105 transition-all duration-500">
+                                <img :src="`http://localhost:80/storage/${product.image}`" alt="Product Image"
+                                    class="w-full h-100 object-cover mb-4">
+                                <h3 class="text-xl font-semibold">{{ product.name }}</h3>
+                                <div class="mt-4 flex items-center justify-between">
+                                    <span class="text-lg font-bold text-blue-900">฿ {{ product.price }}</span>
+                                    <button class="inline-flex bg-blue-800 text-white px-4 py-2 rounded-full hover:bg-blue-700"
                                         @click="addToCart(product)">
-                                        Add to Cart
+                                        Add 
+                                        <svg class="ml-1 flex-shrink-0 w-5 h-5 text-white transition duration-75 dark:text-gray-200 dark:group-hover:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 18 21">
+                                            <path d="M15 12a1 1 0 0 0 .962-.726l2-7A1 1 0 0 0 17 3H3.77L3.175.745A1 1 0 0 0 2.208 0H1a1 1 0 0 0 0 2h.438l.6 2.255v.019l2 7 .746 2.986A3 3 0 1 0 9 17a2.966 2.966 0 0 0-.184-1h2.368c-.118.32-.18.659-.184 1a3 3 0 1 0 3-3H6.78l-.5-2H15Z"/>
+                                        </svg>
                                     </button>
                                 </div>
                             </div>
@@ -575,5 +574,4 @@ export default {
     50% {
         background-position: 100% 50%;
     }
-}
-</style>
+}</style>
