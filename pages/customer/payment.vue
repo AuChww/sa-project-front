@@ -10,7 +10,7 @@
                         <a
                             class="flex h-6 w-6 items-center justify-center rounded-full bg-emerald-200 text-xs font-semibold text-emerald-700">
                             <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24"
-                                stroke="currentColor" stroke-width="2">
+                                stroke="currentColor" stroke-width="z2">
                                 <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
                             </svg>
                         </a>
@@ -55,6 +55,8 @@
                     </div>
                 </div>
             </div>
+
+            <!--UPLOAD IMAGE-->
             <div
                 class="mt-8 bg-gray-50 w-full border border-gray-300 text-gray-900 text-xl rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                 <input type="file" id="image" ref="imageInput" accept="image/*" />

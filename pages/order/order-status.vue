@@ -209,15 +209,17 @@ input[type=submit]:hover {
 
 <script setup lang="ts">
 import { useOrderStore } from '~/stores/useOrderStore';
+import { useAuthStore } from "~/stores/useAuthStore";
 
+const auth = useAuthStore();
 const orderStore = useOrderStore();
-
 const orders = ref<Order[]>([]); // Initialize as an empty array
 
 const fetchOrders = async () => {
     try {
         await orderStore.fetchOrders();
-        orders.value = orderStore.allOrders.orders; // Update the orders ref with the 'orders' property
+        // Filter orders associated with the authenticated user
+        orders.value = orderStore.allOrders.orders.filter(order => order.user_id === auth.user.id);
     } catch (error) {
         console.error('Failed to fetch orders', error);
     }

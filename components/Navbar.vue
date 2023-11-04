@@ -30,8 +30,8 @@
           <router-link to="/product/product-check" v-if="auth.checkRole('Delivery')" class="p-1.5 text-white rounded-lg hover:animate-bounce hover:bg-green-100 dark:hover:bg-blue-500 group mx-8">Check Product (d)</router-link>
 
           <!-- audit -->
-          <router-link to="/order/" v-if="auth.checkRole('Accounting')" class="p-1.5 text-white rounded-lg hover:animate-bounce hover:bg-green-100 dark:hover:bg-blue-500 group mx-8">Order Check (a)</router-link>
-          <router-link to="/order/refund-check" v-if="auth.checkRole('Accounting')" class="p-1.5 text-white rounded-lg hover:animate-bounce hover:bg-green-100 dark:hover:bg-blue-500 group mx-8">Refund Check (a)</router-link>
+          <router-link to="/order/" v-if="auth.checkRole('Audit')" class="p-1.5 text-white rounded-lg hover:animate-bounce hover:bg-green-100 dark:hover:bg-blue-500 group mx-8">Order Check (a)</router-link>
+          <router-link to="/order/refund-check" v-if="auth.checkRole('Audit')" class="p-1.5 text-white rounded-lg hover:animate-bounce hover:bg-green-100 dark:hover:bg-blue-500 group mx-8">Refund Check (a)</router-link>
 
           <!-- customer -->
           <div class="inline-flex hover:animate-bounce items-center gap-x-2">
@@ -133,8 +133,8 @@
           <router-link to="/product/product-check" v-if="auth.checkRole('Delivery')" class="p-1.5 text-white rounded-lg hover:animate-bounce hover:bg-green-100 dark:hover:bg-blue-500 group mx-8">Check Product (d)</router-link>
 
           <!-- audit -->
-          <router-link to="/order/" v-if="auth.checkRole('Accounting')" class="p-1.5 text-white rounded-lg hover:animate-bounce hover:bg-green-100 dark:hover:bg-blue-500 group mx-8">Order Check (a)</router-link>
-          <router-link to="/order/refund-check" v-if="auth.checkRole('Accounting')" class="p-1.5 text-white rounded-lg hover:animate-bounce hover:bg-green-100 dark:hover:bg-blue-500 group mx-8">Refund Check (a)</router-link>
+          <router-link to="/order/" v-if="auth.checkRole('Audit')" class="p-1.5 text-white rounded-lg hover:animate-bounce hover:bg-green-100 dark:hover:bg-blue-500 group mx-8">Order Check (a)</router-link>
+          <router-link to="/order/refund-check" v-if="auth.checkRole('Audit')" class="p-1.5 text-white rounded-lg hover:animate-bounce hover:bg-green-100 dark:hover:bg-blue-500 group mx-8">Refund Check (a)</router-link>
 
           <!-- customer -->
           <div class="inline-flex hover:animate-bounce items-center gap-x-2">

@@ -138,6 +138,9 @@ const submitForm = async () => {
         form.append('image', formData.image);
     }
 
+    // Log the object before sending it to the backend
+    console.log('Data being sent:', Object.fromEntries(form));
+
     try {
         const { data: response, error } = await useMyFetch<any>('products', {
             method: 'POST',
