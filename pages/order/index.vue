@@ -177,7 +177,7 @@ const refundOrder = async (orderId: number) => {
         const response = await useMyFetch<Order>(`orders/${orderId}/update_status`, {
             method: "PUT",
             body: JSON.stringify({
-                status: "Refunding" // Set the new status here
+                status: "RefundPending" // Set the new status here
             }),
             headers: {
                 "Content-Type": "application/json"
@@ -187,14 +187,14 @@ const refundOrder = async (orderId: number) => {
         if (response) {
             const updatedOrderIndex = orders.value.findIndex(order => order.id === orderId);
             if (updatedOrderIndex !== -1) {
-                orders.value[updatedOrderIndex].status = 'Refunding';
+                orders.value[updatedOrderIndex].status = 'RefundPending';
             }
-            console.log('Order status updated to Refunding successfully');
+            console.log('Order status updated to RefundPending successfully');
         } else {
-            console.error('Failed to update order status to Refunding');
+            console.error('Failed to update order status to RefundPending');
         }
     } catch (error) {
-        console.error('Failed to update order status to Refunding', error);
+        console.error('Failed to update order status to RefundPending', error);
     }
 };
 
