@@ -66,10 +66,17 @@
                                             class="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-400">
                                             Receipt Small Image
                                         </th>
+
+                                        <th scope="col"
+                                            class="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-400">
+                                        </th>
+                                        <th scope="col"
+                                            class="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-400">
+                                        </th>
                                     </tr>
                                 </thead>
 
-                                <tbody>
+                                <tbody class="bg-gray-50 dark:bg-gray-700">
                                     <tr v-for="order in orders" :key="order.id">
                                         <td class="px-4 py-4 text-sm text-gray-500 dark:text-gray-300">
                                             {{ order.id }}
@@ -108,12 +115,18 @@
                                         </td>
 
                                         <!-- Add a button to change order status -->
-                                        <td class="px-4 py-4">
-                                            <button @click="approveOrder(order.id)">Approve</button>
+                                        <td class="py-2">
+                                            <button type="button" @click="approveOrder(order.id)"
+                                                class="border border-emerald-500 bg-emerald-500 text-white rounded-md px-4 py-2 m-2 transition duration-500 ease select-none hover:bg-emerald-700 focus:outline-none focus:shadow-outline">
+                                                Accept
+                                            </button>
                                         </td>
 
-                                        <td class="px-4 py-4">
-                                            <button @click="refundOrder(order.id)">Refund</button>
+                                        <td class="py-2">
+                                            <button type="button" @click="refundOrder(order.id)"
+                                                class="border-red-500 bg-red-500 text-white rounded-md px-4 py-2 m-2 transition duration-500 ease select-none hover:bg-red-700 focus:outline-none focus:shadow-outline">
+                                                Reject
+                                            </button>
                                         </td>
                                     </tr>
                                 </tbody>
