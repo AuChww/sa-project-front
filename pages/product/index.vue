@@ -1,20 +1,12 @@
 <template>
     <Navbar />
     <Sidebar />
-    <div class="bg-gray-100 py-8">
+    <div class="mt-8 py-8">
         <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex flex-col md:flex-row -mx-4">
+            <div class="flex flex-col md:flex-row -mx-4 font-semibold">
                 <div class="md:flex-1 px-4">
                     <div class="h-[460px] rounded-lg bg-gray-300 mb-4">
                         <img class="w-full h-full object-cover" src="" alt="Product Image">
-                    </div>
-                    <div class="flex -mx-2 mb-4">
-                        <div class="w-1/2 px-2">
-                            <button class="w-full bg-gray-900 text-white py-2 px-4 rounded-full font-bold hover:bg-gray-800">Add to Cart</button>
-                        </div>
-                        <div class="w-1/2 px-2">
-                            <button class="w-full bg-gray-400 text-gray-800 py-2 px-4 rounded-full font-bold hover:bg-gray-300">Add to Wishlist</button>
-                        </div>
                     </div>
                 </div>
                 <div class="md:flex-1 px-4">
@@ -27,8 +19,8 @@
                             <span class="text-gray-600">$29.99</span>
                         </div>
                         <div>
-                            <span class="font-bold text-gray-700">Availability:</span>
-                            <span class="text-gray-600">n</span>
+                            <span class="font-bold text-gray-700">Availability: </span>
+                            <span class="text-emerald-500">in Stock</span>
                         </div>
                     </div>
                     <div class="mb-4">
@@ -46,13 +38,15 @@
                     </div>
                     <div>
                         <span class="font-bold text-gray-700">Product Description:</span>
-                        <p class="text-gray-600 text-sm mt-2">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed
-                            sed ante justo. Integer euismod libero id mauris malesuada tincidunt. Vivamus commodo nulla ut
-                            lorem rhoncus aliquet. Duis dapibus augue vel ipsum pretium, et venenatis sem blandit. Quisque
-                            ut erat vitae nisi ultrices placerat non eget velit. Integer ornare mi sed ipsum lacinia, non
-                            sagittis mauris blandit. Morbi fermentum libero vel nisl suscipit, nec tincidunt mi consectetur.
-                        </p>
+                        <p class="text-gray-600 text-sm mt-2"></p>
                     </div>
+                    <button class="inline-flex bg-blue-800 text-white px-4 py-2 rounded-full hover:bg-blue-700"
+                        @click="addToCart(product)">
+                        Add to Cart
+                        <svg class="ml-1 flex-shrink-0 w-5 h-5 text-white transition duration-75 dark:text-gray-200 dark:group-hover:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 18 21">
+                            <path d="M15 12a1 1 0 0 0 .962-.726l2-7A1 1 0 0 0 17 3H3.77L3.175.745A1 1 0 0 0 2.208 0H1a1 1 0 0 0 0 2h.438l.6 2.255v.019l2 7 .746 2.986A3 3 0 1 0 9 17a2.966 2.966 0 0 0-.184-1h2.368c-.118.32-.18.659-.184 1a3 3 0 1 0 3-3H6.78l-.5-2H15Z"/>
+                        </svg>
+                    </button>
                 </div>
             </div>
 

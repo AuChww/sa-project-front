@@ -18,7 +18,7 @@
                         <h3 class="text-xl font-semibold">{{ product.name }}</h3>
                         <p class="text-gray-600 flex-grow overflow-hidden text-ellipsis">{{ product.description }}</p>
 
-                        <div class="flex justify-between mt-2">
+                        <div class="flex justify-between">
                             <!-- Price on the left-bottom -->
                             <div class="text-xl font-bold text-blue-900 ">{{ product.price }} $</div>
 
