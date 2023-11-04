@@ -106,6 +106,15 @@
                                         <td class="px-4 py-4 text-sm text-gray-500 dark:text-gray-300">
                                             <!-- Add the image display code here -->
                                         </td>
+
+                                        <!-- Add a button to change order status -->
+                                        <td class="px-4 py-4">
+                                            <button @click="approveOrder(order.id)">Approve</button>
+                                        </td>
+
+                                        <td class="px-4 py-4">
+                                            <button @click="refundOrder(order.id)">Refund</button>
+                                        </td>
                                     </tr>
                                 </tbody>
                             </table>
@@ -137,6 +146,58 @@ const fetchOrders = async () => {
     }
 };
 
+const approveOrder = async (orderId: number) => {
+    try {
+        const response = await useMyFetch<Order>(`orders/${orderId}/update_status`, {
+            method: "PUT",
+            body: JSON.stringify({
+                status: "Preparing" // Set the new status here
+            }),
+            headers: {
+                "Content-Type": "application/json"
+            }
+        });
+
+        if (response) {
+            const updatedOrderIndex = orders.value.findIndex(order => order.id === orderId);
+            if (updatedOrderIndex !== -1) {
+                orders.value[updatedOrderIndex].status = 'Preparing';
+            }
+            console.log('Order status updated to Preparing successfully');
+        } else {
+            console.error('Failed to update order status to Preparing');
+        }
+    } catch (error) {
+        console.error('Failed to update order status to Preparing', error);
+    }
+};
+
+const refundOrder = async (orderId: number) => {
+    try {
+        const response = await useMyFetch<Order>(`orders/${orderId}/update_status`, {
+            method: "PUT",
+            body: JSON.stringify({
+                status: "Refunding" // Set the new status here
+            }),
+            headers: {
+                "Content-Type": "application/json"
+            }
+        });
+
+        if (response) {
+            const updatedOrderIndex = orders.value.findIndex(order => order.id === orderId);
+            if (updatedOrderIndex !== -1) {
+                orders.value[updatedOrderIndex].status = 'Refunding';
+            }
+            console.log('Order status updated to Refunding successfully');
+        } else {
+            console.error('Failed to update order status to Refunding');
+        }
+    } catch (error) {
+        console.error('Failed to update order status to Refunding', error);
+    }
+};
+
 onMounted(() => {
     fetchOrders();
 });
@@ -165,4 +226,3 @@ const formatCreatedAt = (timestamp: string) => {
     }).format(new Date(timestamp));
 };
 </script>
-
