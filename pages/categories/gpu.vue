@@ -8,11 +8,6 @@
             :style="{ 'background-image': 'url(https://i.pinimg.com/originals/fb/d9/e0/fbd9e0015089d44af6c70f47bb1c4ee1.jpg)' }">
             <div class="container mx-auto text-center">
 
-                <div class="text-white py-12"
-                    :style="{ 'background-image': 'url(https://e0.pxfuel.com/wallpapers/458/781/desktop-wallpaper-colourful-colorful-background-for-colored.jpg)' }">
-                    <h2 class="text-4xl font-semibold">CPU</h2>
-                </div>
-
 
                 <div id="default-carousel" class="relative w-full" data-carousel="slide">
                     <!-- Carousel wrapper -->
@@ -85,6 +80,7 @@
                     </button>
                 </div>
 
+                <div class="text-white mt-12 py-1 bg-gray-900 font-semibold text-2xl mx-2 rounded-lg">GPU</div>
 
                 <!-- CPU -->
                 <section class="py-12 mx-3" id="CPU"
@@ -93,7 +89,7 @@
                        
                         <div>
                             <!-- CPU Product List -->
-                            <div class="p-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 text-left">
+                            <div class="p-4 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 text-left">
                                 <div v-for="product in filteredCpuProducts" :key="product.id"
                                     class="bg-white shadow-md p-3 rounded-lg hover:scale-105 transition-all duration-500 relative h-full flex flex-col">
                                     <img :src="product.image" alt="Product Image" class="w-full h-100 object-cover mb-4">
