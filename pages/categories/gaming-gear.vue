@@ -51,6 +51,30 @@
                         <button type="button" class="w-3 h-3 rounded-full" aria-current="false" aria-label="Slide 5"
                             data-carousel-slide-to="4"></button>
                     </div>
+
+                    <!-- Product Categories Carousel -->
+                    <section class="py-12 mt-4 mx-4" id="Feature Video">
+                        <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
+                            <!-- Featured Product Cards -->
+                            <div class="w-full">
+                                <iframe src="https://www.youtube.com/embed/aGgt81C85Es" class="w-full h-full"
+                                    frameborder="0" allowfullscreen></iframe>
+                            </div>
+                            <div class="w-full">
+                                <iframe src="https://www.youtube.com/embed/LgyN4CnXEx8" class="w-full h-full"
+                                    frameborder="0" allowfullscreen></iframe>
+                            </div>
+                            <div class="w-full">
+                                <iframe src="https://www.youtube.com/embed/Iyhh5qUOhyw" class="w-full h-full"
+                                    frameborder="0" allowfullscreen></iframe>
+                            </div>
+                            <div class="w-full">
+                                <iframe src="https://www.youtube.com/embed/WcUj2TtQclk" class="w-full h-full"
+                                    frameborder="0" allowfullscreen></iframe>
+                            </div>
+                        </div>
+
+                    </section>
                     <!-- Slider controls -->
                     <button type="button"
                         class="absolute top-0 left-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none"
@@ -86,7 +110,7 @@
                 <section class="py-12 mx-3" id="CPU"
                     :style="{ 'background-image': 'url(https://i.pinimg.com/originals/fb/d9/e0/fbd9e0015089d44af6c70f47bb1c4ee1.jpg)' }">
                     <div class="container mx-auto text-center">
-                       
+
                         <div>
                             <!-- CPU Product List -->
                             <div class="p-4 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 text-left">
