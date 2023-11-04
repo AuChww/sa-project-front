@@ -38,6 +38,29 @@
                         </div>
                     </div>
 
+                    <section class="py-12 mt-4 mx-4" id="Feature Video">
+                        <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
+                            <!-- Featured Product Cards -->
+                            <div class="w-full">
+                                <iframe src="https://www.youtube.com/embed/qTXQOmoGTOk" class="w-full h-full"
+                                    frameborder="0" allowfullscreen></iframe>
+                            </div>
+                            <div class="w-full">
+                                <iframe src="https://www.youtube.com/embed/nS0O59VsU3U" class="w-full h-full"
+                                    frameborder="0" allowfullscreen></iframe>
+                            </div>
+                            <div class="w-full">
+                                <iframe src="https://www.youtube.com/embed/bGZ2Ise9QH8" class="w-full h-full"
+                                    frameborder="0" allowfullscreen></iframe>
+                            </div>
+                            <div class="w-full">
+                                <iframe src="https://www.youtube.com/embed/b2pd3Y6aBag" class="w-full h-full"
+                                    frameborder="0" allowfullscreen></iframe>
+                            </div>
+                        </div>
+                    </section>
+
+
                     <!-- Slider indicators -->
                     <div class="absolute z-30 flex space-x-3 -translate-x-1/2 bottom-5 left-1/2">
                         <button type="button" class="w-3 h-3 rounded-full" aria-current="true" aria-label="Slide 1"
