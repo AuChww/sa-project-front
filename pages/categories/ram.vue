@@ -38,6 +38,29 @@
                                 class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
                         </div>
                     </div>
+
+                    <section class="py-12 mt-4 mx-4" id="Feature Video">
+                        <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
+                            <!-- Featured Product Cards -->
+                            <div class="w-full">
+                                <iframe src="https://www.youtube.com/embed/3M1pSJX30g8" class="w-full h-full"
+                                    frameborder="0" allowfullscreen></iframe>
+                            </div>
+                            <div class="w-full">
+                                <iframe src="https://www.youtube.com/embed/UDlZj7-5mdQ" class="w-full h-full"
+                                    frameborder="0" allowfullscreen></iframe>
+                            </div>
+                            <div class="w-full">
+                                <iframe src="https://www.youtube.com/embed/UDKx4ScVJck" class="w-full h-full"
+                                    frameborder="0" allowfullscreen></iframe>
+                            </div>
+                            <div class="w-full">
+                                <iframe src="https://www.youtube.com/embed/y4wL-HyxTGg" class="w-full h-full"
+                                    frameborder="0" allowfullscreen></iframe>
+                            </div>
+                        </div>
+                    </section>
+
                     <!-- Slider indicators -->
                     <div class="absolute z-30 flex space-x-3 -translate-x-1/2 bottom-5 left-1/2">
                         <button type="button" class="w-3 h-3 rounded-full" aria-current="true" aria-label="Slide 1"
@@ -86,7 +109,7 @@
                 <section class="py-12 mx-3" id="CPU"
                     :style="{ 'background-image': 'url(https://i.pinimg.com/originals/fb/d9/e0/fbd9e0015089d44af6c70f47bb1c4ee1.jpg)' }">
                     <div class="container mx-auto text-center">
-                       
+
                         <div>
                             <!-- CPU Product List -->
                             <div class="p-4 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 text-left">
