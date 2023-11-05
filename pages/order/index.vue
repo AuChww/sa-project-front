@@ -77,7 +77,7 @@
                                 </thead>
 
                                 <tbody class="bg-gray-50 dark:bg-gray-700">
-                                    <tr v-for="order in orders" :key="order.id">
+                                    <tr v-for="order in pendingOrders" :key="order.id">
                                         <td class="px-4 py-4 text-sm text-gray-500 dark:text-gray-300">
                                             {{ order.id }}
                                         </td>
@@ -87,7 +87,43 @@
                                         </td>
 
                                         <td class="px-4 py-4 text-sm text-gray-500 dark:text-gray-300">
-                                            {{ order.status }}
+                                            <div v-if="order.status === 'Pending'">
+                                                <div
+                                                    class="inline-flex items-center px-3 py-1 text-yellow-500 rounded-full gap-x-2 bg-red-100/60 dark:bg-gray-600">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="50" height="10">
+                                                        <circle cx="10" cy="5" r="4" fill="yellow">
+                                                            <animate attributeName="opacity" dur="1s" values="0;1;0"
+                                                                repeatCount="indefinite" />
+                                                        </circle>
+                                                        <circle cx="25" cy="5" r="4" fill="yellow">
+                                                            <animate attributeName="opacity" dur="1s" begin="0.1s"
+                                                                values="0;1;0" repeatCount="indefinite" />
+                                                        </circle>
+                                                        <circle cx="40" cy="5" r="4" fill="yellow">
+                                                            <animate attributeName="opacity" dur="1s" begin="0.2s"
+                                                                values="0;1;0" repeatCount="indefinite" />
+                                                        </circle>
+                                                    </svg>
+                                                    <h2 class="text-sm font-semibold">{{ order.status }}</h2>
+                                                </div>
+                                            </div>
+                                            <div v-if="order.status === 'Preparing'">
+                                                <div
+                                                    class="inline-flex items-center px-3 py-1 text-gray-400 rounded-full gap-x-2 bg-gray-100/60 dark:bg-gray-600">
+                                                    <svg width="12" height="12" viewBox="0 0 12 12" fill="none"
+                                                        xmlns="http://www.w3.org/2000/svg">
+                                                        <path d="M10 3L4.5 8.5L2 6" stroke="#667085" stroke-width="1.5"
+                                                            stroke-linecap="round" stroke-linejoin="round" />
+                                                    </svg>
+                                                    <h2 class="text-sm font-semibold">Ordered</h2>
+                                                </div>
+                                            </div>
+                                            <div v-if="order.status === 'RefundPending'">
+                                                <div
+                                                    class="inline-flex items-center px-3 py-1 text-red-500 rounded-full gap-x-2 bg-gray-100/60 dark:bg-gray-600">
+                                                    <h2 class="text-sm font-semibold mx-2">Rejected</h2>
+                                                </div>
+                                            </div>
                                         </td>
 
                                         <td class="px-4 py-4 text-sm text-gray-500 dark:text-gray-300">
@@ -136,6 +172,134 @@
                 </div>
             </div>
         </section>
+
+        <section class="container mt-4 px-4 mx-auto">
+        <div class="flex flex-col">
+            <div class="-mx-4 -my- overflow-x-auto sm:-mx-6 lg:-mx-8">
+                <div class="inline-block min-w-full py-2 align-middle md:px-6 lg:px-8">
+                    <div
+                        class="max-h-96 overflow-y-auto overflow-hidden border border-gray-200 dark:border-gray-700 md:rounded-lg">
+                        <table class="min-w-full divide-y divide-gray-200 dark:divide-gray-700">
+                            <thead class="bg-gray-50 dark:bg-gray-800">
+                                <tr>
+                                    <th scope="col"
+                                        class="py-3.5 px-4 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-400">
+                                        Order ID
+                                    </th>
+
+                                    <th scope="col"
+                                        class="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-400">
+                                        Order Information
+                                    </th>
+
+                                    <th scope="col"
+                                        class="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-400">
+                                        Status
+                                    </th>
+
+                                    <th scope="col"
+                                        class="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-400">
+                                        User ID
+                                    </th>
+
+                                    <th scope="col"
+                                        class="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-400">
+                                        User Name
+                                    </th>
+
+                                    <th scope="col"
+                                        class="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-400">
+                                        Purchased
+                                    </th>
+
+                                    <th scope="col"
+                                        class="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-400">
+                                        Shipment Method
+                                    </th>
+
+                                    <th scope="col"
+                                        class="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-400">
+                                        Total Amount
+                                    </th>
+
+                                    <th scope="col"
+                                        class="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-400">
+                                    </th>
+                                    <th scope="col"
+                                        class="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-400">
+                                    </th>
+                                </tr>
+                            </thead>
+
+                            <tbody class="bg-gray-50 dark:bg-gray-700">
+                                <tr v-for="order in preparingOrders" :key="order.id">
+                                    <td class="px-4 py-4 text-sm text-gray-500 dark:text-gray-300">
+                                        {{ order.id }}
+                                    </td>
+
+                                    <td class="px-4 py-4 text-sm text-gray-500 dark:text-gray-300">
+                                        {{ order.payment_receipt }}
+                                    </td>
+
+                                    <td class="px-4 py-4 text-sm text-gray-500 dark:text-gray-300">
+                                            <div v-if="order.status === 'Preparing'">
+                                                <div
+                                                    class="inline-flex items-center px-3 py-1 text-gray-400 rounded-full gap-x-2 bg-gray-100/60 dark:bg-gray-600">
+                                                    <svg width="12" height="12" viewBox="0 0 12 12" fill="none"
+                                                        xmlns="http://www.w3.org/2000/svg">
+                                                        <path d="M10 3L4.5 8.5L2 6" stroke="#667085" stroke-width="1.5"
+                                                            stroke-linecap="round" stroke-linejoin="round" />
+                                                    </svg>
+                                                    <h2 class="text-sm font-semibold">Ordered</h2>
+                                                </div>
+                                            </div>
+                                            <div v-if="order.status === 'RefundPending'">
+                                                <div
+                                                    class="inline-flex items-center px-3 py-1 text-red-500 rounded-full gap-x-2 bg-gray-100/60 dark:bg-gray-600">
+                                                    <h2 class="text-sm font-semibold mx-2">Rejected</h2>
+                                                </div>
+                                            </div>
+                                        </td>
+
+                                    <td class="px-4 py-4 text-sm text-gray-500 dark:text-gray-300">
+                                        {{ order.user_id }}
+                                    </td>
+
+                                    <td class="px-4 py-4 text-sm text-gray-500 dark:text-gray-300">
+                                        {{ order.user_name }}
+                                    </td>
+
+                                    <td class="px-4 py-4 text-sm text-gray-500 dark:text-gray-300">
+                                        {{ formatCreatedAt(order.created_at) }}
+                                    </td>
+
+                                    <td class="px-4 py-4 text-sm text-gray-500 dark:text-gray-300">
+                                        {{ order.shipment_method }}
+                                    </td>
+
+                                    <td class="px-4 py-4 text-sm text-gray-500 dark:text-gray-300">
+                                        {{ order.total_price }}
+                                    </td>
+
+                                    <td class="px-4 py-4 text-sm text-gray-500 dark:text-gray-300">
+                                        <!-- Add the image display code here -->
+                                    </td>
+
+                                    <td class="py-2">
+                                        <button v-if="order.status === 'Preparing' || order.status === 'RefundPending'" type="button" @click="deleteOrder(order.id)"
+                                            class="border-red-500 bg-red-500 text-white rounded-md px-4 py-2 m-2 transition duration-500 ease select-none hover:bg-red-700 focus:outline-none focus:shadow-outline">
+                                            Delete
+                                        </button>
+                                    </td>
+                                    
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
     </div>
 </template>
 
@@ -145,6 +309,16 @@ import { useOrderStore } from '~/stores/useOrderStore';
 const orderStore = useOrderStore();
 
 const orders = ref<Order[]>([]); // Initialize as an empty array
+
+const pendingOrders = computed(() => {
+    const allowedStatuses = ['Pending'];
+    return orders.value.filter(order => allowedStatuses.includes(order.status));
+});
+
+const preparingOrders = computed(() => {
+    const allowedStatuses = ['Preparing' , 'RefundPending'];
+    return orders.value.filter(order => allowedStatuses.includes(order.status));
+});
 
 const fetchOrders = async () => {
     try {
@@ -190,7 +364,7 @@ const refundOrder = async (orderId: number) => {
         const response = await useMyFetch<Order>(`orders/${orderId}/update_status`, {
             method: "PUT",
             body: JSON.stringify({
-                status: "Refunding" // Set the new status here
+                status: "RefundPending" // Set the new status here
             }),
             headers: {
                 "Content-Type": "application/json"
@@ -200,14 +374,42 @@ const refundOrder = async (orderId: number) => {
         if (response) {
             const updatedOrderIndex = orders.value.findIndex(order => order.id === orderId);
             if (updatedOrderIndex !== -1) {
-                orders.value[updatedOrderIndex].status = 'Refunding';
+                orders.value[updatedOrderIndex].status = 'RefundPending';
             }
-            console.log('Order status updated to Refunding successfully');
+            console.log('Order status updated to RefundPending successfully');
         } else {
-            console.error('Failed to update order status to Refunding');
+            console.error('Failed to update order status to RefundPending');
         }
     } catch (error) {
-        console.error('Failed to update order status to Refunding', error);
+        console.error('Failed to update order status to RefundPending', error);
+    }
+};
+
+const deleteOrder = async (orderId: number) => {
+    try {
+        // Use your API route for deleting an order
+        const response = await useMyFetch<Order>(`orders/${orderId}/delete_order`, {
+            method: "DELETE",
+            body: JSON.stringify({
+                status: "Refunded" // Set the new status here
+            }),
+            headers: {
+                "Content-Type": "application/json"
+            }
+        });
+
+        if (response) {
+            // Remove the deleted order from the list
+            const deletedOrderIndex = orders.value.findIndex(order => order.id === orderId);
+            if (deletedOrderIndex !== -1) {
+                orders.value.splice(deletedOrderIndex, 1);
+            }
+            console.log('Order deleted successfully');
+        } else {
+            console.error('Failed to delete order');
+        }
+    } catch (error) {
+        console.error('Failed to delete order', error);
     }
 };
 
