@@ -126,7 +126,7 @@
                                     </td>
 
                                     <td class="py-2">
-                                        <button v-if="order.status === 'Preparing'" type="button"
+                                        <button v-if="order.status === 'Preparing' || order.status === 'ResentPending'" type="button"
                                             @click="acceptPacking(order.id)"
                                             class="border-red-500 bg-blue-500 text-white rounded-md px-4 py-2 m-2 transition duration-500 ease select-none hover:bg-blue-700 focus:outline-none focus:shadow-outline">
                                             Accept

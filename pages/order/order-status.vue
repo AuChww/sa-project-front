@@ -24,7 +24,42 @@
 
                 </div>
                 <div class="flex-auto p-5">
-                    <div class="relative flex flex-col justify-center"  v-if="order.status === 'Pending' || order.status == 'Preparing' || order.status == 'Packing' || order.status == 'Delivering' || order.status == 'CompleteDelivery'">
+                    <div class="relative flex flex-col justify-center" v-if="order.status === 'ReportPending'">
+                        <div class="absolute left-4 h-full mt-0 border-r-4"></div>
+                        <div class="relative mb-6">
+                            <div>
+                                <span
+                                    class="absolute inline-flex h-6 w-6 items-center justify-center rounded-full p-4 text-center bg-gray-300 text-base font-semibold text-white">1</span>
+                            </div>
+                            <div class="ml-12 w-auto pt-1">
+                                <h6 class="text-sm font-semibold text-blue-900">Your Request is Pending</h6>
+                                <p class="mt-1 text-xs text-gray-500"></p>
+                            </div>
+                        </div>
+                        <div class="relative mb-6">
+                            <div>
+                                <span
+                                    class="absolute inline-flex h-6 w-6 items-center justify-center rounded-full bg-blue-500 p-4 text-center text-base font-semibold text-white shadow">
+                                    <span class="absolute flex h-5 w-5 animate-spin">
+                                        <span class="h-3 w-3 rounded-full bg-white"></span>
+                                    </span>
+                                </span>
+                            </div>
+                            <div class="ml-12 w-auto pt-1">
+                                <h6 class="text-sm font-semibold text-blue-900">Checking your Order</h6>
+                                <p class="mt-1 text-xs text-gray-500"></p>
+                            </div>
+                        </div>
+                        <div class="relative mb-6"></div>
+                        <div class="relative mb-6"></div>
+                        <div class="relative mb-6"></div>
+                        <div class="relative mb-6"></div>
+                        <div class="relative mb-6"></div>
+                        <div class="relative mb-6"></div>
+                        <div class="relative mb-6"></div>
+                    </div>
+                    <div class="relative flex flex-col justify-center"
+                        v-if="order.status === 'Pending' || order.status === 'ResentPending' || order.status == 'Preparing' || order.status == 'Packing' || order.status == 'Delivering' || order.status == 'CompleteDelivery'">
                         <div class="absolute left-4 h-full mt-0 border-r-4"></div>
                         <div class="relative mb-6">
                             <div v-if="order.status == 'Pending'">
@@ -40,12 +75,25 @@
                                 <span
                                     class="absolute inline-flex h-6 w-6 items-center justify-center rounded-full p-4 text-center bg-emerald-200 text-base font-semibold text-white">1</span>
                             </div>
+                            <div
+                                v-if="order.status == 'ResentPending'">
+                                <span
+                                    class="absolute inline-flex h-6 w-6 items-center justify-center rounded-full p-4 text-center bg-emerald-200 text-base font-semibold text-white">1</span>
+                            </div>
                             <div class="ml-12 w-auto pt-1">
                                 <h6 class="text-sm font-semibold text-blue-900">Ordered</h6>
                                 <p class="mt-1 text-xs text-gray-500"></p>
                             </div>
                         </div>
                         <div class="relative mb-6">
+                            <div v-if="order.status == 'ResentPending'">
+                                <span
+                                    class="absolute inline-flex h-6 w-6 items-center justify-center rounded-full bg-gray-300 p-4 text-center text-base font-semibold text-white shadow">
+                                    <span class="absolute flex h-5 w-5 animate-spin">
+                                        <span class="h-3 w-3 rounded-full bg-white"></span>
+                                    </span>
+                                </span>
+                            </div>
                             <div v-if="order.status == 'Preparing'">
                                 <span
                                     class="absolute inline-flex h-6 w-6 items-center justify-center rounded-full bg-blue-500 p-4 text-center text-base font-semibold text-white shadow">
@@ -131,7 +179,8 @@
 
                     </div>
 
-                    <div class="relative flex flex-col justify-center"  v-if="order.status === 'RefundPending' || order.status == 'Refunding' || order.status == 'CompleteRefund'">
+                    <div class="relative flex flex-col justify-center"
+                        v-if="order.status === 'RefundPending' || order.status == 'Refunding' || order.status == 'CompleteRefund'">
                         <div class="absolute left-4 h-full mt-0 border-r-4"></div>
                         <div class="relative mb-6">
                             <div>
@@ -170,8 +219,7 @@
                                     </span>
                                 </span>
                             </div>
-                            <div
-                                v-if="order.status == 'CompleteRefund'">
+                            <div v-if="order.status == 'CompleteRefund'">
                                 <span
                                     class="absolute inline-flex h-6 w-6 items-center justify-center rounded-full p-4 text-center bg-gray-300 text-base font-semibold text-white">3</span>
                             </div>
@@ -190,6 +238,8 @@
                                 <p class="mt-1 text-xs text-gray-500"></p>
                             </div>
                         </div>
+                        <div class="relative mb-6"></div>
+                        <div class="relative mb-6"></div>
 
                         <p class=" text-sm font-light">
                         <div class="inline-flex hover:scale-125 transition-all duration-500 mx-52 items-center gap-x-2">
@@ -237,9 +287,25 @@
                         </div>
                         <div v-if="order.status == 'RefundPending' || order.status == 'Refunding'">
                             <button
-                                class="w-full z-4 items-center py-4 border-2 bg-white border-gray-400 lg:rounded-2xl text-gray-400">
+                                class="w-full z-4 items-center animate-pulse transition duration-700 py-4 border-2 bg-white border-gray-400 lg:rounded-2xl text-gray-400">
                                 <div class="">
                                     Refunding
+                                </div>
+                            </button>
+                        </div>
+                        <div v-if="order.status == 'ResentPending'">
+                            <button
+                                class="w-full inline z-4 items-center animate-pulse transition duration-700 py-4 border-2 bg-white border-gray-400 lg:rounded-2xl text-gray-400">
+                                <div class="">
+                                    Preparing for Repacking
+                                </div>
+                            </button>
+                        </div>
+                        <div v-if="order.status == 'ReportPending'">
+                            <button
+                                class="w-full inline z-4 items-center animate-pulse transition duration-700 py-4 border-2 bg-white border-gray-400 lg:rounded-2xl text-gray-400">
+                                <div class="">
+                                    Checking
                                 </div>
                             </button>
                         </div>
