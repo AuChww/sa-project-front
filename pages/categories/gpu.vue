@@ -63,7 +63,7 @@
                         </div>
 
                     </section>
-                    
+
                 </div>
 
                 <div class="text-white mt-12 py-1 bg-gray-900 font-semibold text-2xl mx-2 rounded-lg">GPU</div>
@@ -78,11 +78,13 @@
                             <div class="p-4 grid grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6 text-left">
                                 <div v-for="product in filteredCpuProducts" :key="product.id"
                                     class="bg-white shadow-md p-3 rounded-lg hover:scale-105 transition-all duration-500 relative h-full flex flex-col">
-                                    <img :src="`http://localhost:80/storage/${product.image}`" alt="Product Image" class="w-full h-100 object-cover mb-4">
+                                    <img :src="`http://localhost:80/storage/${product.image}`" alt="Product Image"
+                                        class="w-full h-100 object-cover mb-4">
                                     <h3 class="text-xl font-semibold">{{ product.name }}</h3>
                                     <p class="text-gray-600 flex-grow overflow-hidden line-clamp-2">{{ product.description
                                     }}</p>
-
+                                    <div class="text-right font-semi text-blue-700 my-2">Available : {{ product.quantity }}
+                                    </div>
                                     <div class="flex justify-between mt-2">
                                         <!-- Price on the left-bottom -->
                                         <div class="text-xl font-bold text-blue-900 ">$ {{ product.price }}</div>
@@ -191,4 +193,6 @@ export default {
 
 </script>
 
-<style scoped>/* Tailwind CSS classes and custom styling */</style>
+<style scoped>
+/* Tailwind CSS classes and custom styling */
+</style>
