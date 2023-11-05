@@ -75,7 +75,8 @@
                                     </td>
 
                                     <td class="px-4 py-4 text-sm text-gray-500 dark:text-gray-300">
-                                        {{ order.payment_receipt }}
+                                        <img :src="`http://localhost:80/storage/${order.payment_receipt}`" alt="Product Image"
+                                            class="h-40 mx-auto object-cover mb-4">
                                     </td>
 
                                     <td class="px-4 py-4 text-sm text-gray-500 dark:text-gray-300">
@@ -107,20 +108,23 @@
                                     </td>
 
                                     <td class="py-2">
-                                        <button v-if="order.status === 'RefundPending'" type="button" @click="acceptRefund(order.id)"
+                                        <button v-if="order.status === 'RefundPending'" type="button"
+                                            @click="acceptRefund(order.id)"
                                             class="border-red-500 bg-blue-500 text-white rounded-md px-4 py-2 m-2 transition duration-500 ease select-none hover:bg-blue-700 focus:outline-none focus:shadow-outline">
                                             Accept
                                         </button>
-                                        <button v-if="order.status === 'Refunding'" type="button" @click="completeRefund(order.id)"
+                                        <button v-if="order.status === 'Refunding'" type="button"
+                                            @click="completeRefund(order.id)"
                                             class="border-red-500 bg-emerald-500 text-white rounded-md px-4 py-2 m-2 transition duration-500 ease select-none hover:bg-emerald-700 focus:outline-none focus:shadow-outline">
                                             Confirm
                                         </button>
-                                        <button v-if="order.status === 'CompleteRefund'" type="button" @click="deleteOrder(order.id)"
+                                        <button v-if="order.status === 'CompleteRefund'" type="button"
+                                            @click="deleteOrder(order.id)"
                                             class="border-red-500 bg-red-500 text-white rounded-md px-4 py-2 m-2 transition duration-500 ease select-none hover:bg-red-700 focus:outline-none focus:shadow-outline">
                                             Delete
                                         </button>
                                     </td>
-                                    
+
                                 </tr>
                             </tbody>
                         </table>
@@ -227,11 +231,13 @@
                                     </td>
 
                                     <td class="py-2">
-                                        <button v-if="order.status === 'RefundPending'" type="button" @click="acceptRefund(order.id)"
+                                        <button v-if="order.status === 'RefundPending'" type="button"
+                                            @click="acceptRefund(order.id)"
                                             class="border-red-500 bg-blue-500 text-white rounded-md px-4 py-2 m-2 transition duration-500 ease select-none hover:bg-blue-700 focus:outline-none focus:shadow-outline">
                                             Accept
                                         </button>
-                                        <button v-if="order.status === 'Refunding'" type="button" @click="completeRefund(order.id)"
+                                        <button v-if="order.status === 'Refunding'" type="button"
+                                            @click="completeRefund(order.id)"
                                             class="border-red-500 bg-emerald-500 text-white rounded-md px-4 py-2 m-2 transition duration-500 ease select-none hover:bg-emerald-700 focus:outline-none focus:shadow-outline">
                                             Confirm
                                         </button>
@@ -240,7 +246,7 @@
                                             In the Process
                                         </button>
                                     </td>
-                                    
+
                                 </tr>
                             </tbody>
                         </table>
@@ -388,6 +394,7 @@ const formatCreatedAt = (timestamp: string) => {
         minute: '2-digit',
     }).format(new Date(timestamp));
 };
+
 </script>
 
 <style scoped>
@@ -399,5 +406,4 @@ const formatCreatedAt = (timestamp: string) => {
 .swipe-in-enter,
 .swipe-in-leave-to {
     transform: translateY(-20%);
-}
-</style>
+}</style>

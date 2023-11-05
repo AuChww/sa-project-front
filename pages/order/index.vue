@@ -83,7 +83,8 @@
                                         </td>
 
                                         <td class="px-4 py-4 text-sm text-gray-500 dark:text-gray-300">
-                                            {{ order.payment_receipt }}
+                                            <img :src="`http://localhost:80/storage/${order.payment_receipt}`"
+                                                alt="Product Image" class="h-40 mx-auto object-cover mb-4">
                                         </td>
 
                                         <td class="px-4 py-4 text-sm text-gray-500 dark:text-gray-300">
@@ -145,7 +146,9 @@
                                         </td>
 
                                         <td class="px-4 py-4 text-sm text-gray-500 dark:text-gray-300">
-                                            {{ order.user_name }}
+                                            <NuxtLink class="hover:text-blue-500" :to="`/profile/${order.user_id}`">
+                                                {{ order.user_name }}
+                                            </NuxtLink>
                                         </td>
 
                                         <td class="px-4 py-4 text-sm text-gray-500 dark:text-gray-300">
@@ -252,7 +255,8 @@
                                         </td>
 
                                         <td class="px-4 py-4 text-sm text-gray-500 dark:text-gray-300">
-                                            {{ order.payment_receipt }}
+                                            <img :src="`http://localhost:80/storage/${order.payment_receipt}`"
+                                                alt="Product Image" class="h-40 mx-auto object-cover mb-4">
                                         </td>
 
                                         <td class="px-4 py-4 text-sm">
@@ -280,7 +284,9 @@
                                         </td>
 
                                         <td class="px-4 py-4 text-sm text-gray-500 dark:text-gray-300">
-                                            {{ order.user_name }}
+                                            <NuxtLink class="hover:text-blue-500" :to="`/profile/${order.user_id}`">
+                                                {{ order.user_name }}
+                                            </NuxtLink>
                                         </td>
 
                                         <td class="px-4 py-4 text-sm text-gray-500 dark:text-gray-300">

@@ -60,7 +60,7 @@
                         class="block mb-2 mt-2 text-sm font-medium text-gray-900 dark:text-gray-700">Bank number</label>
                     <input type="text" id="bank_number"
                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                        placeholder="0661105208" required :value="auth.user.bankNumber">
+                        placeholder="0661105208" required :value="auth.user.bank_number">
                 </div>
                 <div class="mb-6">
                     <label for="email" class="block mb-2 mt-2 text-sm font-medium text-gray-900 dark:text-gray-700">Email
@@ -84,7 +84,7 @@
 </template>
 
 <script setup lang="ts">
-import { useAuthStore } from "~/stores/useAuthStore";
+
 import { ref } from "vue";
 
 const auth = useAuthStore();
@@ -98,9 +98,9 @@ const submitForm = async (e) => {
     // Create a FormData object to send the form data, including the image
     const formData = new FormData();
     formData.append("first_name", auth.user.name);
-    formData.append("address", auth.user.address);
+    formData.append("address",  auth.user.address);
     formData.append("bank", auth.user.bank);
-    formData.append("bank_number", auth.user.bankNumber);
+    formData.append("bank_number", auth.user.bank_number);
     formData.append("email", auth.user.email);
 
     // If an image is selected, append it to the FormData
