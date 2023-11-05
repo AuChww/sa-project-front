@@ -46,7 +46,8 @@
                 <div v-else v-for="product in Cart" :key="product.product_id"
                     class="justify-between mb-6 rounded-lg bg-white p-6 shadow-md sm:flex sm:justify-start">
                     <!-- Display Cart Product Information -->
-                    <img :src="`http://localhost:80/storage/${product.image}`" alt="product image" class="w-full rounded-lg sm:w-40" />
+                    <img :src="`http://localhost:80/storage/${product.image}`" alt="product image"
+                        class="w-full rounded-lg sm:w-40" />
                     <div class="sm:ml-4 sm:flex sm:w-full sm:justify-between">
                         <div class="mt-5 sm:mt-0">
                             <h2 class="text-lg font-bold text-gray-900">{{ product.name }}</h2>
@@ -59,7 +60,7 @@
             <!--UPLOAD IMAGE-->
             <div
                 class="mt-8 bg-gray-50 w-full border border-gray-300 text-gray-900 text-xl rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                <input type="file" id="image" ref="imageInput" accept="image/*" />
+                <input type="file" accept="image/*" @change="previewImage" />
             </div>
 
             <p class="mt-8 text-lg font-medium">Shipping Methods</p>
@@ -120,10 +121,6 @@
                     </div>
                 </div>
                 <div class="mt-6 flex items-center justify-between">
-                    <p class="text-sm font-medium text-gray-900">Payment Amount</p>
-                    <p class="font-semibold text-gray-900">${{ paymentAmount.toFixed(2) }}</p>
-                </div>
-                <div class="mt-6 flex items-center justify-between">
                     <p class="text-sm font-medium text-gray-900">Total</p>
                     <p class="font-semibold text-gray-900">${{ total.toFixed(2) }}</p>
                 </div>
@@ -149,8 +146,38 @@ import image from '@/assets/image/qr-payment.jpg';
 
 const cartStore = useCartStore();
 const Cart = cartStore.cart;
-const paymentAmount = ref(0);
 const selectedShipmentMethod = ref('normal'); // Default to 'normal'
+const previewUrl = ref(null);
+const selectedFile = ref(null);
+
+const orderData = ref({
+    user_id: '',
+    user_name: '',
+    address: '',
+    products: Cart,
+    total_price: 0,
+    payment_receipt: null,
+    shipment_method: 'normal',
+});
+
+const previewImage = (event) => {
+    const file = event.target.files ? event.target.files[0] : null; // Check if there are files
+
+    if (file) {
+        const reader = new FileReader();
+
+        reader.onload = () => {
+            previewUrl.value = reader.result; // Store the data URL for preview
+            selectedFile.value = file; // Store the selected file
+
+            // Optionally, you can encode the image to base64
+            const base64String = reader.result.split(',')[1]; // Get the base64 part of the data URL
+            orderData.payment_receipt = base64String; // Store the base64-encoded image in orderData
+        };
+
+        reader.readAsDataURL(file);
+    }
+};
 
 const isCartEmpty = computed(() => Cart.length === 0); // check cart is empty or not
 
@@ -180,26 +207,31 @@ const total = computed(() => subtotal.value + shippingCost.value + additionalCha
 
 // Function to handle placing an order
 const placeOrder = async () => {
-    const orderData = {
-        user_id: auth.user.id,
-        user_name: auth.user.name,
-        address: auth.user.address,
-        products: Cart,
-        total_price: total.value,
-        payment_receipt: paymentAmount.value,
-        shipment_method: selectedShipmentMethod.value,
-    };
+    if (!selectedFile.value) {
+        // Check if a payment receipt has been uploaded
+        alert('Please upload a payment receipt before placing the order.');
+        return; // Prevent placing the order without a receipt
+    }
 
-    // Log the data before sending it
-    console.log('Data being sent:', orderData);
+    const formData = new FormData();
+    formData.append('user_id', auth.user.id);
+    formData.append('user_name', auth.user.name);
+    formData.append('address', auth.user.address);
+    formData.append('total_price', total.value);
+    formData.append('payment_receipt', selectedFile.value);
+    formData.append('shipment_method', selectedShipmentMethod.value);
+
+    // Append each product separately
+    for (const product of Cart) {
+        formData.append('products[]', JSON.stringify(product));
+    }
+
+    console.log('Sending orderData:', Object.fromEntries(formData.entries()));
 
     try {
         const response = await useMyFetch<{ order_id: number }>('place-order', {
             method: 'POST',
-            body: JSON.stringify(orderData),
-            headers: {
-                'Content-Type': 'application/json',
-            },
+            body: formData,
         });
 
         if (response) {
@@ -221,5 +253,4 @@ const placeOrder = async () => {
         }
     }
 };
-
 </script>
