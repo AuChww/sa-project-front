@@ -241,11 +241,10 @@
                                         {{ order.payment_receipt }}
                                     </td>
 
-                                    <td class="px-4 py-4 text-sm text-gray-500 dark:text-gray-300">
+                                    <td class="px-4 py-4 text-sm">
                                             <div v-if="order.status === 'Preparing'">
-                                                <div
-                                                    class="inline-flex items-center px-3 py-1 text-gray-400 rounded-full gap-x-2 bg-gray-100/60 dark:bg-gray-600">
-                                                    <svg width="12" height="12" viewBox="0 0 12 12" fill="none"
+                                                <div class="inline-flex items-center px-3 py-1 text-gray-400 rounded-full gap-x-2 bg-gray-600 dark:bg-gray-600">
+                                                    <svg width="12" height="12" viewBox="0 0 12 12" fill="none" 
                                                         xmlns="http://www.w3.org/2000/svg">
                                                         <path d="M10 3L4.5 8.5L2 6" stroke="#667085" stroke-width="1.5"
                                                             stroke-linecap="round" stroke-linejoin="round" />
@@ -255,7 +254,7 @@
                                             </div>
                                             <div v-if="order.status === 'RefundPending'">
                                                 <div
-                                                    class="inline-flex items-center px-3 py-1 text-red-500 rounded-full gap-x-2 bg-gray-100/60 dark:bg-gray-600">
+                                                    class="inline-flex items-center px-3 py-1 text-gray-100 rounded-full gap-x-2 bg-gray-100 dark:bg-red-500">
                                                     <h2 class="text-sm font-semibold mx-2">Rejected</h2>
                                                 </div>
                                             </div>
@@ -286,9 +285,13 @@
                                     </td>
 
                                     <td class="py-2">
-                                        <button v-if="order.status === 'Preparing' || order.status === 'RefundPending'" type="button" @click="deleteOrder(order.id)"
-                                            class="border-red-500 bg-red-500 text-white rounded-md px-4 py-2 m-2 transition duration-500 ease select-none hover:bg-red-700 focus:outline-none focus:shadow-outline">
-                                            Delete
+                                        <button v-if="order.status === 'Preparing'"
+                                            class="border-gray-500 border bg-gray-700 text-gray-500 rounded-md px-4 py-2 m-2 transition duration-500 ease select-none focus:outline-none focus:shadow-outline">
+                                            Ordered
+                                        </button>
+                                        <button v-if="order.status === 'RefundPending'"
+                                            class="border-gray-500 border bg-gray-700 text-gray-500 rounded-md px-4 py-2 m-2 transition duration-500 ease select-none focus:outline-none focus:shadow-outline">
+                                            Done
                                         </button>
                                     </td>
                                     

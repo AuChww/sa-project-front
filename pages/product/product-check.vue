@@ -220,12 +220,12 @@
 
                                     <td class="py-2">
                                         <button v-if="order.status === 'Packing'" type="button" @click="completeDelivery(order.id)"
-                                            class="border-red-500 bg-emerald-500 text-white rounded-md px-4 py-2 m-2 transition duration-500 ease select-none hover:bg-emerald-700 focus:outline-none focus:shadow-outline">
+                                            class="border-red-500 border bg-emerald-500 text-white rounded-md px-4 py-2 m-2 transition duration-500 ease select-none hover:bg-emerald-700 focus:outline-none focus:shadow-outline">
                                             Confirm
                                         </button>
-                                        <button v-if="order.status === 'CompleteDelivery'" type="button" @click="deleteOrder(order.id)"
-                                            class="border-red-500 bg-red-500 text-white rounded-md px-4 py-2 m-2 transition duration-500 ease select-none hover:bg-red-700 focus:outline-none focus:shadow-outline">
-                                            Delete
+                                        <button v-if="order.status === 'CompleteDelivery'"
+                                            class="border-gray-500 border bg-gray-700 text-gray-500 rounded-md px-4 py-2 m-2 transition duration-500 ease select-none focus:outline-none focus:shadow-outline">
+                                            Done
                                         </button>
                                     </td>
                                     

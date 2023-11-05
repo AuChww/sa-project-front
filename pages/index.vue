@@ -89,7 +89,7 @@
                     <h2 class="text-4xl font-semibold transition-all duration-500">Best Seller</h2>
                 </div>
                 <div class="mx-4 grid grid-cols-4 md:grid-cols-5 lg:grid-cols-7 gap-8 mt-6">
-                    <div v-for="product in filteredProducts.slice(0, 7)" :key="product.id"
+                    <div v-for="product in filteredProducts.slice(7, 14)" :key="product.id"
                         class="bg-white shadow-md p-3 rounded-lg hover:scale-105 transition-all duration-500">
                         <img :src="`http://localhost:80/storage/${product.image}`" alt="Product Image"
                             class="w-full h-100 object-cover mb-4">
@@ -131,7 +131,7 @@
                                         CPU</h2>
                                 </div>
                             </RouterLink>
-                            <div v-for="product in filteredGpuProducts.slice(0, 5)" :key="product.id"
+                            <div v-for="product in filteredCpuProducts.slice(0, 5)" :key="product.id"
                                 class="bg-white shadow-md p-3 rounded-lg hover:scale-105 transition-all duration-500">
                                 <img :src="`http://localhost:80/storage/${product.image}`" alt="Product Image"
                                     class="w-full h-100 object-cover mb-4">
@@ -175,7 +175,7 @@
                                         Main Board</h2>
                                 </div>
                             </RouterLink>
-                            <div v-for="product in filteredGpuProducts.slice(0, 5)" :key="product.id"
+                            <div v-for="product in filteredMainboardProducts.slice(0, 5)" :key="product.id"
                                 class="bg-white shadow-md p-3 rounded-lg hover:scale-105 transition-all duration-500">
                                 <img :src="`http://localhost:80/storage/${product.image}`" alt="Product Image"
                                     class="w-full h-100 object-cover mb-4">
@@ -263,7 +263,7 @@
                                         RAM</h2>
                                 </div>
                             </RouterLink>
-                            <div v-for="product in filteredGpuProducts.slice(0, 5)" :key="product.id"
+                            <div v-for="product in filteredRamProducts.slice(0, 5)" :key="product.id"
                                 class="bg-white shadow-md p-3 rounded-lg hover:scale-105 transition-all duration-500">
                                 <img :src="`http://localhost:80/storage/${product.image}`" alt="Product Image"
                                     class="w-full h-100 object-cover mb-4">
@@ -307,7 +307,7 @@
                                         HardDisk</h2>
                                 </div>
                             </RouterLink>
-                            <div v-for="product in filteredGpuProducts.slice(0, 5)" :key="product.id"
+                            <div v-for="product in filteredHarddiskProducts.slice(0, 5)" :key="product.id"
                                 class="bg-white shadow-md p-3 rounded-lg hover:scale-105 transition-all duration-500">
                                 <img :src="`http://localhost:80/storage/${product.image}`" alt="Product Image"
                                     class="w-full h-100 object-cover mb-4">
@@ -351,7 +351,7 @@
                                         Display</h2>
                                 </div>
                             </RouterLink>
-                            <div v-for="product in filteredGpuProducts.slice(0, 5)" :key="product.id"
+                            <div v-for="product in filteredDisplayProducts.slice(0, 5)" :key="product.id"
                                 class="bg-white shadow-md p-3 rounded-lg hover:scale-105 transition-all duration-500">
                                 <img :src="`http://localhost:80/storage/${product.image}`" alt="Product Image"
                                     class="w-full h-100 object-cover mb-4">
@@ -395,7 +395,7 @@
                                         Gaming Gear</h2>
                                 </div>
                             </RouterLink>
-                            <div v-for="product in filteredGpuProducts.slice(0, 5)" :key="product.id"
+                            <div v-for="product in filteredGearProducts.slice(0, 5)" :key="product.id"
                                 class="bg-white shadow-md p-3 rounded-lg hover:scale-105 transition-all duration-500">
                                 <img :src="`http://localhost:80/storage/${product.image}`" alt="Product Image"
                                     class="w-full h-100 object-cover mb-4">
