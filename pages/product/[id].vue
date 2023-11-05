@@ -1,56 +1,35 @@
 <template>
     <Navbar />
     <Sidebar />
-    <div class="bg-gray-100 py-8">
-        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex w-full h-full flex-col justify-center px-6 py-16 lg:px-8 z-10 bg-gradient-to-r
+        from-green-500
+        via-blue-500
+        to-purple-500
+        background-animate">
+        <div style="border"
+            class="py-8 mx-20 mb-24 px-12 mt-8 bg-white shadow-xl rounded-lg text-gray-900">
             <div class="flex flex-col md:flex-row -mx-4">
                 <div class="md:flex-1 px-4">
-                    <div class="h-[460px] rounded-lg bg-gray-300 mb-4">
-                        <img class="w-full h-full object-cover" src="" alt="Product Image">
-                    </div>
-                    <div class="flex -mx-2 mb-4">
-                        <div class="w-1/2 px-2">
-                            <button class="w-full bg-gray-900 text-white py-2 px-4 rounded-full font-bold hover:bg-gray-800">Add to Cart</button>
-                        </div>
-                        <div class="w-1/2 px-2">
-                            <button class="w-full bg-gray-400 text-gray-800 py-2 px-4 rounded-full font-bold hover:bg-gray-300">Add to Wishlist</button>
-                        </div>
+                    <div class="rounded-lg mt-4 mb-4 px-2">
+                        <img :src="`http://localhost:80/storage/${products.image}`" alt="Product Image" style="height: 450px; border"
+                        class="mx-auto">
                     </div>
                 </div>
                 <div class="md:flex-1 px-4">
-                    <h2 class="text-2xl font-bold mb-2">{{ products.name }}</h2>
-                    <p class="text-gray-600 text-sm mb-4">{{ products.description }}</p>
-                    <div class="flex mb-4">
-                        <div class="mr-4">
-                            <span class="font-bold text-gray-700"> </span>
-                            <span class="text-gray-600">$29.99</span>
-                        </div>
-                        <div>
-                            <span class="font-bold text-gray-700">Availability:</span>
-                            <span class="text-gray-600">n</span>
-                        </div>
+                    <h2 class="text-3xl mt-8 font-bold mb-2">{{ products.name }}</h2>
+                    <p class="text-gray-600 text-lg mt-4 mb-4 w-96">{{ products.description }}</p>
+                    <div class="text-lg mt-8 py-2">
+                        <span class="font-bold text-gray-700">Price : </span>
+                        <span class="text-gray-600">{{ products.price }}</span>
                     </div>
-                    <div class="mb-4">
-                        <span class="font-bold text-gray-700">Select Color:</span>
-                        <div class="flex items-center mt-2">
-                            <button class="w-6 h-6 rounded-full bg-gray-800 mr-2"></button>
-                            <button class="w-6 h-6 rounded-full bg-gray-300 mr-2"></button>
-                        </div>
+                    <div class="text-lg py-2">
+                        <span class="font-bold text-gray-700">Available : </span>
+                        <span class="text-gray-600">{{ products.quantity }}</span>
                     </div>
-                    <div class="mb-4">
-                        <span class="font-bold text-gray-700">Select Size:</span>
-                        <div class="flex items-center mt-2">
-                            <button class="bg-gray-300 text-gray-700 py-2 px-4 rounded-full font-bold mr-2 hover:bg-gray-400">Brand</button>
+                    <div class="flex mt-8 -mx-2 mb-4">
+                        <div class="mx-0 px-4 w-80">
+                            <button class="w-full bg-blue-800 text-white text-lg py-2 px-4 rounded-full font-bold hover:bg-blue-700">Add to Cart</button>
                         </div>
-                    </div>
-                    <div>
-                        <span class="font-bold text-gray-700">Product Description:</span>
-                        <p class="text-gray-600 text-sm mt-2">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed
-                            sed ante justo. Integer euismod libero id mauris malesuada tincidunt. Vivamus commodo nulla ut
-                            lorem rhoncus aliquet. Duis dapibus augue vel ipsum pretium, et venenatis sem blandit. Quisque
-                            ut erat vitae nisi ultrices placerat non eget velit. Integer ornare mi sed ipsum lacinia, non
-                            sagittis mauris blandit. Morbi fermentum libero vel nisl suscipit, nec tincidunt mi consectetur.
-                        </p>
                     </div>
                 </div>
             </div>

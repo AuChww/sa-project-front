@@ -78,28 +78,33 @@
                             <div class="p-4 grid grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6 text-left">
                                 <div v-for="product in filteredCpuProducts" :key="product.id"
                                     class="bg-white shadow-md p-3 rounded-lg hover:scale-105 transition-all duration-500 relative h-full flex flex-col">
-                                    <img :src="`http://localhost:80/storage/${product.image}`" alt="Product Image"
-                                        class="w-full h-100 object-cover mb-4">
-                                    <h3 class="text-xl font-semibold">{{ product.name }}</h3>
-                                    <p class="text-gray-600 flex-grow overflow-hidden line-clamp-2">{{ product.description
-                                    }}</p>
-                                    <div class="text-right font-semi text-blue-700 my-2">Available : {{ product.quantity }}
-                                    </div>
-                                    <div class="flex justify-between mt-2">
-                                        <!-- Price on the left-bottom -->
-                                        <div class="text-xl font-bold text-blue-900 ">$ {{ product.price }}</div>
-
-
-
-                                        <div v-if="auth.isLogin">
-                                            <!-- Add to Cart on the right-bottom -->
-                                            <button class="bg-blue-900 text-white px-4 py-2 rounded-full hover:bg-blue-700"
-                                                @click="addToCart(product)">
-                                                Add to Cart
-                                            </button>
-
+                                    <NuxtLink class="hover: scale-105" :to="`/product/${product.id}`">
+                                        <img :src="`http://localhost:80/storage/${product.image}`" alt="Product Image"
+                                            class="w-full h-100 object-cover mb-4">
+                                        <h3 class="text-xl font-semibold">{{ product.name }}</h3>
+                                        <p class="text-gray-600 flex-grow overflow-hidden line-clamp-2">{{
+                                            product.description
+                                        }}</p>
+                                        <div class="text-right font-semi text-blue-700 my-2">Available : {{ product.quantity
+                                        }}
                                         </div>
-                                    </div>
+                                        <div class="flex justify-between mt-2">
+                                            <!-- Price on the left-bottom -->
+                                            <div class="text-xl font-bold text-blue-900 ">$ {{ product.price }}</div>
+
+
+
+                                            <div v-if="auth.isLogin">
+                                                <!-- Add to Cart on the right-bottom -->
+                                                <button
+                                                    class="bg-blue-900 text-white px-4 py-2 rounded-full hover:bg-blue-700"
+                                                    @click="addToCart(product)">
+                                                    Add to Cart
+                                                </button>
+
+                                            </div>
+                                        </div>
+                                    </NuxtLink>
                                 </div>
                             </div>
                         </div>
