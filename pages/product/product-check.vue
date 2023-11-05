@@ -79,7 +79,7 @@
                                     </td>
 
                                     <td class="px-4 py-4 text-sm text-gray-500 dark:text-gray-300">
-                                        <div v-if="order.status === 'Preparing' || order.status ==='ResentPending'">
+                                        <div v-if="order.status === 'Preparing' || order.status === 'ResentPending'">
                                             <div
                                                 class="inline-flex items-center px-3 py-1 text-yellow-500 rounded-full gap-x-2 bg-red-100/60 dark:bg-gray-600">
                                                 <svg xmlns="http://www.w3.org/2000/svg" width="50" height="10">
@@ -126,8 +126,8 @@
                                     </td>
 
                                     <td class="py-2">
-                                        <button v-if="order.status === 'Preparing' || order.status === 'ResentPending'" type="button"
-                                            @click="acceptPacking(order.id)"
+                                        <button v-if="order.status === 'Preparing' || order.status === 'ResentPending'"
+                                            type="button" @click="acceptPacking(order.id)"
                                             class="border-red-500 bg-blue-500 text-white rounded-md px-4 py-2 m-2 transition duration-500 ease select-none hover:bg-blue-700 focus:outline-none focus:shadow-outline">
                                             Accept
                                         </button>
@@ -314,11 +314,12 @@
                                             class="border-emerald-500 border bg-emerald-500 text-white rounded-md px-4 py-2 m-2 transition duration-500 ease select-none hover:bg-emerald-700 focus:outline-none focus:shadow-outline">
                                             Confirm
                                         </button>
-                                        <button v-if="order.status === 'Packing'" type="button"
-                                            @click="reportOrder(order.id)"
-                                            class="border-red-500 border bg-red-500 text-white rounded-md px-4 py-2 m-2 transition duration-500 ease select-none hover:bg-red-700 focus:outline-none focus:shadow-outline">
-                                            Report
-                                        </button>
+                                        <RouterLink to="/report">
+                                            <button v-if="order.status === 'Packing'" type="button"
+                                                class="border-red-500 border bg-red-500 text-white rounded-md px-4 py-2 m-2 transition duration-500 ease select-none hover:bg-red-700 focus:outline-none focus:shadow-outline">
+                                                Report
+                                            </button>
+                                        </RouterLink>
                                         <button v-if="order.status === 'CompleteDelivery'"
                                             class="border-gray-500 border bg-gray-700 text-gray-500 rounded-md px-4 py-2 m-2 transition duration-500 ease select-none focus:outline-none focus:shadow-outline">
                                             Done
@@ -360,7 +361,7 @@ const fetchOrders = async () => {
 };
 
 const preparingOrders = computed(() => {
-    const allowedStatuses = ['Preparing' , 'ResentPending'];
+    const allowedStatuses = ['Preparing', 'ResentPending'];
     return orders.value.filter(order => allowedStatuses.includes(order.status));
 });
 

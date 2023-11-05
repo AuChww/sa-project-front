@@ -85,43 +85,46 @@
             <div style="height: 500px; border"
                 class="overflow-y-auto px-4 py-2 sm:mx-auto md:mx-auto lg:mx-auto xl:mx-auto mt-4 bg-gray-700 shadow-xl rounded-lg text-black">
                 <div>
-                    <div v-for="order in orders" :key="order.id" class=" px-8 py-6 justify-between my-4 bg-white w-72 mx-auto">
-                        <div class="font-semibold text-lg">Order Id : {{ order.id }}</div>
-                        <div class="text-gray-600 text-xs">Date : {{ order.created_at }}</div>
-                        <div class="text-gray-600 text-xs">Customer : {{ order.user_name }}</div>
-                        <div class="mt-4 mb-2 font-semibold text-md">
-                            Products :
-                        </div>
-                        <div class="font-semi text-right grid grid-cols-3">
-                            <div class="text-right text-sm font-semi">
-                                Id
+                    <div v-for="order in orders" :key="order.id">
+                        <div v-if="order.status === 'Preparing' || order.status === 'Packing' || order.status === 'resentPending' || order.status === 'Delivering' || order.status === 'CompleteDelivery'"
+                        class=" px-8 py-6 justify-between my-4 bg-white w-72 mx-auto">
+                            <div class="font-semibold text-lg">Order Id : {{ order.id }}</div>
+                            <div class="text-gray-600 text-xs">Date : {{ order.created_at }}</div>
+                            <div class="text-gray-600 text-xs">Customer : {{ order.user_name }}</div>
+                            <div class="mt-4 mb-2 font-semibold text-md">
+                                Products :
                             </div>
-                            <div class="text-right text-sm font-semi">
-                                Name
+                            <div class="font-semi text-right grid grid-cols-3">
+                                <div class="text-right text-sm font-semi">
+                                    Id
+                                </div>
+                                <div class="text-right text-sm font-semi">
+                                    Name
+                                </div>
+                                <div class="text-right text-sm font-semi">
+                                    Price
+                                </div>
                             </div>
-                            <div class="text-right text-sm font-semi">
-                                Price
+                            <div v-for="product in products" :key="product.id" class="font-semi text-right grid grid-cols-3">
+                                <div class="text-right text-sm font-semi">
+                                    {{ product.id }}
+                                </div>
+                                <div class="text-right text-sm font-semi">
+                                    {{ product.name }}
+                                </div>
+                                <div class="text-right text-sm font-semi">
+                                    {{ product.price }}
+                                </div>
                             </div>
-                        </div>
-                        <div v-for="product in products" :key="product.id" class="font-semi text-right grid grid-cols-3">
-                            <div class="text-right text-sm font-semi">
-                                {{ product.id }}
-                            </div>
-                            <div class="text-right text-sm font-semi">
-                                {{ product.name }}
-                            </div>
-                            <div class="text-right text-sm font-semi">
-                                {{ product.price }}
-                            </div>
-                        </div>
-                        <div class="font-semi mt-2 text-right grid grid-cols-3">
-                            <div class="text-right text-sm font-semi">
-                            </div>
-                            <div class="text-right text-sm font-semibold underline">
-                                Total
-                            </div>
-                            <div class="text-right text-sm font-semi">
-                                {{ order.total_price }}
+                            <div class="font-semi mt-2 text-right grid grid-cols-3">
+                                <div class="text-right text-sm font-semi">
+                                </div>
+                                <div class="text-right text-sm font-semibold underline">
+                                    Total
+                                </div>
+                                <div class="text-right text-sm font-semi">
+                                    {{ order.total_price }}
+                                </div>
                             </div>
                         </div>
                     </div>
