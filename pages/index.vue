@@ -89,17 +89,25 @@
                     <h2 class="text-4xl font-semibold transition-all duration-500">Best Seller</h2>
                 </div>
                 <div class="mx-4 grid grid-cols-4 md:grid-cols-5 lg:grid-cols-7 gap-8 mt-6">
-                    <div v-for="product in filteredProducts.slice(0, 7)" :key="product.id"
-                        class="bg-white shadow-md p-3 rounded-lg hover:scale-105 transition-all duration-500">
+                    <div v-for="product in filteredProducts.slice(7, 14)" :key="product.id"
+                        class="bg-white shadow-md p-3 rounded-lg mx-auto hover:scale-105 transition-all duration-500">
                         <img :src="`http://localhost:80/storage/${product.image}`" alt="Product Image"
-                            class="w-full h-100 object-cover mb-4">
-                        <h3 class="text-xl font-semibold">{{ product.name }}</h3>
+                            class="h-36 mx-auto object-cover mb-4">
+                        <h3 class="lg:text-xl font-semibold md:text-md">{{ product.name }}</h3>
                         <div class="mt-4 flex items-center justify-between">
-                            <span class="text-xl font-bold text-blue-900">$ {{ product.price }}</span>
+                            <span class="lg:text-xl font-bold text-blue-900 md:text-md">฿ {{ product.price
+                            }}</span>
                         </div>
-                        <button class="bg-blue-900 text-white px-4 py-2 rounded-full hover:bg-blue-700"
+                        <button
+                            class="transform active:scale-x-75 transition-transform inline-flex bg-blue-800 md:text-sm lg:text-md text-white lg:px-4 md:px-2 py-2 rounded-full hover:bg-blue-700"
                             @click="addToCart(product)">
-                            Add to Cart
+                            Add
+                            <svg class="ml-1 flex-shrink-0 w-5 h-5 text-white transition duration-75 dark:text-gray-200 dark:group-hover:text-white"
+                                aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor"
+                                viewBox="0 0 18 21">
+                                <path
+                                    d="M15 12a1 1 0 0 0 .962-.726l2-7A1 1 0 0 0 17 3H3.77L3.175.745A1 1 0 0 0 2.208 0H1a1 1 0 0 0 0 2h.438l.6 2.255v.019l2 7 .746 2.986A3 3 0 1 0 9 17a2.966 2.966 0 0 0-.184-1h2.368c-.118.32-.18.659-.184 1a3 3 0 1 0 3-3H6.78l-.5-2H15Z" />
+                            </svg>
                         </button>
                     </div>
                 </div>
@@ -114,25 +122,32 @@
                 <div>
                     <!-- CPU Product List -->
                     <div>
-                        <div class="h-72 mx-8 grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-8 mt-2">
+                        <div class="lg:h-72 md:h-96 mx-8 grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-8 mt-2">
                             <RouterLink to="/categories/cpu">
                                 <div class="text-white h-full shadow-md p-3 rounded-lg hover:scale-105 transition-all duration-500"
-                                    :style="{ 'background-image': 'url(https://4kwallpapers.com/images/walls/thumbs_3t/9784.jpg)','backgroundPosition': 'center 40%' ,'backgroundSize': '240%' }">
-                                    <h2 class="text-4xl font-semibold hover:scale-110 transition-all duration-500">CPU</h2>
+                                    :style="{ 'background-image': 'url(https://4kwallpapers.com/images/walls/thumbs_3t/9784.jpg)', 'backgroundPosition': 'center 40%', 'backgroundSize': '280%' }">
+                                    <h2
+                                        class="lg:text-4xl md:text-3xl mt-0 mb-24 text-4xl font-semibold hover:scale-110 transition-all duration-500">
+                                        CPU</h2>
                                 </div>
                             </RouterLink>
                             <div v-for="product in filteredCpuProducts.slice(0, 5)" :key="product.id"
                                 class="bg-white shadow-md p-3 rounded-lg hover:scale-105 transition-all duration-500">
                                 <img :src="`http://localhost:80/storage/${product.image}`" alt="Product Image"
-                                    class="w-full h-100 object-cover mb-4">
-                                <h3 class="text-xl font-semibold">{{ product.name }}</h3>
-                                <div class=" flex items-center justify-between">
-                                    <span class="text-lg font-bold text-blue-900">฿ {{ product.price }}</span>
-                                    <button class="inline-flex bg-blue-800 text-white px-4 py-2 rounded-full hover:bg-blue-700"
-                                        @click="addToCart(product)">
-                                        Add 
-                                        <svg class="ml-1 flex-shrink-0 w-5 h-5 text-white transition duration-75 dark:text-gray-200 dark:group-hover:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 18 21">
-                                            <path d="M15 12a1 1 0 0 0 .962-.726l2-7A1 1 0 0 0 17 3H3.77L3.175.745A1 1 0 0 0 2.208 0H1a1 1 0 0 0 0 2h.438l.6 2.255v.019l2 7 .746 2.986A3 3 0 1 0 9 17a2.966 2.966 0 0 0-.184-1h2.368c-.118.32-.18.659-.184 1a3 3 0 1 0 3-3H6.78l-.5-2H15Z"/>
+                                    class="h-40 mx-auto object-cover mb-4">
+                                <h3 class="lg:text-xl font-semibold md:text-md">{{ product.name }}</h3>
+                                <div class="mt-4 flex items-center justify-between">
+                                    <span class="lg:text-xl font-bold text-blue-900 md:text-md text-left">฿ {{ product.price
+                                    }}</span>
+                                    <button
+                                        class="transform active:scale-x-75 transition-transform inline-flex bg-blue-800 md:text-sm lg:text-md text-white lg:px-4 md:px-2 py-2 rounded-full hover:bg-blue-700"
+                                        @click="addToCart(product)" >
+                                        Add
+                                        <svg class="ml-1 flex-shrink-0 w-5 h-5 text-white transition duration-75 dark:text-gray-200 dark:group-hover:text-white"
+                                            aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor"
+                                            viewBox="0 0 18 21">
+                                            <path
+                                                d="M15 12a1 1 0 0 0 .962-.726l2-7A1 1 0 0 0 17 3H3.77L3.175.745A1 1 0 0 0 2.208 0H1a1 1 0 0 0 0 2h.438l.6 2.255v.019l2 7 .746 2.986A3 3 0 1 0 9 17a2.966 2.966 0 0 0-.184-1h2.368c-.118.32-.18.659-.184 1a3 3 0 1 0 3-3H6.78l-.5-2H15Z" />
                                         </svg>
                                     </button>
                                 </div>
@@ -151,25 +166,32 @@
                 <div>
                     <!-- Main Board Product List -->
                     <div>
-                        <div class="h-72 mx-8 grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-8 mt-2">
+                        <div class="lg:h-72 md:h-96 mx-8 grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-8 mt-2">
                             <RouterLink to="/categories/mainboard">
                                 <div class="text-white h-full shadow-md p-3 rounded-lg hover:scale-105 transition-all duration-500"
-                                    :style="{ 'background-image': 'url(https://www.ansys.com/content/dam/amp/2023/april/blog-article-requests/how-to-plan-and-conduct-highly-accelerated-life-testing/og-how-to-halt-blog.jpg?wid=1200)','backgroundPosition': 'center' ,'backgroundSize': '280%' }">
-                                    <h2 class="text-4xl font-semibold hover:scale-110 transition-all duration-500">Main Board</h2>
+                                    :style="{ 'background-image': 'url(https://www.ansys.com/content/dam/amp/2023/april/blog-article-requests/how-to-plan-and-conduct-highly-accelerated-life-testing/og-how-to-halt-blog.jpg?wid=1200)', 'backgroundPosition': 'center', 'backgroundSize': '280%' }">
+                                    <h2
+                                        class="lg:text-4xl md:text-3xl mt-0 mb-24 text-4xl font-semibold hover:scale-110 transition-all duration-500">
+                                        Main Board</h2>
                                 </div>
                             </RouterLink>
                             <div v-for="product in filteredMainboardProducts.slice(0, 5)" :key="product.id"
                                 class="bg-white shadow-md p-3 rounded-lg hover:scale-105 transition-all duration-500">
                                 <img :src="`http://localhost:80/storage/${product.image}`" alt="Product Image"
-                                    class="w-full h-100 object-cover mb-4">
-                                <h3 class="text-xl font-semibold">{{ product.name }}</h3>
+                                    class="h-40 mx-auto object-cover mb-4">
+                                <h3 class="lg:text-xl font-semibold md:text-md">{{ product.name }}</h3>
                                 <div class="mt-4 flex items-center justify-between">
-                                    <span class="text-lg font-bold text-blue-900">฿ {{ product.price }}</span>
-                                    <button class="inline-flex bg-blue-800 text-white px-4 py-2 rounded-full hover:bg-blue-700"
+                                    <span class="lg:text-xl font-bold text-blue-900 md:text-md text-left">฿ {{ product.price
+                                    }}</span>
+                                    <button
+                                        class="transform active:scale-x-75 transition-transform inline-flex bg-blue-800 md:text-sm lg:text-md text-white lg:px-4 md:px-2 py-2 rounded-full hover:bg-blue-700"
                                         @click="addToCart(product)">
-                                        Add 
-                                        <svg class="ml-1 flex-shrink-0 w-5 h-5 text-white transition duration-75 dark:text-gray-200 dark:group-hover:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 18 21">
-                                            <path d="M15 12a1 1 0 0 0 .962-.726l2-7A1 1 0 0 0 17 3H3.77L3.175.745A1 1 0 0 0 2.208 0H1a1 1 0 0 0 0 2h.438l.6 2.255v.019l2 7 .746 2.986A3 3 0 1 0 9 17a2.966 2.966 0 0 0-.184-1h2.368c-.118.32-.18.659-.184 1a3 3 0 1 0 3-3H6.78l-.5-2H15Z"/>
+                                        Add
+                                        <svg class="ml-1 flex-shrink-0 w-5 h-5 text-white transition duration-75 dark:text-gray-200 dark:group-hover:text-white"
+                                            aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor"
+                                            viewBox="0 0 18 21">
+                                            <path
+                                                d="M15 12a1 1 0 0 0 .962-.726l2-7A1 1 0 0 0 17 3H3.77L3.175.745A1 1 0 0 0 2.208 0H1a1 1 0 0 0 0 2h.438l.6 2.255v.019l2 7 .746 2.986A3 3 0 1 0 9 17a2.966 2.966 0 0 0-.184-1h2.368c-.118.32-.18.659-.184 1a3 3 0 1 0 3-3H6.78l-.5-2H15Z" />
                                         </svg>
                                     </button>
                                 </div>
@@ -188,25 +210,32 @@
                 <div>
                     <!-- GPU Product List -->
                     <div>
-                        <div class="h-72 mx-8 grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-8 mt-2">
+                        <div class="lg:h-72 md:h-96 mx-8 grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-8 mt-2">
                             <RouterLink to="/categories/gpu">
                                 <div class="text-white h-full shadow-md p-3 rounded-lg hover:scale-105 transition-all duration-500"
-                                    :style="{ 'background-image': 'url(https://www.shutterstock.com/image-photo/graphics-card-row-fans-cyanotic-260nw-1978289216.jpg)','backgroundPosition': 'top right 10%' ,'backgroundSize': '280%' }">
-                                    <h2 class="text-4xl font-semibold hover:scale-110 transition-all duration-500">GPU</h2>
+                                    :style="{ 'background-image': 'url(https://www.shutterstock.com/image-photo/graphics-card-row-fans-cyanotic-260nw-1978289216.jpg)', 'backgroundPosition': 'top right 20%', 'backgroundSize': '290%' }">
+                                    <h2
+                                        class="lg:text-4xl md:text-3xl mt-0 mb-24 text-4xl font-semibold hover:scale-110 transition-all duration-500">
+                                        GPU</h2>
                                 </div>
                             </RouterLink>
                             <div v-for="product in filteredGpuProducts.slice(0, 5)" :key="product.id"
                                 class="bg-white shadow-md p-3 rounded-lg hover:scale-105 transition-all duration-500">
                                 <img :src="`http://localhost:80/storage/${product.image}`" alt="Product Image"
-                                    class="w-full h-100 object-cover mb-4">
-                                <h3 class="text-xl font-semibold">{{ product.name }}</h3>
+                                    class="h-40 mx-auto object-cover mb-4">
+                                <h3 class="lg:text-xl font-semibold md:text-md">{{ product.name }}</h3>
                                 <div class="mt-4 flex items-center justify-between">
-                                    <span class="text-lg font-bold text-blue-900">฿ {{ product.price }}</span>
-                                    <button class="inline-flex bg-blue-800 text-white px-4 py-2 rounded-full hover:bg-blue-700"
+                                    <span class="lg:text-xl font-bold text-blue-900 md:text-md text-left">฿ {{ product.price
+                                    }}</span>
+                                    <button
+                                        class="transform active:scale-x-75 transition-transform inline-flex bg-blue-800 md:text-sm lg:text-md text-white lg:px-4 md:px-2 py-2 rounded-full hover:bg-blue-700"
                                         @click="addToCart(product)">
-                                        Add 
-                                        <svg class="ml-1 flex-shrink-0 w-5 h-5 text-white transition duration-75 dark:text-gray-200 dark:group-hover:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 18 21">
-                                            <path d="M15 12a1 1 0 0 0 .962-.726l2-7A1 1 0 0 0 17 3H3.77L3.175.745A1 1 0 0 0 2.208 0H1a1 1 0 0 0 0 2h.438l.6 2.255v.019l2 7 .746 2.986A3 3 0 1 0 9 17a2.966 2.966 0 0 0-.184-1h2.368c-.118.32-.18.659-.184 1a3 3 0 1 0 3-3H6.78l-.5-2H15Z"/>
+                                        Add
+                                        <svg class="ml-1 flex-shrink-0 w-5 h-5 text-white transition duration-75 dark:text-gray-200 dark:group-hover:text-white"
+                                            aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor"
+                                            viewBox="0 0 18 21">
+                                            <path
+                                                d="M15 12a1 1 0 0 0 .962-.726l2-7A1 1 0 0 0 17 3H3.77L3.175.745A1 1 0 0 0 2.208 0H1a1 1 0 0 0 0 2h.438l.6 2.255v.019l2 7 .746 2.986A3 3 0 1 0 9 17a2.966 2.966 0 0 0-.184-1h2.368c-.118.32-.18.659-.184 1a3 3 0 1 0 3-3H6.78l-.5-2H15Z" />
                                         </svg>
                                     </button>
                                 </div>
@@ -225,25 +254,32 @@
                 <div>
                     <!-- RAM Product List -->
                     <div>
-                        <div class="h-72 mx-8 grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-8 mt-2">
+                        <div class="lg:h-72 md:h-96 mx-8 grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-8 mt-2">
                             <RouterLink to="/categories/ram">
                                 <div class="text-white h-full shadow-md p-3 rounded-lg hover:scale-105 transition-all duration-500"
-                                    :style="{ 'background-image': 'url(https://img.freepik.com/premium-photo/computer-memory-ram-motherboard-background-close-up-system-main-memory-random-access-memory-onboard-computer-detail-computer-components-ddr3-ddr4-ddr5_150455-6497.jpg)','backgroundPosition': 'center right 40%' ,'backgroundSize': '270%' }">
-                                    <h2 class="text-4xl font-semibold hover:scale-110 transition-all duration-500">RAM</h2>
+                                    :style="{ 'background-image': 'url(https://img.freepik.com/premium-photo/computer-memory-ram-motherboard-background-close-up-system-main-memory-random-access-memory-onboard-computer-detail-computer-components-ddr3-ddr4-ddr5_150455-6497.jpg)', 'backgroundPosition': 'center left 30%', 'backgroundSize': '300%' }">
+                                    <h2
+                                        class="lg:text-4xl md:text-3xl mt-0 mb-24 text-4xl font-semibold hover:scale-110 transition-all duration-500">
+                                        RAM</h2>
                                 </div>
                             </RouterLink>
                             <div v-for="product in filteredRamProducts.slice(0, 5)" :key="product.id"
                                 class="bg-white shadow-md p-3 rounded-lg hover:scale-105 transition-all duration-500">
                                 <img :src="`http://localhost:80/storage/${product.image}`" alt="Product Image"
-                                    class="w-full h-100 object-cover mb-4">
-                                <h3 class="text-xl font-semibold">{{ product.name }}</h3>
+                                    class="h-40 mx-auto object-cover mb-4">
+                                <h3 class="lg:text-xl font-semibold md:text-md">{{ product.name }}</h3>
                                 <div class="mt-4 flex items-center justify-between">
-                                    <span class="text-lg font-bold text-blue-900">฿ {{ product.price }}</span>
-                                    <button class="inline-flex bg-blue-800 text-white px-4 py-2 rounded-full hover:bg-blue-700"
+                                    <span class="lg:text-xl font-bold text-blue-900 md:text-md text-left">฿ {{ product.price
+                                    }}</span>
+                                    <button
+                                        class="transform active:scale-x-75 transition-transform inline-flex bg-blue-800 md:text-sm lg:text-md text-white lg:px-4 md:px-2 py-2 rounded-full hover:bg-blue-700"
                                         @click="addToCart(product)">
-                                        Add 
-                                        <svg class="ml-1 flex-shrink-0 w-5 h-5 text-white transition duration-75 dark:text-gray-200 dark:group-hover:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 18 21">
-                                            <path d="M15 12a1 1 0 0 0 .962-.726l2-7A1 1 0 0 0 17 3H3.77L3.175.745A1 1 0 0 0 2.208 0H1a1 1 0 0 0 0 2h.438l.6 2.255v.019l2 7 .746 2.986A3 3 0 1 0 9 17a2.966 2.966 0 0 0-.184-1h2.368c-.118.32-.18.659-.184 1a3 3 0 1 0 3-3H6.78l-.5-2H15Z"/>
+                                        Add
+                                        <svg class="ml-1 flex-shrink-0 w-5 h-5 text-white transition duration-75 dark:text-gray-200 dark:group-hover:text-white"
+                                            aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor"
+                                            viewBox="0 0 18 21">
+                                            <path
+                                                d="M15 12a1 1 0 0 0 .962-.726l2-7A1 1 0 0 0 17 3H3.77L3.175.745A1 1 0 0 0 2.208 0H1a1 1 0 0 0 0 2h.438l.6 2.255v.019l2 7 .746 2.986A3 3 0 1 0 9 17a2.966 2.966 0 0 0-.184-1h2.368c-.118.32-.18.659-.184 1a3 3 0 1 0 3-3H6.78l-.5-2H15Z" />
                                         </svg>
                                     </button>
                                 </div>
@@ -262,25 +298,32 @@
                 <div>
                     <!-- Harddisk Product List -->
                     <div>
-                        <div class="h-72 mx-8 grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-8 mt-2">
+                        <div class="lg:h-72 md:h-96 mx-8 grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-8 mt-2">
                             <RouterLink to="/categories/harddisk">
                                 <div class="text-white h-full shadow-md p-3 rounded-lg hover:scale-105 transition-all duration-500"
-                                    :style="{ 'background-image': 'url(https://media.istockphoto.com/id/1297963606/photo/computer-hard-disk-drives-hdd-ssd-on-circuit-board-motherboard-background-close-up-with-red.jpg?s=612x612&w=0&k=20&c=FDu0fVrhGKDKTWW__Kucv8fK9yB_L8V6VtsFjsfXeq8=)','backgroundPosition': 'top right 30%' ,'backgroundSize': '220%' }">
-                                    <h2 class="text-4xl font-semibold hover:scale-110 transition-all duration-500">HardDisk</h2>
+                                    :style="{ 'background-image': 'url(https://media.istockphoto.com/id/1297963606/photo/computer-hard-disk-drives-hdd-ssd-on-circuit-board-motherboard-background-close-up-with-red.jpg?s=612x612&w=0&k=20&c=FDu0fVrhGKDKTWW__Kucv8fK9yB_L8V6VtsFjsfXeq8=)', 'backgroundPosition': 'top right 30%', 'backgroundSize': '220%' }">
+                                    <h2
+                                        class="lg:text-4xl md:text-3xl mt-0 mb-24 text-4xl font-semibold hover:scale-110 transition-all duration-500">
+                                        HardDisk</h2>
                                 </div>
                             </RouterLink>
                             <div v-for="product in filteredHarddiskProducts.slice(0, 5)" :key="product.id"
                                 class="bg-white shadow-md p-3 rounded-lg hover:scale-105 transition-all duration-500">
                                 <img :src="`http://localhost:80/storage/${product.image}`" alt="Product Image"
-                                    class="w-full h-100 object-cover mb-4">
-                                <h3 class="text-xl font-semibold">{{ product.name }}</h3>
+                                    class="h-40 mx-auto object-cover mb-4">
+                                <h3 class="lg:text-xl font-semibold md:text-md">{{ product.name }}</h3>
                                 <div class="mt-4 flex items-center justify-between">
-                                    <span class="text-lg font-bold text-blue-900">฿ {{ product.price }}</span>
-                                    <button class="inline-flex bg-blue-800 text-white px-4 py-2 rounded-full hover:bg-blue-700"
+                                    <span class="lg:text-xl font-bold text-blue-900 md:text-md text-left">฿ {{ product.price
+                                    }}</span>
+                                    <button
+                                        class="transform active:scale-x-75 transition-transform inline-flex bg-blue-800 md:text-sm lg:text-md text-white lg:px-4 md:px-2 py-2 rounded-full hover:bg-blue-700"
                                         @click="addToCart(product)">
-                                        Add 
-                                        <svg class="ml-1 flex-shrink-0 w-5 h-5 text-white transition duration-75 dark:text-gray-200 dark:group-hover:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 18 21">
-                                            <path d="M15 12a1 1 0 0 0 .962-.726l2-7A1 1 0 0 0 17 3H3.77L3.175.745A1 1 0 0 0 2.208 0H1a1 1 0 0 0 0 2h.438l.6 2.255v.019l2 7 .746 2.986A3 3 0 1 0 9 17a2.966 2.966 0 0 0-.184-1h2.368c-.118.32-.18.659-.184 1a3 3 0 1 0 3-3H6.78l-.5-2H15Z"/>
+                                        Add
+                                        <svg class="ml-1 flex-shrink-0 w-5 h-5 text-white transition duration-75 dark:text-gray-200 dark:group-hover:text-white"
+                                            aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor"
+                                            viewBox="0 0 18 21">
+                                            <path
+                                                d="M15 12a1 1 0 0 0 .962-.726l2-7A1 1 0 0 0 17 3H3.77L3.175.745A1 1 0 0 0 2.208 0H1a1 1 0 0 0 0 2h.438l.6 2.255v.019l2 7 .746 2.986A3 3 0 1 0 9 17a2.966 2.966 0 0 0-.184-1h2.368c-.118.32-.18.659-.184 1a3 3 0 1 0 3-3H6.78l-.5-2H15Z" />
                                         </svg>
                                     </button>
                                 </div>
@@ -299,25 +342,32 @@
                 <div>
                     <!-- Display Product List -->
                     <div>
-                        <div class="h-72 mx-8 grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-8 mt-2">
+                        <div class="lg:h-72 md:h-96 mx-8 grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-8 mt-2">
                             <RouterLink to="/categories/display">
                                 <div class="text-white h-full shadow-md p-3 rounded-lg hover:scale-105 transition-all duration-500"
-                                    :style="{ 'background-image': 'url(https://www.techspot.com/articles-info/2638/images/2023-03-06-image.jpg)','backgroundPosition': 'top' ,'backgroundSize': '290%' }">
-                                    <h2 class="text-4xl font-semibold hover:scale-110 transition-all duration-500">Display</h2>
+                                    :style="{ 'background-image': 'url(https://www.techspot.com/articles-info/2638/images/2023-03-06-image.jpg)', 'backgroundPosition': 'top', 'backgroundSize': '290%' }">
+                                    <h2
+                                        class="lg:text-4xl md:text-3xl mt-0 mb-24 text-4xl font-semibold hover:scale-110 transition-all duration-500">
+                                        Display</h2>
                                 </div>
                             </RouterLink>
                             <div v-for="product in filteredDisplayProducts.slice(0, 5)" :key="product.id"
-                                class="bg-white shadow-md p-3 rounded-lg hover:scale-105 transition-all duration-500">
+                                class="bg-white shadow-md p-3 items-end rounded-lg hover:scale-105 transition-all duration-500">
                                 <img :src="`http://localhost:80/storage/${product.image}`" alt="Product Image"
-                                    class="w-full h-100 object-cover mb-4">
-                                <h3 class="text-xl font-semibold">{{ product.name }}</h3>
+                                    class="h-40 mx-auto object-cover mb-4">
+                                <h3 class="lg:text-xl font-semibold md:text-md">{{ product.name }}</h3>
                                 <div class="mt-4 flex items-center justify-between">
-                                    <span class="text-lg font-bold text-blue-900">฿ {{ product.price }}</span>
-                                    <button class="inline-flex bg-blue-800 text-white px-4 py-2 rounded-full hover:bg-blue-700"
+                                    <span class="lg:text-xl font-bold text-blue-900 md:text-md text-left">฿ {{ product.price
+                                    }}</span>
+                                    <button
+                                        class="transform active:scale-x-75 transition-transform inline-flex bg-blue-800 md:text-sm lg:text-md text-white lg:px-4 md:px-2 py-2 rounded-full hover:bg-blue-700"
                                         @click="addToCart(product)">
-                                        Add 
-                                        <svg class="ml-1 flex-shrink-0 w-5 h-5 text-white transition duration-75 dark:text-gray-200 dark:group-hover:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 18 21">
-                                            <path d="M15 12a1 1 0 0 0 .962-.726l2-7A1 1 0 0 0 17 3H3.77L3.175.745A1 1 0 0 0 2.208 0H1a1 1 0 0 0 0 2h.438l.6 2.255v.019l2 7 .746 2.986A3 3 0 1 0 9 17a2.966 2.966 0 0 0-.184-1h2.368c-.118.32-.18.659-.184 1a3 3 0 1 0 3-3H6.78l-.5-2H15Z"/>
+                                        Add
+                                        <svg class="ml-1 flex-shrink-0 w-5 h-5 text-white transition duration-75 dark:text-gray-200 dark:group-hover:text-white"
+                                            aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor"
+                                            viewBox="0 0 18 21">
+                                            <path
+                                                d="M15 12a1 1 0 0 0 .962-.726l2-7A1 1 0 0 0 17 3H3.77L3.175.745A1 1 0 0 0 2.208 0H1a1 1 0 0 0 0 2h.438l.6 2.255v.019l2 7 .746 2.986A3 3 0 1 0 9 17a2.966 2.966 0 0 0-.184-1h2.368c-.118.32-.18.659-.184 1a3 3 0 1 0 3-3H6.78l-.5-2H15Z" />
                                         </svg>
                                     </button>
                                 </div>
@@ -336,25 +386,32 @@
                 <div>
                     <!-- Gaming Gear Product List -->
                     <div>
-                        <div class="h-72 mx-8 grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-8 mt-2">
+                        <div class="lg:h-72 md:h-96 mx-8 grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-8 mt-2">
                             <RouterLink to="/categories/gaming-gear">
                                 <div class="text-white h-full shadow-md p-3 rounded-lg hover:scale-105 transition-all duration-500"
-                                    :style="{ 'background-image': 'url(https://img.freepik.com/premium-photo/top-view-gaming-gear_160097-851.jpg)','backgroundPosition': 'bottom right 40%' ,'backgroundSize': '240%' }">
-                                    <h2 class="text-4xl font-semibold hover:scale-110 transition-all duration-500">Gaming Gear</h2>
+                                    :style="{ 'background-image': 'url(https://img.freepik.com/premium-photo/top-view-gaming-gear_160097-851.jpg)', 'backgroundPosition': 'bottom right 40%', 'backgroundSize': '300%' }">
+                                    <h2
+                                        class="lg:text-4xl md:text-3xl mt-0 mb-24 font-semibold hover:scale-110 transition-all duration-500">
+                                        Gaming Gear</h2>
                                 </div>
                             </RouterLink>
                             <div v-for="product in filteredGearProducts.slice(0, 5)" :key="product.id"
                                 class="bg-white shadow-md p-3 rounded-lg hover:scale-105 transition-all duration-500">
                                 <img :src="`http://localhost:80/storage/${product.image}`" alt="Product Image"
-                                    class="w-full h-100 object-cover mb-4">
-                                <h3 class="text-xl font-semibold">{{ product.name }}</h3>
+                                    class="h-40 mx-auto object-cover mb-4">
+                                <h3 class="lg:text-xl font-semibold md:text-md">{{ product.name }}</h3>
                                 <div class="mt-4 flex items-center justify-between">
-                                    <span class="text-lg font-bold text-blue-900">฿ {{ product.price }}</span>
-                                    <button class="inline-flex bg-blue-800 text-white px-4 py-2 rounded-full hover:bg-blue-700"
+                                    <span class="lg:text-xl font-bold text-blue-900 md:text-md text-left">฿ {{ product.price
+                                    }}</span>
+                                    <button
+                                        class="transform active:scale-x-75 transition-transform inline-flex bg-blue-800 md:text-sm lg:text-md text-white lg:px-4 md:px-2 py-2 rounded-full hover:bg-blue-700"
                                         @click="addToCart(product)">
-                                        Add 
-                                        <svg class="ml-1 flex-shrink-0 w-5 h-5 text-white transition duration-75 dark:text-gray-200 dark:group-hover:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 18 21">
-                                            <path d="M15 12a1 1 0 0 0 .962-.726l2-7A1 1 0 0 0 17 3H3.77L3.175.745A1 1 0 0 0 2.208 0H1a1 1 0 0 0 0 2h.438l.6 2.255v.019l2 7 .746 2.986A3 3 0 1 0 9 17a2.966 2.966 0 0 0-.184-1h2.368c-.118.32-.18.659-.184 1a3 3 0 1 0 3-3H6.78l-.5-2H15Z"/>
+                                        Add
+                                        <svg class="ml-1 flex-shrink-0 w-5 h-5 text-white transition duration-75 dark:text-gray-200 dark:group-hover:text-white"
+                                            aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor"
+                                            viewBox="0 0 18 21">
+                                            <path
+                                                d="M15 12a1 1 0 0 0 .962-.726l2-7A1 1 0 0 0 17 3H3.77L3.175.745A1 1 0 0 0 2.208 0H1a1 1 0 0 0 0 2h.438l.6 2.255v.019l2 7 .746 2.986A3 3 0 1 0 9 17a2.966 2.966 0 0 0-.184-1h2.368c-.118.32-.18.659-.184 1a3 3 0 1 0 3-3H6.78l-.5-2H15Z" />
                                         </svg>
                                     </button>
                                 </div>
@@ -376,6 +433,7 @@ import { useCartStore } from '~/stores/useCartStore';
 export default {
     data() {
         return {
+            isAnimating: false,
             auth: useProductStore(),
             brand: [
                 {
@@ -436,6 +494,18 @@ export default {
             ],
         }
     },
+    methods: {
+        animateButton() {
+            // This method will be called when the button is clicked
+            // You can apply animation-related classes here based on isAnimating
+            if (this.isAnimating) {
+                return 'animate-pulse'; // Example animation class; you can replace this with your desired animation class
+            } else {
+                return '';
+            }
+        },
+    },
+
     components: {
         Navbar: () => import('~/components/Navbar.vue'), // Import the Navbar component
     },
@@ -574,4 +644,5 @@ export default {
     50% {
         background-position: 100% 50%;
     }
-}</style>
+}
+</style>

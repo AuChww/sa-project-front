@@ -19,7 +19,8 @@
         via-blue-500
         to-purple-500
         background-animate grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2">
-        <div style="border" class="mx-4 mb-28 sm:max-w-sm md:max-w-sm lg:max-w-sm xl:max-w-sm sm:mx-auto md:mx-auto lg:mx-auto xl:mx-auto mt-4 bg-white shadow-xl rounded-lg text-gray-900">
+        <div style="height: 600px; border"
+            class="mx-4 mb-28 sm:max-w-sm md:max-w-sm lg:max-w-sm xl:max-w-sm sm:mx-auto md:mx-auto lg:mx-auto xl:mx-auto mt-4 bg-white shadow-xl rounded-lg text-gray-900">
             <div class="rounded-t-lg h-40 overflow-hidden">
                 <img class="object-cover object-top w-full"
                     src='https://t3.ftcdn.net/jpg/05/11/25/36/360_F_511253627_zuzpapnIVQueMx4eSL1ilAoH61OBgj0C.jpg'
@@ -69,21 +70,50 @@
                     class="rounded relative inline-flex group items-center justify-center px-3.5 py-2 m-1 cursor-pointer border-b-4 border-l-2 active:border-purple-600 active:shadow-none shadow-lg bg-gradient-to-tr from-blue-600 to-blue-500 border-blue-700 text-white">
                     <span
                         class="absolute w-0 h-0 transition-all duration-300 ease-out bg-white rounded-full group-hover:w-32 group-hover:h-32 opacity-10"></span>
-                    <span class="relative">Edit</span>
+                    <span class="relative">Edit Profile</span>
                 </router-link>
             </div>
 
         </div>
-        <div style="height: 600px; border" class="px-4 sm:max-w-sm md:max-w-sm lg:max-w-sm xl:max-w-sm sm:mx-auto md:mx-auto lg:mx-auto xl:mx-auto mt-4 bg-white shadow-xl rounded-lg text-gray-900">
+        <div style="height: 600px; border"
+            class="px-4 sm:max-w-sm md:max-w-sm lg:max-w-sm xl:max-w-sm sm:mx-auto md:mx-auto lg:mx-auto xl:mx-auto mt-4 bg-white shadow-xl rounded-lg text-gray-900">
             <div class="mt-4">
                 <div class="px-20 text-2xl mb-4 text-gray-700 font-semibold">
                     Payment History
                 </div>
             </div>
-            <div class="px-4 py-2 sm:mx-auto md:mx-auto lg:mx-auto xl:mx-auto mt-4 bg-gray-700 shadow-xl rounded-lg text-gray-300">
-                <div class="px-8 justify-between mb-2">
-                    <label class="my-2">date : </label>
-                    <img src="/slip.jpg">
+            <div
+                class="overflow-y-auto px-4 py-2 sm:mx-auto md:mx-auto lg:mx-auto xl:mx-auto mt-4 bg-gray-700 shadow-xl rounded-lg text-black">
+                <div>
+                    <div class="px-8 py-6 justify-between my-2 bg-white w-72 mx-auto">
+                        <div class="font-semibold text-lg">Order Id : </div>
+                        <div class="text-gray-600 text-xs">Date : </div>
+                        <div class="text-gray-600 text-xs">Customer : </div>
+                        <div class="mt-4 mb-2 font-semibold text-md">
+                            Products :
+                        </div>
+                        <div class="font-semi text-right grid grid-cols-3">
+                            <div class="text-right text-sm font-semi">
+                                name
+                            </div>
+                            <div class="text-right text-sm font-semi">
+                                amount
+                            </div>
+                            <div class="text-right text-sm font-semi">
+                                price
+                            </div>
+                        </div>
+                        <div class="font-semi mt-2 text-right grid grid-cols-3">
+                            <div class="text-right text-sm font-semi">
+                            </div>
+                            <div class="text-right text-sm font-semibold underline">
+                                Total
+                            </div>
+                            <div class="text-right text-sm font-semi">
+                                price
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -102,7 +132,7 @@ definePageMeta({
 </script>
 
 <style scoped>
-.border{
+.border {
     width: 200px;
     height: 1000px;
 }

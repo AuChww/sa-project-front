@@ -1,3 +1,0 @@
-<template>
-    <!-- audit , admin -->
-</template>
