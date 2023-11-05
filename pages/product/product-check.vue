@@ -79,7 +79,26 @@
                                     </td>
 
                                     <td class="px-4 py-4 text-sm text-gray-500 dark:text-gray-300">
-                                        {{ order.status }}
+                                        <div v-if="order.status === 'Preparing' || order.status ==='ResentPending'">
+                                            <div
+                                                class="inline-flex items-center px-3 py-1 text-yellow-500 rounded-full gap-x-2 bg-red-100/60 dark:bg-gray-600">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="50" height="10">
+                                                    <circle cx="10" cy="5" r="4" fill="yellow">
+                                                        <animate attributeName="opacity" dur="1s" values="0;1;0"
+                                                            repeatCount="indefinite" />
+                                                    </circle>
+                                                    <circle cx="25" cy="5" r="4" fill="yellow">
+                                                        <animate attributeName="opacity" dur="1s" begin="0.1s"
+                                                            values="0;1;0" repeatCount="indefinite" />
+                                                    </circle>
+                                                    <circle cx="40" cy="5" r="4" fill="yellow">
+                                                        <animate attributeName="opacity" dur="1s" begin="0.2s"
+                                                            values="0;1;0" repeatCount="indefinite" />
+                                                    </circle>
+                                                </svg>
+                                                <h2 class="text-sm font-semibold">{{ order.status }}</h2>
+                                            </div>
+                                        </div>
                                     </td>
 
                                     <td class="px-4 py-4 text-sm text-gray-500 dark:text-gray-300">
@@ -107,12 +126,13 @@
                                     </td>
 
                                     <td class="py-2">
-                                        <button v-if="order.status === 'Preparing'" type="button" @click="acceptPacking(order.id)"
+                                        <button v-if="order.status === 'Preparing'" type="button"
+                                            @click="acceptPacking(order.id)"
                                             class="border-red-500 bg-blue-500 text-white rounded-md px-4 py-2 m-2 transition duration-500 ease select-none hover:bg-blue-700 focus:outline-none focus:shadow-outline">
                                             Accept
                                         </button>
                                     </td>
-                                    
+
                                 </tr>
                             </tbody>
                         </table>
@@ -190,8 +210,78 @@
                                         {{ order.payment_receipt }}
                                     </td>
 
-                                    <td class="px-4 py-4 text-sm text-gray-500 dark:text-gray-300">
-                                        {{ order.status }}
+                                    <td class="px-4 py-4 text-sm">
+                                        <div v-if="order.status === 'Packing'">
+                                            <div
+                                                class="inline-flex items-center px-3 py-1 text-blue-500 rounded-full gap-x-2 bg-red-100/60 dark:bg-gray-600">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="50" height="10">
+                                                    <circle cx="10" cy="5" r="4" fill="white">
+                                                        <animate attributeName="opacity" dur="1s" values="0;1;0"
+                                                            repeatCount="indefinite" />
+                                                    </circle>
+                                                    <circle cx="25" cy="5" r="4" fill="white">
+                                                        <animate attributeName="opacity" dur="1s" begin="0.1s"
+                                                            values="0;1;0" repeatCount="indefinite" />
+                                                    </circle>
+                                                    <circle cx="40" cy="5" r="4" fill="white">
+                                                        <animate attributeName="opacity" dur="1s" begin="0.2s"
+                                                            values="0;1;0" repeatCount="indefinite" />
+                                                    </circle>
+                                                </svg>
+                                                <h2 class="text-sm font-semibold">{{ order.status }}</h2>
+                                            </div>
+                                        </div>
+                                        <div v-if="order.status === 'Delivering'">
+                                            <div
+                                                class="inline-flex items-center px-3 py-1 text-yellow-500 rounded-full gap-x-2 bg-red-100/60 dark:bg-gray-600">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="50" height="10">
+                                                    <circle cx="10" cy="5" r="4" fill="yellow">
+                                                        <animate attributeName="opacity" dur="1s" values="0;1;0"
+                                                            repeatCount="indefinite" />
+                                                    </circle>
+                                                    <circle cx="25" cy="5" r="4" fill="yellow">
+                                                        <animate attributeName="opacity" dur="1s" begin="0.1s"
+                                                            values="0;1;0" repeatCount="indefinite" />
+                                                    </circle>
+                                                    <circle cx="40" cy="5" r="4" fill="yellow">
+                                                        <animate attributeName="opacity" dur="1s" begin="0.2s"
+                                                            values="0;1;0" repeatCount="indefinite" />
+                                                    </circle>
+                                                </svg>
+                                                <h2 class="text-sm font-semibold">{{ order.status }}</h2>
+                                            </div>
+                                        </div>
+                                        <div v-if="order.status === 'CompleteDelivery'">
+                                            <div
+                                                class="inline-flex items-center px-3 py-1 text-emerald-400 rounded-full gap-x-2 bg-gray-600 dark:bg-gray-600">
+                                                <svg width="12" height="12" viewBox="0 0 12 12" fill="none"
+                                                    xmlns="http://www.w3.org/2000/svg">
+                                                    <path d="M10 3L4.5 8.5L2 6" stroke="#667085" stroke-width="1.5"
+                                                        stroke-linecap="round" stroke-linejoin="round" />
+                                                </svg>
+                                                <h2 class="text-sm font-semibold">Complete</h2>
+                                            </div>
+                                        </div>
+                                        <div v-if="order.status === 'ReportPending'">
+                                            <div
+                                                class="inline-flex items-center px-3 py-1 text-red-500 rounded-full gap-x-2 bg-red-100/60 dark:bg-gray-600">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="50" height="10">
+                                                    <circle cx="10" cy="5" r="4" fill="red">
+                                                        <animate attributeName="opacity" dur="1s" values="0;1;0"
+                                                            repeatCount="indefinite" />
+                                                    </circle>
+                                                    <circle cx="25" cy="5" r="4" fill="red">
+                                                        <animate attributeName="opacity" dur="1s" begin="0.1s"
+                                                            values="0;1;0" repeatCount="indefinite" />
+                                                    </circle>
+                                                    <circle cx="40" cy="5" r="4" fill="red">
+                                                        <animate attributeName="opacity" dur="1s" begin="0.2s"
+                                                            values="0;1;0" repeatCount="indefinite" />
+                                                    </circle>
+                                                </svg>
+                                                <h2 class="text-sm font-semibold">Report</h2>
+                                            </div>
+                                        </div>
                                     </td>
 
                                     <td class="px-4 py-4 text-sm text-gray-500 dark:text-gray-300">
@@ -219,16 +309,26 @@
                                     </td>
 
                                     <td class="py-2">
-                                        <button v-if="order.status === 'Packing'" type="button" @click="completeDelivery(order.id)"
-                                            class="border-red-500 border bg-emerald-500 text-white rounded-md px-4 py-2 m-2 transition duration-500 ease select-none hover:bg-emerald-700 focus:outline-none focus:shadow-outline">
+                                        <button v-if="order.status === 'Packing'" type="button"
+                                            @click="completeDelivery(order.id)"
+                                            class="border-emerald-500 border bg-emerald-500 text-white rounded-md px-4 py-2 m-2 transition duration-500 ease select-none hover:bg-emerald-700 focus:outline-none focus:shadow-outline">
                                             Confirm
+                                        </button>
+                                        <button v-if="order.status === 'Packing'" type="button"
+                                            @click="reportOrder(order.id)"
+                                            class="border-red-500 border bg-red-500 text-white rounded-md px-4 py-2 m-2 transition duration-500 ease select-none hover:bg-red-700 focus:outline-none focus:shadow-outline">
+                                            Report
                                         </button>
                                         <button v-if="order.status === 'CompleteDelivery'"
                                             class="border-gray-500 border bg-gray-700 text-gray-500 rounded-md px-4 py-2 m-2 transition duration-500 ease select-none focus:outline-none focus:shadow-outline">
                                             Done
                                         </button>
+                                        <button v-if="order.status === 'ReportPending'"
+                                            class="border-gray-500 border bg-gray-700 text-gray-500 rounded-md px-4 py-2 m-2 transition duration-500 ease select-none focus:outline-none focus:shadow-outline">
+                                            Report Sented
+                                        </button>
                                     </td>
-                                    
+
                                 </tr>
                             </tbody>
                         </table>
@@ -260,12 +360,12 @@ const fetchOrders = async () => {
 };
 
 const preparingOrders = computed(() => {
-    const allowedStatuses = ['Preparing'];
+    const allowedStatuses = ['Preparing' , 'ResentPending'];
     return orders.value.filter(order => allowedStatuses.includes(order.status));
 });
 
 const packingOrders = computed(() => {
-    const allowedStatuses = ['Packing', 'Delivering', 'CompleteDelivery'];
+    const allowedStatuses = ['Packing', 'Delivering', 'CompleteDelivery', 'ReportPending'];
     return orders.value.filter(order => allowedStatuses.includes(order.status));
 });
 
@@ -318,6 +418,32 @@ const completeDelivery = async (orderId: number) => {
         }
     } catch (error) {
         console.error('Failed to update order status to CompleteRefund', error);
+    }
+};
+
+const reportOrder = async (orderId: number) => {
+    try {
+        const response = await useMyFetch<Order>(`orders/${orderId}/update_status`, {
+            method: "PUT",
+            body: JSON.stringify({
+                status: "ReportPending" // Set the new status here
+            }),
+            headers: {
+                "Content-Type": "application/json"
+            }
+        });
+
+        if (response) {
+            const updatedOrderIndex = orders.value.findIndex(order => order.id === orderId);
+            if (updatedOrderIndex !== -1) {
+                orders.value[updatedOrderIndex].status = 'ReportPending';
+            }
+            console.log('Order status updated to ReportPending successfully');
+        } else {
+            console.error('Failed to update order status to ReportPending');
+        }
+    } catch (error) {
+        console.error('Failed to update order status to ReportPending', error);
     }
 };
 

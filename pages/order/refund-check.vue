@@ -237,7 +237,7 @@
                                         </button>
                                         <button v-if="order.status === 'CompleteRefund'"
                                             class="border-gray-500 border bg-gray-700 text-gray-500 rounded-md px-4 py-2 m-2 transition duration-500 ease select-none focus:outline-none focus:shadow-outline">
-                                            Refunded
+                                            In the Process
                                         </button>
                                     </td>
                                     

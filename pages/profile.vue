@@ -83,10 +83,37 @@
                 </div>
             </div>
             <div
-                class="px-4 py-2 sm:mx-auto md:mx-auto lg:mx-auto xl:mx-auto mt-4 bg-gray-700 shadow-xl rounded-lg text-gray-300">
-                <div class="px-8 justify-between mb-2">
-                    <label class="my-2">date : </label>
-                    <img src="/slip.jpg">
+                class="overflow-y-auto px-4 py-2 sm:mx-auto md:mx-auto lg:mx-auto xl:mx-auto mt-4 bg-gray-700 shadow-xl rounded-lg text-black">
+                <div>
+                    <div class="px-8 py-6 justify-between my-2 bg-white w-72 mx-auto">
+                        <div class="font-semibold text-lg">Order Id : </div>
+                        <div class="text-gray-600 text-xs">Date : </div>
+                        <div class="text-gray-600 text-xs">Customer : </div>
+                        <div class="mt-4 mb-2 font-semibold text-md">
+                            Products :
+                        </div>
+                        <div class="font-semi text-right grid grid-cols-3">
+                            <div class="text-right text-sm font-semi">
+                                name
+                            </div>
+                            <div class="text-right text-sm font-semi">
+                                amount
+                            </div>
+                            <div class="text-right text-sm font-semi">
+                                price
+                            </div>
+                        </div>
+                        <div class="font-semi mt-2 text-right grid grid-cols-3">
+                            <div class="text-right text-sm font-semi">
+                            </div>
+                            <div class="text-right text-sm font-semibold underline">
+                                Total
+                            </div>
+                            <div class="text-right text-sm font-semi">
+                                price
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -108,4 +135,5 @@ definePageMeta({
 .border {
     width: 200px;
     height: 1000px;
-}</style>
+}
+</style>

@@ -18,7 +18,7 @@
           <li class="flex items-center space-x-3 text-left sm:space-x-4">
             <a
               class="flex h-6 w-6 items-center justify-center rounded-full bg-gray-400 text-xs font-semibold text-white">2</a>
-            <span class="font-semibold text-gray-900">Payment</span>
+            <span class="font-semibold text-gray-400">Payment</span>
           </li>
         </ul>
       </div>
@@ -29,7 +29,7 @@
   <div class="h-screen bg-gray-100 pt-10">
     <h1 class="mb-10 text-center text-2xl font-bold">Cart Items</h1>
     <div class="mx-auto max-w-5xl justify-center px-6 md:flex md:space-x-6 xl:px-0">
-      <div class="rounded-lg md:w-2/3">
+      <div class="max-h-96 overflow-y-auto md:w-2/3 space-y-3 rounded-lg border bg-white py-2 sm:px-6">
         <div class="justify-between mb-6 rounded-lg bg-white p-6 shadow-md sm:flex sm:justify-start"
           v-if="Cart.length === 0">
           <p>Your cart is empty.</p>
@@ -37,7 +37,8 @@
 
         <div v-else v-for="product in Cart" :key="product.product_id"
           class="justify-between mb-6 rounded-lg bg-white p-6 shadow-md sm:flex sm:justify-start">
-          <img :src="`http://localhost:80/storage/${product.image}`" alt="product image" class="w-full rounded-lg sm:w-40" />
+          <img :src="`http://localhost:80/storage/${product.image}`" alt="product image"
+            class="w-full rounded-lg sm:w-40" />
           <div class="sm:ml-4 sm:flex sm:w-full sm:justify-between">
             <div class="mt-5 sm:mt-0">
               <h2 class="text-lg font-bold text-gray-900">{{ product.name }}</h2>
@@ -88,7 +89,8 @@
         </div>
         <RouterLink to="/customer/payment">
           <button class="mt-6 w-full rounded-md py-1.5 font-medium text-blue-50 hover:bg-blue-600"
-            :class="{ 'bg-blue-500': !isCartEmpty, 'bg-gray-300 hover:bg-gray-300': isCartEmpty }" :disabled="isCartEmpty">
+            :class="{ 'bg-blue-500': !isCartEmpty, 'bg-gray-300 hover:bg-gray-300': isCartEmpty }"
+            :disabled="isCartEmpty">
             Check out
           </button>
         </RouterLink>

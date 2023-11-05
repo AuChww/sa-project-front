@@ -90,16 +90,16 @@
                 </div>
                 <div class="mx-4 grid grid-cols-4 md:grid-cols-5 lg:grid-cols-7 gap-8 mt-6">
                     <div v-for="product in filteredProducts.slice(7, 14)" :key="product.id"
-                        class="bg-white shadow-md p-3 rounded-lg hover:scale-105 transition-all duration-500">
+                        class="bg-white shadow-md p-3 rounded-lg mx-auto hover:scale-105 transition-all duration-500">
                         <img :src="`http://localhost:80/storage/${product.image}`" alt="Product Image"
-                            class="w-full h-100 object-cover mb-4">
+                            class="h-36 mx-auto object-cover mb-4">
                         <h3 class="lg:text-xl font-semibold md:text-md">{{ product.name }}</h3>
                         <div class="mt-4 flex items-center justify-between">
                             <span class="lg:text-xl font-bold text-blue-900 md:text-md">฿ {{ product.price
                             }}</span>
                         </div>
                         <button
-                            class="inline-flex bg-blue-800 md:text-sm lg:text-md text-white lg:px-4 md:px-2 py-2 rounded-full hover:bg-blue-700"
+                            class="transform active:scale-x-75 transition-transform inline-flex bg-blue-800 md:text-sm lg:text-md text-white lg:px-4 md:px-2 py-2 rounded-full hover:bg-blue-700"
                             @click="addToCart(product)">
                             Add
                             <svg class="ml-1 flex-shrink-0 w-5 h-5 text-white transition duration-75 dark:text-gray-200 dark:group-hover:text-white"
@@ -134,14 +134,14 @@
                             <div v-for="product in filteredCpuProducts.slice(0, 5)" :key="product.id"
                                 class="bg-white shadow-md p-3 rounded-lg hover:scale-105 transition-all duration-500">
                                 <img :src="`http://localhost:80/storage/${product.image}`" alt="Product Image"
-                                    class="w-full h-100 object-cover mb-4">
+                                    class="h-40 mx-auto object-cover mb-4">
                                 <h3 class="lg:text-xl font-semibold md:text-md">{{ product.name }}</h3>
                                 <div class="mt-4 flex items-center justify-between">
                                     <span class="lg:text-xl font-bold text-blue-900 md:text-md text-left">฿ {{ product.price
                                     }}</span>
                                     <button
-                                        class="inline-flex bg-blue-800 md:text-sm lg:text-md text-white lg:px-4 md:px-2 py-2 rounded-full hover:bg-blue-700"
-                                        @click="addToCart(product)">
+                                        class="transform active:scale-x-75 transition-transform inline-flex bg-blue-800 md:text-sm lg:text-md text-white lg:px-4 md:px-2 py-2 rounded-full hover:bg-blue-700"
+                                        @click="addToCart(product)" >
                                         Add
                                         <svg class="ml-1 flex-shrink-0 w-5 h-5 text-white transition duration-75 dark:text-gray-200 dark:group-hover:text-white"
                                             aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor"
@@ -178,13 +178,13 @@
                             <div v-for="product in filteredMainboardProducts.slice(0, 5)" :key="product.id"
                                 class="bg-white shadow-md p-3 rounded-lg hover:scale-105 transition-all duration-500">
                                 <img :src="`http://localhost:80/storage/${product.image}`" alt="Product Image"
-                                    class="w-full h-100 object-cover mb-4">
+                                    class="h-40 mx-auto object-cover mb-4">
                                 <h3 class="lg:text-xl font-semibold md:text-md">{{ product.name }}</h3>
                                 <div class="mt-4 flex items-center justify-between">
                                     <span class="lg:text-xl font-bold text-blue-900 md:text-md text-left">฿ {{ product.price
                                     }}</span>
                                     <button
-                                        class="inline-flex bg-blue-800 md:text-sm lg:text-md text-white lg:px-4 md:px-2 py-2 rounded-full hover:bg-blue-700"
+                                        class="transform active:scale-x-75 transition-transform inline-flex bg-blue-800 md:text-sm lg:text-md text-white lg:px-4 md:px-2 py-2 rounded-full hover:bg-blue-700"
                                         @click="addToCart(product)">
                                         Add
                                         <svg class="ml-1 flex-shrink-0 w-5 h-5 text-white transition duration-75 dark:text-gray-200 dark:group-hover:text-white"
@@ -222,13 +222,13 @@
                             <div v-for="product in filteredGpuProducts.slice(0, 5)" :key="product.id"
                                 class="bg-white shadow-md p-3 rounded-lg hover:scale-105 transition-all duration-500">
                                 <img :src="`http://localhost:80/storage/${product.image}`" alt="Product Image"
-                                    class="w-full h-100 object-cover mb-4">
+                                    class="h-40 mx-auto object-cover mb-4">
                                 <h3 class="lg:text-xl font-semibold md:text-md">{{ product.name }}</h3>
                                 <div class="mt-4 flex items-center justify-between">
                                     <span class="lg:text-xl font-bold text-blue-900 md:text-md text-left">฿ {{ product.price
                                     }}</span>
                                     <button
-                                        class="inline-flex bg-blue-800 md:text-sm lg:text-md text-white lg:px-4 md:px-2 py-2 rounded-full hover:bg-blue-700"
+                                        class="transform active:scale-x-75 transition-transform inline-flex bg-blue-800 md:text-sm lg:text-md text-white lg:px-4 md:px-2 py-2 rounded-full hover:bg-blue-700"
                                         @click="addToCart(product)">
                                         Add
                                         <svg class="ml-1 flex-shrink-0 w-5 h-5 text-white transition duration-75 dark:text-gray-200 dark:group-hover:text-white"
@@ -266,13 +266,13 @@
                             <div v-for="product in filteredRamProducts.slice(0, 5)" :key="product.id"
                                 class="bg-white shadow-md p-3 rounded-lg hover:scale-105 transition-all duration-500">
                                 <img :src="`http://localhost:80/storage/${product.image}`" alt="Product Image"
-                                    class="w-full h-100 object-cover mb-4">
+                                    class="h-40 mx-auto object-cover mb-4">
                                 <h3 class="lg:text-xl font-semibold md:text-md">{{ product.name }}</h3>
                                 <div class="mt-4 flex items-center justify-between">
                                     <span class="lg:text-xl font-bold text-blue-900 md:text-md text-left">฿ {{ product.price
                                     }}</span>
                                     <button
-                                        class="inline-flex bg-blue-800 md:text-sm lg:text-md text-white lg:px-4 md:px-2 py-2 rounded-full hover:bg-blue-700"
+                                        class="transform active:scale-x-75 transition-transform inline-flex bg-blue-800 md:text-sm lg:text-md text-white lg:px-4 md:px-2 py-2 rounded-full hover:bg-blue-700"
                                         @click="addToCart(product)">
                                         Add
                                         <svg class="ml-1 flex-shrink-0 w-5 h-5 text-white transition duration-75 dark:text-gray-200 dark:group-hover:text-white"
@@ -310,13 +310,13 @@
                             <div v-for="product in filteredHarddiskProducts.slice(0, 5)" :key="product.id"
                                 class="bg-white shadow-md p-3 rounded-lg hover:scale-105 transition-all duration-500">
                                 <img :src="`http://localhost:80/storage/${product.image}`" alt="Product Image"
-                                    class="w-full h-100 object-cover mb-4">
+                                    class="h-40 mx-auto object-cover mb-4">
                                 <h3 class="lg:text-xl font-semibold md:text-md">{{ product.name }}</h3>
                                 <div class="mt-4 flex items-center justify-between">
                                     <span class="lg:text-xl font-bold text-blue-900 md:text-md text-left">฿ {{ product.price
                                     }}</span>
                                     <button
-                                        class="inline-flex bg-blue-800 md:text-sm lg:text-md text-white lg:px-4 md:px-2 py-2 rounded-full hover:bg-blue-700"
+                                        class="transform active:scale-x-75 transition-transform inline-flex bg-blue-800 md:text-sm lg:text-md text-white lg:px-4 md:px-2 py-2 rounded-full hover:bg-blue-700"
                                         @click="addToCart(product)">
                                         Add
                                         <svg class="ml-1 flex-shrink-0 w-5 h-5 text-white transition duration-75 dark:text-gray-200 dark:group-hover:text-white"
@@ -352,15 +352,15 @@
                                 </div>
                             </RouterLink>
                             <div v-for="product in filteredDisplayProducts.slice(0, 5)" :key="product.id"
-                                class="bg-white shadow-md p-3 rounded-lg hover:scale-105 transition-all duration-500">
+                                class="bg-white shadow-md p-3 items-end rounded-lg hover:scale-105 transition-all duration-500">
                                 <img :src="`http://localhost:80/storage/${product.image}`" alt="Product Image"
-                                    class="w-full h-100 object-cover mb-4">
+                                    class="h-40 mx-auto object-cover mb-4">
                                 <h3 class="lg:text-xl font-semibold md:text-md">{{ product.name }}</h3>
                                 <div class="mt-4 flex items-center justify-between">
                                     <span class="lg:text-xl font-bold text-blue-900 md:text-md text-left">฿ {{ product.price
                                     }}</span>
                                     <button
-                                        class="inline-flex bg-blue-800 md:text-sm lg:text-md text-white lg:px-4 md:px-2 py-2 rounded-full hover:bg-blue-700"
+                                        class="transform active:scale-x-75 transition-transform inline-flex bg-blue-800 md:text-sm lg:text-md text-white lg:px-4 md:px-2 py-2 rounded-full hover:bg-blue-700"
                                         @click="addToCart(product)">
                                         Add
                                         <svg class="ml-1 flex-shrink-0 w-5 h-5 text-white transition duration-75 dark:text-gray-200 dark:group-hover:text-white"
@@ -389,7 +389,7 @@
                         <div class="lg:h-72 md:h-96 mx-8 grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-8 mt-2">
                             <RouterLink to="/categories/gaming-gear">
                                 <div class="text-white h-full shadow-md p-3 rounded-lg hover:scale-105 transition-all duration-500"
-                                    :style="{ 'background-image': 'url(https://img.freepik.com/premium-photo/top-view-gaming-gear_160097-851.jpg)', 'backgroundPosition': 'bottom right 40%', 'backgroundSize': '260%' }">
+                                    :style="{ 'background-image': 'url(https://img.freepik.com/premium-photo/top-view-gaming-gear_160097-851.jpg)', 'backgroundPosition': 'bottom right 40%', 'backgroundSize': '300%' }">
                                     <h2
                                         class="lg:text-4xl md:text-3xl mt-0 mb-24 font-semibold hover:scale-110 transition-all duration-500">
                                         Gaming Gear</h2>
@@ -398,13 +398,13 @@
                             <div v-for="product in filteredGearProducts.slice(0, 5)" :key="product.id"
                                 class="bg-white shadow-md p-3 rounded-lg hover:scale-105 transition-all duration-500">
                                 <img :src="`http://localhost:80/storage/${product.image}`" alt="Product Image"
-                                    class="w-full h-100 object-cover mb-4">
+                                    class="h-40 mx-auto object-cover mb-4">
                                 <h3 class="lg:text-xl font-semibold md:text-md">{{ product.name }}</h3>
                                 <div class="mt-4 flex items-center justify-between">
                                     <span class="lg:text-xl font-bold text-blue-900 md:text-md text-left">฿ {{ product.price
                                     }}</span>
                                     <button
-                                        class="inline-flex bg-blue-800 md:text-sm lg:text-md text-white lg:px-4 md:px-2 py-2 rounded-full hover:bg-blue-700"
+                                        class="transform active:scale-x-75 transition-transform inline-flex bg-blue-800 md:text-sm lg:text-md text-white lg:px-4 md:px-2 py-2 rounded-full hover:bg-blue-700"
                                         @click="addToCart(product)">
                                         Add
                                         <svg class="ml-1 flex-shrink-0 w-5 h-5 text-white transition duration-75 dark:text-gray-200 dark:group-hover:text-white"
@@ -433,6 +433,7 @@ import { useCartStore } from '~/stores/useCartStore';
 export default {
     data() {
         return {
+            isAnimating: false,
             auth: useProductStore(),
             brand: [
                 {
@@ -493,6 +494,18 @@ export default {
             ],
         }
     },
+    methods: {
+        animateButton() {
+            // This method will be called when the button is clicked
+            // You can apply animation-related classes here based on isAnimating
+            if (this.isAnimating) {
+                return 'animate-pulse'; // Example animation class; you can replace this with your desired animation class
+            } else {
+                return '';
+            }
+        },
+    },
+
     components: {
         Navbar: () => import('~/components/Navbar.vue'), // Import the Navbar component
     },
@@ -611,7 +624,8 @@ export default {
 };
 </script>
 
-<style>.background-animate {
+<style>
+.background-animate {
     z-index: -10;
     background-size: 400%;
 
@@ -630,4 +644,5 @@ export default {
     50% {
         background-position: 100% 50%;
     }
-}</style>
+}
+</style>

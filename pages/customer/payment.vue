@@ -37,7 +37,7 @@
         <div class="px-4 pt-8">
             <p class="text-xl font-medium">Order Summary</p>
             <p class="text-gray-400">Check your items. And select a suitable shipping method.</p>
-            <div class="mt-8 space-y-3 rounded-lg border bg-white px-2 py-4 sm:px-6">
+            <div class="max-h-96 overflow-y-auto mt-8 space-y-3 rounded-lg border bg-white px-2 py-2 sm:px-6">
                 <!-- Display Cart Items -->
                 <div v-if="Cart.length === 0"
                     class="justify-between mb-6 rounded-lg bg-white p-6 shadow-md sm:flex sm:justify-start">
@@ -46,7 +46,7 @@
                 <div v-else v-for="product in Cart" :key="product.product_id"
                     class="justify-between mb-6 rounded-lg bg-white p-6 shadow-md sm:flex sm:justify-start">
                     <!-- Display Cart Product Information -->
-                    <img :src="`http://localhost:80/storage/${product.image}`" alt="product image" class="w-full rounded-lg sm:w-40" />
+                    <img :src="`http://localhost:80/storage/${product.image}`" alt="product image" class="w-20 rounded-lg" />
                     <div class="sm:ml-4 sm:flex sm:w-full sm:justify-between">
                         <div class="mt-5 sm:mt-0">
                             <h2 class="text-lg font-bold text-gray-900">{{ product.name }}</h2>
@@ -63,7 +63,7 @@
             </div>
 
             <p class="mt-8 text-lg font-medium">Shipping Methods</p>
-            <form class="mt-5 grid gap-6">
+            <form class="mt-5 grid gap-6 mb-8">
                 <div class="relative">
                     <input class="peer hidden" id="radio_1" type="radio" name="shipment" v-model="selectedShipmentMethod"
                         value="normal" />
