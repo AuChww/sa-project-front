@@ -64,18 +64,6 @@
                         </div>
                     </section>
                     <!-- Slider indicators -->
-                    <div class="absolute z-30 flex space-x-3 -translate-x-1/2 bottom-5 left-1/2">
-                        <button type="button" class="w-3 h-3 rounded-full" aria-current="true" aria-label="Slide 1"
-                            data-carousel-slide-to="0"></button>
-                        <button type="button" class="w-3 h-3 rounded-full" aria-current="false" aria-label="Slide 2"
-                            data-carousel-slide-to="1"></button>
-                        <button type="button" class="w-3 h-3 rounded-full" aria-current="false" aria-label="Slide 3"
-                            data-carousel-slide-to="2"></button>
-                        <button type="button" class="w-3 h-3 rounded-full" aria-current="false" aria-label="Slide 4"
-                            data-carousel-slide-to="3"></button>
-                        <button type="button" class="w-3 h-3 rounded-full" aria-current="false" aria-label="Slide 5"
-                            data-carousel-slide-to="4"></button>
-                    </div>
                 </div>
 
                 <div class="text-white mt-12 py-1 bg-gray-900 font-semibold text-2xl mx-2 rounded-lg">CPU</div>
@@ -87,7 +75,7 @@
 
                         <div>
                             <!-- CPU Product List -->
-                            <div class="p-4 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 text-left">
+                            <div class="p-4 grid grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6 text-left">
                                 <div v-for="product in filteredCpuProducts" :key="product.id"
                                     class="bg-white shadow-md p-3 rounded-lg hover:scale-105 transition-all duration-500 relative h-full flex flex-col">
                                     <img :src="`http://localhost:80/storage/${product.image}`"  alt="Product Image" class="w-full h-100 object-cover mb-4">
