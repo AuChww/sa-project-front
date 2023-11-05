@@ -72,7 +72,7 @@
 
                         <div>
                             <!-- CPU Product List -->
-                            <div class="p-4 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 text-left">
+                            <div class="p-4 grid grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6 text-left">
                                 <div v-for="product in filteredCpuProducts" :key="product.id"
                                     class="bg-white shadow-md p-3 rounded-lg hover:scale-105 transition-all duration-500 relative h-full flex flex-col">
                                     <img :src="`http://localhost:80/storage/${product.image}`"  alt="Product Image" class="w-full h-100 object-cover mb-4">
