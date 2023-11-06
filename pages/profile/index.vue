@@ -142,12 +142,45 @@ import { useProductStore } from '~/stores/useProductStore';
 
 const orderStore = useOrderStore();
 const orders = ref<Order[]>([]); // Initialize as an empty array
+const productStore = useProductStore();
+const products = ref<Product[]>([]);
+
+const fetchOrders = async () => {
+    try {
+        // Fetch all orders
+        await orderStore.fetchOrders();
+
+        // Get all orders without filtering
+        orders.value = orderStore.allOrders.orders;
+
+    } catch (error) {
+        console.error('Failed to fetch orders', error);
+    }
+};
+
+const fetchProducts = async () => {
+    try {
+        // Fetch all orders
+        await orderStore.fetchProducts();
+
+        // Get all orders without filtering
+        products.value = productStore.allProducts.products;
+
+    } catch (error) {
+        console.error('Failed to fetch orders', error);
+    }
+};
 
 const auth = useAuthStore()
 
 definePageMeta({
     middleware: 'authenticated'
 })
+
+onMounted(() => {
+    fetchOrders();
+    fetchProducts();
+});
 
 // Define the Order type here to match the structure of your order data
 type Order = {

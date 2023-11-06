@@ -37,7 +37,8 @@
                     <label for="name" class="block mb-2 mt-2 text-sm font-medium text-gray-900 dark:text-gray-700">
                         Full name
                     </label>
-                    <input type="text" id="first_name" class="input-field" :placeholder="auth.user.name" v-model="formData.name">
+                    <input type="text" id="fullname" class="input-field" :placeholder="auth.user.name"
+                        v-model="formData.name">
                 </div>
 
                 <!-- Username -->
@@ -45,7 +46,8 @@
                     <label for="name" class="block mb-2 mt-2 text-sm font-medium text-gray-900 dark:text-gray-700">
                         Username
                     </label>
-                    <input type="text" id="first_name" class="input-field" :placeholder="auth.user.username" v-model="formData.username">
+                    <input type="text" id="username" class="input-field" :placeholder="auth.user.username"
+                        v-model="formData.username">
                 </div>
 
                 <!-- Address -->
@@ -53,14 +55,13 @@
                     <label for="address" class="block mb-2 mt-2 text-sm font-medium text-gray-900 dark:text-gray-700">
                         Address
                     </label>
-                    <input type="text" id="address" class="input-field" :placeholder="auth.user.address" v-model="formData.address">
+                    <input type="text" id="address" class="input-field" :placeholder="auth.user.address"
+                        v-model="formData.address">
                 </div>
 
                 <!-- Bank -->
                 <div>
-                    <label for="bank"
-                        class="block mb-2 mt-2 text-sm font-medium text-gray-900 dark:text-gray-700"
-                        >Bank
+                    <label for="bank" class="block mb-2 mt-2 text-sm font-medium text-gray-900 dark:text-gray-700">Bank
                     </label>
                     <input type="text" id="bank" class="input-field" :placeholder="auth.user.bank" v-model="formData.bank">
                 </div>
@@ -117,7 +118,7 @@ const formErrors = ref({
 })
 
 async function onSubmit() {
-    const { username,name, address, bank, bank_number, email } = formData.value; // Include all relevant fields
+    const { username, name, address, bank, bank_number, email } = formData.value; // Include all relevant fields
     const data = {
         username,
         name,
@@ -145,6 +146,15 @@ async function onSubmit() {
         formErrors.value.errors = message
     }
 }
+
+onMounted(() => {
+    formData.value.username = auth.user.username;
+    formData.value.name = auth.user.name;
+    formData.value.address = auth.user.address;
+    formData.value.bank = auth.user.bank;
+    formData.value.bank_number = auth.user.bank_number;
+    formData.value.email = auth.user.email;
+});
 
 const selectedImage = ref(null);
 
