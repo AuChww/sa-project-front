@@ -28,7 +28,7 @@
                     </div>
                     <div class="flex mt-8 -mx-2 mb-4">
                         <div class="mx-0 px-4 w-80">
-                            <button @click="addToCart(product)" class="w-full bg-blue-800 text-white text-lg py-2 px-4 rounded-full font-bold hover:bg-blue-700">Add to Cart</button>
+                            <button @click="addToCart" class="w-full bg-blue-800 text-white text-lg py-2 px-4 rounded-full font-bold hover:bg-blue-700">Add to Cart</button>
                         </div>
                     </div>
                 </div>
@@ -40,7 +40,10 @@
 
 <script setup type="ts">
 
+import { useCartStore } from '~/stores/useCartStore';
+
 const route = useRoute();
+const cartStore = useCartStore(); // Use the Cart store
 const { data: products, error } = await useMyFetch(`products/${route.params.id}`, {});
 
 if (products.value === null) {
@@ -53,4 +56,16 @@ if (products.value === null) {
     console.log(products.value);
 }
 
+const addToCart = () => {
+            // Log a message when the addToCart function is called
+            console.log('Adding product to the cart:', products.value);
+
+            // Use the addToCart method from the Cart store
+            cartStore.addToCart(products.value);
+
+            // Log a message to confirm that the product was added to the cart
+            console.log('Product added to the cart:', products.value);
+
+            // Optionally, show a notification or feedback to the user that the product was added to the cart
+        };
 </script>
