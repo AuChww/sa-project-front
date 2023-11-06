@@ -77,7 +77,6 @@
 <script setup type="ts">
 
 const route = useRoute();
-const pageTitle = `User ID: ${route.params.id}`;
 const { data: user, error } = await useMyFetch(`user/${route.params.id}`, {});
 const { data: specificOrder } = await useMyFetch(`showOrderSpecific/${route.params.id}`, {});
 // const { data: specificOrder } = await useMyFetch(`showOrderSpecific/${auth.user.id}`, {});

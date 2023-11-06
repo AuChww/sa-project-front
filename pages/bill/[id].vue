@@ -20,11 +20,19 @@
           to-purple-500
           background-animate">
         <div class=" mb-28  sm:mx-auto md:mx-auto lg:mx-auto xl:mx-auto mt-4 bg-white shadow-xl rounded-lg text-gray-900"
-            style="width: 600px; height: 650px; border">
-            <div class="">
+            style="width: 1000px; height: 650px; border">
+            <div class="grid grid-cols-2">
+                <div>
+                    <div class="text-black font-semibold ml-12 px-1  mt-4 text-2xl">Payment</div>
+                    <div style="height: 550px; width: 400px; border"
+                        class="overflow-y-auto mt-2 px-4 py-2 sm:mx-auto md:mx-auto lg:mx-auto xl:mx-auto  bg-gray-700 shadow-xl rounded-lg text-black">
+                        <img :src="`http://localhost:80/storage/${order.payment_receipt}`" alt="Product Image"
+                            class="h-96 py-6 mx-auto object-cover mb-4">
+                    </div>
+                </div>
                 <div class="">
                     <div class="text-black font-semibold ml-12 px-1  mt-4 text-2xl">Bill</div>
-                    <div style="height: 550px; width: 500px; border"
+                    <div style="height: 550px; width: 400px; border"
                         class="overflow-y-auto mt-2 px-4 py-2 sm:mx-auto md:mx-auto lg:mx-auto xl:mx-auto  bg-gray-700 shadow-xl rounded-lg text-black">
                         <div>
                             <div class=" px-4 py-6 justify-between my-4 bg-white w-72 mx-auto">
