@@ -28,7 +28,7 @@
                     </div>
                     <div class="flex mt-8 -mx-2 mb-4">
                         <div class="mx-0 px-4 w-80">
-                            <button class="w-full bg-blue-800 text-white text-lg py-2 px-4 rounded-full font-bold hover:bg-blue-700">Add to Cart</button>
+                            <button @click="addToCart(product)" class="w-full bg-blue-800 text-white text-lg py-2 px-4 rounded-full font-bold hover:bg-blue-700">Add to Cart</button>
                         </div>
                     </div>
                 </div>
@@ -52,4 +52,5 @@ if (products.value === null) {
 } else {
     console.log(products.value);
 }
+
 </script>

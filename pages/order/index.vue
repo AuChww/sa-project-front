@@ -78,7 +78,7 @@
                                         </td>
 
                                         <td class="px-4 py-4 text-sm text-gray-500 dark:text-gray-300">
-                                            
+
                                         </td>
 
                                         <td class="px-4 py-4 text-sm text-gray-500 dark:text-gray-300">
@@ -239,7 +239,26 @@
                                         </td>
 
                                         <td class="px-4 py-4 text-sm text-gray-500 dark:text-gray-300">
-                                            {{ order.payment_receipt }}
+                                            <!-- <div v-for="product in specificOrder.products" :key="product.id"
+                                                class="font-semi my-4 grid grid-cols-5">
+                                                <div class="text-sm font-semi">
+                                                    {{ product.id }}
+                                                </div>
+                                                <div class="w-24">
+                                                    <img :src="`http://localhost:80/storage/${product.image}`"
+                                                        alt="product image">
+                                                </div>
+                                                <div class="text-sm font-semi">
+                                                    {{ product.name }}
+                                                </div>
+                                                <div>
+                                                    {{ product.pivot.quantity }}
+                                                </div>
+                                                <div class="text-sm font-semi">
+                                                    {{ product.price }}
+                                                </div>
+
+                                            </div> -->
                                         </td>
 
                                         <td class="px-4 py-4 text-sm">
@@ -308,8 +327,15 @@
 import { useOrderStore } from '~/stores/useOrderStore';
 
 const orderStore = useOrderStore();
-
 const orders = ref<Order[]>([]); // Initialize as an empty array
+const route = useRoute();
+const { data: order, error } = await useMyFetch<any>(`order/${route.params.id}`, {});
+const { data: specificOrder } = await useMyFetch<any>(`showOrderSpecific/${route.params.id}`, {});
+
+if (order.value !== null) {
+    console.log(order.value);
+    console.log(specificOrder.value);
+}
 
 const pendingOrders = computed(() => {
     const allowedStatuses = ['Pending'];
