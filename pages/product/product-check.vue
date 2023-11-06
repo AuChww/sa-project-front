@@ -301,9 +301,9 @@
                                             <label class="block text-sm font-medium leading-6 text-gray-400">Order Track
                                                 :</label>
                                             <div class="inline-flex">
-                                                <input id="" name="" type="" autocomplete=""
+                                                <input id="track_num" name="track_num" type="text" autocomplete="" v-model="formData.track_num"
                                                     class="block h-10 w-40 rounded-md border-0 p-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
-                                                <button type="button" @click=""
+                                                <button type="button" @click="onUpdateTrack(order.id)"
                                                     class="border-emerald-500 border bg-emerald-500 text-white rounded-md px-4 py-2 mx-1 transition duration-500 ease select-none hover:bg-emerald-700 focus:outline-none focus:shadow-outline">
                                                     Confirm
                                                 </button>
@@ -354,6 +354,33 @@ const fetchOrders = async () => {
         console.error('Failed to fetch orders', error);
     }
 };
+
+const formData = ref({
+  track_num: ""
+})
+
+const formErrors = ref({
+  errors: null
+})
+
+async function onUpdateTrack(orderId: number) {
+  const { track_num } = formData.value
+  const { data:response, error } = await useMyFetch<any>(
+    `orders/updateTrack/${orderId}`,
+    {
+      method: "PUT",
+      body: { track_num }
+    }
+  )
+
+  if (response.value !== null) {
+    await navigateTo(`/product/product-check`)
+  } else {
+    console.log(error)
+    const { message } = error.value!.data
+    formErrors.value.errors = message
+  }
+}
 
 const preparingOrders = computed(() => {
     const allowedStatuses = ['Preparing', 'ResentPending'];
