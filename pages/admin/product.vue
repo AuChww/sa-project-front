@@ -56,19 +56,15 @@
 
                                         <div class="text-right">
                                             <div class="inline-flex">
-                                                <button
+                                                <button @click="addProductToStock(product.id)"
                                                     class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-1 px-2 rounded-l">
                                                     +
                                                 </button>
-                                                <button
+                                                <button @click="removeProductFromStock(product.id)"
                                                     class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-1 px-3 rounded-r">
                                                     -
                                                 </button>
                                             </div>
-                                            <button
-                                                class="transform mt-2 active:scale-x-75 transition-transform inline-flex bg-blue-800 md:text-sm lg:text-md text-white lg:px-4 md:px-2 py-2 rounded-full hover:bg-blue-700"
-                                                @click="">Save
-                                            </button>
                                         </div>
                                     </div>
 
@@ -109,19 +105,15 @@
 
                                         <div class="text-right">
                                             <div class="inline-flex">
-                                                <button
+                                                <button @click="addProductToStock(product.id)"
                                                     class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-1 px-2 rounded-l">
                                                     +
                                                 </button>
-                                                <button
+                                                <button @click="removeProductFromStock(product.id)"
                                                     class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-1 px-3 rounded-r">
                                                     -
                                                 </button>
                                             </div>
-                                            <button
-                                                class="transform mt-2 active:scale-x-75 transition-transform inline-flex bg-blue-800 md:text-sm lg:text-md text-white lg:px-4 md:px-2 py-2 rounded-full hover:bg-blue-700"
-                                                @click="">Save
-                                            </button>
                                         </div>
                                     </div>
 
@@ -162,19 +154,15 @@
 
                                         <div class="text-right">
                                             <div class="inline-flex">
-                                                <button
+                                                <button @click="addProductToStock(product.id)"
                                                     class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-1 px-2 rounded-l">
                                                     +
                                                 </button>
-                                                <button
+                                                <button @click="removeProductFromStock(product.id)"
                                                     class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-1 px-3 rounded-r">
                                                     -
                                                 </button>
                                             </div>
-                                            <button
-                                                class="transform mt-2 active:scale-x-75 transition-transform inline-flex bg-blue-800 md:text-sm lg:text-md text-white lg:px-4 md:px-2 py-2 rounded-full hover:bg-blue-700"
-                                                @click="">Save
-                                            </button>
                                         </div>
                                     </div>
 
@@ -215,19 +203,15 @@
 
                                         <div class="text-right">
                                             <div class="inline-flex">
-                                                <button
+                                                <button @click="addProductToStock(product.id)"
                                                     class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-1 px-2 rounded-l">
                                                     +
                                                 </button>
-                                                <button
+                                                <button @click="removeProductFromStock(product.id)"
                                                     class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-1 px-3 rounded-r">
                                                     -
                                                 </button>
                                             </div>
-                                            <button
-                                                class="transform mt-2 active:scale-x-75 transition-transform inline-flex bg-blue-800 md:text-sm lg:text-md text-white lg:px-4 md:px-2 py-2 rounded-full hover:bg-blue-700"
-                                                @click="">Save
-                                            </button>
                                         </div>
                                     </div>
 
@@ -268,19 +252,15 @@
 
                                         <div class="text-right">
                                             <div class="inline-flex">
-                                                <button
+                                                <button @click="addProductToStock(product.id)"
                                                     class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-1 px-2 rounded-l">
                                                     +
                                                 </button>
-                                                <button
+                                                <button @click="removeProductFromStock(product.id)"
                                                     class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-1 px-3 rounded-r">
                                                     -
                                                 </button>
                                             </div>
-                                            <button
-                                                class="transform mt-2 active:scale-x-75 transition-transform inline-flex bg-blue-800 md:text-sm lg:text-md text-white lg:px-4 md:px-2 py-2 rounded-full hover:bg-blue-700"
-                                                @click="">Save
-                                            </button>
                                         </div>
                                     </div>
 
@@ -321,19 +301,15 @@
 
                                         <div class="text-right">
                                             <div class="inline-flex">
-                                                <button
+                                                <button @click="addProductToStock(product.id)"
                                                     class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-1 px-2 rounded-l">
                                                     +
                                                 </button>
-                                                <button
+                                                <button @click="removeProductFromStock(product.id)"
                                                     class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-1 px-3 rounded-r">
                                                     -
                                                 </button>
                                             </div>
-                                            <button
-                                                class="transform mt-2 active:scale-x-75 transition-transform inline-flex bg-blue-800 md:text-sm lg:text-md text-white lg:px-4 md:px-2 py-2 rounded-full hover:bg-blue-700"
-                                                @click="">Save
-                                            </button>
                                         </div>
                                     </div>
 
@@ -374,19 +350,15 @@
 
                                         <div class="text-right">
                                             <div class="inline-flex">
-                                                <button
+                                                <button @click="addProductToStock(product.id)"
                                                     class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-1 px-2 rounded-l">
                                                     +
                                                 </button>
-                                                <button
+                                                <button @click="removeProductFromStock(product.id)"
                                                     class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-1 px-3 rounded-r">
                                                     -
                                                 </button>
                                             </div>
-                                            <button
-                                                class="transform mt-2 active:scale-x-75 transition-transform inline-flex bg-blue-800 md:text-sm lg:text-md text-white lg:px-4 md:px-2 py-2 rounded-full hover:bg-blue-700"
-                                                @click="">Save
-                                            </button>
                                         </div>
                                     </div>
 
@@ -429,6 +401,62 @@ export default {
         const productStore = useProductStore();
         const products = ref([]);
         const searchQuery = ref('');
+        const formData = ref({
+            quantity: 1
+        })
+
+        const formErrors = ref({
+            errors: null    
+        })
+
+        async function addProductToStock(productId: number) {
+            const { quantity } = formData.value;
+            const { data: response, error } = await useMyFetch<any>(
+                `product/addStock/${productId}`,
+                {
+                    method: "PUT",
+                    body: { quantity }
+                }
+            );
+
+            if (response.value !== null) {
+                console.log('Add!');
+                const product = productStore.getProductById(productId);
+
+                if (product) {
+                    // Update the quantity of the product in the store
+                    product.quantity += quantity;
+                }
+            } else {
+                console.log(error);
+                const { message } = error.value!.data;
+                formErrors.value.errors = message;
+            }
+        }
+
+        async function removeProductFromStock(productId: number) {
+            const { quantity } = formData.value;
+            const { data: response, error } = await useMyFetch<any>(
+                `product/removeStock/${productId}`,
+                {
+                    method: "PUT",
+                    body: { quantity }
+                }
+            );
+
+            if (response.value !== null) {
+                console.log('Removed!');
+                const product = productStore.getProductById(productId);
+                if (product) {
+                    // Update the quantity of the product in the store
+                    product.quantity -= quantity;
+                }
+            } else {
+                console.log(error);
+                const { message } = error.value!.data;
+                formErrors.value.errors = message;
+            }
+        }
 
         onMounted(async () => {
             try {
@@ -499,6 +527,8 @@ export default {
             filteredHarddiskProducts,
             filteredDisplayProducts,
             filteredGearProducts,
+            addProductToStock,
+            removeProductFromStock,
             auth,
         };
     },
