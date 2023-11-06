@@ -29,6 +29,7 @@
                     <div class="text-gray-600 text-md">Date: {{ formatDateTime(order.created_at) }}</div>
                     <div class="text-gray-600 text-md">Price : {{ order.total_price }} </div>
                     <div class="text-gray-600 text-md">Customer : {{ order.user_name }} </div>
+                    <div class="text-gray-600 text-md">Address : {{ order.address }} </div>
 
                     <div class="text-black font-semibold mt-4 text-2xl">Order Products</div>
                     <div class="font-semi grid grid-cols-5 mt-2 px-2">
