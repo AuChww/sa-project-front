@@ -66,7 +66,7 @@
                 </li>
             </ul>
             <div class="p-4 border-t mx-8 mt-2 flex justify-center">
-                <router-link to="profile-edit"
+                <router-link to="/profile/profile-edit"
                     class="rounded relative inline-flex group items-center justify-center px-3.5 py-2 m-1 cursor-pointer border-b-4 border-l-2 active:border-purple-600 active:shadow-none shadow-lg bg-gradient-to-tr from-blue-600 to-blue-500 border-blue-700 text-white">
                     <span
                         class="absolute w-0 h-0 transition-all duration-300 ease-out bg-white rounded-full group-hover:w-32 group-hover:h-32 opacity-10"></span>
@@ -82,35 +82,50 @@
                     Payment History
                 </div>
             </div>
-            <div
+            <div style="height: 500px; border"
                 class="overflow-y-auto px-4 py-2 sm:mx-auto md:mx-auto lg:mx-auto xl:mx-auto mt-4 bg-gray-700 shadow-xl rounded-lg text-black">
                 <div>
-                    <div class="px-8 py-6 justify-between my-2 bg-white w-72 mx-auto">
-                        <div class="font-semibold text-lg">Order Id : </div>
-                        <div class="text-gray-600 text-xs">Date : </div>
-                        <div class="text-gray-600 text-xs">Customer : </div>
-                        <div class="mt-4 mb-2 font-semibold text-md">
-                            Products :
-                        </div>
-                        <div class="font-semi text-right grid grid-cols-3">
-                            <div class="text-right text-sm font-semi">
-                                name
+                    <div v-for="order in orders" :key="order.id">
+                        <div v-if="order.status === 'Preparing' || order.status === 'Packing' || order.status === 'resentPending' || order.status === 'Delivering' || order.status === 'CompleteDelivery'"
+                            class=" px-8 py-6 justify-between my-4 bg-white w-72 mx-auto">
+                            <div class="font-semibold text-lg">Order Id : {{ order.id }}</div>
+                            <div class="text-gray-600 text-xs">Date : {{ order.created_at }}</div>
+                            <div class="text-gray-600 text-xs">Customer : {{ order.user_name }}</div>
+                            <div class="mt-4 mb-2 font-semibold text-md">
+                                Products :
                             </div>
-                            <div class="text-right text-sm font-semi">
-                                amount
+                            <div class="font-semi text-right grid grid-cols-3">
+                                <div class="text-right text-sm font-semi">
+                                    Id
+                                </div>
+                                <div class="text-right text-sm font-semi">
+                                    Name
+                                </div>
+                                <div class="text-right text-sm font-semi">
+                                    Price
+                                </div>
                             </div>
-                            <div class="text-right text-sm font-semi">
-                                price
+                            <div v-for="product in products" :key="product.id"
+                                class="font-semi text-right grid grid-cols-3">
+                                <div class="text-right text-sm font-semi">
+                                    {{ product.id }}
+                                </div>
+                                <div class="text-right text-sm font-semi">
+                                    {{ product.name }}
+                                </div>
+                                <div class="text-right text-sm font-semi">
+                                    {{ product.price }}
+                                </div>
                             </div>
-                        </div>
-                        <div class="font-semi mt-2 text-right grid grid-cols-3">
-                            <div class="text-right text-sm font-semi">
-                            </div>
-                            <div class="text-right text-sm font-semibold underline">
-                                Total
-                            </div>
-                            <div class="text-right text-sm font-semi">
-                                price
+                            <div class="font-semi mt-2 text-right grid grid-cols-3">
+                                <div class="text-right text-sm font-semi">
+                                </div>
+                                <div class="text-right text-sm font-semibold underline">
+                                    Total
+                                </div>
+                                <div class="text-right text-sm font-semi">
+                                    {{ order.total_price }}
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -122,12 +137,68 @@
 
 <script setup lang="ts">
 import { useAuthStore } from "~/stores/useAuthStore";
+import { useOrderStore } from '~/stores/useOrderStore';
+import { useProductStore } from '~/stores/useProductStore';
+
+
+const orderStore = useOrderStore();
+const orders = ref<Order[]>([]); // Initialize as an empty array
+const productStore = useProductStore();
+const products = ref<Product[]>([]);
+
+const fetchOrders = async () => {
+    try {
+        // Fetch all orders
+        await orderStore.fetchOrders();
+
+        // Get all orders without filtering
+        orders.value = orderStore.allOrders.orders;
+
+    } catch (error) {
+        console.error('Failed to fetch orders', error);
+    }
+};
+
+const fetchProducts = async () => {
+    try {
+        // Fetch all orders
+        await orderStore.fetchProducts();
+
+        // Get all orders without filtering
+        products.value = productStore.allProducts.products;
+
+    } catch (error) {
+        console.error('Failed to fetch orders', error);
+    }
+};
 
 const auth = useAuthStore()
 
 definePageMeta({
     middleware: 'authenticated'
 })
+
+onMounted(() => {
+    fetchOrders();
+    fetchProducts();
+});
+
+// Define the Order type here to match the structure of your order data
+type Order = {
+    id: number;
+    user_id: number;
+    user_name: string;
+    product_id: number;
+    product_name: string;
+    product_price: number;
+    address: string;
+    total_price: string;
+    payment_receipt: string;
+    shipment_method: string;
+    status: string;
+    created_at: string;
+    updated_at: string;
+};
 
 </script>
 

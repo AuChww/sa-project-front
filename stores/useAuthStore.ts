@@ -3,7 +3,7 @@ export const useAuthStore = defineStore('auth', {
   state: () => {
     return { 
       token: "",
-      user: { name: "", email: "" , role: "", username: "", address: "", id:""}
+      user: { name: "", email: "" , role: "", username: "", address: "", id:"", bank:"", bank_number:"",}
     }
   },
   getters: {
@@ -16,13 +16,15 @@ export const useAuthStore = defineStore('auth', {
     setNewToken(token: string) {
       this.token = token
     },
-    setUser(name: string, email: string, role: string, username: string, address: string, id:string) {
+    setUser(name: string, email: string, role: string, username: string, address: string, id:string, bank:string, bank_number:string,) {
       this.user.name = name
       this.user.email = email
       this.user.role = role
       this.user.username = username
       this.user.address = address
       this.user.id = id
+      this.user.bank = bank
+      this.user.bank_number = bank_number
     },
     clear() {
       this.token = ''
@@ -32,6 +34,16 @@ export const useAuthStore = defineStore('auth', {
       this.user.username = ''
       this.user.address = ''
       this.user.id = ''
+      this.user.bank = ''
+      this.user.bank_number = ''
+    },
+    updateUser(name: string, email: string, username: string, address: string, bank: string, bank_number: string,) {
+          this.user.name = name
+          this.user.email = email
+          this.user.username = username
+          this.user.address = address
+          this.user.bank = bank
+          this.user.bank_number = bank_number
     },
   },
   persist: true

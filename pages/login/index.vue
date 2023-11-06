@@ -58,7 +58,6 @@
                     Don't have an account?
                     <router-link to="/register" class="font-semibold leading-6 text-blue-500 hover:text-blue-100">Sign
                         up</router-link>
-                    or
                     <router-link to="/" class="font-semibold leading-6 text-blue-500 hover:text-blue-100">Back</router-link>
                 </p>
 
@@ -88,13 +87,14 @@ async function onSubmit() {
                 method: 'POST'
             })
             if (user.value !== null) {
-                auth.setUser(user.value.name, user.value.email, user.value.role, user.value.username, user.value.address, user.value.id)
+                auth.setUser(user.value.name, user.value.email, user.value.role, user.value.username, user.value.address, user.value.id, user.value.bank, user.value.bank_number)
                 await navigateTo('/profile')
             } else {
                 auth.clear()
                 errorMessage.value = "Please try again."
             }
         }
+
     } else {
         if (error.value?.response?.status === 401) {
             // Unauthorized (username and password don't match)
