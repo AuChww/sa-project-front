@@ -23,28 +23,30 @@
 
       <div class="hidden lg:flex space-x-4">
         <!-- admin -->
+        <router-link to="/admin/product" v-if="auth.checkRole('Admin')"
+          class="p-1.5 text-white rounded-lg hover:animate-bounce hover:bg-green-100 dark:hover:bg-blue-500 group">All Product</router-link>
         <router-link to="/admin/create-staff" v-if="auth.checkRole('Admin')"
           class="p-1.5 text-white rounded-lg hover:animate-bounce hover:bg-green-100 dark:hover:bg-blue-500 group">Create
-          Staff (ad)</router-link>
+          Staff</router-link>
         <router-link to="/product/product-add" v-if="auth.checkRole('Admin')"
           class="p-1.5 text-white rounded-lg hover:animate-bounce hover:bg-green-100 dark:hover:bg-blue-500 group mx-8">Product
-          Add (ad)</router-link>
+          Add</router-link>
         <router-link to="/admin/report-check" v-if="auth.checkRole('Admin')"
           class="p-1.5 text-white rounded-lg hover:animate-bounce hover:bg-green-100 dark:hover:bg-blue-500 group mx-8">Report
-          Check (ad)</router-link>
+          Check</router-link>
 
         <!-- delivery -->
         <router-link to="/product/product-check" v-if="auth.checkRole('Delivery')"
           class="p-1.5 text-white rounded-lg hover:animate-bounce hover:bg-green-100 dark:hover:bg-blue-500 group mx-8">Check
-          Product (d)</router-link>
+          Product</router-link>
 
         <!-- audit -->
         <router-link to="/order/" v-if="auth.checkRole('Audit')"
           class="p-1.5 text-white rounded-lg hover:animate-bounce hover:bg-green-100 dark:hover:bg-blue-500 group mx-8">Order
-          Check (a)</router-link>
+          Check</router-link>
         <router-link to="/order/refund-check" v-if="auth.checkRole('Audit')"
           class="p-1.5 text-white rounded-lg hover:animate-bounce hover:bg-green-100 dark:hover:bg-blue-500 group mx-8">Refund
-          Check (a)</router-link>
+          Check</router-link>
 
         <!-- customer -->
         <div class="inline-flex hover:animate-bounce items-center gap-x-2">

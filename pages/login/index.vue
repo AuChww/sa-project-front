@@ -58,6 +58,7 @@
                     Don't have an account?
                     <router-link to="/register" class="font-semibold leading-6 text-blue-500 hover:text-blue-100">Sign
                         up</router-link>
+                        or
                     <router-link to="/" class="font-semibold leading-6 text-blue-500 hover:text-blue-100">Back</router-link>
                 </p>
 
