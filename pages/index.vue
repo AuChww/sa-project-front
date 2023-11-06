@@ -99,18 +99,19 @@
                                 <span class="lg:text-xl font-bold text-blue-900 md:text-md">฿ {{ product.price
                                 }}</span>
                             </div>
-                            <button
-                                class="transform active:scale-x-75 transition-transform inline-flex bg-blue-800 md:text-sm lg:text-md text-white lg:px-4 md:px-2 py-2 rounded-full hover:bg-blue-700"
-                                @click="addToCart(product)">
-                                Add
-                                <svg class="ml-1 flex-shrink-0 w-5 h-5 text-white transition duration-75 dark:text-gray-200 dark:group-hover:text-white"
-                                    aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor"
-                                    viewBox="0 0 18 21">
-                                    <path
-                                        d="M15 12a1 1 0 0 0 .962-.726l2-7A1 1 0 0 0 17 3H3.77L3.175.745A1 1 0 0 0 2.208 0H1a1 1 0 0 0 0 2h.438l.6 2.255v.019l2 7 .746 2.986A3 3 0 1 0 9 17a2.966 2.966 0 0 0-.184-1h2.368c-.118.32-.18.659-.184 1a3 3 0 1 0 3-3H6.78l-.5-2H15Z" />
-                                </svg>
-                            </button>
                         </NuxtLink>
+                        <button
+                            class="transform active:scale-x-75 transition-transform inline-flex bg-blue-800 md:text-sm lg:text-md text-white lg:px-4 md:px-2 py-2 rounded-full hover:bg-blue-700"
+                            @click="addToCart(product)">
+                            Add
+                            <svg class="ml-1 flex-shrink-0 w-5 h-5 text-white transition duration-75 dark:text-gray-200 dark:group-hover:text-white"
+                                aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor"
+                                viewBox="0 0 18 21">
+                                <path
+                                    d="M15 12a1 1 0 0 0 .962-.726l2-7A1 1 0 0 0 17 3H3.77L3.175.745A1 1 0 0 0 2.208 0H1a1 1 0 0 0 0 2h.438l.6 2.255v.019l2 7 .746 2.986A3 3 0 1 0 9 17a2.966 2.966 0 0 0-.184-1h2.368c-.118.32-.18.659-.184 1a3 3 0 1 0 3-3H6.78l-.5-2H15Z" />
+                            </svg>
+                        </button>
+
                     </div>
                 </div>
             </div>
@@ -142,24 +143,24 @@
                                             class="h-40 mx-auto object-cover mb-4">
 
                                         <h3 class="lg:text-xl font-semibold md:text-md">{{ product.name }}</h3>
-
-                                        <div class="mt-4 flex items-center justify-between">
-                                            <span class="lg:text-xl font-bold text-blue-900 md:text-md text-left">฿ {{
-                                                product.price
-                                            }}</span>
-                                            <button
-                                                class="transform active:scale-x-75 transition-transform inline-flex bg-blue-800 md:text-sm lg:text-md text-white lg:px-4 md:px-2 py-2 rounded-full hover:bg-blue-700"
-                                                @click="addToCart(product)">
-                                                Add
-                                                <svg class="ml-1 flex-shrink-0 w-5 h-5 text-white transition duration-75 dark:text-gray-200 dark:group-hover:text-white"
-                                                    aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
-                                                    fill="currentColor" viewBox="0 0 18 21">
-                                                    <path
-                                                        d="M15 12a1 1 0 0 0 .962-.726l2-7A1 1 0 0 0 17 3H3.77L3.175.745A1 1 0 0 0 2.208 0H1a1 1 0 0 0 0 2h.438l.6 2.255v.019l2 7 .746 2.986A3 3 0 1 0 9 17a2.966 2.966 0 0 0-.184-1h2.368c-.118.32-.18.659-.184 1a3 3 0 1 0 3-3H6.78l-.5-2H15Z" />
-                                                </svg>
-                                            </button>
-                                        </div>
                                     </NuxtLink>
+                                    <div class="mt-4 flex items-center justify-between">
+                                        <span class="lg:text-xl font-bold text-blue-900 md:text-md text-left">฿ {{
+                                            product.price
+                                        }}</span>
+                                        <button
+                                            class="transform active:scale-x-75 transition-transform inline-flex bg-blue-800 md:text-sm lg:text-md text-white lg:px-4 md:px-2 py-2 rounded-full hover:bg-blue-700"
+                                            @click="addToCart(product)">
+                                            Add
+                                            <svg class="ml-1 flex-shrink-0 w-5 h-5 text-white transition duration-75 dark:text-gray-200 dark:group-hover:text-white"
+                                                aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor"
+                                                viewBox="0 0 18 21">
+                                                <path
+                                                    d="M15 12a1 1 0 0 0 .962-.726l2-7A1 1 0 0 0 17 3H3.77L3.175.745A1 1 0 0 0 2.208 0H1a1 1 0 0 0 0 2h.438l.6 2.255v.019l2 7 .746 2.986A3 3 0 1 0 9 17a2.966 2.966 0 0 0-.184-1h2.368c-.118.32-.18.659-.184 1a3 3 0 1 0 3-3H6.78l-.5-2H15Z" />
+                                            </svg>
+                                        </button>
+                                    </div>
+
                                 </div>
                             </div>
 
@@ -193,23 +194,24 @@
                                         <img :src="`http://localhost:80/storage/${product.image}`" alt="Product Image"
                                             class="h-40 mx-auto object-cover mb-4">
                                         <h3 class="lg:text-xl font-semibold md:text-md">{{ product.name }}</h3>
-                                        <div class="mt-4 flex items-center justify-between">
-                                            <span class="lg:text-xl font-bold text-blue-900 md:text-md text-left">฿ {{
-                                                product.price
-                                            }}</span>
-                                            <button
-                                                class="transform active:scale-x-75 transition-transform inline-flex bg-blue-800 md:text-sm lg:text-md text-white lg:px-4 md:px-2 py-2 rounded-full hover:bg-blue-700"
-                                                @click="addToCart(product)">
-                                                Add
-                                                <svg class="ml-1 flex-shrink-0 w-5 h-5 text-white transition duration-75 dark:text-gray-200 dark:group-hover:text-white"
-                                                    aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
-                                                    fill="currentColor" viewBox="0 0 18 21">
-                                                    <path
-                                                        d="M15 12a1 1 0 0 0 .962-.726l2-7A1 1 0 0 0 17 3H3.77L3.175.745A1 1 0 0 0 2.208 0H1a1 1 0 0 0 0 2h.438l.6 2.255v.019l2 7 .746 2.986A3 3 0 1 0 9 17a2.966 2.966 0 0 0-.184-1h2.368c-.118.32-.18.659-.184 1a3 3 0 1 0 3-3H6.78l-.5-2H15Z" />
-                                                </svg>
-                                            </button>
-                                        </div>
                                     </NuxtLink>
+                                    <div class="mt-4 flex items-center justify-between">
+                                        <span class="lg:text-xl font-bold text-blue-900 md:text-md text-left">฿ {{
+                                            product.price
+                                        }}</span>
+                                        <button
+                                            class="transform active:scale-x-75 transition-transform inline-flex bg-blue-800 md:text-sm lg:text-md text-white lg:px-4 md:px-2 py-2 rounded-full hover:bg-blue-700"
+                                            @click="addToCart(product)">
+                                            Add
+                                            <svg class="ml-1 flex-shrink-0 w-5 h-5 text-white transition duration-75 dark:text-gray-200 dark:group-hover:text-white"
+                                                aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor"
+                                                viewBox="0 0 18 21">
+                                                <path
+                                                    d="M15 12a1 1 0 0 0 .962-.726l2-7A1 1 0 0 0 17 3H3.77L3.175.745A1 1 0 0 0 2.208 0H1a1 1 0 0 0 0 2h.438l.6 2.255v.019l2 7 .746 2.986A3 3 0 1 0 9 17a2.966 2.966 0 0 0-.184-1h2.368c-.118.32-.18.659-.184 1a3 3 0 1 0 3-3H6.78l-.5-2H15Z" />
+                                            </svg>
+                                        </button>
+                                    </div>
+
                                 </div>
                             </div>
                         </div>
@@ -241,23 +243,24 @@
                                     <img :src="`http://localhost:80/storage/${product.image}`" alt="Product Image"
                                         class="h-40 mx-auto object-cover mb-4">
                                     <h3 class="lg:text-xl font-semibold md:text-md">{{ product.name }}</h3>
-                                    <div class="mt-4 flex items-center justify-between">
-                                        <span class="lg:text-xl font-bold text-blue-900 md:text-md text-left">฿ {{
-                                            product.price
-                                        }}</span>
-                                        <button
-                                            class="transform active:scale-x-75 transition-transform inline-flex bg-blue-800 md:text-sm lg:text-md text-white lg:px-4 md:px-2 py-2 rounded-full hover:bg-blue-700"
-                                            @click="addToCart(product)">
-                                            Add
-                                            <svg class="ml-1 flex-shrink-0 w-5 h-5 text-white transition duration-75 dark:text-gray-200 dark:group-hover:text-white"
-                                                aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor"
-                                                viewBox="0 0 18 21">
-                                                <path
-                                                    d="M15 12a1 1 0 0 0 .962-.726l2-7A1 1 0 0 0 17 3H3.77L3.175.745A1 1 0 0 0 2.208 0H1a1 1 0 0 0 0 2h.438l.6 2.255v.019l2 7 .746 2.986A3 3 0 1 0 9 17a2.966 2.966 0 0 0-.184-1h2.368c-.118.32-.18.659-.184 1a3 3 0 1 0 3-3H6.78l-.5-2H15Z" />
-                                            </svg>
-                                        </button>
-                                    </div>
                                 </NuxtLink>
+                                <div class="mt-4 flex items-center justify-between">
+                                    <span class="lg:text-xl font-bold text-blue-900 md:text-md text-left">฿ {{
+                                        product.price
+                                    }}</span>
+                                    <button
+                                        class="transform active:scale-x-75 transition-transform inline-flex bg-blue-800 md:text-sm lg:text-md text-white lg:px-4 md:px-2 py-2 rounded-full hover:bg-blue-700"
+                                        @click="addToCart(product)">
+                                        Add
+                                        <svg class="ml-1 flex-shrink-0 w-5 h-5 text-white transition duration-75 dark:text-gray-200 dark:group-hover:text-white"
+                                            aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor"
+                                            viewBox="0 0 18 21">
+                                            <path
+                                                d="M15 12a1 1 0 0 0 .962-.726l2-7A1 1 0 0 0 17 3H3.77L3.175.745A1 1 0 0 0 2.208 0H1a1 1 0 0 0 0 2h.438l.6 2.255v.019l2 7 .746 2.986A3 3 0 1 0 9 17a2.966 2.966 0 0 0-.184-1h2.368c-.118.32-.18.659-.184 1a3 3 0 1 0 3-3H6.78l-.5-2H15Z" />
+                                        </svg>
+                                    </button>
+                                </div>
+
                             </div>
                         </div>
                     </div>
@@ -288,23 +291,24 @@
                                     <img :src="`http://localhost:80/storage/${product.image}`" alt="Product Image"
                                         class="h-40 mx-auto object-cover mb-4">
                                     <h3 class="lg:text-xl font-semibold md:text-md">{{ product.name }}</h3>
-                                    <div class="mt-4 flex items-center justify-between">
-                                        <span class="lg:text-xl font-bold text-blue-900 md:text-md text-left">฿ {{
-                                            product.price
-                                        }}</span>
-                                        <button
-                                            class="transform active:scale-x-75 transition-transform inline-flex bg-blue-800 md:text-sm lg:text-md text-white lg:px-4 md:px-2 py-2 rounded-full hover:bg-blue-700"
-                                            @click="addToCart(product)">
-                                            Add
-                                            <svg class="ml-1 flex-shrink-0 w-5 h-5 text-white transition duration-75 dark:text-gray-200 dark:group-hover:text-white"
-                                                aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor"
-                                                viewBox="0 0 18 21">
-                                                <path
-                                                    d="M15 12a1 1 0 0 0 .962-.726l2-7A1 1 0 0 0 17 3H3.77L3.175.745A1 1 0 0 0 2.208 0H1a1 1 0 0 0 0 2h.438l.6 2.255v.019l2 7 .746 2.986A3 3 0 1 0 9 17a2.966 2.966 0 0 0-.184-1h2.368c-.118.32-.18.659-.184 1a3 3 0 1 0 3-3H6.78l-.5-2H15Z" />
-                                            </svg>
-                                        </button>
-                                    </div>
                                 </NuxtLink>
+                                <div class="mt-4 flex items-center justify-between">
+                                    <span class="lg:text-xl font-bold text-blue-900 md:text-md text-left">฿ {{
+                                        product.price
+                                    }}</span>
+                                    <button
+                                        class="transform active:scale-x-75 transition-transform inline-flex bg-blue-800 md:text-sm lg:text-md text-white lg:px-4 md:px-2 py-2 rounded-full hover:bg-blue-700"
+                                        @click="addToCart(product)">
+                                        Add
+                                        <svg class="ml-1 flex-shrink-0 w-5 h-5 text-white transition duration-75 dark:text-gray-200 dark:group-hover:text-white"
+                                            aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor"
+                                            viewBox="0 0 18 21">
+                                            <path
+                                                d="M15 12a1 1 0 0 0 .962-.726l2-7A1 1 0 0 0 17 3H3.77L3.175.745A1 1 0 0 0 2.208 0H1a1 1 0 0 0 0 2h.438l.6 2.255v.019l2 7 .746 2.986A3 3 0 1 0 9 17a2.966 2.966 0 0 0-.184-1h2.368c-.118.32-.18.659-.184 1a3 3 0 1 0 3-3H6.78l-.5-2H15Z" />
+                                        </svg>
+                                    </button>
+                                </div>
+
                             </div>
                         </div>
                     </div>
@@ -335,23 +339,24 @@
                                     <img :src="`http://localhost:80/storage/${product.image}`" alt="Product Image"
                                         class="h-40 mx-auto object-cover mb-4">
                                     <h3 class="lg:text-xl font-semibold md:text-md">{{ product.name }}</h3>
-                                    <div class="mt-4 flex items-center justify-between">
-                                        <span class="lg:text-xl font-bold text-blue-900 md:text-md text-left">฿ {{
-                                            product.price
-                                        }}</span>
-                                        <button
-                                            class="transform active:scale-x-75 transition-transform inline-flex bg-blue-800 md:text-sm lg:text-md text-white lg:px-4 md:px-2 py-2 rounded-full hover:bg-blue-700"
-                                            @click="addToCart(product)">
-                                            Add
-                                            <svg class="ml-1 flex-shrink-0 w-5 h-5 text-white transition duration-75 dark:text-gray-200 dark:group-hover:text-white"
-                                                aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor"
-                                                viewBox="0 0 18 21">
-                                                <path
-                                                    d="M15 12a1 1 0 0 0 .962-.726l2-7A1 1 0 0 0 17 3H3.77L3.175.745A1 1 0 0 0 2.208 0H1a1 1 0 0 0 0 2h.438l.6 2.255v.019l2 7 .746 2.986A3 3 0 1 0 9 17a2.966 2.966 0 0 0-.184-1h2.368c-.118.32-.18.659-.184 1a3 3 0 1 0 3-3H6.78l-.5-2H15Z" />
-                                            </svg>
-                                        </button>
-                                    </div>
                                 </NuxtLink>
+                                <div class="mt-4 flex items-center justify-between">
+                                    <span class="lg:text-xl font-bold text-blue-900 md:text-md text-left">฿ {{
+                                        product.price
+                                    }}</span>
+                                    <button
+                                        class="transform active:scale-x-75 transition-transform inline-flex bg-blue-800 md:text-sm lg:text-md text-white lg:px-4 md:px-2 py-2 rounded-full hover:bg-blue-700"
+                                        @click="addToCart(product)">
+                                        Add
+                                        <svg class="ml-1 flex-shrink-0 w-5 h-5 text-white transition duration-75 dark:text-gray-200 dark:group-hover:text-white"
+                                            aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor"
+                                            viewBox="0 0 18 21">
+                                            <path
+                                                d="M15 12a1 1 0 0 0 .962-.726l2-7A1 1 0 0 0 17 3H3.77L3.175.745A1 1 0 0 0 2.208 0H1a1 1 0 0 0 0 2h.438l.6 2.255v.019l2 7 .746 2.986A3 3 0 1 0 9 17a2.966 2.966 0 0 0-.184-1h2.368c-.118.32-.18.659-.184 1a3 3 0 1 0 3-3H6.78l-.5-2H15Z" />
+                                        </svg>
+                                    </button>
+                                </div>
+
                             </div>
                         </div>
                     </div>
@@ -382,23 +387,24 @@
                                     <img :src="`http://localhost:80/storage/${product.image}`" alt="Product Image"
                                         class="h-40 mx-auto object-cover mb-4">
                                     <h3 class="lg:text-xl font-semibold md:text-md">{{ product.name }}</h3>
-                                    <div class="mt-4 flex items-center justify-between">
-                                        <span class="lg:text-xl font-bold text-blue-900 md:text-md text-left">฿ {{
-                                            product.price
-                                        }}</span>
-                                        <button
-                                            class="transform active:scale-x-75 transition-transform inline-flex bg-blue-800 md:text-sm lg:text-md text-white lg:px-4 md:px-2 py-2 rounded-full hover:bg-blue-700"
-                                            @click="addToCart(product)">
-                                            Add
-                                            <svg class="ml-1 flex-shrink-0 w-5 h-5 text-white transition duration-75 dark:text-gray-200 dark:group-hover:text-white"
-                                                aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor"
-                                                viewBox="0 0 18 21">
-                                                <path
-                                                    d="M15 12a1 1 0 0 0 .962-.726l2-7A1 1 0 0 0 17 3H3.77L3.175.745A1 1 0 0 0 2.208 0H1a1 1 0 0 0 0 2h.438l.6 2.255v.019l2 7 .746 2.986A3 3 0 1 0 9 17a2.966 2.966 0 0 0-.184-1h2.368c-.118.32-.18.659-.184 1a3 3 0 1 0 3-3H6.78l-.5-2H15Z" />
-                                            </svg>
-                                        </button>
-                                    </div>
                                 </NuxtLink>
+                                <div class="mt-4 flex items-center justify-between">
+                                    <span class="lg:text-xl font-bold text-blue-900 md:text-md text-left">฿ {{
+                                        product.price
+                                    }}</span>
+                                    <button
+                                        class="transform active:scale-x-75 transition-transform inline-flex bg-blue-800 md:text-sm lg:text-md text-white lg:px-4 md:px-2 py-2 rounded-full hover:bg-blue-700"
+                                        @click="addToCart(product)">
+                                        Add
+                                        <svg class="ml-1 flex-shrink-0 w-5 h-5 text-white transition duration-75 dark:text-gray-200 dark:group-hover:text-white"
+                                            aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor"
+                                            viewBox="0 0 18 21">
+                                            <path
+                                                d="M15 12a1 1 0 0 0 .962-.726l2-7A1 1 0 0 0 17 3H3.77L3.175.745A1 1 0 0 0 2.208 0H1a1 1 0 0 0 0 2h.438l.6 2.255v.019l2 7 .746 2.986A3 3 0 1 0 9 17a2.966 2.966 0 0 0-.184-1h2.368c-.118.32-.18.659-.184 1a3 3 0 1 0 3-3H6.78l-.5-2H15Z" />
+                                        </svg>
+                                    </button>
+                                </div>
+
                             </div>
                         </div>
                     </div>
@@ -429,23 +435,24 @@
                                     <img :src="`http://localhost:80/storage/${product.image}`" alt="Product Image"
                                         class="h-40 mx-auto object-cover mb-4">
                                     <h3 class="lg:text-xl font-semibold md:text-md">{{ product.name }}</h3>
-                                    <div class="mt-4 flex items-center justify-between">
-                                        <span class="lg:text-xl font-bold text-blue-900 md:text-md text-left">฿ {{
-                                            product.price
-                                        }}</span>
-                                        <button
-                                            class="transform active:scale-x-75 transition-transform inline-flex bg-blue-800 md:text-sm lg:text-md text-white lg:px-4 md:px-2 py-2 rounded-full hover:bg-blue-700"
-                                            @click="addToCart(product)">
-                                            Add
-                                            <svg class="ml-1 flex-shrink-0 w-5 h-5 text-white transition duration-75 dark:text-gray-200 dark:group-hover:text-white"
-                                                aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor"
-                                                viewBox="0 0 18 21">
-                                                <path
-                                                    d="M15 12a1 1 0 0 0 .962-.726l2-7A1 1 0 0 0 17 3H3.77L3.175.745A1 1 0 0 0 2.208 0H1a1 1 0 0 0 0 2h.438l.6 2.255v.019l2 7 .746 2.986A3 3 0 1 0 9 17a2.966 2.966 0 0 0-.184-1h2.368c-.118.32-.18.659-.184 1a3 3 0 1 0 3-3H6.78l-.5-2H15Z" />
-                                            </svg>
-                                        </button>
-                                    </div>
                                 </NuxtLink>
+                                <div class="mt-4 flex items-center justify-between">
+                                    <span class="lg:text-xl font-bold text-blue-900 md:text-md text-left">฿ {{
+                                        product.price
+                                    }}</span>
+                                    <button
+                                        class="transform active:scale-x-75 transition-transform inline-flex bg-blue-800 md:text-sm lg:text-md text-white lg:px-4 md:px-2 py-2 rounded-full hover:bg-blue-700"
+                                        @click="addToCart(product)">
+                                        Add
+                                        <svg class="ml-1 flex-shrink-0 w-5 h-5 text-white transition duration-75 dark:text-gray-200 dark:group-hover:text-white"
+                                            aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor"
+                                            viewBox="0 0 18 21">
+                                            <path
+                                                d="M15 12a1 1 0 0 0 .962-.726l2-7A1 1 0 0 0 17 3H3.77L3.175.745A1 1 0 0 0 2.208 0H1a1 1 0 0 0 0 2h.438l.6 2.255v.019l2 7 .746 2.986A3 3 0 1 0 9 17a2.966 2.966 0 0 0-.184-1h2.368c-.118.32-.18.659-.184 1a3 3 0 1 0 3-3H6.78l-.5-2H15Z" />
+                                        </svg>
+                                    </button>
+                                </div>
+
                             </div>
                         </div>
                     </div>

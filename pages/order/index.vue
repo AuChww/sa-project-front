@@ -29,7 +29,7 @@
 
                                         <th scope="col"
                                             class="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-400">
-                                            Payment
+                                            Order Info
                                         </th>
 
                                         <th scope="col"
@@ -54,17 +54,12 @@
 
                                         <th scope="col"
                                             class="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-400">
-                                            Shipment Method
-                                        </th>
-
-                                        <th scope="col"
-                                            class="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-400">
                                             Total Amount
                                         </th>
 
                                         <th scope="col"
                                             class="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-400">
-                                            Receipt Small Image
+                                            Payment
                                         </th>
 
                                         <th scope="col"
@@ -83,8 +78,7 @@
                                         </td>
 
                                         <td class="px-4 py-4 text-sm text-gray-500 dark:text-gray-300">
-                                            <img :src="`http://localhost:80/storage/${order.payment_receipt}`"
-                                                alt="Product Image" class="h-40 mx-auto object-cover mb-4">
+
                                         </td>
 
                                         <td class="px-4 py-4 text-sm text-gray-500 dark:text-gray-300">
@@ -146,9 +140,7 @@
                                         </td>
 
                                         <td class="px-4 py-4 text-sm text-gray-500 dark:text-gray-300">
-                                            <NuxtLink class="hover:text-blue-500" :to="`/profile/${order.user_id}`">
-                                                {{ order.user_name }}
-                                            </NuxtLink>
+                                            {{ order.user_name }}
                                         </td>
 
                                         <td class="px-4 py-4 text-sm text-gray-500 dark:text-gray-300">
@@ -156,15 +148,12 @@
                                         </td>
 
                                         <td class="px-4 py-4 text-sm text-gray-500 dark:text-gray-300">
-                                            {{ order.shipment_method }}
-                                        </td>
-
-                                        <td class="px-4 py-4 text-sm text-gray-500 dark:text-gray-300">
                                             {{ order.total_price }}
                                         </td>
 
                                         <td class="px-4 py-4 text-sm text-gray-500 dark:text-gray-300">
-                                            <!-- Add the image display code here -->
+                                            <img :src="`http://localhost:80/storage/${order.payment_receipt}`"
+                                                alt="Product Image" class="h-40 mx-auto object-cover mb-4">
                                         </td>
 
                                         <!-- Add a button to change order status -->
@@ -231,11 +220,6 @@
 
                                         <th scope="col"
                                             class="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-400">
-                                            Shipment Method
-                                        </th>
-
-                                        <th scope="col"
-                                            class="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-400">
                                             Total Amount
                                         </th>
 
@@ -255,8 +239,26 @@
                                         </td>
 
                                         <td class="px-4 py-4 text-sm text-gray-500 dark:text-gray-300">
-                                            <img :src="`http://localhost:80/storage/${order.payment_receipt}`"
-                                                alt="Product Image" class="h-40 mx-auto object-cover mb-4">
+                                            <!-- <div v-for="product in specificOrder.products" :key="product.id"
+                                                class="font-semi my-4 grid grid-cols-5">
+                                                <div class="text-sm font-semi">
+                                                    {{ product.id }}
+                                                </div>
+                                                <div class="w-24">
+                                                    <img :src="`http://localhost:80/storage/${product.image}`"
+                                                        alt="product image">
+                                                </div>
+                                                <div class="text-sm font-semi">
+                                                    {{ product.name }}
+                                                </div>
+                                                <div>
+                                                    {{ product.pivot.quantity }}
+                                                </div>
+                                                <div class="text-sm font-semi">
+                                                    {{ product.price }}
+                                                </div>
+
+                                            </div> -->
                                         </td>
 
                                         <td class="px-4 py-4 text-sm">
@@ -284,17 +286,11 @@
                                         </td>
 
                                         <td class="px-4 py-4 text-sm text-gray-500 dark:text-gray-300">
-                                            <NuxtLink class="hover:text-blue-500" :to="`/profile/${order.user_id}`">
-                                                {{ order.user_name }}
-                                            </NuxtLink>
+                                            {{ order.user_name }}
                                         </td>
 
                                         <td class="px-4 py-4 text-sm text-gray-500 dark:text-gray-300">
                                             {{ formatCreatedAt(order.created_at) }}
-                                        </td>
-
-                                        <td class="px-4 py-4 text-sm text-gray-500 dark:text-gray-300">
-                                            {{ order.shipment_method }}
                                         </td>
 
                                         <td class="px-4 py-4 text-sm text-gray-500 dark:text-gray-300">
@@ -331,8 +327,15 @@
 import { useOrderStore } from '~/stores/useOrderStore';
 
 const orderStore = useOrderStore();
-
 const orders = ref<Order[]>([]); // Initialize as an empty array
+const route = useRoute();
+const { data: order, error } = await useMyFetch<any>(`order/${route.params.id}`, {});
+const { data: specificOrder } = await useMyFetch<any>(`showOrderSpecific/${route.params.id}`, {});
+
+if (order.value !== null) {
+    console.log(order.value);
+    console.log(specificOrder.value);
+}
 
 const pendingOrders = computed(() => {
     const allowedStatuses = ['Pending'];

@@ -15,14 +15,24 @@
         <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-8 mt-6 px-10">
             <div v-for="order in orders" :key="order.id"
                 class="mx-auto relative my-4 flex w-80 h-full flex-col overflow-hidden rounded-2xl bg-white text-gray-600 shadow-lg ring-1 ring-gray-200">
-                <div class="border-b p-6">
-                    <h4 class=" text-base font-semibold">Order #{{ order.id }}</h4>
-                    <p class=" text-sm font-light">
-                        <i class="inline-block font-black not-italic text-green-600" aria-hidden="true"></i>Status : {{
-                            order.status }}
-                    </p>
+                <NuxtLink :to="`/order/${order.id}`">
+                    <div class="border-b p-6">
+                        <h4 class=" text-base font-semibold">Order #{{ order.id }}</h4>
+                        <p class=" text-sm font-light">
+                            <i class="inline-block font-black not-italic text-green-600" aria-hidden="true"></i>Status : {{
+                                order.status }}
+                        </p>
+                        <div>
+                            <p class="inline text-sm font-light">
+                                <i class="inline-block font-black not-italic text-green-600" aria-hidden="true"></i>Track :
+                            </p>
+                            <i class="inline-block font-semibold not-italic text-gray-800" aria-hidden="true"></i>{{
+                                order.track
+                            }}
+                        </div>
+                    </div>
+                </NuxtLink>
 
-                </div>
                 <div class="flex-auto p-5">
                     <div class="relative flex flex-col justify-center" v-if="order.status === 'ReportPending'">
                         <div class="absolute left-4 h-full mt-0 border-r-4"></div>
@@ -75,8 +85,7 @@
                                 <span
                                     class="absolute inline-flex h-6 w-6 items-center justify-center rounded-full p-4 text-center bg-emerald-200 text-base font-semibold text-white">1</span>
                             </div>
-                            <div
-                                v-if="order.status == 'ResentPending'">
+                            <div v-if="order.status == 'ResentPending'">
                                 <span
                                     class="absolute inline-flex h-6 w-6 items-center justify-center rounded-full p-4 text-center bg-emerald-200 text-base font-semibold text-white">1</span>
                             </div>
@@ -108,7 +117,7 @@
                                     class="absolute inline-flex h-6 w-6 items-center justify-center rounded-full p-4 text-center bg-emerald-200 text-base font-semibold text-white">2</span>
                             </div>
                             <div class="ml-12 w-auto pt-1">
-                                <h6 class="text-sm font-semibold text-blue-900">Preparing Your Order</h6>
+                                <h6 class="text-sm font-semibold text-blue-900">Check the Stocks</h6>
                                 <p class="mt-1 text-xs text-gray-500"></p>
                             </div>
                         </div>
@@ -126,7 +135,7 @@
                                     class="absolute inline-flex h-6 w-6 items-center justify-center rounded-full p-4 text-center bg-emerald-200 text-base font-semibold text-white">3</span>
                             </div>
                             <div class="ml-12 w-auto pt-1">
-                                <h6 class="text-sm font-semibold text-blue-900">In the Sending Process</h6>
+                                <h6 class="text-sm font-semibold text-blue-900">Preparing Your Order</h6>
                                 <p class="mt-1 text-xs text-gray-500"></p>
                             </div>
                         </div>
@@ -413,7 +422,7 @@ const cancelOrder = async (orderId: number) => {
     }
 };
 
-const completeOrder = async (orderId: number) => {
+const completeDelivery = async (orderId: number) => {
     try {
         const response = await useMyFetch<Order>(`orders/${orderId}/update_status`, {
             method: "PUT",

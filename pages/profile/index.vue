@@ -67,6 +67,7 @@
             </ul>
             <div class="p-4 border-t mx-8 mt-2 flex justify-center">
                 <router-link to="/profile/profile-edit"
+                <router-link to="/profile/profile-edit"
                     class="rounded relative inline-flex group items-center justify-center px-3.5 py-2 m-1 cursor-pointer border-b-4 border-l-2 active:border-purple-600 active:shadow-none shadow-lg bg-gradient-to-tr from-blue-600 to-blue-500 border-blue-700 text-white">
                     <span
                         class="absolute w-0 h-0 transition-all duration-300 ease-out bg-white rounded-full group-hover:w-32 group-hover:h-32 opacity-10"></span>
@@ -87,7 +88,7 @@
                 <div>
                     <div v-for="order in orders" :key="order.id">
                         <div v-if="order.status === 'Preparing' || order.status === 'Packing' || order.status === 'resentPending' || order.status === 'Delivering' || order.status === 'CompleteDelivery'"
-                            class=" px-8 py-6 justify-between my-4 bg-white w-72 mx-auto">
+                        class=" px-8 py-6 justify-between my-4 bg-white w-72 mx-auto">
                             <div class="font-semibold text-lg">Order Id : {{ order.id }}</div>
                             <div class="text-gray-600 text-xs">Date : {{ order.created_at }}</div>
                             <div class="text-gray-600 text-xs">Customer : {{ order.user_name }}</div>
@@ -105,8 +106,7 @@
                                     Price
                                 </div>
                             </div>
-                            <div v-for="product in products" :key="product.id"
-                                class="font-semi text-right grid grid-cols-3">
+                            <div v-for="product in products" :key="product.id" class="font-semi text-right grid grid-cols-3">
                                 <div class="text-right text-sm font-semi">
                                     {{ product.id }}
                                 </div>
