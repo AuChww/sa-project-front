@@ -51,11 +51,6 @@
 
                                     <th scope="col"
                                         class="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-400">
-                                        Shipment Method
-                                    </th>
-
-                                    <th scope="col"
-                                        class="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-400">
                                         Total Amount
                                     </th>
 
@@ -93,10 +88,6 @@
 
                                     <td class="px-4 py-4 text-sm text-gray-500 dark:text-gray-300">
                                         {{ formatCreatedAt(order.created_at) }}
-                                    </td>
-
-                                    <td class="px-4 py-4 text-sm text-gray-500 dark:text-gray-300">
-                                        {{ order.shipment_method }}
                                     </td>
 
                                     <td class="px-4 py-4 text-sm text-gray-500 dark:text-gray-300">
@@ -175,11 +166,6 @@
 
                                     <th scope="col"
                                         class="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-400">
-                                        Shipment Method
-                                    </th>
-
-                                    <th scope="col"
-                                        class="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-400">
                                         Total Amount
                                     </th>
 
@@ -216,10 +202,6 @@
 
                                     <td class="px-4 py-4 text-sm text-gray-500 dark:text-gray-300">
                                         {{ formatCreatedAt(order.created_at) }}
-                                    </td>
-
-                                    <td class="px-4 py-4 text-sm text-gray-500 dark:text-gray-300">
-                                        {{ order.shipment_method }}
                                     </td>
 
                                     <td class="px-4 py-4 text-sm text-gray-500 dark:text-gray-300">

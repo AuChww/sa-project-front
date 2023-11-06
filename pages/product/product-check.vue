@@ -51,11 +51,6 @@
 
                                     <th scope="col"
                                         class="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-400">
-                                        Shipment Method
-                                    </th>
-
-                                    <th scope="col"
-                                        class="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-400">
                                         Total Amount
                                     </th>
 
@@ -111,10 +106,6 @@
 
                                     <td class="px-4 py-4 text-sm text-gray-500 dark:text-gray-300">
                                         {{ formatCreatedAt(order.created_at) }}
-                                    </td>
-
-                                    <td class="px-4 py-4 text-sm text-gray-500 dark:text-gray-300">
-                                        {{ order.shipment_method }}
                                     </td>
 
                                     <td class="px-4 py-4 text-sm text-gray-500 dark:text-gray-300">
@@ -183,11 +174,6 @@
 
                                     <th scope="col"
                                         class="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-400">
-                                        Shipment Method
-                                    </th>
-
-                                    <th scope="col"
-                                        class="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-400">
                                         Total Amount
                                     </th>
 
@@ -207,7 +193,8 @@
                                     </td>
 
                                     <td class="px-4 py-4 text-sm text-gray-500 dark:text-gray-300">
-                                        {{ order.payment_receipt }}
+                                        <img :src="`http://localhost:80/storage/${order.payment_receipt}`"
+                                                alt="Product Image" class="h-40 mx-auto object-cover mb-4">
                                     </td>
 
                                     <td class="px-4 py-4 text-sm">
@@ -297,10 +284,6 @@
                                     </td>
 
                                     <td class="px-4 py-4 text-sm text-gray-500 dark:text-gray-300">
-                                        {{ order.shipment_method }}
-                                    </td>
-
-                                    <td class="px-4 py-4 text-sm text-gray-500 dark:text-gray-300">
                                         {{ order.total_price }}
                                     </td>
 
@@ -310,10 +293,22 @@
 
                                     <td class="py-2">
                                         <button v-if="order.status === 'Packing'" type="button"
-                                            @click="completeDelivery(order.id)"
+                                            @click="Delivering(order.id)"
                                             class="border-emerald-500 border bg-emerald-500 text-white rounded-md px-4 py-2 m-2 transition duration-500 ease select-none hover:bg-emerald-700 focus:outline-none focus:shadow-outline">
                                             Confirm
                                         </button>
+                                        <div v-if="order.status === 'Delivering'">
+                                            <label class="block text-sm font-medium leading-6 text-gray-400">Order Track
+                                                :</label>
+                                            <div class="inline-flex">
+                                                <input id="" name="" type="" autocomplete=""
+                                                    class="block h-10 w-40 rounded-md border-0 p-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+                                                <button type="button" @click=""
+                                                    class="border-emerald-500 border bg-emerald-500 text-white rounded-md px-4 py-2 mx-1 transition duration-500 ease select-none hover:bg-emerald-700 focus:outline-none focus:shadow-outline">
+                                                    Confirm
+                                                </button>
+                                            </div>
+                                        </div>
                                         <RouterLink to="/report">
                                             <button v-if="order.status === 'Packing'" type="button"
                                                 class="border-red-500 border bg-red-500 text-white rounded-md px-4 py-2 m-2 transition duration-500 ease select-none hover:bg-red-700 focus:outline-none focus:shadow-outline">
@@ -393,6 +388,32 @@ const acceptPacking = async (orderId: number) => {
         }
     } catch (error) {
         console.error('Failed to update order status to Refunding', error);
+    }
+};
+
+const Delivering = async (orderId: number) => {
+    try {
+        const response = await useMyFetch<Order>(`orders/${orderId}/update_status`, {
+            method: "PUT",
+            body: JSON.stringify({
+                status: "Delivering" // Set the new status here
+            }),
+            headers: {
+                "Content-Type": "application/json"
+            }
+        });
+
+        if (response) {
+            const updatedOrderIndex = orders.value.findIndex(order => order.id === orderId);
+            if (updatedOrderIndex !== -1) {
+                orders.value[updatedOrderIndex].status = 'Delivering';
+            }
+            console.log('Order status updated to CompleteRefund successfully');
+        } else {
+            console.error('Failed to update order status to CompleteRefund');
+        }
+    } catch (error) {
+        console.error('Failed to update order status to CompleteRefund', error);
     }
 };
 
