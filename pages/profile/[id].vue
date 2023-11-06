@@ -53,58 +53,18 @@
                     Payment History
                 </div>
             </div>
-            <div style="height: 500px; border"
-                class="overflow-y-auto px-4 py-2 sm:mx-auto md:mx-auto lg:mx-auto xl:mx-auto mt-4 bg-gray-700 shadow-xl rounded-lg text-black">
+            <div style="height: 520px; border"
+                class="overflow-y-auto px-4 py-4 sm:mx-auto md:mx-auto lg:mx-auto xl:mx-auto mt-4 bg-gray-700 shadow-xl rounded-lg text-black">
                 <div>
                     <div v-for="order in user.orders" :key="order.id">
                         <div v-if="order.status === 'Preparing' || order.status === 'Packing' || order.status === 'resentPending' || order.status === 'Delivering' || order.status === 'CompleteDelivery'"
-                            class=" px-4 py-6 justify-between my-4 bg-white w-72 mx-auto">
-                            <div class="font-semibold text-lg">Order Id : {{ order.id }}</div>
-                            <div class="text-gray-600 text-xs">Date : {{ order.created_at }}</div>
-                            <div class="text-gray-600 text-xs">Customer : {{ order.user_name }}</div>
-                            <div class="mt-4 font-semibold text-md">
-                                Products :
-                            </div>
-                            <div class="font-semi mt-2 text-right grid grid-cols-4">
-                                <div class="text-center text-sm font-semi">
-                                    Id
-                                </div>
-                                <div class="text-left text-sm font-semi">
-                                    Name
-                                </div>
-                                <div class="text-center text-sm font-semi">
-                                    Quality
-                                </div>
-                                <div class="text-center text-sm font-semi">
-                                    Price
-                                </div>
-                            </div>
-                            <div v-for="product in specificOrder.products" :key="product.id"
-                                class="font-semi my-2 text-right grid grid-cols-4">
-                                <div class="text-center text-sm font-semi">
-                                    {{ product.id }}
-                                </div>
-                                <div class="text-left text-xs font-semi">
-                                    {{ product.name }}
-                                </div>
-                                <div class="text-center text-sm font-semi">
-                                    {{ product.pivot.quantity }}
-                                </div>
-                                <div class="text-center text-sm font-semi">
-                                    {{ product.price }}
-                                </div>
-                            </div>
-                            <div class="font-semi mt-2 text-right grid grid-cols-4">
-                                <div class="text-right text-sm font-semi">
-                                </div>
-                                <div class="text-right text-sm font-semi">
-                                </div>
-                                <div class="text-right mr-2 text-sm font-semibold underline">
-                                    Total
-                                </div>
-                                <div class="text-left text-sm font-semi">
-                                    {{ order.total_price }}
-                                </div>
+                            class="px-8 py-2 justify-between my-2 bg-white w-72 mx-auto">
+                            <div class="font-semibold text-lg">Order ID : {{ order.id }}</div>
+                            <div
+                                class="text-sm mt-2 hover:text-yellow-500 duration-200 text-gray-800 dark:text-blue-800">
+                                <NuxtLink :to="`/bill/${order.id}`">
+                                    <div class="underline">Show more</div>
+                                </NuxtLink>
                             </div>
                         </div>
                     </div>
@@ -116,12 +76,11 @@
   
 <script setup type="ts">
 
-
 const route = useRoute();
 const pageTitle = `User ID: ${route.params.id}`;
 const { data: user, error } = await useMyFetch(`user/${route.params.id}`, {});
 const { data: specificOrder } = await useMyFetch(`showOrderSpecific/${route.params.id}`, {});
-
+// const { data: specificOrder } = await useMyFetch(`showOrderSpecific/${auth.user.id}`, {});
 
 if (user.value === null) {
     const { statusCode, statusMessage } = error.value;

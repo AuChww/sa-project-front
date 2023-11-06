@@ -49,9 +49,16 @@
                                         Purchased
                                     </th>
 
+
+
                                     <th scope="col"
                                         class="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-400">
                                         Total Amount
+                                    </th>
+
+                                    <th scope="col"
+                                        class="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-400">
+                                        Payment
                                     </th>
 
                                     <th scope="col"
@@ -69,9 +76,11 @@
                                         {{ order.id }}
                                     </td>
 
-                                    <td class="px-4 py-4 text-sm text-gray-500 dark:text-gray-300">
-                                        <img :src="`http://localhost:80/storage/${order.payment_receipt}`" alt="Product Image"
-                                            class="h-40 mx-auto object-cover mb-4">
+                                    <td
+                                        class="px-4 py-4 text-sm hover:text-yellow-500 duration-200 text-gray-500 dark:text-gray-300">
+                                        <NuxtLink :to="`/order/${order.id}`">
+                                            <div class="underline">Check Order</div>
+                                        </NuxtLink>
                                     </td>
 
                                     <td class="px-4 py-4 text-sm text-gray-500 dark:text-gray-300">
@@ -82,16 +91,25 @@
                                         {{ order.user_id }}
                                     </td>
 
-                                    <td class="px-4 py-4 text-sm text-gray-500 dark:text-gray-300">
-                                        {{ order.user_name }}
+                                    <td
+                                        class="px-4 py-4 text-md hover:text-yellow-400 duration-200 text-gray-500 dark:text-gray-300">
+                                        <NuxtLink :to="`/profile/${order.user_id}`">
+                                            {{ order.user_name }}
+                                        </NuxtLink>
                                     </td>
 
                                     <td class="px-4 py-4 text-sm text-gray-500 dark:text-gray-300">
                                         {{ formatCreatedAt(order.created_at) }}
                                     </td>
 
+
                                     <td class="px-4 py-4 text-sm text-gray-500 dark:text-gray-300">
                                         {{ order.total_price }}
+                                    </td>
+
+                                    <td class="px-4 py-4 text-sm text-gray-500 dark:text-gray-300">
+                                        <img :src="`http://localhost:80/storage/${order.payment_receipt}`"
+                                            alt="Product Image" class="h-20 mx-auto object-cover mb-4">
                                     </td>
 
                                     <td class="px-4 py-4 text-sm text-gray-500 dark:text-gray-300">
@@ -184,8 +202,11 @@
                                         {{ order.id }}
                                     </td>
 
-                                    <td class="px-4 py-4 text-sm text-gray-500 dark:text-gray-300">
-                                        {{ order.payment_receipt }}
+                                    <td
+                                        class="px-4 py-4 text-sm hover:text-yellow-500 duration-200 text-gray-500 dark:text-gray-300">
+                                        <NuxtLink :to="`/order/${order.id}`">
+                                            <div class="underline">Check Order</div>
+                                        </NuxtLink>
                                     </td>
 
                                     <td class="px-4 py-4 text-sm text-gray-500 dark:text-gray-300">
@@ -196,8 +217,11 @@
                                         {{ order.user_id }}
                                     </td>
 
-                                    <td class="px-4 py-4 text-sm text-gray-500 dark:text-gray-300">
-                                        {{ order.user_name }}
+                                    <td
+                                        class="px-4 py-4 text-md hover:text-yellow-500 duration-200 text-gray-500 dark:text-gray-300">
+                                        <NuxtLink :to="`/profile/${order.user_id}`">
+                                            {{ order.user_name }}
+                                        </NuxtLink>
                                     </td>
 
                                     <td class="px-4 py-4 text-sm text-gray-500 dark:text-gray-300">
@@ -388,4 +412,5 @@ const formatCreatedAt = (timestamp: string) => {
 .swipe-in-enter,
 .swipe-in-leave-to {
     transform: translateY(-20%);
-}</style>
+}
+</style>

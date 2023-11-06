@@ -20,61 +20,11 @@
           to-purple-500
           background-animate">
         <div class=" mb-28  sm:mx-auto md:mx-auto lg:mx-auto xl:mx-auto mt-4 bg-white shadow-xl rounded-lg text-gray-900"
-            style="width: 1200px; height: 650px; border">
-
-            <div class="grid grid-cols-2 ">
-                <div class=" rounded-lg ml-2 my-4 pl-8">
-                    <div class="font-semibold text-2xl">Order Id : {{ order.id }} </div>
-                    <div class="text-gray-600 text-md">Status : {{ order.status }} </div>
-                    <div class="text-gray-600 text-md">Date: {{ formatDateTime(order.created_at) }}</div>
-                    <div class="text-gray-600 text-md">Price : {{ order.total_price }} </div>
-                    <div class="text-gray-600 text-md">Customer : {{ order.user_name }} </div>
-
-                    <div class="text-black font-semibold mt-4 text-2xl">Order Products</div>
-                    <div class="font-semi grid grid-cols-5 mt-2 px-2">
-                        <div class="text-sm font-semi">
-                            ID
-                        </div>
-                        <div class="text-sm font-semi">
-                            Product
-                        </div>
-                        <div class="text-sm font-semi">
-                            Name
-                        </div>
-                        <div class="text-sm font-semi">
-                            Quantity
-                        </div>
-                        <div class="text-sm text-center font-semi">
-                            Price
-                        </div>
-                    </div>
-
-                    <div class="overflow-y-auto h-96 px-2 w-full">
-                        <div v-for="product in specificOrder.products" :key="product.id"
-                            class="font-semi my-4 grid grid-cols-5">
-                            <div class="text-sm font-semi">
-                                {{ product.id }}
-                            </div>
-                            <div class="w-24">
-                                <img :src="`http://localhost:80/storage/${product.image}`" alt="product image">
-                            </div>
-                            <div class="text-sm font-semi">
-                                {{ product.name }}
-                            </div>
-                            <div class="text-center">
-                                {{ product.pivot.quantity }}
-                            </div>
-                            <div class="text-sm text-center font-semi">
-                                {{ product.price }}
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-
+            style="width: 600px; height: 650px; border">
+            <div class="">
                 <div class="">
-                    <div class="text-black font-semibold ml-24 px-1  mt-4 text-2xl">Order Bill</div>
-                    <div style="height: 550px; width: 400px; border"
+                    <div class="text-black font-semibold ml-12 px-1  mt-4 text-2xl">Bill</div>
+                    <div style="height: 550px; width: 500px; border"
                         class="overflow-y-auto mt-2 px-4 py-2 sm:mx-auto md:mx-auto lg:mx-auto xl:mx-auto  bg-gray-700 shadow-xl rounded-lg text-black">
                         <div>
                             <div class=" px-4 py-6 justify-between my-4 bg-white w-72 mx-auto">
@@ -139,7 +89,6 @@
 </template>
 
 <script setup lang="ts">
-
 const route = useRoute();
 const previewUrl = ref(null);
 const { data: order, error } = await useMyFetch<any>(`order/${route.params.id}`, {});
@@ -181,7 +130,7 @@ if (order.value !== null) {
 
 const formatDateTime = (dateTime: string) => {
     const options = { year: 'numeric', month: 'long', day: 'numeric', hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: false };
-    return new Date(dateTime).toLocaleString('en-US', options);
+    return new Date(orders.created_at).toLocaleString('en-US', options);
 };
 
 const formatCreatedAt = (timestamp: string) => {

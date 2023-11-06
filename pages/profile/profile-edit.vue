@@ -6,17 +6,17 @@
         via-blue-500
         to-purple-500
         background-animate">
-        <div class="mx-40 my-4 bg-white shadow-xl rounded-3xl p-8">
+        <div class="mx-40 my-4 mb-24 bg-white shadow-xl rounded-3xl p-8">
             <h2 class="mx-auto font-semibold text-3xl">
                 Edit Profile
             </h2>
 
             <form @submit.prevent="onSubmit()">
                 <!-- Upload Picture -->
-                <div class="col-span-full">
+                <div class="mt-4 col-span-full">
                     <label for="photo" class="block text-sm font-medium leading-6 text-gray-700"></label>
                     <div class="mt-2 flex items-center gap-x-3">
-                        <svg class="h-20 w-20 text-gray-300" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                        <svg class="h-32 w-32 text-gray-300" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
                             <path fill-rule="evenodd"
                                 d="M18.685 19.097A9.723 9.723 0 0021.75 12c0-5.385-4.365-9.75-9.75-9.75S2.25 6.615 2.25 12a9.723 9.723 0 003.065 7.097A9.716 9.716 0 0012 21.75a9.716 9.716 0 006.685-2.653zm-12.54-1.285A7.486 7.486 0 0112 15a7.486 7.486 0 015.855 2.812A8.224 8.224 0 0112 20.25a8.224 8.224 0 01-5.855-2.438zM15.75 9a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0z"
                                 clip-rule="evenodd" />
@@ -24,72 +24,88 @@
 
                         <button for="upload" type="button">
                             <label for="upload"
-                                class="bg-gray-700 hover:bg-gray-500 text-gray-300 py-1 px-2 rounded cursor-pointer">
+                                class="bg-gray-700 hover:bg-gray-500 duration-200 text-gray-300 py-2 px-4 text-lg rounded-lg cursor-pointer">
                                 Upload Picture
                             </label>
                             <input type="file" id="upload" class="hidden">
                         </button>
                     </div>
                 </div>
+                <div class="grid-cols-3 grid">
+                    <div>
+                        <!-- Full Name -->
+                        <div>
+                            <label for="name" class="block mt-6 text-sm font-medium text-gray-900 dark:text-gray-700">
+                                Full name
+                            </label>
+                            <input type="text" id="fullname"
+                                class="input-field bg-gray-700 text-white text-lg border border-gray-600 rounded-md rounded px-4 py-1"
+                                :placeholder="auth.user.name" v-model="formData.name">
+                        </div>
 
-                <!-- Full Name -->
-                <div>
-                    <label for="name" class="block mb-2 mt-2 text-sm font-medium text-gray-900 dark:text-gray-700">
-                        Full name
-                    </label>
-                    <input type="text" id="fullname" class="input-field" :placeholder="auth.user.name"
-                        v-model="formData.name">
+                        <!-- Username -->
+                        <div>
+                            <label for="name" class="block mb-2 mt-4 text-sm font-medium text-gray-900 dark:text-gray-700">
+                                Username
+                            </label>
+                            <input type="text" id="username"
+                                class="input-field bg-gray-700 text-white text-lg border border-gray-600 rounded-md rounded px-4 py-1"
+                                :placeholder="auth.user.username" v-model="formData.username">
+                        </div>
+
+                        <!-- Email Address -->
+                        <div class="mb-6">
+                            <label for="email" class="block mb-2 mt-4 text-sm font-medium text-gray-900 dark:text-gray-700">
+                                Email address
+                            </label>
+                            <input type="email" id="email"
+                                class="input-field bg-gray-700 text-white text-lg border border-gray-600 rounded-md rounded px-4 py-1"
+                                :placeholder="auth.user.email" v-model="formData.email">
+                        </div>
+                    </div>
+
+                    <div>
+                        <!-- Address -->
+                        <div>
+                            <label for="address"
+                                class="block mb-2 mt-4 text-sm font-medium text-gray-900 dark:text-gray-700">
+                                Address
+                            </label>
+                            <input type="text" id="address"
+                                class="input-field bg-gray-700 text-white text-lg border border-gray-600 rounded-md rounded px-4 py-1  my-0"
+                                :placeholder="auth.user.address" v-model="formData.address">
+                        </div>
+                    </div>
+
+                    <div>
+                        <!-- Bank -->
+                        <div>
+                            <label for="bank"
+                                class="block mb-2 mt-4 text-sm font-medium text-gray-900 dark:text-gray-700">Bank
+                            </label>
+                            <input type="text" id="bank"
+                                class="input-field bg-gray-700 text-white text-lg border border-gray-600 rounded-md rounded px-4 py-1"
+                                :placeholder="auth.user.bank" v-model="formData.bank">
+                        </div>
+
+                        <!-- Bank Number -->
+                        <div>
+                            <label for="bank_number"
+                                class="block mb-2 mt-4 text-sm font-medium text-gray-900 dark:text-gray-700">
+                                Bank number
+                            </label>
+                            <input type="text" id="bank_number"
+                                class="input-field bg-gray-700 text-white text-lg border border-gray-600 rounded-md rounded px-4 py-1"
+                                :placeholder="auth.user.bank_number" v-model="formData.bank_number">
+                        </div>
+
+                        <!-- Save and Cancel Buttons -->
+                        <div class="mt-20 flex items-center justify-end gap-x-2">
+                            <button type="submit" class="submit-button border border-emerald-500 bg-emerald-500 hover:bg-emerald-700 duration-200 text-white text-lg rounded-lg py-2 px-6">Save</button>
+                            <router-link to="profile" class="cancel-button border border-red-500 bg-red-500 hover:bg-red-700 duration-200 text-white text-lg rounded-lg py-2 px-4">Cancel</router-link>
+                        </div>
+                    </div>
                 </div>
-
-                <!-- Username -->
-                <div>
-                    <label for="name" class="block mb-2 mt-2 text-sm font-medium text-gray-900 dark:text-gray-700">
-                        Username
-                    </label>
-                    <input type="text" id="username" class="input-field" :placeholder="auth.user.username"
-                        v-model="formData.username">
-                </div>
-
-                <!-- Address -->
-                <div>
-                    <label for="address" class="block mb-2 mt-2 text-sm font-medium text-gray-900 dark:text-gray-700">
-                        Address
-                    </label>
-                    <input type="text" id="address" class="input-field" :placeholder="auth.user.address"
-                        v-model="formData.address">
-                </div>
-
-                <!-- Bank -->
-                <div>
-                    <label for="bank" class="block mb-2 mt-2 text-sm font-medium text-gray-900 dark:text-gray-700">Bank
-                    </label>
-                    <input type="text" id="bank" class="input-field" :placeholder="auth.user.bank" v-model="formData.bank">
-                </div>
-
-                <!-- Bank Number -->
-                <div>
-                    <label for="bank_number" class="block mb-2 mt-2 text-sm font-medium text-gray-900 dark:text-gray-700">
-                        Bank number
-                    </label>
-                    <input type="text" id="bank_number" class="input-field" :placeholder="auth.user.bank_number"
-                        v-model="formData.bank_number">
-                </div>
-
-                <!-- Email Address -->
-                <div class="mb-6">
-                    <label for="email" class="block mb-2 mt-2 text-sm font-medium text-gray-900 dark:text-gray-700">
-                        Email address
-                    </label>
-                    <input type="email" id="email" class="input-field" :placeholder="auth.user.email"
-                        v-model="formData.email">
-                </div>
-
-                <!-- Save and Cancel Buttons -->
-                <div class="mt-6 flex items-center justify-end gap-x-6">
-                    <button type="submit" class="submit-button">Save</button>
-                    <router-link to="profile" class="cancel-button">Cancel</router-link>
-                </div>
-
             </form>
 
         </div>

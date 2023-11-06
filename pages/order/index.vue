@@ -77,14 +77,17 @@
                                             {{ order.id }}
                                         </td>
 
-                                        <td class="px-4 py-4 text-sm text-gray-500 dark:text-gray-300">
-
+                                        <td
+                                            class="px-4 py-4 text-sm hover:text-yellow-500 duration-200 text-gray-500 dark:text-gray-300">
+                                            <NuxtLink :to="`/order/${order.id}`">
+                                                <div class="underline">Check Order</div>
+                                            </NuxtLink>
                                         </td>
 
                                         <td class="px-4 py-4 text-sm text-gray-500 dark:text-gray-300">
                                             <div v-if="order.status === 'Pending'">
                                                 <div
-                                                    class="inline-flex items-center px-3 py-1 text-yellow-500 rounded-full gap-x-2 bg-red-100/60 dark:bg-gray-600">
+                                                    class="inline-flex items-center px-3 py-1 text-yellow-400 rounded-full gap-x-2 bg-red-100/60 dark:bg-gray-600">
                                                     <svg xmlns="http://www.w3.org/2000/svg" width="50" height="10">
                                                         <circle cx="10" cy="5" r="4" fill="yellow">
                                                             <animate attributeName="opacity" dur="1s" values="0;1;0"
@@ -135,15 +138,18 @@
                                             </div>
                                         </td>
 
-                                        <td class="px-4 py-4 text-sm text-gray-500 dark:text-gray-300">
+                                        <td class="px-4 py-4 text-md text-gray-500 dark:text-gray-300">
                                             {{ order.user_id }}
                                         </td>
 
-                                        <td class="px-4 py-4 text-sm text-gray-500 dark:text-gray-300">
-                                            {{ order.user_name }}
+                                        <td
+                                            class="px-4 py-4 text-md hover:text-yellow-500 duration-200 text-gray-500 dark:text-gray-300">
+                                            <NuxtLink :to="`/profile/${order.user_id}`">
+                                                {{ order.user_name }}
+                                            </NuxtLink>
                                         </td>
 
-                                        <td class="px-4 py-4 text-sm text-gray-500 dark:text-gray-300">
+                                        <td class="px-4 py-4 text-md text-gray-500 dark:text-gray-300">
                                             {{ formatCreatedAt(order.created_at) }}
                                         </td>
 
@@ -238,27 +244,11 @@
                                             {{ order.id }}
                                         </td>
 
-                                        <td class="px-4 py-4 text-sm text-gray-500 dark:text-gray-300">
-                                            <!-- <div v-for="product in specificOrder.products" :key="product.id"
-                                                class="font-semi my-4 grid grid-cols-5">
-                                                <div class="text-sm font-semi">
-                                                    {{ product.id }}
-                                                </div>
-                                                <div class="w-24">
-                                                    <img :src="`http://localhost:80/storage/${product.image}`"
-                                                        alt="product image">
-                                                </div>
-                                                <div class="text-sm font-semi">
-                                                    {{ product.name }}
-                                                </div>
-                                                <div>
-                                                    {{ product.pivot.quantity }}
-                                                </div>
-                                                <div class="text-sm font-semi">
-                                                    {{ product.price }}
-                                                </div>
-
-                                            </div> -->
+                                        <td
+                                            class="px-4 py-4 text-sm hover:text-yellow-500 duration-200 text-gray-500 dark:text-gray-300">
+                                            <NuxtLink :to="`/order/${order.id}`">
+                                                <div class="underline">Check Order</div>
+                                            </NuxtLink>
                                         </td>
 
                                         <td class="px-4 py-4 text-sm">
@@ -285,8 +275,11 @@
                                             {{ order.user_id }}
                                         </td>
 
-                                        <td class="px-4 py-4 text-sm text-gray-500 dark:text-gray-300">
-                                            {{ order.user_name }}
+                                        <td
+                                            class="px-4 py-4 text-md hover:text-yellow-500 duration-200 text-gray-500 dark:text-gray-300">
+                                            <NuxtLink :to="`/profile/${order.user_id}`">
+                                                {{ order.user_name }}
+                                            </NuxtLink>
                                         </td>
 
                                         <td class="px-4 py-4 text-sm text-gray-500 dark:text-gray-300">

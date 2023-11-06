@@ -36,7 +36,7 @@
                     <div class="text-gray-600 text-md">Date: {{ formatDateTime(order.created_at) }}</div>
                     <div class="text-gray-600 text-md">Price : {{ order.total_price }} </div>
                     <div class="text-gray-600 text-md">Customer : {{ order.user_name }} </div>
-                    <div class="font-semi grid grid-cols-5 mt-6">
+                    <div class="font-semibold grid grid-cols-5 mt-6">
                         <div class="text-sm font-semi">
                             ID
                         </div>
@@ -46,10 +46,10 @@
                         <div class="text-sm font-semi">
                             Name
                         </div>
-                        <div class="text-sm font-semi">
+                        <div class="text-sm text-center font-semi">
                             Quantity
                         </div>
-                        <div class="text-sm font-semi">
+                        <div class="text-sm text-center font-semi">
                             Price
                         </div>
                     </div>
@@ -101,12 +101,12 @@
                             <div class="px-4 mt-2 bg-white rounded-t-lg dark:bg-gray-700">
                                 <label for="comment" class="sr-only">Your comment</label>
                                 <textarea id="comment" rows="9"
-                                    class="w-full px-0 text-md text-gray-900 bg-white border-0 dark:bg-gray-200 focus:ring-0 dark:text-black dark:placeholder-gray-800"
+                                    class="w-full px-0 text-md text-gray-900 bg-white border-0 dark:bg-gray-100 focus:ring-0 dark:text-black dark:placeholder-gray-800"
                                     placeholder="Write a comment..." required></textarea>
                             </div>
                             <div class="flex items-center justify-between px-3 py-2 border-t dark:border-gray-600">
-                                <button type="submit"
-                                    class="inline-flex items-center py-2.5 px-8 text-xm font-medium text-center text-gray-800 bg-gray-200 rounded-lg focus:ring-4 focus:ring-blue-200 dark:focus:ring-gray-900 hover:bg-emerald-400">
+                                <button type="submit" @click="reportOrder(order.id)"
+                                    class="inline-flex items-center py-2.5 px-8 text-xm font-medium text-center text-gray-800 bg-gray-100 rounded-lg focus:ring-4 focus:ring-blue-200 dark:focus:ring-gray-900 hover:text-white hover:bg-red-500">
                                     Submit
                                 </button>
                             </div>
@@ -142,6 +142,34 @@ const previewImage = (event) => {
         };
 
         reader.readAsDataURL(file);
+    }
+};
+
+const reportOrder = async (orderId: number) => {
+    try {
+        const response = await useMyFetch<Order>(`orders/${orderId}/update_status`, {
+            method: "PUT",
+            body: JSON.stringify({
+                status: "ReportPending" // Set the new status here
+            }),
+            headers: {
+                "Content-Type": "application/json"
+            }
+        });
+
+        if (response) {
+            const updatedOrderIndex = orders.value.findIndex(order => order.id === orderId);
+            await navigateTo('/order/order-status')
+            if (updatedOrderIndex !== -1) {
+                orders.value[updatedOrderIndex].status = 'ReportPending';
+                
+            }
+            console.log('Order status updated to ReportPending successfully');
+        } else {
+            console.error('Failed to update order status to ReportPending');
+        }
+    } catch (error) {
+        console.error('Failed to update order status to ReportPending', error);
     }
 };
 

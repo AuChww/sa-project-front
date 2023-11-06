@@ -16,8 +16,8 @@
             <div v-for="order in orders" :key="order.id"
                 class="mx-auto relative my-4 flex w-80 h-full flex-col overflow-hidden rounded-2xl bg-white text-gray-600 shadow-lg ring-1 ring-gray-200">
                 <NuxtLink :to="`/order/${order.id}`">
-                    <div class="border-b p-6">
-                        <h4 class=" text-base font-semibold">Order #{{ order.id }}</h4>
+                    <div class="border-b py-4 px-6 border">
+                        <h4 class=" text-base text-lg font-semibold">Order #{{ order.id }}</h4>
                         <p class=" text-sm font-light">
                             <i class="inline-block font-black not-italic text-green-600" aria-hidden="true"></i>Status : {{
                                 order.status }}
