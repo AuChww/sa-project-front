@@ -89,30 +89,32 @@
                         </div>
                     </div>
                 </div>
-                <form class="" @submit.prevent="submitForm" enctype="multipart/form-data">
+                <form class="" @submit.prevent="onSubmit" enctype="multipart/form-data">
                     <div class="mx-2 my-2">
                         <div>
-                            <label for="name" class="block mt-6 text-xl font-medium text-gray-900 dark:text-gray-700">
+                            <label for="telephone" class="block mt-6 text-xl font-medium text-gray-900 dark:text-gray-700">
                                 Your Telephone
                             </label>
-                            <input type="text" id="" class="input-field bg-gray-700 text-white text-lg border border-gray-600 rounded-xl rounded px-4 py-1" 
-                            placeholder="Tel.">
-                        </div>
-                        <!--UPLOAD IMAGE-->
-                        <div
-                            class="bg-gray-50 w-full border border-gray-300 text-gray-900 text-xl rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                            <input type="file" accept="image/*" @change="previewImage" />
+                            <input v-model="formData.telephone" type="text" id="tel"
+                                class="input-field bg-gray-700 text-white text-lg border border-gray-600 rounded-xl rounded px-4 py-1"
+                                placeholder="Tel.">
                         </div>
                         <div
                             class="w-full mt-4 border border-gray-200 rounded-lg bg-gray-50 dark:bg-gray-600 dark:border-gray-600">
                             <div class="px-4 mt-2 bg-white rounded-t-lg dark:bg-gray-700">
-                                <label for="comment" class="sr-only">Your comment</label>
-                                <textarea id="comment" rows="9"
+                                <label for="reason" class="sr-only">Your comment</label>
+                                <textarea v-model="formData.reason" id="reason" rows="9"
                                     class="w-full px-0 text-md text-gray-900 bg-white border-0 dark:bg-gray-100 focus:ring-0 dark:text-black dark:placeholder-gray-800"
-                                    placeholder="Write a comment..." required></textarea>
+                                    placeholder="Write a reason..." required></textarea>
                             </div>
+                            <dir>
+                                <input v-model="formData.order_id" type="text" name="order_id" id="order_id"
+                                    :placeholder="order.id">
+                                <input v-model="formData.user_id" type="text" name="user_id" id="user_id"
+                                    :placeholder="order.user_id">
+                            </dir>
                             <div class="flex items-center justify-between px-3 py-2 border-t dark:border-gray-600">
-                                <button type="submit" @click="reportOrder(order.id)"
+                                <button type="submit"
                                     class="inline-flex items-center py-2.5 px-8 text-xm font-medium text-center text-gray-800 bg-gray-100 rounded-lg focus:ring-4 focus:ring-blue-200 dark:focus:ring-gray-900 hover:text-white hover:bg-red-500">
                                     Submit
                                 </button>
@@ -120,6 +122,7 @@
                         </div>
                     </div>
                 </form>
+
             </div>
 
         </div>
@@ -132,6 +135,58 @@ const route = useRoute();
 const previewUrl = ref(null);
 const { data: order, error } = await useMyFetch<any>(`order/${route.params.id}`, {});
 const { data: specificOrder } = await useMyFetch<any>(`showOrderSpecific/${route.params.id}`, {});
+
+const formData = ref({
+    telephone: "",
+    reason: "",
+    order_id: "",
+    user_id: "",
+})
+
+const formErrors = ref({
+    errors: null
+})
+
+async function onSubmit() {
+    const { telephone, reason, order_id, user_id } = formData.value;
+    const data = {
+        telephone, reason, order_id, user_id,
+    };
+
+    // Log the data before sending
+    console.log("Data before sending:", data);
+
+    const { data: response, error } = await useMyFetch<any>(
+        "report",
+        {
+            method: "POST",
+            body: data,
+        }
+    );
+
+    if (response.value !== null) {
+        await navigateTo(`/order/order-status`);
+        const response = await useMyFetch(`orders/${route.params.id}/update_status`, {
+            method: "PUT",
+            body: JSON.stringify({
+                status: "ReportPending" // Set the new status here
+            }),
+            headers: {
+                "Content-Type": "application/json"
+            }
+        });
+    } else {
+        console.log(error);
+        console.log(data);
+        const { message } = error.value!.data;
+        formErrors.value.errors = message;
+    }
+}
+onMounted(() => {
+    formData.value.order_id = order.id;
+    formData.value.user_id = order.user_id;
+});
+
 
 const previewImage = (event) => {
     const file = event.target.files ? event.target.files[0] : null; // Check if there are files
@@ -169,7 +224,7 @@ const reportOrder = async (orderId: number) => {
             await navigateTo('/order/order-status')
             if (updatedOrderIndex !== -1) {
                 orders.value[updatedOrderIndex].status = 'ReportPending';
-                
+
             }
             console.log('Order status updated to ReportPending successfully');
         } else {
