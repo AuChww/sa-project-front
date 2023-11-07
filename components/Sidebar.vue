@@ -16,7 +16,7 @@
                   </a>
               </li>
               <li>
-                  <a href="#Main Board" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:animate-pulse hover:bg-green-100 dark:hover:bg-green-500 group">
+                  <a href="#MainBoard" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:animate-pulse hover:bg-green-100 dark:hover:bg-green-500 group">
                   <span class="flex-1 whitespace-nowrap">Main Board</span>
                   </a>
               </li>

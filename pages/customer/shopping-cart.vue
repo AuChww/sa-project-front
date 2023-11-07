@@ -88,7 +88,7 @@
           </div>
         </div>
         <RouterLink to="/customer/payment">
-          <button class="mt-6 w-full rounded-md py-1.5 font-medium text-blue-50 hover:bg-blue-600"
+          <button v-if="authStore.user.bank_number != null && authStore.user.bank != null" class="mt-6 w-full rounded-md py-1.5 font-medium text-blue-50 hover:bg-blue-600"
             :class="{ 'bg-blue-500': !isCartEmpty, 'bg-gray-300 hover:bg-gray-300': isCartEmpty }"
             :disabled="isCartEmpty">
             Check out
@@ -102,8 +102,10 @@
 <script setup lang="ts">
 import { ref } from 'vue';
 import { useCartStore } from '~/stores/useCartStore';
+import { useAuthStore } from '~/stores/useAuthStore';
 
 const cartStore = useCartStore(); // Use the Cart store
+const authStore = useAuthStore();
 
 const isCartEmpty = computed(() => Cart.length === 0);
 

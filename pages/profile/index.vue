@@ -27,8 +27,7 @@
                     alt='Mountain'>
             </div>
             <div class="mx-auto w-32 h-32 relative -mt-16 border-4 border-white rounded-full overflow-hidden">
-                <img class="object-cover object-center h-32"
-                    src='https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=400&fit=max&ixid=eyJhcHBfaWQiOjE0NTg5fQ'
+                <img class="object-cover object-center h-32" src='https://cdn-icons-png.flaticon.com/512/149/149071.png'
                     alt='Woman looking front'>
             </div>
             <div class="text-center">
@@ -36,8 +35,8 @@
                 <div class="font-semibold text-sm text-gray-600">{{ auth.user.username }}</div>
 
                 <div class="font-semibold mt-4 text-m">{{ auth.user.role }}</div>
-                <div class="font-semibold text-m">{{ auth.user.role }}</div>
-                <div class="font-semibold text-m">{{ auth.user.role }}</div>
+                <div class="font-semibold text-m">{{ auth.user.bank }}</div>
+                <div class="font-semibold text-m">{{ auth.user.bank_number }}</div>
 
                 <div class="font-semibold mt-4 text-m">{{ auth.user.address }}</div>
 
@@ -89,8 +88,7 @@
                         <div v-if="order.status === 'Preparing' || order.status === 'Packing' || order.status === 'resentPending' || order.status === 'Delivering' || order.status === 'CompleteDelivery'"
                             class="px-8 py-2 justify-between my-2 bg-white w-72 mx-auto">
                             <div class="font-semibold text-lg">Order ID : {{ order.id }}</div>
-                            <div
-                                class="text-sm mt-2 hover:text-yellow-500 duration-200 text-gray-800 dark:text-blue-800">
+                            <div class="text-sm mt-2 hover:text-yellow-500 duration-200 text-gray-800 dark:text-blue-800">
                                 <NuxtLink :to="`/bill/${order.id}`">
                                     <div class="underline">Show more</div>
                                 </NuxtLink>
@@ -107,7 +105,6 @@
 import { useAuthStore } from "~/stores/useAuthStore";
 import { useOrderStore } from '~/stores/useOrderStore';
 import { useProductStore } from '~/stores/useProductStore';
-
 
 const orderStore = useOrderStore();
 const orders = ref<Order[]>([]); // Initialize as an empty array

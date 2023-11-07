@@ -74,21 +74,6 @@
         <!-- all -->
         <div v-if="auth.isLogin" class="inline-flex items-center">
           <div class="relative inline-block text-left">
-            <div>
-              <button @click="toggleNotify" type="button"
-                class="p-1.5 inline-flex text-white rounded-lg hover:bg-green-100 dark:hover:bg-blue-500 group"
-                id="menu-button" aria-expanded="true" aria-haspopup="true">
-                Notify
-                <svg
-                  class="ml-1 w-5 h-5 text-gray-500 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"
-                  aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
-                  <path
-                    d="m17.418 3.623-.018-.008a6.713 6.713 0 0 0-2.4-.569V2h1a1 1 0 1 0 0-2h-2a1 1 0 0 0-1 1v2H9.89A6.977 6.977 0 0 1 12 8v5h-2V8A5 5 0 1 0 0 8v6a1 1 0 0 0 1 1h8v4a1 1 0 0 0 1 1h2a1 1 0 0 0 1-1v-4h6a1 1 0 0 0 1-1V8a5 5 0 0 0-2.582-4.377ZM6 12H4a1 1 0 0 1 0-2h2a1 1 0 0 1 0 2Z" />
-                </svg>
-                <span
-                  class="animate-ping inline-flex items-center justify-center ml-1 w-3 h-3 p-3 text-sm font-medium text-blue-300 bg-red-100 rounded-full dark:bg-red-500 dark:text-white">1</span>
-              </button>
-            </div>
 
             <div v-if="notifyOpen"
               class=" absolute right-0 z-10 mt-2 w-56 origin-top-right divide-y divide-gray-100 rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none"

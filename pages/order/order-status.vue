@@ -27,7 +27,7 @@
                                 <i class="inline-block font-black not-italic text-green-600" aria-hidden="true"></i>Track :
                             </p>
                             <i class="inline-block font-semibold not-italic text-gray-800" aria-hidden="true"></i>{{
-                                order.track
+                                order.track_num
                             }}
                         </div>
                     </div>
