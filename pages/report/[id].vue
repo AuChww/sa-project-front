@@ -147,6 +147,9 @@ const formErrors = ref({
     errors: null
 })
 
+formData.value.order_id = order.id;
+formData.value.user_id = order.user_id;
+
 async function onSubmit() {
     const { telephone, reason, order_id, user_id } = formData.value;
     const data = {

@@ -628,6 +628,8 @@ export default {
             // Optionally, show a notification or feedback to the user that the product was added to the cart
         };
 
+        
+
         return {
             searchQuery,
             filteredProducts,

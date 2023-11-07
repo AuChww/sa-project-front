@@ -320,12 +320,12 @@
                                                 </button>
                                             </div>
                                         </div>
-                                        <RouterLink to="/report">
+                                        <NuxtLink :to=`/report/${order.id}`>
                                             <button v-if="order.status === 'Packing'" type="button"
                                                 class="border-red-500 border bg-red-500 text-white rounded-md px-4 py-2 m-2 transition duration-500 ease select-none hover:bg-red-700 focus:outline-none focus:shadow-outline">
                                                 Report
                                             </button>
-                                        </RouterLink>
+                                        </NuxtLink>
                                         <button v-if="order.status === 'CompleteDelivery'"
                                             class="border-gray-500 border bg-gray-700 text-gray-500 rounded-md px-4 py-2 m-2 transition duration-500 ease select-none focus:outline-none focus:shadow-outline">
                                             Done
