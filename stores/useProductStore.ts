@@ -53,5 +53,27 @@ export const useProductStore = defineStore('product', {
         // Handle errors
       }
     },
+    async refreshProductQuantity(productId: number) {
+      try {
+        const response = await fetch(`http://localhost/api/products/${productId}/quantity`, {
+          method: 'GET',
+        });
+
+        if (!response.ok) {
+          throw new Error('Failed to refresh product quantity');
+        }
+
+        const data = await response.json();
+
+        // Update the product quantity in the store
+        const updatedProduct = this.products.find((product) => product.id === productId);
+        if (updatedProduct) {
+          updatedProduct.quantity = data.quantity;
+        }
+      } catch (error) {
+        console.error('Error refreshing product quantity:', error);
+        // Handle errors
+      }
+    },
   },
 });

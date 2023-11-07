@@ -56,22 +56,9 @@
 
                                     <th scope="col"
                                         class="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-400">
-                                        Tel
+                                        Report
                                     </th>
 
-                                    <th scope="col"
-                                        class="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-400">
-                                        Image
-                                    </th>
-
-                                    <th scope="col"
-                                        class="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-400">
-                                        Reason
-                                    </th>
-
-                                    <th scope="col"
-                                        class="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-400">
-                                    </th>
                                     <th scope="col"
                                         class="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-400">
                                     </th>
@@ -118,7 +105,8 @@
                                         {{ order.user_id }}
                                     </td>
 
-                                    <td class="px-4 py-4 text-md hover:text-yellow-500 duration-200 text-gray-500 dark:text-gray-300">
+                                    <td
+                                        class="px-4 py-4 text-md hover:text-yellow-500 duration-200 text-gray-500 dark:text-gray-300">
                                         <NuxtLink :to="`/profile/${order.user_id}`">
                                             {{ order.user_name }}
                                         </NuxtLink>
@@ -132,21 +120,12 @@
                                         {{ order.total_price }}
                                     </td>
 
-                                    <td class="px-4 py-4 text-sm text-gray-500 dark:text-gray-300">
+                                    <NuxtLink :to="`/reason/${order.id}`">
+                                        <td class="px-4 py-6 text-md hover:text-yellow-500 duration-200 text-gray-500 dark:text-gray-300">
+                                            click here
+                                        </td>
+                                    </NuxtLink>
 
-                                    </td>
-
-                                    <td class="px-4 py-4 text-sm text-gray-500 dark:text-gray-300">
-                                        <!-- Add the image display code here -->
-                                    </td>
-
-                                    <td class="px-4 py-4 text-sm text-gray-500 dark:text-gray-300">
-                                        <!-- Add the image display code here -->
-                                    </td>
-
-                                    <td class="px-4 py-4 text-sm text-gray-500 dark:text-gray-300">
-                                        <!-- Add the image display code here -->
-                                    </td>
 
                                     <td class="py-2">
                                         <button v-if="order.status === 'ReportPending'" type="button"
@@ -216,22 +195,9 @@
 
                                     <th scope="col"
                                         class="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-400">
-                                        Tel
+                                        Report
                                     </th>
 
-                                    <th scope="col"
-                                        class="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-400">
-                                        Image
-                                    </th>
-
-                                    <th scope="col"
-                                        class="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-400">
-                                        Reason
-                                    </th>
-
-                                    <th scope="col"
-                                        class="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-400">
-                                    </th>
                                     <th scope="col"
                                         class="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-400">
                                     </th>
@@ -309,7 +275,8 @@
                                         {{ order.user_id }}
                                     </td>
 
-                                    <td class="px-4 py-4 text-md hover:text-yellow-500 duration-200 text-gray-500 dark:text-gray-300">
+                                    <td
+                                        class="px-4 py-4 text-md hover:text-yellow-500 duration-200 text-gray-500 dark:text-gray-300">
                                         <NuxtLink :to="`/profile/${order.user_id}`">
                                             {{ order.user_name }}
                                         </NuxtLink>
@@ -323,21 +290,12 @@
                                         {{ order.total_price }}
                                     </td>
 
-                                    <td class="px-4 py-4 text-sm text-gray-500 dark:text-gray-300">
+                                    <NuxtLink :to="`/reason/${order.id}`">
+                                        <td class="px-4 py-6 text-md hover:text-yellow-500 duration-200 text-gray-500 dark:text-gray-300">
+                                            click here
+                                        </td>
+                                    </NuxtLink>
 
-                                    </td>
-
-                                    <td class="px-4 py-4 text-sm text-gray-500 dark:text-gray-300">
-                                        <!-- Add the image display code here -->
-                                    </td>
-
-                                    <td class="px-4 py-4 text-sm text-gray-500 dark:text-gray-300">
-                                        <!-- Add the image display code here -->
-                                    </td>
-
-                                    <td class="px-4 py-4 text-sm text-gray-500 dark:text-gray-300">
-                                        <!-- Add the image display code here -->
-                                    </td>
 
                                     <td class="py-2">
                                         <button v-if="order.status === 'CompleteRefund'"
@@ -405,22 +363,9 @@
 
                                     <th scope="col"
                                         class="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-400">
-                                        Tel
+                                        Report
                                     </th>
 
-                                    <th scope="col"
-                                        class="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-400">
-                                        Image
-                                    </th>
-
-                                    <th scope="col"
-                                        class="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-400">
-                                        Reason
-                                    </th>
-
-                                    <th scope="col"
-                                        class="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-400">
-                                    </th>
                                     <th scope="col"
                                         class="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-400">
                                     </th>
@@ -498,7 +443,8 @@
                                         {{ order.user_id }}
                                     </td>
 
-                                    <td class="px-4 py-4 text-md hover:text-yellow-500 duration-200 text-gray-500 dark:text-gray-300">
+                                    <td
+                                        class="px-4 py-4 text-md hover:text-yellow-500 duration-200 text-gray-500 dark:text-gray-300">
                                         <NuxtLink :to="`/profile/${order.user_id}`">
                                             {{ order.user_name }}
                                         </NuxtLink>
@@ -512,21 +458,12 @@
                                         {{ order.total_price }}
                                     </td>
 
-                                    <td class="px-4 py-4 text-sm text-gray-500 dark:text-gray-300">
+                                    <NuxtLink :to="`/reason/${order.id}`">
+                                        <td class="px-4 py-6 text-md hover:text-yellow-500 duration-200 text-gray-500 dark:text-gray-300">
+                                            click here
+                                        </td>
+                                    </NuxtLink>
 
-                                    </td>
-
-                                    <td class="px-4 py-4 text-sm text-gray-500 dark:text-gray-300">
-                                        <!-- Add the image display code here -->
-                                    </td>
-
-                                    <td class="px-4 py-4 text-sm text-gray-500 dark:text-gray-300">
-                                        <!-- Add the image display code here -->
-                                    </td>
-
-                                    <td class="px-4 py-4 text-sm text-gray-500 dark:text-gray-300">
-                                        <!-- Add the image display code here -->
-                                    </td>
 
                                     <td class="py-2">
                                         <button v-if="order.status === 'CompleteDelivery'"
@@ -555,6 +492,7 @@ import { useOrderStore } from '~/stores/useOrderStore';
 
 const orderStore = useOrderStore();
 
+const { data: reports } = await useMyFetch<any>(`report`, {});
 const orders = ref<Order[]>([]); // Initialize as an empty array
 
 const fetchOrders = async () => {
@@ -729,5 +667,4 @@ const formatCreatedAt = (timestamp: string) => {
 .swipe-in-enter,
 .swipe-in-leave-to {
     transform: translateY(-20%);
-}
-</style>
+}</style>
