@@ -270,6 +270,10 @@ const orderStore = useOrderStore();
 
 const orders = ref<Order[]>([]); // Initialize as an empty array
 
+definePageMeta({
+    middleware: "authenticated", //Auth checker
+  });
+  
 const fetchOrders = async () => {
     try {
         // Fetch all orders

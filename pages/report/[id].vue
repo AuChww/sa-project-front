@@ -90,9 +90,24 @@
                     </div>
                 </div>
                 <form class="" @submit.prevent="onSubmit" enctype="multipart/form-data">
-                    <div class="mx-2 my-2">
+                    <div class="mx-2 px-4 my-2">
                         <div>
-                            <label for="telephone" class="block mt-6 text-xl font-medium text-gray-900 dark:text-gray-700">
+                            <label for="telephone" class="block mt-2 text-xl font-medium text-gray-900 dark:text-gray-700">
+                                Order Id
+                            </label>
+                            <input v-model="formData.order_id" type="text" name="order_id" id="order_id"
+                                :placeholder="order.id" class="input-field bg-gray-700 text-white text-lg border border-gray-600 rounded-xl rounded px-4 py-1"
+                                placeholder="Tel.">
+                            <label for="telephone" class="block text-xl font-medium text-gray-900 dark:text-gray-700">
+                                User Id
+                            </label>
+                            <input v-model="formData.user_id" type="text" name="user_id" id="user_id"
+                                :placeholder="order.user_id"
+                                class="input-field bg-gray-700 text-white text-lg border border-gray-600 rounded-xl rounded px-4 py-1"
+                                placeholder="Tel.">
+                        </div>
+                        <div>
+                            <label for="telephone" class="block text-xl font-medium text-gray-900 dark:text-gray-700">
                                 Your Telephone
                             </label>
                             <input v-model="formData.telephone" type="text" id="tel"
@@ -103,16 +118,10 @@
                             class="w-full mt-4 border border-gray-200 rounded-lg bg-gray-50 dark:bg-gray-600 dark:border-gray-600">
                             <div class="px-4 mt-2 bg-white rounded-t-lg dark:bg-gray-700">
                                 <label for="reason" class="sr-only">Your comment</label>
-                                <textarea v-model="formData.reason" id="reason" rows="9"
+                                <textarea v-model="formData.reason" id="reason" rows="3"
                                     class="w-full px-0 text-md text-gray-900 bg-white border-0 dark:bg-gray-100 focus:ring-0 dark:text-black dark:placeholder-gray-800"
                                     placeholder="Write a reason..." required></textarea>
                             </div>
-                            <dir>
-                                <input v-model="formData.order_id" type="text" name="order_id" id="order_id"
-                                    :placeholder="order.id">
-                                <input v-model="formData.user_id" type="text" name="user_id" id="user_id"
-                                    :placeholder="order.user_id">
-                            </dir>
                             <div class="flex items-center justify-between px-3 py-2 border-t dark:border-gray-600">
                                 <button type="submit"
                                     class="inline-flex items-center py-2.5 px-8 text-xm font-medium text-center text-gray-800 bg-gray-100 rounded-lg focus:ring-4 focus:ring-blue-200 dark:focus:ring-gray-900 hover:text-white hover:bg-red-500">
@@ -168,7 +177,7 @@ async function onSubmit() {
     );
 
     if (response.value !== null) {
-        await navigateTo(`/order/order-status`);
+        await navigateTo(`/`);
         const response = await useMyFetch(`orders/${route.params.id}/update_status`, {
             method: "PUT",
             body: JSON.stringify({

@@ -325,6 +325,10 @@ const route = useRoute();
 const { data: order, error } = await useMyFetch<any>(`order/${route.params.id}`, {});
 const { data: specificOrder } = await useMyFetch<any>(`showOrderSpecific/${route.params.id}`, {});
 
+definePageMeta({
+    middleware: "authenticated", //Auth checker
+  });
+  
 if (order.value !== null) {
     console.log(order.value);
     console.log(specificOrder.value);

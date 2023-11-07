@@ -28,7 +28,7 @@
             </div>
             <div class="mx-auto w-32 h-32 relative -mt-16 border-4 border-white rounded-full overflow-hidden">
                 <img class="object-cover object-center h-32"
-                    src='https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=400&fit=max&ixid=eyJhcHBfaWQiOjE0NTg5fQ'
+                    src='https://cdn-icons-png.flaticon.com/512/149/149071.png'
                     alt='Woman looking front'>
             </div>
             <div class="text-center">
@@ -36,6 +36,8 @@
                 <div class="font-semibold text-sm text-gray-600">{{ user.username }}</div>
 
                 <div class="font-semibold mt-4 text-m">{{ user.role }}</div>
+                <div class="font-semibold text-m">{{ user.bank }}</div>
+                <div class="font-semibold text-m">{{ user.bank_number }}</div>
 
                 <div class="font-semibold mt-2 text-m">{{ user.address }}</div>
 
@@ -57,8 +59,7 @@
                 class="overflow-y-auto px-4 py-4 sm:mx-auto md:mx-auto lg:mx-auto xl:mx-auto mt-4 bg-gray-700 shadow-xl rounded-lg text-black">
                 <div>
                     <div v-for="order in user.orders" :key="order.id">
-                        <div v-if="order.status === 'Preparing' || order.status === 'Packing' || order.status === 'resentPending' || order.status === 'Delivering' || order.status === 'CompleteDelivery'"
-                            class="px-8 py-2 justify-between my-2 bg-white w-72 mx-auto">
+                        <div class="px-8 py-2 justify-between my-2 bg-white w-72 mx-auto">
                             <div class="font-semibold text-lg">Order ID : {{ order.id }}</div>
                             <div
                                 class="text-sm mt-2 hover:text-yellow-500 duration-200 text-gray-800 dark:text-blue-800">

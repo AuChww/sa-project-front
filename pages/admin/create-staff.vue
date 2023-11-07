@@ -118,6 +118,11 @@
   
 <script setup lang="ts">
 import { ref } from 'vue'
+
+definePageMeta({
+    middleware: "authenticated", //Auth checker
+  });
+
 const formData = reactive({
     email: '',
     name: '',
