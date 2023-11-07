@@ -74,7 +74,7 @@
             </div>
 
         </div>
-        <div style="height: 600px; border"
+        <div v-if="auth.checkRole('Customer')" style="height: 600px; border"
             class="px-4 sm:max-w-sm md:max-w-sm lg:max-w-sm xl:max-w-sm sm:mx-auto md:mx-auto lg:mx-auto xl:mx-auto mt-4 bg-white shadow-xl rounded-lg text-gray-900">
             <div class="mt-4">
                 <div class="px-20 text-2xl mb-4 text-gray-700 font-semibold">
@@ -85,8 +85,7 @@
                 class="overflow-y-auto px-4 py-2 sm:mx-auto md:mx-auto lg:mx-auto xl:mx-auto mt-4 bg-gray-700 shadow-xl rounded-lg text-black">
                 <div>
                     <div v-for="order in orders" :key="order.id">
-                        <div v-if="order.status === 'Preparing' || order.status === 'Packing' || order.status === 'resentPending' || order.status === 'Delivering' || order.status === 'CompleteDelivery'"
-                            class="px-8 py-2 justify-between my-2 bg-white w-72 mx-auto">
+                        <div  class="px-8 py-2 justify-between my-2 bg-white w-72 mx-auto">
                             <div class="font-semibold text-lg">Order ID : {{ order.id }}</div>
                             <div class="text-sm mt-2 hover:text-yellow-500 duration-200 text-gray-800 dark:text-blue-800">
                                 <NuxtLink :to="`/bill/${order.id}`">
@@ -139,11 +138,6 @@ const fetchProducts = async () => {
         console.error('Failed to fetch orders', error);
     }
 };
-
-
-definePageMeta({
-    middleware: 'authenticated'
-})
 
 onMounted(() => {
     fetchOrders();

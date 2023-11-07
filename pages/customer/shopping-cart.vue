@@ -88,11 +88,18 @@
           </div>
         </div>
         <RouterLink to="/customer/payment">
-          <button v-if="authStore.user.bank_number != null && authStore.user.bank != null" class="mt-6 w-full rounded-md py-1.5 font-medium text-blue-50 hover:bg-blue-600"
+          <button v-if="authStore.user.bank_number != null && authStore.user.bank != null"
+            class="mt-6 w-full rounded-md py-1.5 font-medium text-blue-50 hover:bg-blue-600"
             :class="{ 'bg-blue-500': !isCartEmpty, 'bg-gray-300 hover:bg-gray-300': isCartEmpty }"
             :disabled="isCartEmpty">
             Check out
           </button>
+          <div v-if="authStore.user.bank_number == null && authStore.user.bank == null " class="mt-4">
+            <button
+              class="bg-transparent animate animate-pulse duration-250 text-red-500 font-semibold mx-4 hover:text-red-500 py-2 px-4 border border-red-500 hover:border-transparent rounded">
+              Please Check Your Bank Account Info & Address
+            </button>
+          </div>
         </RouterLink>
       </div>
     </div>

@@ -94,6 +94,10 @@
 <script setup lang="ts">
 import { ref, reactive } from 'vue';
 
+definePageMeta({
+    middleware: "authenticated", //Auth checker
+  });
+  
 const formData = reactive({
     name: '',
     category: 'CPU',

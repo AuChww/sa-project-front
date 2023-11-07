@@ -490,6 +490,10 @@
 <script setup lang="ts">
 import { useOrderStore } from '~/stores/useOrderStore';
 
+definePageMeta({
+    middleware: "authenticated", //Auth checker
+  });
+  
 const orderStore = useOrderStore();
 
 const { data: reports } = await useMyFetch<any>(`report`, {});

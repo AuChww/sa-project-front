@@ -27,7 +27,7 @@
                         <span class="text-gray-600">{{ products.quantity }}</span>
                     </div>
                     <div class="flex mt-8 -mx-2 mb-4">
-                        <div class="mx-0 px-4 w-80">
+                        <div class="mx-0 px-4 w-80" v-if="auth.isLogin" >
                             <button @click="addToCart" class="transform active:scale-x-75 transition-transform w-full bg-blue-800 text-white text-lg py-2 px-4 rounded-full font-bold hover:bg-blue-700">Add to Cart</button>
                         </div>
                     </div>
@@ -39,11 +39,13 @@
 </template>
 
 <script setup type="ts">
-
+import { useAuthStore } from '~/stores/useAuthStore';
 import { useCartStore } from '~/stores/useCartStore';
 
 const route = useRoute();
 const cartStore = useCartStore(); // Use the Cart store
+const auth = useAuthStore();
+
 const { data: products, error } = await useMyFetch(`products/${route.params.id}`, {});
 
 if (products.value === null) {

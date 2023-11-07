@@ -36,8 +36,8 @@
                 <div class="font-semibold text-sm text-gray-600">{{ user.username }}</div>
 
                 <div class="font-semibold mt-4 text-m">{{ user.role }}</div>
-                <div class="font-semibold text-m">{{ auth.user.bank }}</div>
-                <div class="font-semibold text-m">{{ auth.user.bank_number }}</div>
+                <div class="font-semibold text-m">{{ user.bank }}</div>
+                <div class="font-semibold text-m">{{ user.bank_number }}</div>
 
                 <div class="font-semibold mt-2 text-m">{{ user.address }}</div>
 
@@ -59,8 +59,7 @@
                 class="overflow-y-auto px-4 py-4 sm:mx-auto md:mx-auto lg:mx-auto xl:mx-auto mt-4 bg-gray-700 shadow-xl rounded-lg text-black">
                 <div>
                     <div v-for="order in user.orders" :key="order.id">
-                        <div v-if="order.status === 'Preparing' || order.status === 'Packing' || order.status === 'resentPending' || order.status === 'Delivering' || order.status === 'CompleteDelivery'"
-                            class="px-8 py-2 justify-between my-2 bg-white w-72 mx-auto">
+                        <div class="px-8 py-2 justify-between my-2 bg-white w-72 mx-auto">
                             <div class="font-semibold text-lg">Order ID : {{ order.id }}</div>
                             <div
                                 class="text-sm mt-2 hover:text-yellow-500 duration-200 text-gray-800 dark:text-blue-800">

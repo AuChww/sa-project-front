@@ -175,8 +175,5 @@ onMounted(() => {
     formData.value.email = auth.user.email;
 });
 
-definePageMeta({
-    middleware: "authenticated",
-});
 </script>
 

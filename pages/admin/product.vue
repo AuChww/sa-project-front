@@ -378,6 +378,10 @@ import { ref, onMounted, computed } from 'vue';
 import { useProductStore } from '~/stores/useProductStore';
 import { useAuthStore } from '~/stores/useAuthStore';
 
+definePageMeta({
+    middleware: "authenticated", //Auth checker
+  });
+  
 export default {
     methods: {
         animateButton() {

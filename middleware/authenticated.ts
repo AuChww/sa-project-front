@@ -11,29 +11,25 @@ export default defineNuxtRouteMiddleware((to, from) => {
   }
 
 
-  function isAllowedAccess(checkRole, routeName) {
-    if (routeName === 'admin-create-staff' && (checkRole === 'Admin')) {
+  function isAllowedAccess(userRole, routeName) {
+    if (routeName === 'admin-create-staff' && (userRole === 'Admin')) {
       return true;
-    } else if (routeName === 'admin-product' && (checkRole === 'Admin')) {
+    } else if (routeName === 'admin-product' && (userRole === 'Admin')) {
       return true;      
-    } else if (routeName === 'admin-report-check' && (checkRole === 'Admin')) {
+    } else if (routeName === 'admin-report-check' && (userRole === 'Admin')) {
       return true;
-    } else if (routeName === 'product-product-add' && (checkRole === 'Admin')) {
+    } else if (routeName === 'product-product-add' && (userRole === 'Admin')) {
       return true;
-    } else if (routeName === 'product-product-check' && (checkRole === 'Delivery')) {
+    } else if (routeName === 'product-product-check' && (userRole === 'Delivery')) {
       return true;
-    } else if (routeName === 'order' && (checkRole === 'Audit' || checkRole === 'Admin')) {
+    } else if (routeName === 'order' && (userRole === 'Audit' || userRole === 'Admin')) {
       return true;
-    } else if (routeName === 'order-refund' && (checkRole === 'Audit' || checkRole === 'Admin')) {
-      return true;
-    } else if (routeName === 'order-order-status' && (checkRole === 'Customer' || checkRole === 'Admin')) {
-      return true;
-    } else if (routeName === 'order-refund-check' && (checkRole === 'Audit' || checkRole === 'Admin')) {
-      return true;
+    } else if (routeName === 'order-refund-check' && (userRole === 'Audit' || userRole === 'Admin')) {
+      return true;}
     return false;
   }
 
-  console.log(to.name, authStore.checkRole, authStore.isLogin);
+  console.log(to.name, authStore.userRole, authStore.isLogin);
 
   if (process.client) {
     if (!authStore.isLogin) {
@@ -44,16 +40,16 @@ export default defineNuxtRouteMiddleware((to, from) => {
         return navigateTo('/auth/login');
       }
     } else {
-      if (!isAllowedAccess(authStore.checkRole, to.name)) {
-        console.log(to.name, authStore.checkRole, authStore.isLogin)
+      if (!isAllowedAccess(authStore.userRole, to.name)) {
+        console.log(to.name, authStore.userRole, authStore.isLogin)
         return navigateTo('/404Page');
 
       }
     }
 
-    console.log(to.name, authStore.checkRole, authStore.isLogin);
+    console.log(to.name, authStore.userRole, authStore.isLogin);
   }
 
 }
 
-});
+);

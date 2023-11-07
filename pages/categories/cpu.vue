@@ -90,7 +90,7 @@
                                         </div>
                                         <div class="flex justify-between mt-2">
                                             <!-- Price on the left-bottom -->
-                                            <div class="text-xl font-bold text-blue-900 ">$ {{ product.price }}</div>
+                                            <div class="text-xl font-bold text-blue-900 ">฿ {{ product.price }}</div>
 
 
 
