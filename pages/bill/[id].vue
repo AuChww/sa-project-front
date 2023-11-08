@@ -31,7 +31,10 @@
                     </div>
                 </div>
                 <div class="">
-                    <div class="text-black font-semibold ml-12 px-1  mt-4 text-2xl">Bill</div>
+                    <div class="inline-flex">
+                        <div class="text-black font-semibold ml-12 px-1  mt-4 text-2xl">Bill</div>
+                        <div class="text-gray-500 font-semi ml-4 px-1  mt-5 text-lg">Status : {{ order.status }}</div>
+                    </div>
                     <div style="height: 550px; width: 400px; border"
                         class="overflow-y-auto mt-2 px-4 py-2 sm:mx-auto md:mx-auto lg:mx-auto xl:mx-auto  bg-gray-700 shadow-xl rounded-lg text-black">
                         <div>

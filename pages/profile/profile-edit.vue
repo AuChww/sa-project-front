@@ -50,6 +50,15 @@
                     </div>
 
                     <div>
+                        <div>
+                            <label for="phone"
+                                class="block mb-2 mt-4 text-sm font-medium text-gray-900 dark:text-gray-700">
+                                Phone
+                            </label>
+                            <input type="text" id="phone"
+                                class="input-field bg-gray-700 text-white text-lg border border-gray-600 rounded-md rounded px-4 py-1  my-0"
+                                :placeholder="auth.user.phone" v-model="formData.phone">
+                        </div>
                         <!-- Address -->
                         <div>
                             <label for="address"
@@ -127,6 +136,7 @@ const formData = ref({
     bank: "",
     bank_number: "",
     email: "",
+    phone: "",
 });
 
 const formErrors = ref({
@@ -134,7 +144,7 @@ const formErrors = ref({
 });
 
 async function onSubmit() {
-    const { username, name, address, bank, bank_number, email } = formData.value;
+    const { username, name, address, bank, bank_number, email, phone } = formData.value;
     const data = {
         username,
         name,
@@ -142,6 +152,7 @@ async function onSubmit() {
         bank,
         bank_number,
         email,
+        phone
     };
 
     // Log the data before sending
@@ -157,7 +168,7 @@ async function onSubmit() {
 
     if (response.value !== null) {
         await navigateTo(`/profile`);
-        auth.updateUser(data.name, data.email, data.username, data.address, data.bank, data.bank_number);
+        auth.updateUser(data.name, data.email, data.username, data.address, data.bank, data.bank_number, data.phone);
     } else {
         console.log(error);
         console.log(data);
@@ -173,6 +184,8 @@ onMounted(() => {
     formData.value.bank = auth.user.bank;
     formData.value.bank_number = auth.user.bank_number;
     formData.value.email = auth.user.email;
+    formData.value.phone = auth.user.phone;
+    console.log(formData.value.phone)
 });
 
 </script>

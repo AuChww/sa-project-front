@@ -146,7 +146,7 @@ const calculateSubtotal = () => {
 const calculateTotal = () => {
   const subtotal = calculateSubtotal();
   // Include shipping costs or other charges as needed
-  return `$${(subtotal).toFixed(2)} BAHT`;
+  return `${(subtotal).toFixed(2)} BAHT`;
 };
 
 </script>

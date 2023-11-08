@@ -59,7 +59,7 @@
                 class="overflow-y-auto px-4 py-4 sm:mx-auto md:mx-auto lg:mx-auto xl:mx-auto mt-4 bg-gray-700 shadow-xl rounded-lg text-black">
                 <div>
                     <div v-for="order in user.orders" :key="order.id">
-                        <div class="px-8 py-2 justify-between my-2 bg-white w-72 mx-auto">
+                        <div v-if="order.status != 'Pending'" class="px-8 py-2 justify-between my-2 bg-white w-72 mx-auto">
                             <div class="font-semibold text-lg">Order ID : {{ order.id }}</div>
                             <div
                                 class="text-sm mt-2 hover:text-yellow-500 duration-200 text-gray-800 dark:text-blue-800">

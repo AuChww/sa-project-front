@@ -100,7 +100,7 @@
                                 }}</span>
                             </div>
                         </NuxtLink>
-                        <button v-if="auth.isLogin" 
+                        <button 
                             class="transform active:scale-x-75 transition-transform inline-flex bg-blue-800 md:text-sm lg:text-md text-white lg:px-4 md:px-2 py-2 rounded-full hover:bg-blue-700"
                             @click="addToCart(product)">
                             Add
@@ -148,7 +148,7 @@
                                         <span class="lg:text-xl font-bold text-blue-900 md:text-md text-left">฿ {{
                                             product.price
                                         }}</span>
-                                        <button v-if="auth.isLogin" 
+                                        <button
                                             class="transform active:scale-x-75 transition-transform inline-flex bg-blue-800 md:text-sm lg:text-md text-white lg:px-4 md:px-2 py-2 rounded-full hover:bg-blue-700"
                                             @click="addToCart(product)">
                                             Add
@@ -199,7 +199,7 @@
                                         <span class="lg:text-xl font-bold text-blue-900 md:text-md text-left">฿ {{
                                             product.price
                                         }}</span>
-                                        <button v-if="auth.isLogin" 
+                                        <button
                                             class="transform active:scale-x-75 transition-transform inline-flex bg-blue-800 md:text-sm lg:text-md text-white lg:px-4 md:px-2 py-2 rounded-full hover:bg-blue-700"
                                             @click="addToCart(product)">
                                             Add
@@ -248,7 +248,7 @@
                                     <span class="lg:text-xl font-bold text-blue-900 md:text-md text-left">฿ {{
                                         product.price
                                     }}</span>
-                                    <button v-if="auth.isLogin" 
+                                    <button
                                         class="transform active:scale-x-75 transition-transform inline-flex bg-blue-800 md:text-sm lg:text-md text-white lg:px-4 md:px-2 py-2 rounded-full hover:bg-blue-700"
                                         @click="addToCart(product)">
                                         Add
@@ -296,7 +296,7 @@
                                     <span class="lg:text-xl font-bold text-blue-900 md:text-md text-left">฿ {{
                                         product.price
                                     }}</span>
-                                    <button v-if="auth.isLogin" 
+                                    <button
                                         class="transform active:scale-x-75 transition-transform inline-flex bg-blue-800 md:text-sm lg:text-md text-white lg:px-4 md:px-2 py-2 rounded-full hover:bg-blue-700"
                                         @click="addToCart(product)">
                                         Add
@@ -344,7 +344,7 @@
                                     <span class="lg:text-xl font-bold text-blue-900 md:text-md text-left">฿ {{
                                         product.price
                                     }}</span>
-                                    <button v-if="auth.isLogin" 
+                                    <button
                                         class="transform active:scale-x-75 transition-transform inline-flex bg-blue-800 md:text-sm lg:text-md text-white lg:px-4 md:px-2 py-2 rounded-full hover:bg-blue-700"
                                         @click="addToCart(product)">
                                         Add
@@ -392,7 +392,7 @@
                                     <span class="lg:text-xl font-bold text-blue-900 md:text-md text-left">฿ {{
                                         product.price
                                     }}</span>
-                                    <button v-if="auth.isLogin" 
+                                    <button
                                         class="transform active:scale-x-75 transition-transform inline-flex bg-blue-800 md:text-sm lg:text-md text-white lg:px-4 md:px-2 py-2 rounded-full hover:bg-blue-700"
                                         @click="addToCart(product)">
                                         Add
@@ -440,7 +440,7 @@
                                     <span class="lg:text-xl font-bold text-blue-900 md:text-md text-left">฿ {{
                                         product.price
                                     }}</span>
-                                    <button v-if="auth.isLogin" 
+                                    <button
                                         class="transform active:scale-x-75 transition-transform inline-flex bg-blue-800 md:text-sm lg:text-md text-white lg:px-4 md:px-2 py-2 rounded-full hover:bg-blue-700"
                                         @click="addToCart(product)">
                                         Add

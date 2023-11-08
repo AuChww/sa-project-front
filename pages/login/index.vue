@@ -88,7 +88,7 @@ async function onSubmit() {
                 method: 'POST'
             })
             if (user.value !== null) {
-                auth.setUser(user.value.name, user.value.email, user.value.role, user.value.username, user.value.address, user.value.id, user.value.bank, user.value.bank_number)
+                auth.setUser(user.value.name, user.value.email, user.value.role, user.value.username, user.value.address, user.value.id, user.value.bank, user.value.bank_number, user.value.phone)
                 await navigateTo('/profile')
             } else {
                 auth.clear()

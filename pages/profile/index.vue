@@ -33,6 +33,7 @@
             <div class="text-center">
                 <div class="font-semibold text-3xl">{{ auth.user.name }}</div>
                 <div class="font-semibold text-sm text-gray-600">{{ auth.user.username }}</div>
+                <div class="font-semibold text-sm text-gray-600">{{ auth.user.phone }}</div>
 
                 <div class="font-semibold mt-4 text-m">{{ auth.user.role }}</div>
                 <div class="font-semibold text-m">{{ auth.user.bank }}</div>
@@ -152,6 +153,7 @@ type Order = {
     product_id: number;
     product_name: string;
     product_price: number;
+    phone: string;
     address: string;
     total_price: string;
     payment_receipt: string;

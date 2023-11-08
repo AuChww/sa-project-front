@@ -42,7 +42,7 @@
         </div>
 
         <!-- Second Column -->
-        <div class="grid grid-cols-1 gap-6 sm:grid-cols-2">
+        <div class="grid grid-cols-1 gap-6 sm:grid-cols-3">
           <!-- Column 1 -->
           <div>
             <label for="name" class="block text-sm font-medium leading-6 text-black">Full Name</label>
@@ -51,6 +51,13 @@
           </div>
 
           <!-- Column 2 -->
+          <div>
+            <label for="phone" class="block text-sm font-medium leading-6 text-black">Phone</label>
+            <input v-model="formData.phone" id="phone" name="phone" type="tel" autocomplete="phone" required
+              class="block w-full rounded-md border-0 p-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+          </div>
+
+          <!-- Column 3 -->
           <div>
             <label for="address" class="block text-sm font-medium leading-6 text-black">Address</label>
             <input v-model="formData.address" id="address" name="address" type="text" autocomplete="address" required
@@ -108,6 +115,7 @@ const formData = reactive({
   name: '',
   username: '',
   address: '',
+  phone: '',
   password: '',
   password_confirmation: ''
 })
