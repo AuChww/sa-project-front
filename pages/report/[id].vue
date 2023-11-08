@@ -89,23 +89,28 @@
                         </div>
                     </div>
                 </div>
-                <form v-for="report in specificOrder" :key="order.report" class="" @submit.prevent="onSubmit(report.id)" enctype="multipart/form-data">
-                    <div
-                        class="w-full mt-4 border border-gray-200 rounded-lg bg-gray-50 dark:bg-gray-600 dark:border-gray-600">
-                        <div class="px-4 mt-2 bg-white rounded-t-lg dark:bg-gray-700">
-                            <label for="reason" class="sr-only">Your comment</label>
-                            <textarea v-model="formData.reason" id="reason" rows="3"
-                                class="w-full px-0 text-md text-gray-900 bg-white border-0 dark:bg-gray-100 focus:ring-0 dark:text-black dark:placeholder-gray-800"
-                                placeholder="Write a reason..." required></textarea>
+                <div>
+                    <form class="" @submit.prevent="onSubmit()" enctype="multipart/form-data">
+                        <div
+                            class="w-full mt-4 border border-gray-200 rounded-lg bg-gray-50 dark:bg-gray-600 dark:border-gray-600">
+                            <div class="px-4 mt-2 bg-white rounded-t-lg dark:bg-gray-700">
+                                <label for="reason" class="sr-only">Your comment</label>
+                                <textarea v-model="formData.reason" id="reason" rows="3"
+                                    class="w-full px-0 text-md text-gray-900 bg-white border-0 dark:bg-gray-100 focus:ring-0 dark:text-black dark:placeholder-gray-800"
+                                    placeholder="Write a reason..." required></textarea>
+                            </div>
+                            <div class="text-red-600">
+                                {{ statusMessage }}
+                            </div>
+                            <div class="flex items-center justify-between px-3 py-2 border-t dark:border-gray-600">
+                                <button type="submit"
+                                    class="inline-flex items-center py-2.5 px-8 text-xm font-medium text-center text-gray-800 bg-gray-100 rounded-lg focus:ring-4 focus:ring-blue-200 dark:focus:ring-gray-900 hover:text-white hover:bg-red-500">
+                                    Submit
+                                </button>
+                            </div>
                         </div>
-                        <div class="flex items-center justify-between px-3 py-2 border-t dark:border-gray-600">
-                            <button type="submit" 
-                                class="inline-flex items-center py-2.5 px-8 text-xm font-medium text-center text-gray-800 bg-gray-100 rounded-lg focus:ring-4 focus:ring-blue-200 dark:focus:ring-gray-900 hover:text-white hover:bg-red-500">
-                                Submit
-                            </button>
-                        </div>
-                    </div>
-                </form>
+                    </form>
+                </div>
             </div>
 
         </div>
