@@ -61,11 +61,6 @@
 
                                     <th scope="col"
                                         class="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-400">
-                                        Report
-                                    </th>
-
-                                    <th scope="col"
-                                        class="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-400">
                                     </th>
                                 </tr>
                             </thead>
@@ -128,12 +123,6 @@
                                     <td class="px-4 py-4 text-sm text-gray-500 dark:text-gray-300">
                                         {{ order.total_price }}
                                     </td>
-
-                                    <NuxtLink :to="`/reason/${order.id}`">
-                                        <td class="px-4 py-6 text-md hover:text-yellow-500 duration-200 text-gray-500 dark:text-gray-300">
-                                            click here
-                                        </td>
-                                    </NuxtLink>
 
 
                                     <td class="py-2">
@@ -200,11 +189,6 @@
                                     <th scope="col"
                                         class="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-400">
                                         Total Amount
-                                    </th>
-
-                                    <th scope="col"
-                                        class="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-400">
-                                        Report
                                     </th>
 
                                     <th scope="col"
@@ -299,12 +283,6 @@
                                         {{ order.total_price }}
                                     </td>
 
-                                    <NuxtLink :to="`/reason/${order.id}`">
-                                        <td class="px-4 py-6 text-md hover:text-yellow-500 duration-200 text-gray-500 dark:text-gray-300">
-                                            click here
-                                        </td>
-                                    </NuxtLink>
-
 
                                     <td class="py-2">
                                         <button v-if="order.status === 'CompleteRefund'"
@@ -368,11 +346,6 @@
                                     <th scope="col"
                                         class="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-400">
                                         Total Amount
-                                    </th>
-
-                                    <th scope="col"
-                                        class="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-400">
-                                        Report
                                     </th>
 
                                     <th scope="col"
@@ -467,13 +440,6 @@
                                         {{ order.total_price }}
                                     </td>
 
-                                    <NuxtLink :to="`/reason/${order.id}`">
-                                        <td class="px-4 py-6 text-md hover:text-yellow-500 duration-200 text-gray-500 dark:text-gray-300">
-                                            click here
-                                        </td>
-                                    </NuxtLink>
-
-
                                     <td class="py-2">
                                         <button v-if="order.status === 'CompleteDelivery'"
                                             class="border-gray-500 border bg-gray-700 text-gray-500 rounded-md px-4 py-2 m-2 transition duration-500 ease select-none focus:outline-none focus:shadow-outline">
@@ -501,7 +467,7 @@ import { useOrderStore } from '~/stores/useOrderStore';
 
 definePageMeta({
     middleware: "authenticated", //Auth checker
-  });
+});
 
 const orderStore = useOrderStore();
 
@@ -579,6 +545,16 @@ const refundOrder = async (orderId: number) => {
             if (updatedOrderIndex !== -1) {
                 orders.value[updatedOrderIndex].status = 'RefundPending';
             }
+
+            const response = await useMyFetch<any>(`/orders/${orderId}/deleteReport`, {
+                method: "DELETE",
+                body: JSON.stringify({
+                }),
+                headers: {
+                    "Content-Type": "application/json"
+                }
+            });
+
             console.log('Order status updated to RefundPending successfully');
         } else {
             console.error('Failed to update order status to RefundPending');
@@ -605,6 +581,16 @@ const resentOrder = async (orderId: number) => {
             if (updatedOrderIndex !== -1) {
                 orders.value[updatedOrderIndex].status = 'ResentPending';
             }
+
+            const response = await useMyFetch<any>(`/orders/${orderId}/deleteReport`, {
+                method: "DELETE",
+                body: JSON.stringify({
+                }),
+                headers: {
+                    "Content-Type": "application/json"
+                }
+            });
+
             console.log('Order status updated to ResentPending successfully');
         } else {
             console.error('Failed to update order status to ResentPending');

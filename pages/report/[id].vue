@@ -89,51 +89,27 @@
                         </div>
                     </div>
                 </div>
-                <form class="" @submit.prevent="onSubmit" enctype="multipart/form-data">
-                    <div class="mx-2 px-4 my-2">
-                        <div>
-                            <label for="telephone" class="block mt-2 text-xl font-medium text-gray-900 dark:text-gray-700">
-                                Order Id
-                            </label>
-                            <input v-model="formData.order_id" type="text" name="order_id" id="order_id"
-                                :placeholder="order.id" class="input-field bg-gray-700 text-white text-lg border border-gray-600 rounded-xl rounded px-4 py-1">
-                            <label for="telephone" class="block text-xl font-medium text-gray-900 dark:text-gray-700">
-                                User Id
-                            </label>
-                            <input v-model="formData.user_id" type="text" name="user_id" id="user_id"
-                                :placeholder="order.user_id"
-                                class="input-field bg-gray-700 text-white text-lg border border-gray-600 rounded-xl rounded px-4 py-1">
+                <form v-for="report in specificOrder" :key="order.report" class="" @submit.prevent="onSubmit(report.id)" enctype="multipart/form-data">
+                    <div
+                        class="w-full mt-4 border border-gray-200 rounded-lg bg-gray-50 dark:bg-gray-600 dark:border-gray-600">
+                        <div class="px-4 mt-2 bg-white rounded-t-lg dark:bg-gray-700">
+                            <label for="reason" class="sr-only">Your comment</label>
+                            <textarea v-model="formData.reason" id="reason" rows="3"
+                                class="w-full px-0 text-md text-gray-900 bg-white border-0 dark:bg-gray-100 focus:ring-0 dark:text-black dark:placeholder-gray-800"
+                                placeholder="Write a reason..." required></textarea>
                         </div>
-                        <div>
-                            <label for="telephone" class="block text-xl font-medium text-gray-900 dark:text-gray-700">
-                                Your Telephone
-                            </label>
-                            <input v-model="formData.telephone" type="text" id="tel"
-                                class="input-field bg-gray-700 text-white text-lg border border-gray-600 rounded-xl rounded px-4 py-1"
-                                :placeholder="order.user.phone">
-                        </div>
-                        <div
-                            class="w-full mt-4 border border-gray-200 rounded-lg bg-gray-50 dark:bg-gray-600 dark:border-gray-600">
-                            <div class="px-4 mt-2 bg-white rounded-t-lg dark:bg-gray-700">
-                                <label for="reason" class="sr-only">Your comment</label>
-                                <textarea v-model="formData.reason" id="reason" rows="3"
-                                    class="w-full px-0 text-md text-gray-900 bg-white border-0 dark:bg-gray-100 focus:ring-0 dark:text-black dark:placeholder-gray-800"
-                                    placeholder="Write a reason..." required></textarea>
-                            </div>
-                            <div class="flex items-center justify-between px-3 py-2 border-t dark:border-gray-600">
-                                <button type="submit"
-                                    class="inline-flex items-center py-2.5 px-8 text-xm font-medium text-center text-gray-800 bg-gray-100 rounded-lg focus:ring-4 focus:ring-blue-200 dark:focus:ring-gray-900 hover:text-white hover:bg-red-500">
-                                    Submit
-                                </button>
-                            </div>
-                            
+                        <div class="flex items-center justify-between px-3 py-2 border-t dark:border-gray-600">
+                            <button type="submit" 
+                                class="inline-flex items-center py-2.5 px-8 text-xm font-medium text-center text-gray-800 bg-gray-100 rounded-lg focus:ring-4 focus:ring-blue-200 dark:focus:ring-gray-900 hover:text-white hover:bg-red-500">
+                                Submit
+                            </button>
                         </div>
                     </div>
                 </form>
-
             </div>
 
         </div>
+
     </div>
 </template>
 
@@ -145,109 +121,23 @@ const { data: order, error } = await useMyFetch<any>(`order/${route.params.id}`,
 const { data: specificOrder } = await useMyFetch<any>(`showOrderSpecific/${route.params.id}`, {});
 
 const formData = ref({
-    telephone: "",
-    reason: "",
-    order_id: "",
-    user_id: "",
+    reason: ""
 })
 
 const formErrors = ref({
     errors: null
 })
 
-formData.value.order_id = order.id;
-formData.value.user_id = order.user_id;
-
 async function onSubmit() {
-    const { telephone, reason, order_id, user_id } = formData.value;
-    const data = {
-        telephone, 
-        reason, 
-        order_id, 
-        user_id,
-    };
+    const { reason } = formData.value;
+    const data = { reason }
+    const { data: reponse, error } = await useMyFetch<any>(`report/${route.params.id}`, {
+        method: "POST",
+        body: data,
+    });
 
-    // Log the data before sending
-    console.log("Data before sending:", data);
-
-    const { data: response, error } = await useMyFetch<any>(
-        "report",
-        {
-            method: "POST",
-            body: data,
-        }
-    );
-
-    if (response.value !== null) {
-        await navigateTo(`/`);
-        const response = await useMyFetch(`orders/${route.params.id}/update_status`, {
-            method: "PUT",
-            body: JSON.stringify({
-                status: "ReportPending" // Set the new status here
-            }),
-            headers: {
-                "Content-Type": "application/json"
-            }
-        });
-    } else {
-        console.log(error);
-        console.log(data);
-        const { message } = error.value!.data;
-        formErrors.value.errors = message;
-    }
+    console.log(data)
 }
-onMounted(() => {
-    formData.value.order_id = order.id;
-    formData.value.user_id = order.user_id;
-});
-
-
-const previewImage = (event) => {
-    const file = event.target.files ? event.target.files[0] : null; // Check if there are files
-
-    if (file) {
-        const reader = new FileReader();
-
-        reader.onload = () => {
-            previewUrl.value = reader.result; // Store the data URL for preview
-            selectedFile.value = file; // Store the selected file
-
-            // Optionally, you can encode the image to base64
-            const base64String = reader.result.split(',')[1]; // Get the base64 part of the data URL
-            orderData.payment_receipt = base64String; // Store the base64-encoded image in orderData
-        };
-
-        reader.readAsDataURL(file);
-    }
-};
-
-const reportOrder = async (orderId: number) => {
-    try {
-        const response = await useMyFetch<Order>(`orders/${orderId}/update_status`, {
-            method: "PUT",
-            body: JSON.stringify({
-                status: "ReportPending" // Set the new status here
-            }),
-            headers: {
-                "Content-Type": "application/json"
-            }
-        });
-
-        if (response) {
-            const updatedOrderIndex = orders.value.findIndex(order => order.id === orderId);
-            await navigateTo('/order/order-status')
-            if (updatedOrderIndex !== -1) {
-                orders.value[updatedOrderIndex].status = 'ReportPending';
-
-            }
-            console.log('Order status updated to ReportPending successfully');
-        } else {
-            console.error('Failed to update order status to ReportPending');
-        }
-    } catch (error) {
-        console.error('Failed to update order status to ReportPending', error);
-    }
-};
 
 if (error.value !== null) {
     if ('statusCode' in error.value) {
