@@ -141,33 +141,33 @@ async function onSubmit() {
         body: data,
     });
 
-    const response = await useMyFetch(`orders/${route.params.id}/update_status`, {
-            method: "PUT",
-            body: JSON.stringify({
-                status: "ReportPending" // Set the new status here
-            }),
-            headers: {
-                "Content-Type": "application/json"
+    if (error.value !== null) {
+        if ('statusCode' in error.value) {
+            const { statusCode, statusMessage } = error.value;
+            console.log(statusCode, statusMessage);
+            if (statusCode === 404) {
+                await navigateTo("/");
             }
-        });
+        }
+    }
+
+    if (order.value !== null) {
+        console.log(order.value);
+        console.log(specificOrder.value);
+    }
+
+    const response = await useMyFetch(`orders/${route.params.id}/update_status`, {
+        method: "PUT",
+        body: JSON.stringify({
+            status: "ReportPending" // Set the new status here
+        }),
+        headers: {
+            "Content-Type": "application/json"
+        }
+    });
 
     console.log(data)
     await navigateTo("/order/order-status")
-}
-
-if (error.value !== null) {
-    if ('statusCode' in error.value) {
-        const { statusCode, statusMessage } = error.value;
-        console.log(statusCode, statusMessage);
-        if (statusCode === 404) {
-            await navigateTo("/");
-        }
-    }
-}
-
-if (order.value !== null) {
-    console.log(order.value);
-    console.log(specificOrder.value);
 }
 
 const formatDateTime = (dateTime: string) => {
