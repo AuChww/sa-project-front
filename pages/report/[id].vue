@@ -90,7 +90,7 @@
                     </div>
                 </div>
                 <div>
-                    <form class="" @submit.prevent="onSubmit()" enctype="multipart/form-data">
+                    <form v-if="auth.user.role !== 'Delivery'" class="" @submit.prevent="onSubmit()" enctype="multipart/form-data">
                         <div
                             class="w-full mt-4 border border-gray-200 rounded-lg bg-gray-50 dark:bg-gray-600 dark:border-gray-600">
                             <div class="px-4 mt-2 bg-white rounded-t-lg dark:bg-gray-700">
@@ -102,7 +102,8 @@
                             <div class="text-red-600">
                                 {{ statusMessage }}
                             </div>
-                            <div class="flex items-center justify-between px-3 py-2 border-t dark:border-gray-600">
+                            <div 
+                                class="flex items-center justify-between px-3 py-2 border-t dark:border-gray-600">
                                 <button type="submit"
                                     class="inline-flex items-center py-2.5 px-8 text-xm font-medium text-center text-gray-800 bg-gray-100 rounded-lg focus:ring-4 focus:ring-blue-200 dark:focus:ring-gray-900 hover:text-white hover:bg-red-500">
                                     Submit
@@ -110,6 +111,27 @@
                             </div>
                         </div>
                     </form>
+
+                    <form v-if="auth.user.role === 'Delivery'" class="" @submit.prevent="onSubmit2(auth.user.id, order.id)" enctype="multipart/form-data">
+                        <div
+                            class="w-full mt-4 border border-gray-200 rounded-lg bg-gray-50 dark:bg-gray-600 dark:border-gray-600">
+                            <div class="px-4 mt-2 bg-white rounded-t-lg dark:bg-gray-700">
+                                <label for="reason" class="sr-only">Your comment</label>
+                                <textarea v-model="formData2.reason" id="reason" rows="3"
+                                    class="w-full px-0 text-md text-gray-900 bg-white border-0 dark:bg-gray-100 focus:ring-0 dark:text-black dark:placeholder-gray-800"
+                                    placeholder="Write a reason..." required></textarea>
+                            </div>
+                            <input hidden type="text" v-model="formData2.user_id">
+                            <input hidden type="text" v-model="formData2.order_id">
+                            <div v-if="auth.user.role === 'Delivery'">
+                                <button type="submit"
+                                    class="inline-flex items-center py-2.5 px-8 text-xm font-medium text-center text-gray-800 bg-red-100 rounded-lg focus:ring-4 focus:ring-blue-200 dark:focus:ring-gray-900 hover:text-white hover:bg-red-500">
+                                    Submit
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+
                 </div>
             </div>
 
@@ -120,13 +142,25 @@
 
 <script setup lang="ts">
 
+import { useAuthStore } from "~/stores/useAuthStore";
+
+const auth = useAuthStore();
+
 const route = useRoute();
 const previewUrl = ref(null);
 const { data: order, error } = await useMyFetch<any>(`order/${route.params.id}`, {});
 const { data: specificOrder } = await useMyFetch<any>(`showOrderSpecific/${route.params.id}`, {});
 
+
+
 const formData = ref({
     reason: ""
+})
+
+const formData2 = ref({
+    reason: "",
+    user_id: "",
+    order_id: "",
 })
 
 const formErrors = ref({
@@ -169,6 +203,48 @@ async function onSubmit() {
     console.log(data)
     await navigateTo("/order/order-status")
 }
+
+async function onSubmit2(staff_id: string, staff_order_id: number) {
+    const { reason, user_id = staff_id, order_id = staff_order_id } = formData2.value;
+    const data = { reason, user_id, order_id }
+    const { data: reponse, error } = await useMyFetch<any>(`report/${route.params.id}/byStaff`, {
+        method: "POST",
+        body: data,
+    });
+
+    if (error.value !== null) {
+        if ('statusCode' in error.value) {
+            const { statusCode, statusMessage } = error.value;
+            console.log(statusCode, statusMessage);
+            if (statusCode === 404) {
+                await navigateTo("/");
+            }
+        }
+    }
+
+    if (order.value !== null) {
+        console.log(order.value);
+        console.log(specificOrder.value);
+    }
+
+    const response = await useMyFetch(`orders/${route.params.id}/update_status`, {
+        method: "PUT",
+        body: JSON.stringify({
+            status: "ReportPending" // Set the new status here
+        }),
+        headers: {
+            "Content-Type": "application/json"
+        }
+    });
+    
+    console.log(data)
+    await navigateTo("/product/product-check")
+}
+
+onMounted(() => {
+    formData2.value.user_id = auth.user.id;
+    formData2.value.order_id = order.value.id;
+});
 
 const formatDateTime = (dateTime: string) => {
     const options = { year: 'numeric', month: 'long', day: 'numeric', hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: false };

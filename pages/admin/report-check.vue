@@ -36,6 +36,11 @@
 
                                     <th scope="col"
                                         class="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-400">
+                                        Role
+                                    </th>
+
+                                    <th scope="col"
+                                        class="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-400">
                                         User ID
                                     </th>
 
@@ -99,6 +104,10 @@
                                                 <h2 class="text-sm font-semibold">Waiting</h2>
                                             </div>
                                         </div>
+                                    </td>
+
+                                    <td class="px-4 py-4 text-sm text-gray-500 dark:text-gray-300">
+                                        {{ order.user_role }}
                                     </td>
 
                                     <td class="px-4 py-4 text-sm text-gray-500 dark:text-gray-300">
@@ -176,6 +185,11 @@
                                     <th scope="col"
                                         class="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-400">
                                         Status
+                                    </th>
+
+                                    <th scope="col"
+                                        class="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-400">
+                                        Role
                                     </th>
 
                                     <th scope="col"
@@ -272,6 +286,10 @@
                                     </td>
 
                                     <td class="px-4 py-4 text-sm text-gray-500 dark:text-gray-300">
+                                        {{ order.user_role }}
+                                    </td>
+
+                                    <td class="px-4 py-4 text-sm text-gray-500 dark:text-gray-300">
                                         {{ order.user_id }}
                                     </td>
 
@@ -333,6 +351,11 @@
                                     <th scope="col"
                                         class="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-400">
                                         Status
+                                    </th>
+
+                                    <th scope="col"
+                                        class="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-400">
+                                        Role
                                     </th>
 
                                     <th scope="col"
@@ -426,6 +449,10 @@
                                                 <h2 class="text-sm font-semibold">Complete</h2>
                                             </div>
                                         </div>
+                                    </td>
+
+                                    <td class="px-4 py-4 text-sm text-gray-500 dark:text-gray-300">
+                                        {{ order.user_role }}
                                     </td>
 
                                     <td class="px-4 py-4 text-sm text-gray-500 dark:text-gray-300">

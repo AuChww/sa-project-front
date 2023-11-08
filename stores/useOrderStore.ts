@@ -22,6 +22,7 @@ interface Order {
     payment_receipt: string,
     shipment_method: string,
     track_num: string,
+    user_role: string,
     // Add other properties as needed
 }
 
