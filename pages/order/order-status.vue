@@ -251,7 +251,7 @@
                         <div class="relative mb-6"></div>
 
                         <p class=" text-sm font-light">
-                        <div class="inline-flex hover:scale-125 transition-all duration-500 mx-52 items-center gap-x-2">
+                        <div v-if="order.status == 'Delivering' || order.status == 'CompleteDelivery' || order.status == 'CompleteRefund'" class="inline-flex hover:scale-125 transition-all duration-500 mx-52 items-center gap-x-2">
                             <NuxtLink :to="`/report/${order.id}`"
                                 class="inline-flex text-gray-600 dark:hover:text-black rounded-lg group ">
                                 Report

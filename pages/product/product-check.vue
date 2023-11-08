@@ -309,14 +309,21 @@
                                             Confirm
                                         </button>
                                         <div v-if="order.status === 'Delivering'">
-                                            <label class="block text-sm font-medium leading-6 text-gray-400">Order Track 
+                                            <label class="block text-sm font-medium leading-6 text-gray-400">Order Track
                                                 : {{ order.track_num }}</label>
-                                            <div class="inline-flex">
-                                                <input id="track_num" name="track_num" type="text" autocomplete="" v-model="formData.track_num"
+                                            <div v-if="order.track_num == ''" class="inline-flex">
+                                                <input id="track_num" name="track_num" type="text" autocomplete=""
+                                                    v-model="formData.track_num"
                                                     class="block h-10 w-40 rounded-md border-0 p-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
                                                 <button type="button" @click="onUpdateTrack(order.id)"
-                                                    class="border-emerald-500 border bg-emerald-500 text-white rounded-md px-4 py-2 mx-1 transition duration-500 ease select-none hover:bg-emerald-700 focus:outline-none focus:shadow-outline">
+                                                    class="border-blue-500 border bg-blue-500 text-white rounded-md px-4 py-2 mx-1 transition duration-500 ease select-none hover:bg-blue-700 focus:outline-none focus:shadow-outline">
                                                     Update
+                                                </button>
+                                            </div>
+                                            <div v-if="order.track_num != ''" class="inline-flex">
+                                                <button type="button" @click="completeOrder(order.id)"
+                                                    class="border-emerald-500 border bg-emerald-500 text-white rounded-md px-4 py-2 mx-2 transition duration-500 ease select-none hover:bg-emerald-700 focus:outline-none focus:shadow-outline">
+                                                    Confirm
                                                 </button>
                                             </div>
                                         </div>
@@ -355,7 +362,7 @@ const orders = ref<Order[]>([]); // Initialize as an empty array
 
 definePageMeta({
     middleware: "authenticated", //Auth checker
-  });
+});
 
 const fetchOrders = async () => {
     try {
@@ -371,30 +378,30 @@ const fetchOrders = async () => {
 };
 
 const formData = ref({
-  track_num: ""
+    track_num: ""
 })
 
 const formErrors = ref({
-  errors: null
+    errors: null
 })
 
 async function onUpdateTrack(orderId: number) {
-  const { track_num } = formData.value
-  const { data:response, error } = await useMyFetch<any>(
-    `orders/updateTrack/${orderId}`,
-    {
-      method: "PUT",
-      body: { track_num }
-    }
-  )
+    const { track_num } = formData.value
+    const { data: response, error } = await useMyFetch<any>(
+        `orders/updateTrack/${orderId}`,
+        {
+            method: "PUT",
+            body: { track_num }
+        }
+    )
 
-  if (response.value !== null) {
-    await navigateTo(`/product/product-check`)
-  } else {
-    console.log(error)
-    const { message } = error.value!.data
-    formErrors.value.errors = message
-  }
+    if (response.value !== null) {
+        await navigateTo(`/product/product-check`)
+    } else {
+        console.log(error)
+        const { message } = error.value!.data
+        formErrors.value.errors = message
+    }
 }
 
 const preparingOrders = computed(() => {
@@ -482,6 +489,32 @@ const completeDelivery = async (orderId: number) => {
         }
     } catch (error) {
         console.error('Failed to update order status to CompleteRefund', error);
+    }
+};
+
+const completeOrder = async (orderId: number) => {
+    try {
+        const response = await useMyFetch<Order>(`orders/${orderId}/update_status`, {
+            method: "PUT",
+            body: JSON.stringify({
+                status: "CompleteDelivery" // Set the new status here
+            }),
+            headers: {
+                "Content-Type": "application/json"
+            }
+        });
+
+        if (response) {
+            const updatedOrderIndex = orders.value.findIndex(order => order.id === orderId);
+            if (updatedOrderIndex !== -1) {
+                orders.value[updatedOrderIndex].status = 'CompleteDelivery';
+            }
+            console.log('Order status updated to CompleteDelivery successfully');
+        } else {
+            console.error('Failed to update order status to CompleteDelivery');
+        }
+    } catch (error) {
+        console.error('Failed to update order status to CompleteDelivery', error);
     }
 };
 
@@ -577,4 +610,5 @@ const formatCreatedAt = (timestamp: string) => {
 .swipe-in-enter,
 .swipe-in-leave-to {
     transform: translateY(-20%);
-}</style>
+}
+</style>
