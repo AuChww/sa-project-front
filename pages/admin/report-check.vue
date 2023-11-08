@@ -120,6 +120,13 @@
                                         {{ formatCreatedAt(order.created_at) }}
                                     </td>
 
+                                    <td
+                                        class="px-4 py-4 text-md hover:text-yellow-500 duration-200 text-gray-500 dark:text-gray-300">
+                                        <NuxtLink :to="`/reason/${order.id}`">
+                                            click here
+                                        </NuxtLink>
+                                    </td>
+
                                     <td class="px-4 py-4 text-sm text-gray-500 dark:text-gray-300">
                                         {{ order.total_price }}
                                     </td>

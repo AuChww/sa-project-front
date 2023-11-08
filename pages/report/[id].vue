@@ -141,7 +141,18 @@ async function onSubmit() {
         body: data,
     });
 
+    const response = await useMyFetch(`orders/${route.params.id}/update_status`, {
+            method: "PUT",
+            body: JSON.stringify({
+                status: "ReportPending" // Set the new status here
+            }),
+            headers: {
+                "Content-Type": "application/json"
+            }
+        });
+
     console.log(data)
+    await navigateTo("/order/order-status")
 }
 
 if (error.value !== null) {
