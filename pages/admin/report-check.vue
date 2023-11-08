@@ -46,6 +46,11 @@
 
                                     <th scope="col"
                                         class="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-400">
+                                        Phone
+                                    </th>
+
+                                    <th scope="col"
+                                        class="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-400">
                                         Purchased
                                     </th>
 
@@ -110,6 +115,10 @@
                                         <NuxtLink :to="`/profile/${order.user_id}`">
                                             {{ order.user_name }}
                                         </NuxtLink>
+                                    </td>
+
+                                    <td class="px-4 py-4 text-sm text-gray-500 dark:text-gray-300">
+                                        {{ order.user_phone }}
                                     </td>
 
                                     <td class="px-4 py-4 text-sm text-gray-500 dark:text-gray-300">
@@ -493,7 +502,7 @@ import { useOrderStore } from '~/stores/useOrderStore';
 definePageMeta({
     middleware: "authenticated", //Auth checker
   });
-  
+
 const orderStore = useOrderStore();
 
 const { data: reports } = await useMyFetch<any>(`report`, {});
@@ -646,6 +655,7 @@ type Order = {
     total_price: string;
     payment_receipt: string;
     shipment_method: string;
+    phone: string;
     status: string;
     created_at: string;
     updated_at: string;

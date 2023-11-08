@@ -96,15 +96,13 @@
                                 Order Id
                             </label>
                             <input v-model="formData.order_id" type="text" name="order_id" id="order_id"
-                                :placeholder="order.id" class="input-field bg-gray-700 text-white text-lg border border-gray-600 rounded-xl rounded px-4 py-1"
-                                placeholder="Tel.">
+                                :placeholder="order.id" class="input-field bg-gray-700 text-white text-lg border border-gray-600 rounded-xl rounded px-4 py-1">
                             <label for="telephone" class="block text-xl font-medium text-gray-900 dark:text-gray-700">
                                 User Id
                             </label>
                             <input v-model="formData.user_id" type="text" name="user_id" id="user_id"
                                 :placeholder="order.user_id"
-                                class="input-field bg-gray-700 text-white text-lg border border-gray-600 rounded-xl rounded px-4 py-1"
-                                placeholder="Tel.">
+                                class="input-field bg-gray-700 text-white text-lg border border-gray-600 rounded-xl rounded px-4 py-1">
                         </div>
                         <div>
                             <label for="telephone" class="block text-xl font-medium text-gray-900 dark:text-gray-700">
@@ -112,7 +110,7 @@
                             </label>
                             <input v-model="formData.telephone" type="text" id="tel"
                                 class="input-field bg-gray-700 text-white text-lg border border-gray-600 rounded-xl rounded px-4 py-1"
-                                placeholder="Tel.">
+                                :placeholder="order.user.phone">
                         </div>
                         <div
                             class="w-full mt-4 border border-gray-200 rounded-lg bg-gray-50 dark:bg-gray-600 dark:border-gray-600">
@@ -128,6 +126,7 @@
                                     Submit
                                 </button>
                             </div>
+                            
                         </div>
                     </div>
                 </form>
@@ -159,7 +158,10 @@ const formErrors = ref({
 async function onSubmit() {
     const { telephone, reason, order_id, user_id } = formData.value;
     const data = {
-        telephone, reason, order_id, user_id,
+        telephone, 
+        reason, 
+        order_id, 
+        user_id,
     };
 
     // Log the data before sending
