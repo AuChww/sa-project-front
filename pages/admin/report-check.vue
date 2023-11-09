@@ -67,6 +67,9 @@
                                     <th scope="col"
                                         class="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-400">
                                     </th>
+                                    <th scope="col"
+                                        class="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-400">
+                                    </th>
                                 </tr>
                             </thead>
 
@@ -588,7 +591,6 @@ const refundOrder = async (orderId: number) => {
                     "Content-Type": "application/json"
                 }
             });
-
             console.log('Order status updated to RefundPending successfully');
         } else {
             console.error('Failed to update order status to RefundPending');
@@ -624,6 +626,17 @@ const resentOrder = async (orderId: number) => {
                     "Content-Type": "application/json"
                 }
             });
+
+            if (response) {
+                const response = await useMyFetch<any>(`/orders/${orderId}/clearTrackNum`, {
+                    method: "PUT",
+                    body: JSON.stringify({
+                    }),
+                    headers: {
+                        "Content-Type": "application/json"
+                    }
+                });
+            }
 
             console.log('Order status updated to ResentPending successfully');
         } else {
@@ -701,4 +714,5 @@ const formatCreatedAt = (timestamp: string) => {
 .swipe-in-enter,
 .swipe-in-leave-to {
     transform: translateY(-20%);
-}</style>
+}
+</style>

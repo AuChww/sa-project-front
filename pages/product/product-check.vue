@@ -311,6 +311,13 @@
                                         <div v-if="order.status === 'Delivering'">
                                             <label class="block text-sm font-medium leading-6 text-gray-400">Order Track
                                                 : {{ order.track_num }}</label>
+                                            <input id="track_num" name="track_num" type="text" autocomplete=""
+                                                v-model="formData.track_num"
+                                                class="block h-10 w-40 rounded-md border-0 p-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+                                            <button type="button" @click="onUpdateTrack(order.id)"
+                                                class="border-blue-500 border bg-blue-500 text-white rounded-md px-4 py-2 mx-1 transition duration-500 ease select-none hover:bg-blue-700 focus:outline-none focus:shadow-outline">
+                                                Update
+                                            </button>
                                             <div v-if="order.track_num == ''" class="inline-flex">
                                                 <input id="track_num" name="track_num" type="text" autocomplete=""
                                                     v-model="formData.track_num"

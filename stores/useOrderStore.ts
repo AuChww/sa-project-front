@@ -23,6 +23,7 @@ interface Order {
     shipment_method: string,
     track_num: string,
     user_role: string,
+    user_phone: string,
     // Add other properties as needed
 }
 

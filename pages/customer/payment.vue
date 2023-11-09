@@ -164,6 +164,7 @@ const orderData = ref({
     payment_receipt: null,
     shipment_method: 'normal',
     user_role: '',
+    user_phone: '',
 });
 
 const previewImage = (event) => {
@@ -227,6 +228,7 @@ const placeOrder = async () => {
     formData.append('payment_receipt', selectedFile.value);
     formData.append('shipment_method', selectedShipmentMethod.value);
     formData.append('user_role', auth.user.role);
+    formData.append('user_phone', auth.user.phone);
 
     // Append each product separately
     for (const product of Cart) {

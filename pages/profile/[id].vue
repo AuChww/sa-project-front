@@ -38,6 +38,7 @@
                 <div class="font-semibold mt-4 text-m">{{ user.role }}</div>
                 <div class="font-semibold text-m">{{ user.bank }}</div>
                 <div class="font-semibold text-m">{{ user.bank_number }}</div>
+                <div class="font-semibold text-m">{{ user.phone }}</div>
 
                 <div class="font-semibold mt-2 text-m">{{ user.address }}</div>
 

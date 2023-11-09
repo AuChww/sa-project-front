@@ -12,6 +12,7 @@
     </section>
 
     <section>
+        <h1 v-if="auth.user.role == 'Customer'" class="mx-auto text-center pt-2 text-gray-600">Please keep your order alive within 7 days of guarantee.</h1>
         <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-8 mt-6 px-10">
             <div v-for="order in orders" :key="order.id"
                 class="mx-auto relative my-4 flex w-80 h-full flex-col overflow-hidden rounded-2xl bg-white text-gray-600 shadow-lg ring-1 ring-gray-200">
